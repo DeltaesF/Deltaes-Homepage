@@ -57,7 +57,7 @@ export default function Header() {
           <div className={styles.logo}>
             <Link href="/">
               <Image
-                src="/images/logo.png"
+                src="/images/header-logo.png"
                 alt="logo"
                 width="176"
                 height="52"

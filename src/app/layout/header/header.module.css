@@ -13,7 +13,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 1200px;
+  width: 1000px;
 }
 
 .headerInputLogo {
@@ -50,7 +50,7 @@
   align-items: center;
   cursor: pointer;
   gap: 12px;
-  padding-left: 5rem;
+  padding-left: 6rem;
 }
 .partner {
   display: block;

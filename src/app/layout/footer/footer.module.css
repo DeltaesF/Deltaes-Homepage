@@ -2,6 +2,101 @@
   width: 100vw;
   height: 300px;
   color: white;
-  background-color: rgb(0, 0, 124);
-  text-align: center;
+  background-color: rgb(6 6 33);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1000px;
+  gap: 30px;
+}
+
+.footerInput {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-right: 6.5rem;
+}
+.footerInput p {
+  font-size: 13px;
+  font-weight: bold;
+}
+.footerInput form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.footerInput input {
+  padding: 10px;
+  border: 1px solid #fff;
+  background-color: rgb(6 6 33);
+  color: #fff;
+  font-size: 12px;
+  width: 420px;
+  height: 35px;
+  margin-left: 0.7rem;
+}
+.footerInput input::placeholder {
+  color: #fff;
+}
+.footerInput button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #fff;
+  color: #0a0d37;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.company {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 1000px;
+  margin-top: 20px;
+}
+.logo {
+  width: 176px;
+  height: 52px;
+}
+
+.locationPartner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.location {
+  padding-left: 3.4rem;
+}
+
+.location p {
+  font-size: 9px;
+  line-height: 1.6;
+}
+
+.share {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.share p {
+  font-size: 14px;
+  margin: 0;
+  line-height: 1;
+}
+
+.share a {
+  padding-right: 20px;
+}
+
+.share span {
+  padding-right: 20px;
 }
