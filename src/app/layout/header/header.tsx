@@ -66,8 +66,8 @@ export default function Header() {
               <li>
                 <Link href="/pages/">회사소개</Link>
               </li>
-              <li className={styles.menu}>
-                <button>MENU</button>
+              <li>
+                <button className={styles.menu}>MENU</button>
               </li>
             </ul>
           </nav>
