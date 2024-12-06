@@ -1,5 +1,6 @@
-/* 전체 헤더 */
 .header {
+  position: fixed;
+  top: 0;
   width: 100vw;
   height: 250px;
   display: flex;
@@ -7,6 +8,7 @@
   align-items: center;
   background-color: rgb(19, 26, 74);
   color: white;
+  z-index: 1000;
 }
 
 .headerContainer {
@@ -78,7 +80,7 @@
   padding: 0;
   margin: 0;
   font-size: 17px;
-  font-weight: 700;
+  font-weight: bolder;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -86,6 +88,9 @@
 
 .li {
   cursor: pointer;
+}
+.li:hover {
+  color: #4ceed0;
 }
 
 .menu {

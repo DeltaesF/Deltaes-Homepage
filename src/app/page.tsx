@@ -1,12 +1,49 @@
+"use client";
+
 import Link from "next/link";
 import styles from "../app/styles/page.module.css";
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+
+const imgSlice = [
+  "/images/image-slide1.jpg",
+  "/images/image-slide2.jpg",
+  "/images/image-slide3.jpg",
+  "/images/image-slide4.jpg",
+  "/images/image-slide5.jpg",
+  "/images/image-slide6.jpg",
+  "/images/image-slide7.jpg",
+  "/images/image-slide8.jpg",
+  "/images/image-slide9.jpg",
+  "/images/image-slide10.jpg",
+  "/images/image-slide11.jpg",
+];
 
 export default function Home() {
   return (
     <main className={styles.main}>
       <section className={styles.section}>
         <div className={styles.imgSlice}>
-          <p>슬라이드 이미지</p>
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            navigation
+            pagination={{ type: "bullets", clickable: true }}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            loop={true}
+          >
+            {imgSlice.map((img, index) => (
+              <SwiperSlide
+                key={index}
+                style={{ width: "100%", height: "370px" }}
+              >
+                <Image src={img} alt="img slide" fill />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
         <article className={styles.article}>
           <div className={styles.f}>

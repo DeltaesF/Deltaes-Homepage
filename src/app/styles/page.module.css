@@ -15,7 +15,6 @@
 .imgSlice {
   width: 100vw;
   height: 370px;
-  background-color: aquamarine;
 }
 
 .article {
@@ -81,6 +80,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 16px;
 }
 .sContainer {
   width: 320px;
@@ -125,6 +125,8 @@
   background-color: #191919;
   font-weight: bold;
   border-radius: 5px;
+  font-size: 13px;
+  letter-spacing: 2px;
 }
 .sHeader2 {
   display: flex;

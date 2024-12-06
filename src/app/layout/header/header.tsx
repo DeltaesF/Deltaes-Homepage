@@ -66,20 +66,19 @@ export default function Header() {
           </div>
           <nav className={styles.nav}>
             <ul className={styles.ul}>
-              <li className={styles.li}></li>
-              <li>
+              <li className={styles.li}>
                 <Link href="/pages/product">제품안내</Link>
               </li>
-              <li>
+              <li className={styles.li}>
                 <Link href="/pages/">적용산업</Link>
               </li>
-              <li>
+              <li className={styles.li}>
                 <Link href="/pages/">엔지니어링 컨설팅 서비스</Link>
               </li>
-              <li>
+              <li className={styles.li}>
                 <Link href="/pages/">공지사항</Link>
               </li>
-              <li>
+              <li className={styles.li}>
                 <Link href="/pages/">회사소개</Link>
               </li>
               <li>
