@@ -23,6 +23,8 @@ const imgSlice = [
   "/images/image-slide11.jpg",
 ];
 
+const customer = [];
+
 export default function Home() {
   return (
     <main className={styles.main}>
