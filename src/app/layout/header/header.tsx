@@ -14,7 +14,6 @@ export default function Header() {
 
   const closeModal = () => {
     setIsMenuModal(false);
-    console.log("클릭");
   };
 
   return (
