@@ -216,7 +216,7 @@
 .customerSliceAnimation {
   display: flex;
   gap: 5px;
-  /* animation: customerSlice 20s linear infinite; */
+  animation: customerSlice 20s linear infinite;
   width: max-content;
 }
 .customerWrapper {

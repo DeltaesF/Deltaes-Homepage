@@ -109,21 +109,10 @@ const customerImg = [
 ];
 
 export default function Home() {
-  const [isPaused, setIsPaused] = useState<boolean>(false);
-  const [translateX, setTranslateX] = useState<number>(0);
-
-  const itemWidth = 98;
+  const [isPaused, setIsPaused] = useState(false);
 
   const handleMouseEnter = () => setIsPaused(true);
   const handleMouseLeave = () => setIsPaused(false);
-
-  const handleMoveLeft = () => {
-    setTranslateX((prev) => prev + itemWidth); // 왼쪽 이동
-  };
-
-  const handleMoveRight = () => {
-    setTranslateX((prev) => prev - itemWidth); // 오른쪽 이동
-  };
 
   return (
     <main className={styles.main}>
@@ -341,7 +330,7 @@ export default function Home() {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <button className={styles.arrowLeft} onClick={handleMoveLeft}>
+            <button className={styles.arrowLeft}>
               <svg
                 width="26px"
                 height="40px"
@@ -365,8 +354,6 @@ export default function Home() {
                 className={styles.customerSliceAnimation}
                 style={{
                   animationPlayState: isPaused ? "paused" : "running",
-                  transform: `translateX(${translateX}px)`,
-                  transition: "transform 0.5s ease",
                 }}
               >
                 {[...customerImg, ...customerImg].map((item, index) => (
@@ -386,7 +373,7 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <button className={styles.arrowRight} onClick={handleMoveRight}>
+            <button className={styles.arrowRight}>
               <svg
                 width="26px"
                 height="40px"
