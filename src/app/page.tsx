@@ -10,7 +10,15 @@ import "swiper/css/pagination";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { useEffect, useState } from "react";
 
-const imgSlice = [
+interface ImgSlice {
+  id: number;
+  img: string;
+  title: string;
+  description: string;
+  logo?: string;
+}
+
+const imgSlice: ImgSlice[] = [
   {
     id: 1,
     img: "/images/image-slide1.jpg",
@@ -111,17 +119,101 @@ export default function Home() {
             pagination={{ type: "bullets", clickable: true }}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
             loop={true}
+            style={{
+              width: "100%",
+              height: "370px",
+            }}
           >
-            {imgSlice.map((img, index) => (
-              <SwiperSlide
-                key={index}
-                style={{ width: "100%", height: "370px" }}
-              >
-                <div>
-                  <Image src={img.img} alt="img slide" fill />
-                </div>
-                <div>
-                  <span>▶ 자세히 보기</span>
+            {imgSlice.map((list, id) => (
+              <SwiperSlide key={id}>
+                <Image
+                  src={list.img}
+                  alt="product img"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+                <div
+                  className={styles.imgIntroduce}
+                  style={{
+                    position: "absolute",
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "1000px",
+                    textAlign: list.id === 1 ? "center" : "right", // 조건부 스타일
+                    top: list.id === 1 ? "22%" : "35%",
+                    left: "50%",
+                    right: "auto",
+                    transform: "translate(-50%, -50%)",
+                    color: "white",
+                    gap: "30px",
+                  }}
+                >
+                  <h3 className={styles.imgIntroduceTitle}>
+                    {list.title.split("\n").map((t, id) => (
+                      <span
+                        key={id}
+                        style={{
+                          fontSize:
+                            list.id === 1 ? "35px" : id === 0 ? "30px" : "35px",
+                          display: "block",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </h3>
+                  <p className={styles.imgIntroduceDec}>
+                    {list.description.split("\n").map((d, id) => (
+                      <span
+                        key={id}
+                        style={{
+                          display: "block",
+                          fontSize: list.id === 1 ? "24px" : "18px",
+                          fontWeight: list.id === 1 ? "600" : "500",
+                          marginTop: list.id === 1 ? "-30px" : "0px",
+                          lineHeight: "1.4",
+                        }}
+                      >
+                        {d}
+                      </span>
+                    ))}
+                  </p>
+                  {list.id == 1 && list.logo && (
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: "108%",
+                        left: "52%",
+                        transform: "translateX(-50%)",
+                      }}
+                    >
+                      <Image
+                        src={list.logo}
+                        alt="logo img"
+                        width={195}
+                        height={74}
+                        style={{
+                          objectFit: "cover",
+                        }}
+                      />
+                    </div>
+                  )}
+                  {list.id !== 1 && (
+                    <p
+                      className={styles.imgIntroduceDetail}
+                      style={{
+                        position: "absolute", // 부모 컨테이너 기준으로 절대 위치
+                        right: "0%", // 가운데 정렬
+                        bottom: "-120px",
+                        fontSize: "16px", // 원하는 폰트 크기
+                        fontWeight: "bold", // 폰트 굵기
+                        color: "white", // 텍스트 색상
+                      }}
+                    >
+                      ▶ 자세히 보기
+                    </p>
+                  )}
                 </div>
               </SwiperSlide>
             ))}
@@ -223,7 +315,7 @@ export default function Home() {
       </section>
       <section className={styles.section2}>
         <article className={styles.article2}>
-          <h2 className={styles.heading}>
+          <h2 className={styles.customerHeading}>
             델타이에스
             <br />
             고객사
@@ -285,6 +377,24 @@ export default function Home() {
           </div>
         </article>
       </section>
+      <div className={styles.inquiryContainer}>
+        <div className={styles.inquiry}>
+          <svg
+            width="28"
+            height="28"
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="rgb(255, 255, 255)"
+          >
+            <path
+              d="M21.133 16.933a1.4 1.4 0 11.001-2.8 1.4 1.4 0 010 2.8m-4.667 0a1.4 1.4 0 110-2.8 1.4 1.4 0 010 2.8m-5.6 0a1.4 1.4 0 110-2.8 1.4 1.4 0 010 2.8m18.904-3.656c-1.013-5.655-5.753-10.22-11.528-11.105-4.343-.667-8.642.627-11.807 3.547-3.168 2.917-4.763 7.043-4.38 11.318.59 6.582 6.08 11.952 12.768 12.487 1.153.095 2.303.05 3.428-.13a14.12 14.12 0 002.428-.612.59.59 0 01.364-.006l3.714 1.167c.785.246 1.588-.331 1.588-1.144l-.002-3.517c0-.17.086-.301.157-.38a14.028 14.028 0 001.58-2.147c1.705-2.862 2.29-6.14 1.69-9.478"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </svg>
+          <h3>실시간 문의</h3>
+        </div>
+      </div>
     </main>
   );
 }
