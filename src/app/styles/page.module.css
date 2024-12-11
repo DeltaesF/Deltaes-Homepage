@@ -215,12 +215,9 @@
 }
 .customerSliceAnimation {
   display: flex;
-  gap: 10px;
-  animation: customerSlice 20s linear infinite;
+  gap: 5px;
+  /* animation: customerSlice 20s linear infinite; */
   width: max-content;
-}
-.customerSliceAnimation:hover {
-  animation-play-state: paused;
 }
 .customerWrapper {
   flex: none;
@@ -232,6 +229,7 @@
 }
 .customerWrapper:hover {
   background-color: #333333;
+  cursor: pointer;
 }
 
 .arrowLeft {

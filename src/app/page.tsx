@@ -92,48 +92,37 @@ const imgSlice: ImgSlice[] = [
 ];
 
 const customerImg = [
-  "/images/clogo_samsung.png",
-  "/images/clogo_lg.png",
-  "/images/clogo_hyundai.png",
-  "/images/clogo_hmobis.png",
-  "/images/clogo_sk.png",
-  "/images/clogo_doosan.png",
-  "/images/clogo_apro.png",
-  "/images/clogo_fadu.png",
-  "/images/clogo_telit.png",
-  "/images/clogo_infineon.png",
-  "/images/clogo_jcet.png",
-  "/images/clogo_solum.png",
-  "/images/clogo_onsemi.png",
-  "/images/clogo_signetics.png",
+  { img: "/images/clogo_samsung.png", url: "https://www.samsung.com" },
+  { img: "/images/clogo_lg.png", url: "https://www.lgdisplay.com" },
+  { img: "/images/clogo_hyundai.png", url: "https://www.hyundai.com" },
+  { img: "/images/clogo_hmobis.png", url: "https://www.mobis.co.kr" },
+  { img: "/images/clogo_sk.png", url: "https://www.skhynix.com" },
+  { img: "/images/clogo_doosan.png", url: "https://www.doosanenerbility.com" },
+  { img: "/images/clogo_apro.png", url: "http://apro.re.kr" },
+  { img: "/images/clogo_fadu.png", url: "https://www.fadu.io" },
+  { img: "/images/clogo_telit.png", url: "https://www.telit.com" },
+  { img: "/images/clogo_infineon.png", url: "https://www.infineon.com" },
+  { img: "/images/clogo_jcet.png", url: "https://www.jcetglobal.com" },
+  { img: "/images/clogo_solum.png", url: "https://www.solum-group.co.kr" },
+  { img: "/images/clogo_onsemi.png", url: "https://onsemi-korea.com/" },
+  { img: "/images/clogo_signetics.png", url: "https://www.signetics.com/" },
 ];
 
 export default function Home() {
   const [isPaused, setIsPaused] = useState<boolean>(false);
-  const [position, setPosition] = useState<number>(0); // 현재 슬라이드 위치
+  const [translateX, setTranslateX] = useState<number>(0);
 
-  const slideWidth = 93 + 10; // 슬라이드 너비 + 간격
-  const totalWidth = customerImg.length * slideWidth * 2;
+  const itemWidth = 98;
 
   const handleMouseEnter = () => setIsPaused(true);
   const handleMouseLeave = () => setIsPaused(false);
 
-  // 왼쪽으로 슬라이드
-  const slideLeft = (): void => {
-    setPosition((prev) => {
-      const newPos = prev + slideWidth;
-      console.log("Slide Left:", { prev, newPos }); // 디버깅
-      return newPos > 0 ? -totalWidth + slideWidth : newPos; // 처음 위치로 이동
-    });
+  const handleMoveLeft = () => {
+    setTranslateX((prev) => prev + itemWidth); // 왼쪽 이동
   };
 
-  // 오른쪽으로 슬라이드
-  const slideRight = (): void => {
-    setPosition((prev) => {
-      const newPos = prev - slideWidth;
-      console.log("Slide Right:", { prev, newPos }); // 디버깅
-      return newPos < -totalWidth ? -slideWidth : newPos; // 끝 위치로 이동
-    });
+  const handleMoveRight = () => {
+    setTranslateX((prev) => prev - itemWidth); // 오른쪽 이동
   };
 
   return (
@@ -352,7 +341,7 @@ export default function Home() {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <button className={styles.arrowLeft} onClick={slideLeft}>
+            <button className={styles.arrowLeft} onClick={handleMoveLeft}>
               <svg
                 width="26px"
                 height="40px"
@@ -375,15 +364,19 @@ export default function Home() {
               <div
                 className={styles.customerSliceAnimation}
                 style={{
-                  transform: `translateX(${position}px)`,
-                  transition: "transform 0.5s ease-in-out",
                   animationPlayState: isPaused ? "paused" : "running",
+                  transform: `translateX(${translateX}px)`,
+                  transition: "transform 0.5s ease",
                 }}
               >
                 {[...customerImg, ...customerImg].map((item, index) => (
-                  <div key={index} className={styles.customerWrapper}>
+                  <div
+                    key={index}
+                    className={styles.customerWrapper}
+                    onClick={() => window.open(item.url, "_blank")}
+                  >
                     <Image
-                      src={item}
+                      src={item.img}
                       alt={`customer logo ${index}`}
                       width={93}
                       height={45}
@@ -393,7 +386,7 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <button className={styles.arrowRight} onClick={slideRight}>
+            <button className={styles.arrowRight} onClick={handleMoveRight}>
               <svg
                 width="26px"
                 height="40px"
