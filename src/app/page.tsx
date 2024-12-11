@@ -109,6 +109,33 @@ const customerImg = [
 ];
 
 export default function Home() {
+  const [isPaused, setIsPaused] = useState<boolean>(false);
+  const [position, setPosition] = useState<number>(0); // 현재 슬라이드 위치
+
+  const slideWidth = 93 + 10; // 슬라이드 너비 + 간격
+  const totalWidth = customerImg.length * slideWidth * 2;
+
+  const handleMouseEnter = () => setIsPaused(true);
+  const handleMouseLeave = () => setIsPaused(false);
+
+  // 왼쪽으로 슬라이드
+  const slideLeft = (): void => {
+    setPosition((prev) => {
+      const newPos = prev + slideWidth;
+      console.log("Slide Left:", { prev, newPos }); // 디버깅
+      return newPos > 0 ? -totalWidth + slideWidth : newPos; // 처음 위치로 이동
+    });
+  };
+
+  // 오른쪽으로 슬라이드
+  const slideRight = (): void => {
+    setPosition((prev) => {
+      const newPos = prev - slideWidth;
+      console.log("Slide Right:", { prev, newPos }); // 디버깅
+      return newPos < -totalWidth ? -slideWidth : newPos; // 끝 위치로 이동
+    });
+  };
+
   return (
     <main className={styles.main}>
       <section className={styles.section}>
@@ -320,8 +347,12 @@ export default function Home() {
             <br />
             고객사
           </h2>
-          <div className={styles.customerContainer}>
-            <button className={styles.arrowLeft}>
+          <div
+            className={styles.customerContainer}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <button className={styles.arrowLeft} onClick={slideLeft}>
               <svg
                 width="26px"
                 height="40px"
@@ -341,7 +372,14 @@ export default function Home() {
               </svg>
             </button>
             <div className={styles.customerSlice}>
-              <div className={styles.customerSliceAnimation}>
+              <div
+                className={styles.customerSliceAnimation}
+                style={{
+                  transform: `translateX(${position}px)`,
+                  transition: "transform 0.5s ease-in-out",
+                  animationPlayState: isPaused ? "paused" : "running",
+                }}
+              >
                 {[...customerImg, ...customerImg].map((item, index) => (
                   <div key={index} className={styles.customerWrapper}>
                     <Image
@@ -355,7 +393,7 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <button className={styles.arrowRight}>
+            <button className={styles.arrowRight} onClick={slideRight}>
               <svg
                 width="26px"
                 height="40px"
@@ -377,24 +415,6 @@ export default function Home() {
           </div>
         </article>
       </section>
-      <div className={styles.inquiryContainer}>
-        <div className={styles.inquiry}>
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 32 32"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="rgb(255, 255, 255)"
-          >
-            <path
-              d="M21.133 16.933a1.4 1.4 0 11.001-2.8 1.4 1.4 0 010 2.8m-4.667 0a1.4 1.4 0 110-2.8 1.4 1.4 0 010 2.8m-5.6 0a1.4 1.4 0 110-2.8 1.4 1.4 0 010 2.8m18.904-3.656c-1.013-5.655-5.753-10.22-11.528-11.105-4.343-.667-8.642.627-11.807 3.547-3.168 2.917-4.763 7.043-4.38 11.318.59 6.582 6.08 11.952 12.768 12.487 1.153.095 2.303.05 3.428-.13a14.12 14.12 0 002.428-.612.59.59 0 01.364-.006l3.714 1.167c.785.246 1.588-.331 1.588-1.144l-.002-3.517c0-.17.086-.301.157-.38a14.028 14.028 0 001.58-2.147c1.705-2.862 2.29-6.14 1.69-9.478"
-              fill="currentColor"
-              fill-rule="nonzero"
-            ></path>
-          </svg>
-          <h3>실시간 문의</h3>
-        </div>
-      </div>
     </main>
   );
 }

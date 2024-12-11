@@ -105,8 +105,9 @@
   list-style: none;
   z-index: 1000;
   width: auto;
-  min-width: 150px;
-  max-width: 300px;
+  max-width: 400px;
+  font-size: 15px;
+  white-space: nowrap;
 }
 .dropdownMenu::before {
   content: "";
@@ -120,11 +121,13 @@
 
 .dropdownMenu li {
   padding: 16px 10px;
+  box-sizing: border-box;
 }
 
 .dropdownMenu li a {
   text-decoration: none;
   color: white;
+  display: block;
 }
 
 .dropdownMenu li a:hover {
@@ -149,7 +152,6 @@
   list-style: none;
   z-index: 1000;
   width: auto;
-  min-width: 150px;
   max-width: 300px;
 }
 

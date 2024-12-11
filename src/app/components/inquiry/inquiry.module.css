@@ -1,0 +1,22 @@
+.inquiryContainer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgb(36, 138, 212);
+  width: 200px;
+  height: 60px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.inquiry {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.inquiry h3 {
+  font-size: 20px;
+}

@@ -83,71 +83,203 @@ export default function Header() {
                 <Link href="/pages/product">제품안내</Link>
                 <ul className={styles.dropdownMenu}>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item1">제품 1</Link>
+                    <Link href="/pages/product/item1">
+                      시뮬레이션 소프트웨어
+                    </Link>
                     <ul className={styles.subMenu}>
                       <li>
                         <Link href="/pages/product/item1/detail1">
-                          세부 내용 1
+                          Flotherm XT
                         </Link>
                       </li>
                       <li>
                         <Link href="/pages/product/item1/detail2">
-                          세부 내용 2
+                          STAR-CCM+
                         </Link>
                       </li>
                       <li>
-                        <Link href="/pages/product/item1/detail3">
-                          세부 내용 3
+                        <Link href="/pages/product/item1/detail3">FLOEFD</Link>
+                      </li>
+                      <li>
+                        <Link href="/pages/product/item1/detail4">
+                          Flotherm
                         </Link>
                       </li>
                       <li>
-                        <Link href="/pages/product/item1/detail3">
-                          세부 내용 4
+                        <Link href="/pages/product/item1/detail5">
+                          Flomaster
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/pages/product/item1/detail6">Amesim</Link>
+                      </li>
+                      <li>
+                        <Link href="/pages/product/item1/detail7">
+                          Simcenter 3D
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/pages/product/item1/detail8">HEEDS</Link>
+                      </li>
+                      <li>
+                        <Link href="/pages/product/item1/detail">
+                          Battery Design Studio
                         </Link>
                       </li>
                     </ul>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item2">제품 2</Link>
+                    <Link href="/pages/product/item2">측정장비</Link>
                     <ul className={styles.subMenu}>
                       <li>
-                        <Link href="/pages/product/item1/detail1">
-                          세부 내용 1
+                        <Link href="/pages/product/item2/detail1">
+                          Power Tester
                         </Link>
                       </li>
                       <li>
-                        <Link href="/pages/product/item1/detail2">
-                          세부 내용 2
+                        <Link href="/pages/product/item2/detail2">T3STER</Link>
+                      </li>
+                      <li>
+                        <Link href="/pages/product/item2/detail3">TIMA 5</Link>
+                      </li>
+                      <li>
+                        <Link href="/pages/product/item2/detail4">TOCS</Link>
+                      </li>
+                      <li>
+                        <Link href="/pages/product/item2/detail5">LaTIMA </Link>
+                      </li>
+                      <li>
+                        <Link href="/pages/product/item2/detail6">
+                          TIMA pulse
                         </Link>
                       </li>
                       <li>
-                        <Link href="/pages/product/item1/detail3">
-                          세부 내용 3
+                        <Link href="/pages/product/item2/detail7">TIFAS</Link>
+                      </li>
+                    </ul>
+                  </li>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item3">설계 소프트웨어</Link>
+                    <ul className={styles.subMenu}>
+                      <li>
+                        <Link href="/pages/product/item3/detail1">
+                          TURBOdesign Suite
                         </Link>
                       </li>
                       <li>
-                        <Link href="/pages/product/item1/detail3">
-                          세부 내용 4
+                        <Link href="/pages/product/item3/detail2">
+                          Solid Edge
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/pages/product/item3/detail3">
+                          Siemens NX
                         </Link>
                       </li>
                     </ul>
                   </li>
-                  <li>
-                    <Link href="/pages/product/item3">제품 3</Link>
+                </ul>
+              </li>
+              <li className={`${styles.li} ${styles.dropdown}`}>
+                <Link href="/pages/">적용산업</Link>
+                <ul className={styles.dropdownMenu}>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item4">전자기기 및 반도체</Link>
+                  </li>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item4">자동차 및 운송</Link>
+                  </li>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item4">이동통신 및 미디어</Link>
+                  </li>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item4">환경 및 산업용기계</Link>
+                  </li>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item4">건설 / 토목</Link>
+                  </li>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item4">
+                      발전 / 에너지 / 유틸리티
+                    </Link>
+                  </li>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item4">
+                      의료기기 / 제약 / 헬스케어
+                    </Link>
+                  </li>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item3">소비재</Link>
+                  </li>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item3">항공 / 우주 / 방산</Link>
+                  </li>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item3">조선 / 해양</Link>
+                  </li>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item3">보험 및 금융</Link>
+                  </li>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item3">소프트웨어 개발</Link>
                   </li>
                 </ul>
               </li>
-              <li className={styles.li}>
-                <Link href="/pages/">적용산업</Link>
-              </li>
-              <li className={styles.li}>
+              <li className={`${styles.li} ${styles.dropdown}`}>
                 <Link href="/pages/">엔지니어링 컨설팅 서비스</Link>
+                <ul className={styles.dropdownMenu}>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item3">
+                      BMT / POC & 파일럿 테스트
+                    </Link>
+                  </li>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item3">고객별 맞춤교육</Link>
+                  </li>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item3">엔지니어링 컨설팅</Link>
+                  </li>
+                </ul>
               </li>
-              <li className={styles.li}>
+              <li className={`${styles.li} ${styles.dropdown}`}>
                 <Link href="/pages/">공지사항</Link>
+                <ul className={styles.dropdownMenu}>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item3">교육 안내</Link>
+                  </li>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item3">행사소식</Link>
+                  </li>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item3">제품소식</Link>
+                  </li>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item3">자료실</Link>
+                  </li>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item3">평가판 신청</Link>
+                  </li>
+                </ul>
               </li>
-              <li className={styles.li}>
+              <li className={`${styles.li} ${styles.dropdown}`}>
                 <Link href="/pages/">회사소개</Link>
+                <ul className={styles.dropdownMenu}>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item3">CEO 인사말</Link>
+                  </li>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item3">회사연혁</Link>
+                  </li>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item3">온라인 브로슈어</Link>
+                  </li>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item3">오시는 길</Link>
+                  </li>
+                  <li className={`${styles.li} ${styles.subDropdown}`}>
+                    <Link href="/pages/product/item3">채용 공고</Link>
+                  </li>
+                </ul>
               </li>
               <li>
                 <button className={styles.menu} onClick={openModal}>
