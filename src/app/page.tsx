@@ -8,7 +8,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import Announcements from "./pages/announcements/page";
+import ProductNews from "./pages/announcements/productnews/page";
+import Resources from "./pages/announcements/resources/page";
 
 interface ImgSlice {
   id: number;
@@ -108,11 +111,28 @@ const customerImg = [
   { img: "/images/clogo_signetics.png", url: "https://www.signetics.com/" },
 ];
 
+type TabName = "공지사항" | "제품소식" | "자료실";
+
 export default function Home() {
   const [isPaused, setIsPaused] = useState(false);
+  const [activeTab, setActiveTab] = useState<TabName>("공지사항");
+
+  const tabs: TabName[] = ["공지사항", "제품소식", "자료실"];
 
   const handleMouseEnter = () => setIsPaused(true);
   const handleMouseLeave = () => setIsPaused(false);
+
+  const tabComponents = () => {
+    if (activeTab === "공지사항") {
+      return <Announcements />;
+    } else if (activeTab === "제품소식") {
+      return <ProductNews />;
+    } else if (activeTab === "자료실") {
+      return <Resources />;
+    } else {
+      return null;
+    }
+  };
 
   return (
     <main className={styles.main}>
@@ -296,19 +316,19 @@ export default function Home() {
           <div>
             <div className={styles.s}>
               <div className={styles.sHeader2}>
-                <div className={styles.sHeader2Sub}>
-                  <h3>공지사항</h3>
-                </div>
-                <div className={styles.sHeader2Sub}>
-                  <h3>제품소식</h3>
-                </div>
-                <div className={styles.sHeader2Sub}>
-                  <h3>자료실</h3>
-                </div>
+                {tabs.map((tab) => (
+                  <div
+                    key={tab}
+                    className={`${styles.sHeader2Sub} ${activeTab === tab ? styles.activeTab : ""}`}
+                    onClick={() => setActiveTab(tab)}
+                  >
+                    <div>{tab}</div>
+                  </div>
+                ))}
               </div>
               <div className={styles.sContainer2}>
                 <div className={styles.sContent}>
-                  <div className={styles.sContentSub3}>sodyd</div>
+                  <div className={styles.sContentSub3}>{tabComponents()}</div>
                 </div>
                 <div className={styles.sFooter}>
                   <button className={styles.sButton}>더보기</button>

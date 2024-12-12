@@ -167,6 +167,11 @@
   color: black;
 }
 
+.activeTab {
+  background-color: rgb(19, 26, 74);
+  color: white;
+}
+
 .section2 {
   background-color: rgb(19, 26, 74);
   width: 100vw;
