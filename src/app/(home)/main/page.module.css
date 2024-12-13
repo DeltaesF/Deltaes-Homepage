@@ -1,0 +1,242 @@
+.main {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section {
+  background-color: rgb(19, 26, 74);
+  width: 100vw;
+  height: 570px;
+  text-align: center;
+}
+
+.imgSlice {
+  width: 100vw;
+  height: 370px;
+  position: relative;
+}
+.imgIntroduce {
+}
+.imgIntroduceTitle {
+}
+.imgIntroduceDec {
+}
+.imgIntroduceDetail {
+  font-size: 15px;
+  font-weight: bold;
+}
+.article {
+  width: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.f {
+  width: 250px;
+  height: 180px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.f:hover {
+  background-color: rgb(19, 143, 143);
+}
+.f h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.f p {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+.f span {
+  font-weight: bold;
+}
+
+.section1 {
+  background-color: #333333;
+  width: 100vw;
+  height: 370px;
+  text-align: center;
+}
+
+.article1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.s {
+  width: 320px;
+  height: 250px;
+  color: white;
+}
+.sHeader {
+  width: 320px;
+  height: 40px;
+  background-color: rgb(19, 26, 74);
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+.sContainer {
+  width: 320px;
+  height: 220px;
+  background-color: #9eafbf;
+  border-radius: 0 0 10px 10px;
+  padding-top: 15px;
+}
+.sContainer2 {
+  width: 320px;
+  height: 220px;
+  background-color: white;
+  border-radius: 0 0 10px 10px;
+  padding-top: 15px;
+}
+.sContent {
+  width: 280px;
+  height: 150px;
+  margin: 0 auto;
+}
+.sContentSub {
+  width: 280px;
+  height: 50px;
+  background-color: #060621;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sContentSub2 {
+  width: 280px;
+  height: 50px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+.sButton {
+  width: 200px;
+  height: 40px;
+  background-color: #191919;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+.sHeader2 {
+  display: flex;
+  width: 320px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+.sHeader2Sub {
+  width: 107px;
+  height: 40px;
+  background-color: #9eafbf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px 10px 0 0;
+}
+.sHeader2Sub:hover {
+  background-color: rgb(19, 26, 74);
+}
+.sContentSub3 {
+  width: 280px;
+  height: 60px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+
+.activeTab {
+  background-color: rgb(19, 26, 74);
+  color: white;
+}
+
+.section2 {
+  background-color: rgb(19, 26, 74);
+  width: 100vw;
+  height: 140px;
+  color: #adb4e3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.article2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.customerHeading {
+  width: 100px;
+  height: 50px;
+  font-size: 19px;
+  font-weight: bold;
+  line-height: 1.4;
+  text-align: right;
+}
+
+@keyframes customerSlice {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.customerContainer {
+  width: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.customerSlice {
+  position: relative;
+  overflow: hidden;
+  width: 700px;
+}
+.customerSliceAnimation {
+  display: flex;
+  gap: 5px;
+  animation: customerSlice 20s linear infinite;
+  width: max-content;
+}
+.customerWrapper {
+  flex: none;
+  width: 93px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.customerWrapper:hover {
+  background-color: #333333;
+  cursor: pointer;
+}
+
+.arrowLeft {
+  transform: rotate(180deg);
+}
