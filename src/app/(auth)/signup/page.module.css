@@ -106,9 +106,34 @@
   color: #000;
 }
 
-.agree {
+.container {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
   margin-top: 30px;
+  text-align: center;
 }
+
+.checkbox {
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.label {
+  display: inline;
+}
+
+.toggleLink {
+  color: #000;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.details {
+  margin-top: 10px;
+  color: #000;
+}
+
 .close {
   cursor: pointer;
   position: absolute;

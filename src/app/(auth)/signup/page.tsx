@@ -1,7 +1,15 @@
+"use client";
 import Link from "next/link";
 import styles from "./page.module.css";
+import { useState } from "react";
 
 export default function Signup() {
+  const [showDetails, setShowDetails] = useState(false);
+
+  const toggleDetails = () => {
+    setShowDetails((prev) => !prev);
+  };
+
   return (
     <div className={styles.signupContainer}>
       <div className={styles.signupWrapper}>
@@ -82,9 +90,21 @@ export default function Signup() {
           </div>
           <button>이메일로 가입</button>
         </div>
-        <div className={styles.agree}>
-          <input type="checkbox" />
-          <span>공개 프로필로 사이트에 가입합니다.</span>
+
+        <div className={styles.container}>
+          <input type="checkbox" className={styles.checkbox} />
+          <label className={styles.label}>
+            공개 프로필로 사이트에 가입합니다.
+            <span onClick={toggleDetails} className={styles.toggleLink}>
+              {showDetails ? "접기" : "자세히 보기"}
+            </span>
+          </label>
+          {showDetails && (
+            <div className={styles.details}>
+              회원가입 시 프로필이 자동으로 공개로 설정됩니다. <br />
+              공개 설정은 가입 후 프로필 설정에서 변경할 수 있습니다.
+            </div>
+          )}
         </div>
         <div className={styles.close}>
           <Link href="/main">
