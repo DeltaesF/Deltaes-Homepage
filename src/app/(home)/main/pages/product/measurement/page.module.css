@@ -1,0 +1,117 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 900px;
+  margin: 0 auto;
+}
+
+.container > div {
+  margin-bottom: 20px;
+}
+
+.titleWrapper {
+  display: flex; /* 가로 정렬 */
+  align-items: center; /* 같은 선상에 정렬 */
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.section {
+}
+
+/* 각 섹션 정렬 */
+.article {
+  display: flex;
+  flex-direction: column; /* 제목과 컨텐츠를 세로 배치 */
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+/* 정사각형과 삼각형 아이콘 스타일 */
+.square,
+.triangle {
+  display: inline-block;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.square {
+  width: 20px;
+  height: 20px;
+  background-color: #162481;
+  border-radius: 5px;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 15px solid #162481;
+  vertical-align: middle;
+}
+
+/* 제목 스타일 */
+.title,
+.titleSub {
+  margin: 0;
+  text-align: left;
+}
+
+.title {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.titleSub {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* 컨텐츠 스타일 */
+.contant {
+  margin-left: 30px; /* 제목과 컨텐츠 간 간격 */
+  margin-top: 10px; /* 제목과 컨텐츠 사이 간격 */
+  display: flex;
+  flex-direction: column; /* 수직으로 배치 */
+}
+
+.contentTitle {
+  display: flex;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.contantSquare {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+.description {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.descriptionText {
+  color: #adb4e3;
+  font-size: 14px;
+}
+
+.moreButton {
+  font-size: 12px;
+  font-weight: bold;
+  width: 116px;
+  height: 24px;
+  background-color: #181851;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.moreButton:hover {
+  background-color: #000;
+}

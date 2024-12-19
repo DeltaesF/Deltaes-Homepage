@@ -70,7 +70,7 @@ export default function Header() {
 
         <div className={styles.menuContainer}>
           <div className={styles.logo}>
-            <Link href="/">
+            <Link href="/main">
               <Image
                 src="/images/header-logo.png"
                 alt="logo"
@@ -183,7 +183,7 @@ export default function Header() {
                 </ul>
               </li>
               <li className={`${styles.li} ${styles.dropdown}`}>
-                <Link href="/pages/">적용산업</Link>
+                <Link href="/main/pages/industry">적용산업</Link>
                 <ul className={styles.dropdownMenu}>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
                     <Link href="/pages/product/item4">전자기기 및 반도체</Link>
