@@ -90,6 +90,7 @@
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: left;
+  position: relative;
 }
 
 .gridDes {
@@ -102,6 +103,19 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.textOverlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 120px; /* 초기 높이 */
+  background-color: white;
+  padding: 20px;
+  text-align: left;
+  overflow: hidden;
+  transition:
+    height 0.4s ease-in-out,
+    transform 0.4s ease-in-out;
 }
 
 .textOverlay h3 {
@@ -117,11 +131,23 @@
   line-height: 1.5;
 }
 
-.textOverlay {
-  height: 100%;
-  padding: 20px;
-  background-color: white;
-  text-align: left;
+.detailButton {
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #138f8f;
+  opacity: 0; /* 초기에는 숨김 */
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease-in-out;
+}
+/* Hover 시 추가 효과 */
+.grid:hover .textOverlay {
+  height: 150px; /* 높이를 확장하여 숨겨진 버튼을 표시 */
+}
+
+.grid:hover .detailButton {
+  opacity: 1; /* 버튼 보이기 */
 }
 
 .third {
@@ -159,7 +185,7 @@
   line-height: 1.8;
   margin-top: 40px;
 }
-.siemens button {
+.siemensDes button {
   width: 142px;
   height: 40px;
   background-color: #109c9c;
@@ -169,6 +195,12 @@
   margin-top: 30px;
   border: none;
   cursor: pointer;
+}
+
+.siemensDes button:hover {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
 }
 
 .siemensImage {

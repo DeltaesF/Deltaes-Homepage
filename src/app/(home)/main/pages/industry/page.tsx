@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import Link from "next/link";
 
 export default function Industry() {
   return (
@@ -48,6 +49,7 @@ export default function Industry() {
               <div className={styles.textOverlay}>
                 <h3>소비자 및 산업용 전자 기기</h3>
                 <p>일상적으로 사용하는 전자 기기 및 자동화된 제조 장비</p>
+                <div className={styles.detailButton}>자세히 보기</div>
               </div>
             </div>
             <div className={styles.grid}>
@@ -65,6 +67,7 @@ export default function Industry() {
                   다양한 작업을 수행하여 삶을 보다 편리하게 만들어주는 스마트
                   가전 제품
                 </p>
+                <div className={styles.detailButton}>자세히 보기</div>
               </div>
             </div>
             <div className={styles.grid}>
@@ -82,6 +85,7 @@ export default function Industry() {
                   전자 기기 OEM에 계약된 제조 및 물류를 제공하는 밸류 체인
                   파트너
                 </p>
+                <div className={styles.detailButton}>자세히 보기</div>
               </div>
             </div>
             <div className={styles.grid}>
@@ -96,6 +100,7 @@ export default function Industry() {
               <div className={styles.textOverlay}>
                 <h3>소비자 및 산업용 전자 기기</h3>
                 <p>반도체 제품 연구, 개발, 설계 및 제작</p>
+                <div className={styles.detailButton}>자세히 보기</div>
               </div>
             </div>
             <div className={styles.grid}>
@@ -110,6 +115,7 @@ export default function Industry() {
               <div className={styles.textOverlay}>
                 <h3>반도체 장비</h3>
                 <p>반도체 장비 생산을 지원하는 장비 및 서비스</p>
+                <div className={styles.detailButton}>자세히 보기</div>
               </div>
             </div>
           </div>
@@ -129,7 +135,12 @@ export default function Industry() {
               엔지니어링 관리 플랫폼을 갖춘 엔지니어링 라이프사이클 관리용 통합
               방식을 활용해 여러 분야의 엔지니어링 팀을 관리합니다.
             </p>
-            <button>자세한 내용 보기 </button>
+            <Link
+              href="https://www.sw.siemens.com/ko-KR/solutions/product-lifecycle-management-plm/"
+              target="_blank"
+            >
+              <button>자세한 내용 보기 </button>
+            </Link>
           </div>
           <div className={styles.siemensImage}>
             <Image

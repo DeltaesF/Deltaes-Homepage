@@ -264,10 +264,10 @@ export default function Header() {
                 </ul>
               </li>
               <li className={`${styles.li} ${styles.dropdown}`}>
-                <Link href="/pages/">회사소개</Link>
+                <Link href="">회사소개</Link>
                 <ul className={styles.dropdownMenu}>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item3">CEO 인사말</Link>
+                    <Link href="/main/pages/company/ceo">CEO 인사말</Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
                     <Link href="/pages/product/item3">회사연혁</Link>

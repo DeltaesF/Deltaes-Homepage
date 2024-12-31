@@ -1,0 +1,104 @@
+.container {
+  width: 100vw;
+  height: 100%;
+  background-color: #040417;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  width: 1000px;
+  height: 100%;
+  text-align: center;
+}
+.title {
+  color: white;
+}
+
+.title h1 {
+  font-size: 40px;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 80px;
+  padding-bottom: 20px;
+  border-bottom: 5px solid #162481;
+}
+.titleSub {
+  color: #00d2aa;
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 60px;
+  padding-bottom: 8px;
+}
+.titleSub2 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.ceoImg {
+  width: 1000px; /* 고정된 너비 */
+  height: 450px; /* 고정된 높이 */ /* 전체 높이를 차지하도록 설정 */
+  position: relative;
+  margin-top: 70px;
+}
+.ceoImgDes {
+  width: 950px;
+  height: 100%;
+  color: white;
+  margin: 0 auto;
+}
+
+.ceoImgDes h2 {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 60px;
+}
+.ceoImgDes p {
+  font-size: 12.8px;
+  line-height: 1.6;
+  margin-top: 30px;
+}
+
+.line {
+  width: 800px;
+  border-bottom: 1px solid rgba(71, 198, 200, 1);
+  margin: 0 auto;
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+.cIntroduce {
+  color: white;
+  font-size: 12.8px;
+  line-height: 1.6;
+}
+.cIntroduce h2 {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.conclusion p {
+  font-size: 13.2px;
+  color: white;
+  line-height: 1.6;
+  text-align: left;
+  margin: 60px 0;
+}
+.conclusion span {
+  font-size: 15px;
+  font-weight: 600;
+}
+.cIntroduceSub {
+  margin-top: 50px;
+  text-align: left;
+  display: flex;
+  line-height: 1.6;
+}
+
+.conclusion h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  line-height: 1.6;
+}
