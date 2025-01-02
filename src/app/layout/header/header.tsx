@@ -228,7 +228,9 @@ export default function Header() {
                 </ul>
               </li>
               <li className={`${styles.li} ${styles.dropdown}`}>
-                <Link href="/pages/">엔지니어링 컨설팅 서비스</Link>
+                <Link href="/main/pages/consulting">
+                  엔지니어링 컨설팅 서비스
+                </Link>
                 <ul className={styles.dropdownMenu}>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
                     <Link href="/pages/product/item3">
@@ -244,7 +246,7 @@ export default function Header() {
                 </ul>
               </li>
               <li className={`${styles.li} ${styles.dropdown}`}>
-                <Link href="/pages/">공지사항</Link>
+                <Link href="/main/pages/announcements">공지사항</Link>
                 <ul className={styles.dropdownMenu}>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
                     <Link href="/pages/product/item3">교육 안내</Link>

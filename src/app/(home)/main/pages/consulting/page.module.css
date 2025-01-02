@@ -1,0 +1,53 @@
+.container {
+  background-color: rgb(4, 4, 23);
+  color: white;
+  width: 100vw;
+  height: 100%;
+  text-align: center;
+}
+.wrapper {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 700;
+  display: inline-block;
+  border-bottom: 5px solid #162481;
+  padding-bottom: 10px;
+  margin-top: 80px;
+}
+
+.subCategory {
+  width: 100vw;
+  height: 100%;
+  text-align: left;
+  margin-top: 100px;
+}
+.subTitle {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.gridContainer {
+  margin-top: 40px;
+  width: calc(1000px - 60px); /* 오른쪽 20px 여백 확보 */
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  box-sizing: border-box;
+}
+.grid {
+  width: 300px;
+  height: 50px;
+  background-color: #0f2a44;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid white;
+}
