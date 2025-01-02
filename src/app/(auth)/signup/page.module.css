@@ -40,7 +40,7 @@
 }
 .googleButton {
   display: flex;
-  align-items: center; /* 세로 정렬 */
+  align-items: center;
   background-color: white;
   color: #000;
   border: 1px solid #ccc;
@@ -58,7 +58,7 @@
 }
 .facebookButton {
   display: flex;
-  align-items: center; /* 세로 정렬 */
+  align-items: center;
   background-color: #1877f2;
   color: white;
   border: none;
@@ -77,7 +77,7 @@
 
 .buttonContent {
   display: flex;
-  align-items: center; /* 세로 정렬 */
+  align-items: center;
 }
 
 .login {

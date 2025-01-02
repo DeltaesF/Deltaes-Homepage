@@ -37,8 +37,8 @@
 }
 
 .ceoImg {
-  width: 1000px; /* 고정된 너비 */
-  height: 450px; /* 고정된 높이 */ /* 전체 높이를 차지하도록 설정 */
+  width: 1000px;
+  height: 450px;
   position: relative;
   margin-top: 70px;
 }

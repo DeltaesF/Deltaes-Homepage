@@ -32,7 +32,7 @@
 
 .gridContainer {
   margin-top: 40px;
-  width: calc(1000px - 60px); /* 오른쪽 20px 여백 확보 */
+  width: calc(1000px - 60px);
   height: auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);

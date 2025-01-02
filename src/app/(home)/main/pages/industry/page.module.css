@@ -6,24 +6,24 @@
 
 .first {
   width: 100vw;
-  height: 100%; /* 부모 컨테이너의 명시적 높이 */
+  height: 100%;
   overflow: hidden;
 }
 
 .imageWrapper {
   width: 100vw;
-  height: 600px; /* 부모의 높이를 100%로 채움 */
+  height: 600px;
   position: relative;
 }
 
 .firstDes {
   position: absolute;
-  top: 40%; /* 이미지의 중앙에 배치 */
+  top: 40%;
   left: 60%;
-  transform: translate(-50%, -50%); /* 가운데 정렬 */
+  transform: translate(-50%, -50%);
   background-color: #1a9c9d99;
-  color: white; /* 텍스트 색상 */
-  text-align: center; /* 텍스트 정렬 */
+  color: white;
+  text-align: center;
   width: 750px;
   height: 400px;
   display: flex;
@@ -42,9 +42,9 @@
   margin-bottom: 40px;
 }
 .leftAlignContent {
-  text-align: left; /* 텍스트를 왼쪽으로 정렬 */
-  color: white; /* 텍스트 색상 유지 */
-  margin: 0 auto; /* 중앙 배치 */
+  text-align: left;
+  color: white;
+  margin: 0 auto;
 }
 .leftAlignContent h2 {
   font-size: 20px;
@@ -77,8 +77,8 @@
 
 .secondGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3개의 열로 배치 */
-  gap: 20px; /* 각 카드 사이의 간격 */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
   justify-content: center;
   margin-top: 40px;
 }
@@ -108,7 +108,7 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 120px; /* 초기 높이 */
+  height: 120px;
   background-color: white;
   padding: 20px;
   text-align: left;
@@ -136,18 +136,18 @@
   font-size: 14px;
   font-weight: bold;
   color: #138f8f;
-  opacity: 0; /* 초기에는 숨김 */
+  opacity: 0;
   transition:
     opacity 0.3s ease,
     transform 0.3s ease-in-out;
 }
-/* Hover 시 추가 효과 */
+
 .grid:hover .textOverlay {
-  height: 150px; /* 높이를 확장하여 숨겨진 버튼을 표시 */
+  height: 150px;
 }
 
 .grid:hover .detailButton {
-  opacity: 1; /* 버튼 보이기 */
+  opacity: 1;
 }
 
 .third {
@@ -161,14 +161,14 @@
 .siemens {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* 좌우 정렬 */
+  justify-content: space-between;
   width: 1000px;
   height: 380px;
 }
 
 .siemensDes {
-  flex: 1; /* 텍스트가 공간을 적절히 차지하도록 설정 */
-  padding-right: 20px; /* 이미지와 간격 추가 */
+  flex: 1;
+  padding-right: 20px;
 }
 
 .siemensDes h2 {
@@ -204,8 +204,8 @@
 }
 
 .siemensImage {
-  width: 370px; /* 고정된 너비 */
-  height: 210px; /* 고정된 높이 */ /* 전체 높이를 차지하도록 설정 */
+  width: 370px;
+  height: 210px;
   position: relative;
 }
 
