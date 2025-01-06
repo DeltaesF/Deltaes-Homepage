@@ -272,16 +272,18 @@ export default function Header() {
                     <Link href="/main/pages/company/ceo">CEO 인사말</Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item3">회사연혁</Link>
+                    <Link href="/main/pages/company/history">회사연혁</Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item3">온라인 브로슈어</Link>
+                    <Link href="/main/pages/company/brochure">
+                      온라인 브로슈어
+                    </Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item3">오시는 길</Link>
+                    <Link href="/main/pages/company/direction">오시는 길</Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item3">채용 공고</Link>
+                    <Link href="/main/pages/company/career">채용 공고</Link>
                   </li>
                 </ul>
               </li>
