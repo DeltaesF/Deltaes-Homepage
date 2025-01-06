@@ -23,9 +23,8 @@
   transform: translate(-50%, -50%);
   background-color: #1a9c9d99;
   color: white;
-  text-align: center;
   width: 750px;
-  height: 400px;
+  height: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,12 +33,13 @@
 
 .firstDesWrapper {
   width: 600px;
-  height: 300px;
+  height: 200px;
 }
 .firstDes h1 {
   font-size: 40px;
   font-weight: bold;
   margin-bottom: 40px;
+  text-align: left;
 }
 .leftAlignContent {
   text-align: left;
@@ -119,7 +119,7 @@
 }
 
 .textOverlay h3 {
-  font-size: 20px;
+  font-size: 23px;
   font-weight: bold;
   color: #138f8f;
 }
@@ -133,7 +133,7 @@
 
 .detailButton {
   margin-top: 15px;
-  font-size: 12.5px;
+  font-size: 14px;
   font-weight: bold;
   color: #138f8f;
   opacity: 0;
@@ -152,23 +152,33 @@
 
 .third {
   width: 100vw;
-  height: 450px;
+  height: 100%;
   background-color: #d1e0ee;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+
 .siemens {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 1000px;
-  height: 380px;
+  height: 420px;
+  gap: 50px;
+  margin-top: 50px;
 }
-
-.siemensDes {
+.siemensDes,
+.siemensDes2 {
   flex: 1;
   padding-right: 20px;
+}
+
+.siemensImage {
+  width: 370px;
+  height: 210px;
+  position: relative;
 }
 
 .siemensDes h2 {
@@ -181,7 +191,7 @@
   margin-top: 20px;
 }
 .siemensDes p {
-  font-size: 14px;
+  font-size: 12.5px;
   line-height: 1.8;
   margin-top: 40px;
 }
@@ -203,14 +213,88 @@
   color: black;
 }
 
-.siemensImage {
-  width: 370px;
-  height: 210px;
-  position: relative;
+.siemens2 {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  align-items: center;
+  width: 1000px;
+  height: 420px;
+  gap: 50px;
 }
 
-.siemensImage img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.siemensDes2 h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 15px;
+  text-align: right;
+}
+.siemensDes2 p {
+  font-size: 12.5px;
+  line-height: 1.8;
+  margin-top: 25px;
+  text-align: left;
+}
+.siemensDes2 button {
+  width: 142px;
+  height: 40px;
+  background-color: #109c9c;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+.siemensDes2 button:hover {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+}
+
+.siemens3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 1000px;
+  height: 420px;
+  gap: 50px;
+}
+.siemensDes,
+.siemensDes2,
+.siemensDes3 {
+  flex: 1;
+}
+
+.siemensDes3 h2 {
+  font-size: 32px;
+  font-weight: bold;
+}
+.siemensDes3 h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+.siemensDes3 p {
+  font-size: 12.5px;
+  line-height: 1.8;
+  margin-top: 40px;
+}
+.siemensDes3 button {
+  width: 142px;
+  height: 40px;
+  background-color: #109c9c;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+.siemensDes3 button:hover {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
 }

@@ -48,8 +48,12 @@ export default function Industry() {
               </div>
               <div className={styles.textOverlay}>
                 <h3>소비자 및 산업용 전자 기기</h3>
-                <p>일상적으로 사용하는 전자 기기 및 자동화된 제조 장비</p>
-                <div className={styles.detailButton}>자세히 보기</div>
+                <p>일상적으로 사용하는 전자 기기 및 자동화 된 제조 장비</p>
+                <div className={styles.detailButton}>
+                  <Link href="/main/pages/industry/industryConsumer">
+                    자세히 보기
+                  </Link>
+                </div>
               </div>
             </div>
             <div className={styles.grid}>
@@ -67,7 +71,6 @@ export default function Industry() {
                   다양한 작업을 수행하여 삶을 보다 편리하게 만들어주는 스마트
                   가전 제품
                 </p>
-                <div className={styles.detailButton}>자세히 보기</div>
               </div>
             </div>
             <div className={styles.grid}>
@@ -85,7 +88,6 @@ export default function Industry() {
                   전자 기기 OEM에 계약된 제조 및 물류를 제공하는 밸류 체인
                   파트너
                 </p>
-                <div className={styles.detailButton}>자세히 보기</div>
               </div>
             </div>
             <div className={styles.grid}>
@@ -100,7 +102,6 @@ export default function Industry() {
               <div className={styles.textOverlay}>
                 <h3>소비자 및 산업용 전자 기기</h3>
                 <p>반도체 제품 연구, 개발, 설계 및 제작</p>
-                <div className={styles.detailButton}>자세히 보기</div>
               </div>
             </div>
             <div className={styles.grid}>
@@ -115,7 +116,6 @@ export default function Industry() {
               <div className={styles.textOverlay}>
                 <h3>반도체 장비</h3>
                 <p>반도체 장비 생산을 지원하는 장비 및 서비스</p>
-                <div className={styles.detailButton}>자세히 보기</div>
               </div>
             </div>
           </div>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./page.module.css";
 
 export default function Consulting() {
@@ -12,12 +13,16 @@ export default function Consulting() {
             <h2>적용 분야</h2>
           </div>
           <div className={styles.gridContainer}>
-            <div className={styles.grid}>
-              <p>전자기기 및 반도체</p>
-            </div>
-            <div className={styles.grid}>
-              <p>자동차 / 운송</p>
-            </div>
+            <Link href="/main/pages/industry">
+              <div className={styles.grid}>
+                <p>전자기기 및 반도체</p>
+              </div>
+            </Link>
+            <Link href="/main/pages/industry/automotive">
+              <div className={styles.grid}>
+                <p>자동차 / 운송</p>
+              </div>
+            </Link>
             <div className={styles.grid}>
               <p>이동통신 및 미디어</p>
             </div>
