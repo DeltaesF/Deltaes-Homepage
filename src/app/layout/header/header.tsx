@@ -199,13 +199,17 @@ export default function Header() {
                     </Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item4">환경 및 산업용기계</Link>
+                    <Link href="/main/pages/industry/environment">
+                      환경 및 산업용기계
+                    </Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item4">건설 / 토목</Link>
+                    <Link href="/main/pages/industry/construction">
+                      건설 / 토목
+                    </Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item4">
+                    <Link href="/main/pages/industry/energy">
                       발전 / 에너지 / 유틸리티
                     </Link>
                   </li>
