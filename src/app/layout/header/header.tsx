@@ -214,24 +214,30 @@ export default function Header() {
                     </Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item4">
+                    <Link href="/main/pages/industry/medical">
                       의료기기 / 제약 / 헬스케어
                     </Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item3">소비재</Link>
+                    <Link href="/main/pages/industry/cunsumer">소비재</Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item3">항공 / 우주 / 방산</Link>
+                    <Link href="/main/pages/industry/aerospace">
+                      항공 / 우주 / 방산
+                    </Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item3">조선 / 해양</Link>
+                    <Link href="/main/pages/industry/marine">조선 / 해양</Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item3">보험 및 금융</Link>
+                    <Link href="/main/pages/industry/finance">
+                      보험 및 금융
+                    </Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item3">소프트웨어 개발</Link>
+                    <Link href="/main/pages/industry/software">
+                      소프트웨어 개발
+                    </Link>
                   </li>
                 </ul>
               </li>
