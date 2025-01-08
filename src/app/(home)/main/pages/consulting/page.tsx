@@ -18,20 +18,20 @@ export default function Consulting() {
                 <p>전자기기 및 반도체</p>
               </div>
             </Link>
-            <Link href="/main/pages/industry/automotive">
-              <div className={styles.grid}>
-                <p>자동차 / 운송</p>
-              </div>
-            </Link>
+            <div className={styles.grid}>
+              <p>자동차 / 운송</p>
+            </div>
             <div className={styles.grid}>
               <p>이동통신 및 미디어</p>
             </div>
             <div className={styles.grid}>
               <p>환경 및 산업용기계</p>
             </div>
-            <div className={styles.grid}>
-              <p>건설 / 토목</p>
-            </div>
+            <Link href="/main/pages/consulting/subpage/construction">
+              <div className={styles.grid}>
+                <p>건설 / 토목</p>
+              </div>
+            </Link>
             <div className={styles.grid}>
               <p>발전 / 에너지 / 유틸리티</p>
             </div>
