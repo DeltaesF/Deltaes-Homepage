@@ -42,9 +42,11 @@ export default function Consulting() {
                 <p>의료기기 및 제약</p>
               </div>
             </Link>
-            <div className={styles.grid}>
-              <p>소비재</p>
-            </div>
+            <Link href="/main/pages/consulting/subpage/consumer">
+              <div className={styles.grid}>
+                <p>소비재</p>
+              </div>
+            </Link>
             <div className={styles.grid}>
               <p>항공 / 우주 / 방산</p>
             </div>
