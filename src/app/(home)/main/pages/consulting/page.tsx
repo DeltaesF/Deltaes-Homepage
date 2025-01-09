@@ -32,9 +32,11 @@ export default function Consulting() {
                 <p>건설 / 토목</p>
               </div>
             </Link>
-            <div className={styles.grid}>
-              <p>발전 / 에너지 / 유틸리티</p>
-            </div>
+            <Link href="/main/pages/consulting/subpage/energy">
+              <div className={styles.grid}>
+                <p>발전 / 에너지 / 유틸리티</p>
+              </div>
+            </Link>
             <Link href="/main/pages/consulting/subpage/medical">
               <div className={styles.grid}>
                 <p>의료기기 및 제약</p>

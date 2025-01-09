@@ -60,32 +60,38 @@ export default function Construction() {
             <div className={styles.aIs}>
               <div className={styles.aIsF}>
                 <div className={styles.aIsFdiv}>
-                  <Image
-                    src="/images/subpageConstruction1.jpg"
-                    alt="소비자 및 산업용 전자 기기"
-                    fill
-                    style={{ objectFit: "cover" }}
-                  />
+                  <div className={styles.aIsFdivImage}>
+                    <Image
+                      src="/images/subpageConstruction1.jpg"
+                      alt="소비자 및 산업용 전자 기기"
+                      fill
+                      style={{ objectFit: "cover" }}
+                    />
+                  </div>
                   <div className={styles.aIsFdivTitle}>
                     댐 수문 개폐시 수문의 flow
                   </div>
                 </div>
                 <div className={styles.aIsFdiv}>
-                  <Image
-                    src="/images/construction7.jpg"
-                    alt="소비자 및 산업용 전자 기기"
-                    fill
-                    style={{ objectFit: "cover" }}
-                  />
+                  <div className={styles.aIsFdivImage}>
+                    <Image
+                      src="/images/construction7.jpg"
+                      alt="소비자 및 산업용 전자 기기"
+                      fill
+                      style={{ objectFit: "cover" }}
+                    />
+                  </div>
                   <div className={styles.aIsFdivTitle}>도시 바람길 해석</div>
                 </div>
                 <div className={styles.aIsFdiv}>
-                  <Image
-                    src="/images/subpageConstruction2.jpg"
-                    alt="소비자 및 산업용 전자 기기"
-                    fill
-                    style={{ objectFit: "cover" }}
-                  />
+                  <div className={styles.aIsFdivImage}>
+                    <Image
+                      src="/images/subpageConstruction2.jpg"
+                      alt="소비자 및 산업용 전자 기기"
+                      fill
+                      style={{ objectFit: "cover" }}
+                    />
+                  </div>
                   <div className={styles.aIsFdivTitle}>
                     데이터센터의 에너지 저감
                   </div>
