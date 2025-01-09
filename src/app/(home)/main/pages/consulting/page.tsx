@@ -47,9 +47,12 @@ export default function Consulting() {
                 <p>소비재</p>
               </div>
             </Link>
-            <div className={styles.grid}>
-              <p>항공 / 우주 / 방산</p>
-            </div>
+            <Link href="/main/pages/consulting/subpage/aerospace">
+              <div className={styles.grid}>
+                <p>항공 / 우주 / 방산</p>
+              </div>
+            </Link>
+
             <div className={styles.grid}>
               <p>조선 / 해양</p>
             </div>
