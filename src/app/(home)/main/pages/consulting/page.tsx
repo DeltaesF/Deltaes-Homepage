@@ -35,9 +35,11 @@ export default function Consulting() {
             <div className={styles.grid}>
               <p>발전 / 에너지 / 유틸리티</p>
             </div>
-            <div className={styles.grid}>
-              <p>의료기기 및 제약</p>
-            </div>
+            <Link href="/main/pages/consulting/subpage/medical">
+              <div className={styles.grid}>
+                <p>의료기기 및 제약</p>
+              </div>
+            </Link>
             <div className={styles.grid}>
               <p>소비재</p>
             </div>
@@ -47,12 +49,16 @@ export default function Consulting() {
             <div className={styles.grid}>
               <p>조선 / 해양</p>
             </div>
-            <div className={styles.grid}>
-              <p>보험 및 안전</p>
-            </div>
-            <div className={styles.grid}>
-              <p>소프트웨어 개발</p>
-            </div>
+            <Link href="/main/pages/consulting/subpage/finance">
+              <div className={styles.grid}>
+                <p>보험 및 안전</p>
+              </div>
+            </Link>
+            <Link href="/main/pages/consulting/subpage/software">
+              <div className={styles.grid}>
+                <p>소프트웨어 개발</p>
+              </div>
+            </Link>
             <div style={{ marginTop: "80px" }}></div>
           </div>
         </div>

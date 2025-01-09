@@ -1,0 +1,181 @@
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.first {
+  width: 100vw;
+  height: 100%;
+  position: relative;
+}
+
+.imageWrapper {
+  width: 100vw;
+  height: 450px;
+  position: relative;
+}
+
+.firstDes {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 40%);
+  background-color: #1a9c9d;
+  color: white;
+  width: 980px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.firstDesWrapper {
+  width: 920px;
+  height: auto;
+}
+.firstDes h1 {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.leftAlignContent {
+  text-align: left;
+  color: white;
+  margin: 0 auto;
+}
+.leftAlignContent h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.leftAlignContent p {
+  line-height: 1.8;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.second {
+  width: 100vw;
+  height: 100%;
+  background-color: #0f2a44;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.secondWrapper {
+  width: 1000px;
+  height: 100%;
+  margin-top: 50px;
+}
+
+.secondWrapperTitle {
+  color: white;
+  width: 900px;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 350px;
+}
+.secondWrapperTitle h2 {
+  font-size: 32px;
+  font-weight: bold;
+}
+.secondWrapperTitle p {
+  margin-top: 40px;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.aBg {
+  width: 1000px;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  margin-top: 50px;
+  margin-bottom: 70px;
+}
+.aIs {
+  width: 920px;
+  height: 100%;
+  margin-top: 30px;
+}
+.aIs p {
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: bold;
+}
+.aIsF {
+  width: 950px;
+  height: auto;
+  display: flex;
+  gap: 15px;
+}
+.aIsFdiv {
+  width: 220px;
+  height: 210px;
+  position: relative;
+  overflow: hidden;
+}
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.aIsFdivTitle {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #181851;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.aIsS {
+  width: 950px;
+  height: auto;
+  margin-top: 30px;
+  gap: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+.aIsSDes {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  color: #003663;
+}
+.aIsSDes div {
+  margin-top: 20px;
+  line-height: 1.4;
+}
+.aIsSDes ul {
+  padding-left: 5px;
+}
+
+.aIsSDesL {
+  margin-top: 50px;
+  margin-bottom: 40px;
+  color: #003663;
+}
