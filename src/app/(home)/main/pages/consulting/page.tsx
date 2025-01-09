@@ -52,10 +52,11 @@ export default function Consulting() {
                 <p>항공 / 우주 / 방산</p>
               </div>
             </Link>
-
-            <div className={styles.grid}>
-              <p>조선 / 해양</p>
-            </div>
+            <Link href="/main/pages/consulting/subpage/marine">
+              <div className={styles.grid}>
+                <p>조선 / 해양</p>
+              </div>
+            </Link>
             <Link href="/main/pages/consulting/subpage/finance">
               <div className={styles.grid}>
                 <p>보험 및 안전</p>
