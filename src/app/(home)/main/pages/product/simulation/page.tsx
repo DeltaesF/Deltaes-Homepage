@@ -23,7 +23,9 @@ export default function Simulation() {
               <p className={styles.descriptionText}>
                 전기/전자 산업체 표준툴인 방열해석 소프트웨어
               </p>
-              <button className={styles.moreButton}>더보기+</button>
+              <Link href="/main/pages/product/simulation/flotherm">
+                <button className={styles.moreButton}>더보기+</button>
+              </Link>
             </div>
           </div>
           <div className={styles.contant}>

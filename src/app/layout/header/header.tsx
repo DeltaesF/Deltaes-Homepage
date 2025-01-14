@@ -103,7 +103,7 @@ export default function Header() {
                         </Link>
                       </li>
                       <li>
-                        <Link href="/pages/product/item1/detail4">
+                        <Link href="/main/pages/product/simulation/flotherm">
                           Flotherm
                         </Link>
                       </li>
