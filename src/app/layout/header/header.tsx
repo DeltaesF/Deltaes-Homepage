@@ -85,12 +85,10 @@ export default function Header() {
                 <Link href="/main/pages/product">제품안내</Link>
                 <ul className={styles.dropdownMenu}>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item1">
-                      시뮬레이션 소프트웨어
-                    </Link>
+                    <Link href="">시뮬레이션 소프트웨어</Link>
                     <ul className={styles.subMenu}>
                       <li>
-                        <Link href="/pages/product/item1/detail1">
+                        <Link href="/main/pages/product/simulation/flothermxt">
                           Flotherm XT
                         </Link>
                       </li>
