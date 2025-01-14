@@ -108,12 +108,14 @@ export default function Header() {
                         </Link>
                       </li>
                       <li>
-                        <Link href="/pages/product/item1/detail5">
+                        <Link href="/main/pages/product/simulation/flomaster">
                           Flomaster
                         </Link>
                       </li>
                       <li>
-                        <Link href="/pages/product/item1/detail6">Amesim</Link>
+                        <Link href="/main/pages/product/simulation/amesim">
+                          Amesim
+                        </Link>
                       </li>
                       <li>
                         <Link href="/pages/product/item1/detail7">

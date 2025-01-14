@@ -80,7 +80,9 @@ export default function Simulation() {
               <p className={styles.descriptionText}>
                 배관망 등의 1D CFD 시스템 시뮬레이션 소프트웨어
               </p>
-              <button className={styles.moreButton}>더보기+</button>
+              <Link href="/main/pages/product/simulation/flomaster">
+                <button className={styles.moreButton}>더보기+</button>
+              </Link>
             </div>
           </div>
           <div className={styles.contant}>
@@ -92,7 +94,9 @@ export default function Simulation() {
               <p className={styles.descriptionText}>
                 제조 산업체 전반 시스템 시뮬레이션 소프트웨어
               </p>
-              <button className={styles.moreButton}>더보기+</button>
+              <Link href="/main/pages/product/simulation/amesim">
+                <button className={styles.moreButton}>더보기+</button>
+              </Link>
             </div>
           </div>
           <div className={styles.contant}>
