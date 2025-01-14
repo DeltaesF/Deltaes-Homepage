@@ -93,12 +93,14 @@ export default function Header() {
                         </Link>
                       </li>
                       <li>
-                        <Link href="/pages/product/item1/detail2">
+                        <Link href="/main/pages/product/simulation/starccm">
                           STAR-CCM+
                         </Link>
                       </li>
                       <li>
-                        <Link href="/pages/product/item1/detail3">FLOEFD</Link>
+                        <Link href="/main/pages/product/simulation/floefd">
+                          FLOEFD
+                        </Link>
                       </li>
                       <li>
                         <Link href="/pages/product/item1/detail4">

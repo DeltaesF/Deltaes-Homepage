@@ -49,7 +49,9 @@ export default function Simulation() {
               <p className={styles.descriptionText}>
                 세계 최고의 범용 CFD 해석 소프트웨어
               </p>
-              <button className={styles.moreButton}>더보기+</button>
+              <Link href="/main/pages/product/simulation/starccm">
+                <button className={styles.moreButton}>더보기+</button>
+              </Link>
             </div>
           </div>
           <div className={styles.contant}>
@@ -62,7 +64,9 @@ export default function Simulation() {
                 설계자 또는 비전공자를 위한 3D CAD에 embedded 된 범용 CFD 해석
                 소프트웨어
               </p>
-              <button className={styles.moreButton}>더보기+</button>
+              <Link href="/main/pages/product/simulation/floefd">
+                <button className={styles.moreButton}>더보기+</button>
+              </Link>
             </div>
           </div>
           <div className={styles.contant}>

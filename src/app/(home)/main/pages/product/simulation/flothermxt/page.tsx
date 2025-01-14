@@ -370,6 +370,7 @@ export default function FlothermXT() {
                 />
               </div>
               <div className={styles.fiveDes1}>
+                <span className={styles.contantSquare}></span>
                 <h3>FloEDA Bridge</h3>
               </div>
             </div>
@@ -383,6 +384,7 @@ export default function FlothermXT() {
                 />
               </div>
               <div className={styles.fiveDes1}>
+                <span className={styles.contantSquare}></span>
                 <h3>Package Creater</h3>
               </div>
             </div>
@@ -396,6 +398,7 @@ export default function FlothermXT() {
                 />
               </div>
               <div className={styles.fiveDes1}>
+                <span className={styles.contantSquare}></span>
                 <h3>FloMCAD™ Bridge</h3>
               </div>
             </div>
@@ -409,9 +412,8 @@ export default function FlothermXT() {
                 />
               </div>
               <div className={styles.fiveDes1}>
-                <h3>
-                  PackaT3STER™ – Flotherm Automatic Calibrationge Creator
-                </h3>
+                <span className={styles.contantSquare}></span>
+                <h3>PackaT3STER™ – Flotherm Automatic</h3>
               </div>
             </div>
             <div className={styles.fiveImgP}>
@@ -424,6 +426,7 @@ export default function FlothermXT() {
                 />
               </div>
               <div className={styles.fiveDes1}>
+                <span className={styles.contantSquare}></span>
                 <h3>Flotherm Pack</h3>
               </div>
             </div>
@@ -437,6 +440,7 @@ export default function FlothermXT() {
                 />
               </div>
               <div className={styles.fiveDes1}>
+                <span className={styles.contantSquare}></span>
                 <h3>HyperLynx PI</h3>
               </div>
             </div>
