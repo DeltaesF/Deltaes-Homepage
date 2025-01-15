@@ -108,7 +108,9 @@ export default function Simulation() {
               <p className={styles.descriptionText}>
                 CAE 해석 최적화 소프트웨어
               </p>
-              <button className={styles.moreButton}>더보기+</button>
+              <Link href="/main/pages/product/simulation/heeds">
+                <button className={styles.moreButton}>더보기+</button>
+              </Link>
             </div>
           </div>
           <div className={styles.contant}>

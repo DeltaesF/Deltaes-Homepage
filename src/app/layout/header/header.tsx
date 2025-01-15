@@ -123,7 +123,9 @@ export default function Header() {
                         </Link>
                       </li>
                       <li>
-                        <Link href="/pages/product/item1/detail8">HEEDS</Link>
+                        <Link href="/main/pages/product/simulation/heeds">
+                          HEEDS
+                        </Link>
                       </li>
                       <li>
                         <Link href="/pages/product/item1/detail">
