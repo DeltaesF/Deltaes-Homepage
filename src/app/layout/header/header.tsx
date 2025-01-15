@@ -168,7 +168,7 @@ export default function Header() {
                     <Link href="/pages/product/item3">설계 소프트웨어</Link>
                     <ul className={styles.subMenu}>
                       <li>
-                        <Link href="/pages/product/item3/detail1">
+                        <Link href="/main/pages/product/design/adt">
                           TURBOdesign Suite
                         </Link>
                       </li>

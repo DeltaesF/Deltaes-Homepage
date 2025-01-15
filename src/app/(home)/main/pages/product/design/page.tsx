@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./page.module.css";
 
 export default function Design() {
@@ -19,7 +20,9 @@ export default function Design() {
                 역설계 기법의 유체기계(펌프, 팬, 압축기, 가스터빈 등) 임펠러 및
                 케이싱 설계 프로그램
               </p>
-              <button className={styles.moreButton}>더보기+</button>
+              <Link href="/main/pages/product/design/adt">
+                <button className={styles.moreButton}>더보기+</button>
+              </Link>
             </div>
           </div>
           <div className={styles.contant}>
