@@ -128,7 +128,7 @@ export default function Header() {
                         </Link>
                       </li>
                       <li>
-                        <Link href="/pages/product/item1/detail">
+                        <Link href="/main/pages/product/simulation/battery">
                           Battery Design Studio
                         </Link>
                       </li>

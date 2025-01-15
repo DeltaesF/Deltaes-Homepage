@@ -122,7 +122,9 @@ export default function Simulation() {
               <p className={styles.descriptionText}>
                 배터리 디자인 스튜디오에 대한 내용 입니다.
               </p>
-              <button className={styles.moreButton}>더보기+</button>
+              <Link href="/main/pages/product/simulation/battery">
+                <button className={styles.moreButton}>더보기+</button>
+              </Link>
             </div>
           </div>
         </div>
