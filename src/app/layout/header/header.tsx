@@ -118,7 +118,7 @@ export default function Header() {
                         </Link>
                       </li>
                       <li>
-                        <Link href="/pages/product/item1/detail7">
+                        <Link href="/main/pages/product/simulation/simcenter3d">
                           Simcenter 3D
                         </Link>
                       </li>
