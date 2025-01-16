@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./page.module.css";
 
 export default function Measurement() {
@@ -19,7 +20,9 @@ export default function Measurement() {
                 전력반도체 (MOSFET, IGBT, SiC, GaN) 신뢰성 확보를 위한 가속
                 수명시험 장비
               </p>
-              <button className={styles.moreButton}>더보기+</button>
+              <Link href="/main/pages/product/measurement/powertester">
+                <button className={styles.moreButton}>더보기+</button>
+              </Link>
             </div>
           </div>
           <div className={styles.contant}>

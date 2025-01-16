@@ -138,7 +138,7 @@ export default function Header() {
                     <Link href="/pages/product/item2">측정장비</Link>
                     <ul className={styles.subMenu}>
                       <li>
-                        <Link href="/pages/product/item2/detail1">
+                        <Link href="/main/pages/product/measurement/powertester">
                           Power Tester
                         </Link>
                       </li>
