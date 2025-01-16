@@ -143,7 +143,9 @@ export default function Header() {
                         </Link>
                       </li>
                       <li>
-                        <Link href="/pages/product/item2/detail2">T3STER</Link>
+                        <Link href="/main/pages/product/measurement/t3ster">
+                          T3STER
+                        </Link>
                       </li>
                       <li>
                         <Link href="/pages/product/item2/detail3">TIMA 5</Link>

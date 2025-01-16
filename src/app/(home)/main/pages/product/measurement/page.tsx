@@ -34,7 +34,9 @@ export default function Measurement() {
               <p className={styles.descriptionText}>
                 JEDEC 규정을 만족하는 반도체 접합부 온도 및 열저항 측정 장비
               </p>
-              <button className={styles.moreButton}>더보기+</button>
+              <Link href="/main/pages/product/measurement/t3ster">
+                <button className={styles.moreButton}>더보기+</button>
+              </Link>
             </div>
           </div>
           <div className={styles.contant}>
