@@ -173,7 +173,7 @@ export default function Header() {
                         </Link>
                       </li>
                       <li>
-                        <Link href="/pages/product/item3/detail2">
+                        <Link href="/main/pages/product/design/solidedge">
                           Solid Edge
                         </Link>
                       </li>
