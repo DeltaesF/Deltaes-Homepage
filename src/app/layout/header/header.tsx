@@ -178,7 +178,7 @@ export default function Header() {
                         </Link>
                       </li>
                       <li>
-                        <Link href="/pages/product/item3/detail3">
+                        <Link href="/main/pages/product/design/siemensnx">
                           Siemens NX
                         </Link>
                       </li>

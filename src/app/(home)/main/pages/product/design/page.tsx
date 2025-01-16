@@ -35,8 +35,9 @@ export default function Design() {
                 3차원 CAD 파라미터릭 기능(역사 기반) 및 동기적 기술 솔리드
                 모델링 소프트웨어
               </p>
-              <Link href="/main/pages/product/design/solidedge"></Link>
-              <button className={styles.moreButton}>더보기+</button>
+              <Link href="/main/pages/product/design/solidedge">
+                <button className={styles.moreButton}>더보기+</button>
+              </Link>
             </div>
           </div>
           <div className={styles.contant}>
@@ -48,7 +49,9 @@ export default function Design() {
               <p className={styles.descriptionText}>
                 CAD / CAM / CAE 소프트웨어 패키지
               </p>
-              <button className={styles.moreButton}>더보기+</button>
+              <Link href="/main/pages/product/design/siemensnx">
+                <button className={styles.moreButton}>더보기+</button>
+              </Link>
             </div>
           </div>
         </div>
