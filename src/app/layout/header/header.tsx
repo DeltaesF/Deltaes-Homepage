@@ -154,7 +154,9 @@ export default function Header() {
                         <Link href="/pages/product/item2/detail4">TOCS</Link>
                       </li>
                       <li>
-                        <Link href="/pages/product/item2/detail5">LaTIMA </Link>
+                        <Link href="/main/pages/product/measurement/latima">
+                          LaTIMA
+                        </Link>
                       </li>
                       <li>
                         <Link href="/main/pages/product/measurement/timapulse">

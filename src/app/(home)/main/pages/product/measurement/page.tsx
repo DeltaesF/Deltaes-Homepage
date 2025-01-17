@@ -74,7 +74,9 @@ export default function Measurement() {
                 측면 열 재료 분석기로 전도성이 높은 재료의 벌크 열전도율에 대한
                 도량형 측정 시스템
               </p>
-              <button className={styles.moreButton}>더보기+</button>
+              <Link href="/main/pages/product/measurement/latima">
+                <button className={styles.moreButton}>더보기+</button>
+              </Link>
             </div>
           </div>
           <div className={styles.contant}>
