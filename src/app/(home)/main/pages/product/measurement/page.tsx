@@ -61,7 +61,9 @@ export default function Measurement() {
               <p className={styles.descriptionText}>
                 사용자 친화적인 측정 및 분석 소프트웨어를 포함하는 완벽한 솔루션
               </p>
-              <button className={styles.moreButton}>더보기+</button>
+              <Link href="/main/pages/product/measurement/tocs">
+                <button className={styles.moreButton}>더보기+</button>
+              </Link>
             </div>
           </div>
           <div className={styles.contant}>
