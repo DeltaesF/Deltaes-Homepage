@@ -87,7 +87,9 @@ export default function Measurement() {
                 경량 과도 열 테스트(Lightweight transient thermal testing) 열전
                 시스템
               </p>
-              <button className={styles.moreButton}>더보기+</button>
+              <Link href="/main/pages/product/measurement/timapulse">
+                <button className={styles.moreButton}>더보기+</button>
+              </Link>
             </div>
           </div>
           <div className={styles.contant}>
@@ -99,7 +101,9 @@ export default function Measurement() {
               <p className={styles.descriptionText}>
                 비접촉식 고장 분석 종합 분석 소프트웨어
               </p>
-              <button className={styles.moreButton}>더보기+</button>
+              <Link href="/main/pages/product/measurement/tifas">
+                <button className={styles.moreButton}>더보기+</button>
+              </Link>
             </div>
           </div>
         </div>

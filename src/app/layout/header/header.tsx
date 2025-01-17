@@ -157,12 +157,14 @@ export default function Header() {
                         <Link href="/pages/product/item2/detail5">LaTIMA </Link>
                       </li>
                       <li>
-                        <Link href="/pages/product/item2/detail6">
+                        <Link href="/main/pages/product/measurement/timapulse">
                           TIMA pulse
                         </Link>
                       </li>
                       <li>
-                        <Link href="/pages/product/item2/detail7">TIFAS</Link>
+                        <Link href="/main/pages/product/measurement/tifas">
+                          TIFAS
+                        </Link>
                       </li>
                     </ul>
                   </li>
