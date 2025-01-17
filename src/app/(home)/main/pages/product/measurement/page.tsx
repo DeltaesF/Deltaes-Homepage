@@ -49,7 +49,9 @@ export default function Measurement() {
                 열 인터페이스 재료 및 낮은 범위&중간 범위 열 전도성 재료의 열
                 특성 측정 시스템
               </p>
-              <button className={styles.moreButton}>더보기+</button>
+              <Link href="/main/pages/product/measurement/tima5">
+                <button className={styles.moreButton}>더보기+</button>
+              </Link>
             </div>
           </div>
           <div className={styles.contant}>
