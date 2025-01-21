@@ -3,8 +3,19 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { useEffect, useState } from "react";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 export default function Company() {
+  const imageSlice = [
+    "/images/timapulse3.jpg",
+    "/images/timapulse4.jpg",
+    "/images/timapulse5.jpg",
+  ];
+
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -33,6 +44,28 @@ export default function Company() {
 
   return (
     <div>
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        spaceBetween={10}
+        slidesPerView={1}
+        navigation
+        pagination={{ clickable: true }}
+        loop
+        autoplay={{ delay: 3000 }}
+        style={{ width: "450px", height: "220px" }}
+      >
+        {imageSlice.map((src, index) => (
+          <SwiperSlide key={index}>
+            <Image
+              src={src}
+              alt={`Slide ${index + 1}`}
+              width={450}
+              height={220}
+              style={{ objectFit: "cover" }}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
       <h1>Fetched Image</h1>
       {imageSrc && (
         <Image src={imageSrc} alt="Fetched from FTP" width={500} height={500} />

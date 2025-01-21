@@ -54,30 +54,7 @@ export default function Timapules() {
               <button>브로슈어 Download </button>
               <button>TIMA pulse DATASHEET</button>
             </div>
-            <div>
-              <Swiper
-                modules={[Navigation, Pagination, Autoplay]}
-                spaceBetween={10}
-                slidesPerView={1}
-                navigation
-                pagination={{ clickable: true }}
-                loop
-                autoplay={{ delay: 3000 }}
-                style={{ width: "450px", height: "220px" }}
-              >
-                {imageSlice.map((src, index) => (
-                  <SwiperSlide key={index}>
-                    <Image
-                      src={src}
-                      alt={`Slide ${index + 1}`}
-                      width={450}
-                      height={220}
-                      style={{ objectFit: "cover" }}
-                    />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
+            <div></div>
           </div>
         </div>
       </div>
