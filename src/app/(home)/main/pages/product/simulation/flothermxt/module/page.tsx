@@ -1,7 +1,22 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Module() {
+  const { imageSrc, error } = useFetchImages([
+    "flothermxt11.jpg",
+    "flothermxt12.jpg",
+    "flothermxt14.jpg",
+    "flothermxt15.jpg",
+    "flothermxt16.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -28,12 +43,14 @@ export default function Module() {
               </p>
             </div>
             <div className={styles.img1}>
-              <Image
-                src="/images/flothermxt11.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[0] && (
+                <Image
+                  src={imageSrc[0]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <div className={styles.imgP2}>
@@ -46,12 +63,14 @@ export default function Module() {
               </p>
             </div>
             <div className={styles.img2}>
-              <Image
-                src="/images/flothermxt12.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[1] && (
+                <Image
+                  src={imageSrc[1]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <div className={styles.imgP1}>
@@ -68,12 +87,14 @@ export default function Module() {
               </p>
             </div>
             <div className={styles.img1}>
-              <Image
-                src="/images/flothermxt11.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[0] && (
+                <Image
+                  src={imageSrc[0]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <div className={styles.imgP2}>
@@ -94,12 +115,14 @@ export default function Module() {
               </p>
             </div>
             <div className={styles.img2}>
-              <Image
-                src="/images/flothermxt14.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[2] && (
+                <Image
+                  src={imageSrc[2]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <div className={styles.imgP1}>
@@ -136,12 +159,14 @@ export default function Module() {
               </ul>
             </div>
             <div className={styles.img1}>
-              <Image
-                src="/images/flothermxt15.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[3] && (
+                <Image
+                  src={imageSrc[3]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <div className={styles.imgP2}>
@@ -180,12 +205,14 @@ export default function Module() {
               </ul>
             </div>
             <div className={styles.img2}>
-              <Image
-                src="/images/flothermxt16.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[4] && (
+                <Image
+                  src={imageSrc[4]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
         </div>

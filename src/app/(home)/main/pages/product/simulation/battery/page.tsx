@@ -1,8 +1,23 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Battery() {
+  const { imageSrc, error } = useFetchImages([
+    "battery1.jpg",
+    "battery2.jpg",
+    "battery3.jpg",
+    "battery4.jpg",
+    "battery5.jpg",
+    "battery6.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.firstWrapper}>
@@ -11,12 +26,14 @@ export default function Battery() {
           <h1>Battery Design Studio</h1>
           <div className={styles.firstImgP}>
             <div className={styles.firstImg}>
-              <Image
-                src="/images/battery1.jpg"
-                alt="Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[0] && (
+                <Image
+                  src={imageSrc[0]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
             <div className={styles.firstDes}>
               <p>
@@ -185,12 +202,14 @@ export default function Battery() {
               </p>
             </div>
             <div className={styles.fourImg1}>
-              <Image
-                src="/images/battery2.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[1] && (
+                <Image
+                  src={imageSrc[1]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <div className={styles.fourImgP2}>
@@ -211,12 +230,14 @@ export default function Battery() {
               </p>
             </div>
             <div className={styles.fourImg2}>
-              <Image
-                src="/images/battery3.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[2] && (
+                <Image
+                  src={imageSrc[2]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <div className={styles.additionalContent}>
@@ -274,12 +295,14 @@ export default function Battery() {
             </div>
             <div className={styles.fourImg1Wrapper}>
               <div className={styles.fourImg1}>
-                <Image
-                  src="/images/battery4.jpg"
-                  alt=""
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[3] && (
+                  <Image
+                    src={imageSrc[3]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.fourImg1P1}>
                 <p>
@@ -307,12 +330,14 @@ export default function Battery() {
               </p>
             </div>
             <div className={styles.fourImg2}>
-              <Image
-                src="/images/battery5.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[4] && (
+                <Image
+                  src={imageSrc[4]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <div className={styles.fourImgP3}>
@@ -346,12 +371,14 @@ export default function Battery() {
               </p>
             </div>
             <div className={styles.fourImg3}>
-              <Image
-                src="/images/battery6.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[5] && (
+                <Image
+                  src={imageSrc[5]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
         </div>

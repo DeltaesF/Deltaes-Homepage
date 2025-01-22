@@ -1,7 +1,29 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Module() {
+  const { imageSrc, error } = useFetchImages([
+    "floefd7.jpg",
+    "floefd8.jpg",
+    "floefd9.jpg",
+    "floefd10.jpg",
+    "floefd11.jpg",
+    "floefd12.jpg",
+    "floefd13.jpg",
+    "floefd14.jpg",
+    "floefd15.jpg",
+    "floefd16.jpg",
+    "floefd17.jpg",
+    "floefd18.jpg",
+    "floefd19.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -47,12 +69,14 @@ export default function Module() {
               </ul>
             </div>
             <div className={styles.img1}>
-              <Image
-                src="/images/floefd7.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[0] && (
+                <Image
+                  src={imageSrc[0]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <div className={styles.imgP2}>
@@ -86,12 +110,14 @@ export default function Module() {
               </ul>
             </div>
             <div className={styles.img2}>
-              <Image
-                src="/images/floefd8.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[1] && (
+                <Image
+                  src={imageSrc[1]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <div className={styles.imgP1}>
@@ -137,12 +163,14 @@ export default function Module() {
               </ul>
             </div>
             <div className={styles.img1}>
-              <Image
-                src="/images/floefd9.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[2] && (
+                <Image
+                  src={imageSrc[2]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <div className={styles.imgP2}>
@@ -169,24 +197,28 @@ export default function Module() {
               </ul>
             </div>
             <div className={styles.img2}>
-              <Image
-                src="/images/floefd10.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[3] && (
+                <Image
+                  src={imageSrc[3]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <div className={styles.grid}>
             <div className={styles.gridImgP}>
               <h3>HVAC</h3>
               <div className={styles.gridImg}>
-                <Image
-                  src="/images/floefd11.jpg"
-                  alt=""
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[4] && (
+                  <Image
+                    src={imageSrc[4]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.gridDes}>
                 <p>
@@ -212,12 +244,14 @@ export default function Module() {
             <div className={styles.gridImgP}>
               <h3>Advanced</h3>
               <div className={styles.gridImg}>
-                <Image
-                  src="/images/floefd12.jpg"
-                  alt=""
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[5] && (
+                  <Image
+                    src={imageSrc[5]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.gridDes}>
                 <p>
@@ -250,12 +284,14 @@ export default function Module() {
             <div className={styles.gridImgP}>
               <h3>Power Electrification</h3>
               <div className={styles.gridImg}>
-                <Image
-                  src="/images/floefd13.jpg"
-                  alt=""
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[6] && (
+                  <Image
+                    src={imageSrc[6]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.gridDes}>
                 <p>
@@ -284,12 +320,14 @@ export default function Module() {
             <div className={styles.gridImgP}>
               <h3>Ext. Design Exploration</h3>
               <div className={styles.gridImg}>
-                <Image
-                  src="/images/floefd14.jpg"
-                  alt=""
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[7] && (
+                  <Image
+                    src={imageSrc[7]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.gridDes}>
                 <p>
@@ -318,12 +356,14 @@ export default function Module() {
             <div className={styles.gridImgP}>
               <h3>Structural</h3>
               <div className={styles.gridImg}>
-                <Image
-                  src="/images/floefd15.jpg"
-                  alt=""
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[8] && (
+                  <Image
+                    src={imageSrc[8]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.gridDes}>
                 <p>
@@ -359,12 +399,14 @@ export default function Module() {
             <div className={styles.gridImgP}>
               <h3>Electromagnetics(EMAG)</h3>
               <div className={styles.gridImg}>
-                <Image
-                  src="/images/floefd16.jpg"
-                  alt=""
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[9] && (
+                  <Image
+                    src={imageSrc[9]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.gridDes}>
                 <p>
@@ -397,12 +439,14 @@ export default function Module() {
             <div className={styles.gridImgP}>
               <h3>BCI-ROM + Package Creator</h3>
               <div className={styles.gridImg}>
-                <Image
-                  src="/images/floefd17.jpg"
-                  alt=""
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[10] && (
+                  <Image
+                    src={imageSrc[10]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.gridDes}>
                 <p>
@@ -437,12 +481,14 @@ export default function Module() {
             <div className={styles.gridImgP}>
               <h3>Ultra Package</h3>
               <div className={styles.gridImg}>
-                <Image
-                  src="/images/floefd18.jpg"
-                  alt=""
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[11] && (
+                  <Image
+                    src={imageSrc[11]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.gridDes}>
                 <p>
@@ -455,12 +501,14 @@ export default function Module() {
             <div className={styles.gridImgP}>
               <h3>EV Package</h3>
               <div className={styles.gridImg}>
-                <Image
-                  src="/images/floefd19.jpg"
-                  alt=""
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[12] && (
+                  <Image
+                    src={imageSrc[12]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.gridDes}>
                 <p>

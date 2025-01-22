@@ -1,8 +1,23 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Simcenter3d() {
+  const { imageSrc, error } = useFetchImages([
+    "simcenter3d1.jpg",
+    "simcenter3d2.jpg",
+    "simcenter3d3.jpg",
+    "simcenter3d4.jpg",
+    "simcenter3d5.jpg",
+    "simcenter3d6.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.firstWrapper}>
@@ -11,12 +26,14 @@ export default function Simcenter3d() {
           <h1>3D</h1>
           <div className={styles.firstImgP}>
             <div className={styles.firstImg}>
-              <Image
-                src="/images/simcenter3d1.jpg"
-                alt="Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[0] && (
+                <Image
+                  src={imageSrc[0]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
             <div className={styles.firstDes}>
               <p>
@@ -193,34 +210,40 @@ export default function Simcenter3d() {
                 <div className={styles.thirdImgP2Wrapper}>
                   <h3>2D 모델 결과를 결합, 3D 시각화</h3>
                   <div className={styles.thirdImg2}>
-                    <Image
-                      src="/images/simcenter3d2.jpg"
-                      alt=""
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[1] && (
+                      <Image
+                        src={imageSrc[1]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                 </div>
                 <div className={styles.thirdImgP2Wrapper}>
                   <h3>Ray Acoustics 주차 센서 시뮬레이션</h3>
                   <div className={styles.thirdImg2}>
-                    <Image
-                      src="/images/simcenter3d3.jpg"
-                      alt=""
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[2] && (
+                      <Image
+                        src={imageSrc[2]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
               <div className={styles.thirdImgP3}>
                 <div className={styles.thirdImg3}>
-                  <Image
-                    src="/images/simcenter3d4.jpg"
-                    alt=""
-                    fill
-                    style={{ objectFit: "cover" }}
-                  />
+                  {imageSrc[3] && (
+                    <Image
+                      src={imageSrc[3]}
+                      alt="전자기기 및 반도체"
+                      fill
+                      style={{ objectFit: "cover" }}
+                    />
+                  )}
                 </div>
                 <h3>
                   적층 제조 공정 자체가 완제품의 피로 및 내구성 동작에 미치는
@@ -255,12 +278,14 @@ export default function Simcenter3d() {
               </p>
             </div>
             <div className={styles.fourImg1}>
-              <Image
-                src="/images/simcenter3d5.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[4] && (
+                <Image
+                  src={imageSrc[4]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <div className={styles.fourImgP2}>
@@ -285,12 +310,14 @@ export default function Simcenter3d() {
               </p>
             </div>
             <div className={styles.fourImg2}>
-              <Image
-                src="/images/simcenter3d6.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[5] && (
+                <Image
+                  src={imageSrc[5]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
         </div>

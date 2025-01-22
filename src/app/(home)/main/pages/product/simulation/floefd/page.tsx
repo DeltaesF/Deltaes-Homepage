@@ -1,8 +1,27 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Floefd() {
+  const { imageSrc, error } = useFetchImages([
+    "floefd1.jpg",
+    "floefd2.jpg",
+    "floefd3.jpg",
+    "floefd4.jpg",
+    "floefd5.jpg",
+    "floefd6.jpg",
+    "floefd7.jpg",
+    "floefd8.jpg",
+    "floefd9.jpg",
+    "floefd10.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.firstWrapper}>
@@ -11,12 +30,14 @@ export default function Floefd() {
           <h1>FLOEFD</h1>
           <div className={styles.firstImgP}>
             <div className={styles.firstImg}>
-              <Image
-                src="/images/floefd1.jpg"
-                alt="Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[0] && (
+                <Image
+                  src={imageSrc[0]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
             <div className={styles.firstDes}>
               <p>
@@ -208,12 +229,14 @@ export default function Floefd() {
               </p>
             </div>
             <div className={styles.fourImg1}>
-              <Image
-                src="/images/floefd2.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[1] && (
+                <Image
+                  src={imageSrc[1]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <div className={styles.fourImgP2}>
@@ -251,12 +274,14 @@ export default function Floefd() {
               </p>
             </div>
             <div className={styles.fourImg2}>
-              <Image
-                src="/images/floefd3.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[2] && (
+                <Image
+                  src={imageSrc[2]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <div className={styles.fourImgP1}>
@@ -292,12 +317,14 @@ export default function Floefd() {
               </p>
             </div>
             <div className={styles.fourImg1}>
-              <Image
-                src="/images/floefd4.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[3] && (
+                <Image
+                  src={imageSrc[3]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <div className={styles.fourImgP2}>
@@ -331,12 +358,14 @@ export default function Floefd() {
               </p>
             </div>
             <div className={styles.fourImg2}>
-              <Image
-                src="/images/floefd5.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[4] && (
+                <Image
+                  src={imageSrc[4]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <div className={styles.fourImgP1}>
@@ -367,12 +396,14 @@ export default function Floefd() {
               </p>
             </div>
             <div className={styles.fourImg1}>
-              <Image
-                src="/images/floefd6.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[5] && (
+                <Image
+                  src={imageSrc[5]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -388,12 +419,14 @@ export default function Floefd() {
           <div className={styles.fiveImgGrid}>
             <div className={styles.fiveImgP}>
               <div className={styles.fiveImg1}>
-                <Image
-                  src="/images/floefd7.jpg"
-                  alt=""
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[6] && (
+                  <Image
+                    src={imageSrc[6]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.fiveDes1}>
                 <span className={styles.contantSquare}></span>
@@ -402,12 +435,14 @@ export default function Floefd() {
             </div>
             <div className={styles.fiveImgP}>
               <div className={styles.fiveImg1}>
-                <Image
-                  src="/images/floefd8.jpg"
-                  alt=""
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[7] && (
+                  <Image
+                    src={imageSrc[7]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.fiveDes1}>
                 <span className={styles.contantSquare}></span>
@@ -416,12 +451,14 @@ export default function Floefd() {
             </div>
             <div className={styles.fiveImgP}>
               <div className={styles.fiveImg1}>
-                <Image
-                  src="/images/floefd9.jpg"
-                  alt=""
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[8] && (
+                  <Image
+                    src={imageSrc[8]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.fiveDes1}>
                 <span className={styles.contantSquare}></span>
@@ -430,12 +467,14 @@ export default function Floefd() {
             </div>
             <div className={styles.fiveImgP}>
               <div className={styles.fiveImg1}>
-                <Image
-                  src="/images/floefd10.jpg"
-                  alt=""
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[9] && (
+                  <Image
+                    src={imageSrc[9]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.fiveDes1}>
                 <span className={styles.contantSquare}></span>
