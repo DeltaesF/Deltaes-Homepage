@@ -1,17 +1,34 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Aerospace() {
+  const { imageSrc, error } = useFetchImages([
+    "subpageAerospace1.jpg",
+    "subpageAerospace2.gif",
+    "subpageConsumer3.jpg",
+    "subpageConsumer4.jpg",
+    "subpageConsumer5.gif",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.first}>
         <div className={styles.imageWrapper}>
-          <Image
-            src="/images/subpageAerospace1.jpg"
-            alt="전자기기 및 반도체"
-            fill
-            style={{ objectFit: "cover" }}
-          />
+          {imageSrc[0] && (
+            <Image
+              src={imageSrc[0]}
+              alt="전자기기 및 반도체"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          )}
           <div className={styles.firstDes}>
             <div className={styles.firstDesWrapper}>
               <h1>항공 / 우주 / 방산</h1>

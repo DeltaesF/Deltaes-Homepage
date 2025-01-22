@@ -1,17 +1,33 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Construction() {
+  const { imageSrc, error } = useFetchImages([
+    "construction1.jpg",
+    "subpageConstruction1.jpg",
+    "construction7.jpg",
+    "subpageConstruction2.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.first}>
         <div className={styles.imageWrapper}>
-          <Image
-            src="/images/construction1.jpg"
-            alt="전자기기 및 반도체"
-            fill
-            style={{ objectFit: "cover" }}
-          />
+          {imageSrc[0] && (
+            <Image
+              src={imageSrc[0]}
+              alt="전자기기 및 반도체"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          )}
           <div className={styles.firstDes}>
             <div className={styles.firstDesWrapper}>
               <h1>건설 / 토목</h1>
@@ -61,12 +77,14 @@ export default function Construction() {
               <div className={styles.aIsF}>
                 <div className={styles.aIsFdiv}>
                   <div className={styles.aIsFdivImage}>
-                    <Image
-                      src="/images/subpageConstruction1.jpg"
-                      alt="소비자 및 산업용 전자 기기"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[1] && (
+                      <Image
+                        src={imageSrc[1]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                   <div className={styles.aIsFdivTitle}>
                     댐 수문 개폐시 수문의 flow
@@ -74,23 +92,27 @@ export default function Construction() {
                 </div>
                 <div className={styles.aIsFdiv}>
                   <div className={styles.aIsFdivImage}>
-                    <Image
-                      src="/images/construction7.jpg"
-                      alt="소비자 및 산업용 전자 기기"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[2] && (
+                      <Image
+                        src={imageSrc[2]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                   <div className={styles.aIsFdivTitle}>도시 바람길 해석</div>
                 </div>
                 <div className={styles.aIsFdiv}>
                   <div className={styles.aIsFdivImage}>
-                    <Image
-                      src="/images/subpageConstruction2.jpg"
-                      alt="소비자 및 산업용 전자 기기"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[3] && (
+                      <Image
+                        src={imageSrc[3]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                   <div className={styles.aIsFdivTitle}>
                     데이터센터의 에너지 저감

@@ -1,17 +1,33 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Energy() {
+  const { imageSrc, error } = useFetchImages([
+    "subpageEnergy1.jpg",
+    "subpageEnergy2.gif",
+    "subpageEnergy3.jpg",
+    "subpageEnergy4.jpg",
+    "subpageEnergy5.gif",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.first}>
         <div className={styles.imageWrapper}>
-          <Image
-            src="/images/subpageEnergy1.jpg"
-            alt="전자기기 및 반도체"
-            fill
-            style={{ objectFit: "cover" }}
-          />
+          {imageSrc[0] && (
+            <Image
+              src={imageSrc[0]}
+              alt="전자기기 및 반도체"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          )}
           <div className={styles.firstDes}>
             <div className={styles.firstDesWrapper}>
               <h1>발전 / 에너지 / 유틸리티</h1>
@@ -59,12 +75,14 @@ export default function Energy() {
               <div className={styles.aIsF}>
                 <div className={styles.aIsFdiv}>
                   <div className={styles.aIsFdivImage}>
-                    <Image
-                      src="/images/subpageEnergy2.gif"
-                      alt="소비자 및 산업용 전자 기기"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[1] && (
+                      <Image
+                        src={imageSrc[1]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                   <div className={styles.aIsFdivTitle}>
                     수직진동형 교반기 설계최적
@@ -72,12 +90,14 @@ export default function Energy() {
                 </div>
                 <div className={styles.aIsFdiv}>
                   <div className={styles.aIsFdivImage}>
-                    <Image
-                      src="/images/subpageEnergy3.jpg"
-                      alt="소비자 및 산업용 전자 기기"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[2] && (
+                      <Image
+                        src={imageSrc[2]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                   <div className={styles.aIsFdivTitle}>
                     화학 플랜트 및 석유화학 공
@@ -85,12 +105,14 @@ export default function Energy() {
                 </div>
                 <div className={styles.aIsFdiv}>
                   <div className={styles.aIsFdivImage}>
-                    <Image
-                      src="/images/subpageEnergy4.jpg"
-                      alt="소비자 및 산업용 전자 기기"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[3] && (
+                      <Image
+                        src={imageSrc[3]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                   <div className={styles.aIsFdivTitle}>
                     CFD 해석을 통한 소수력 발
@@ -98,12 +120,14 @@ export default function Energy() {
                 </div>
                 <div className={styles.aIsFdiv}>
                   <div className={styles.aIsFdivImage}>
-                    <Image
-                      src="/images/subpageEnergy5.gif"
-                      alt="소비자 및 산업용 전자 기기"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[4] && (
+                      <Image
+                        src={imageSrc[4]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                   <div className={styles.aIsFdivTitle}>
                     저수조 내 슬러지 청소 장치

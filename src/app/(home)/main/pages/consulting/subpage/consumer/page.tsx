@@ -1,17 +1,33 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Consumer() {
+  const { imageSrc, error } = useFetchImages([
+    "subpageConsumer1.jpg",
+    "subpageConsumer2.jpg",
+    "subpageConsumer3.jpg",
+    "subpageConsumer4.jpg",
+    "subpageConsumer5.gif",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.first}>
         <div className={styles.imageWrapper}>
-          <Image
-            src="/images/subpageConsumer1.jpg"
-            alt="전자기기 및 반도체"
-            fill
-            style={{ objectFit: "cover" }}
-          />
+          {imageSrc[0] && (
+            <Image
+              src={imageSrc[0]}
+              alt="전자기기 및 반도체"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          )}
           <div className={styles.firstDes}>
             <div className={styles.firstDesWrapper}>
               <h1>소비재</h1>
@@ -62,12 +78,14 @@ export default function Consumer() {
               <div className={styles.aIsF}>
                 <div className={styles.aIsFdiv}>
                   <div className={styles.aIsFdivImage}>
-                    <Image
-                      src="/images/subpageConsumer2.jpg"
-                      alt="소비자 및 산업용 전자 기기"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[1] && (
+                      <Image
+                        src={imageSrc[1]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                   <div className={styles.aIsFdivTitle}>
                     배터리 모듈단위 열폭주 해
@@ -75,12 +93,14 @@ export default function Consumer() {
                 </div>
                 <div className={styles.aIsFdiv}>
                   <div className={styles.aIsFdivImage}>
-                    <Image
-                      src="/images/subpageConsumer3.jpg"
-                      alt="소비자 및 산업용 전자 기기"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[2] && (
+                      <Image
+                        src={imageSrc[2]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                   <div className={styles.aIsFdivTitle}>
                     자동차 프론트 임팩트 빔의
@@ -88,12 +108,14 @@ export default function Consumer() {
                 </div>
                 <div className={styles.aIsFdiv}>
                   <div className={styles.aIsFdivImage}>
-                    <Image
-                      src="/images/subpageConsumer4.jpg"
-                      alt="소비자 및 산업용 전자 기기"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[3] && (
+                      <Image
+                        src={imageSrc[3]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                   <div className={styles.aIsFdivTitle}>
                     자동차 디젤엔진 냉각수 유
@@ -101,12 +123,14 @@ export default function Consumer() {
                 </div>
                 <div className={styles.aIsFdiv}>
                   <div className={styles.aIsFdivImage}>
-                    <Image
-                      src="/images/subpageConsumer5.gif"
-                      alt="소비자 및 산업용 전자 기기"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[4] && (
+                      <Image
+                        src={imageSrc[4]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                   <div className={styles.aIsFdivTitle}>
                     감속기 내 오일처닝현상에

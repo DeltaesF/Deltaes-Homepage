@@ -1,6 +1,6 @@
 import styles from "./page.module.css";
 
-export default function Company() {
+export default function Career() {
   return (
     <div className={styles.container}>
       <h1>Delta ES</h1>

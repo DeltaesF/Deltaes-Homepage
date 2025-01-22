@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import useFetchImages from "@/app/hooks/useFetchImages";
 
-export default function Company() {
+export default function Brochure() {
   const { imageSrc, error } = useFetchImages([
     "brochure1.jpg",
     "brochure2.jpg",

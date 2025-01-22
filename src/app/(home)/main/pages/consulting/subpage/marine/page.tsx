@@ -1,17 +1,33 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Marine() {
+  const { imageSrc, error } = useFetchImages([
+    "subpageMarine1.jpg",
+    "subpageMarine2.gif",
+    "subpageMarine3.gif",
+    "subpageMarine4.gif",
+    "subpageMarine5.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.first}>
         <div className={styles.imageWrapper}>
-          <Image
-            src="/images/subpageMarine1.jpg"
-            alt="전자기기 및 반도체"
-            fill
-            style={{ objectFit: "cover" }}
-          />
+          {imageSrc[0] && (
+            <Image
+              src={imageSrc[0]}
+              alt="전자기기 및 반도체"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          )}
           <div className={styles.firstDes}>
             <div className={styles.firstDesWrapper}>
               <h1>조선 / 해양</h1>
@@ -63,12 +79,14 @@ export default function Marine() {
               <div className={styles.aIsF}>
                 <div className={styles.aIsFdiv}>
                   <div className={styles.aIsFdivImage}>
-                    <Image
-                      src="/images/subpageMarine2.gif"
-                      alt="소비자 및 산업용 전자 기기"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[1] && (
+                      <Image
+                        src={imageSrc[1]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                   <div className={styles.aIsFdivTitle}>
                     파력 발전기 부유체 형상 설
@@ -76,23 +94,27 @@ export default function Marine() {
                 </div>
                 <div className={styles.aIsFdiv}>
                   <div className={styles.aIsFdivImage}>
-                    <Image
-                      src="/images/subpageMarine3.gif"
-                      alt="소비자 및 산업용 전자 기기"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[2] && (
+                      <Image
+                        src={imageSrc[2]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                   <div className={styles.aIsFdivTitle}></div>
                 </div>
                 <div className={styles.aIsFdiv}>
                   <div className={styles.aIsFdivImage}>
-                    <Image
-                      src="/images/subpageMarine4.gif"
-                      alt="소비자 및 산업용 전자 기기"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[3] && (
+                      <Image
+                        src={imageSrc[3]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                   <div className={styles.aIsFdivTitle}>
                     풍력발전기 터빈 블레이드
@@ -100,12 +122,14 @@ export default function Marine() {
                 </div>
                 <div className={styles.aIsFdiv}>
                   <div className={styles.aIsFdivImage}>
-                    <Image
-                      src="/images/subpageMarine5.jpg"
-                      alt="소비자 및 산업용 전자 기기"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[4] && (
+                      <Image
+                        src={imageSrc[4]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                   <div className={styles.aIsFdivTitle}></div>
                 </div>
