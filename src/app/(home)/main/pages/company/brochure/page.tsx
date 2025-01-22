@@ -1,7 +1,24 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Company() {
+  const { imageSrc, error } = useFetchImages([
+    "brochure1.jpg",
+    "brochure2.jpg",
+    "brochure3.jpg",
+    "brochure4.jpg",
+    "brochure5.jpg",
+    "brochure6.jpg",
+    "brochure7.jpg",
+    "brochure8.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -10,13 +27,15 @@ export default function Company() {
         </div>
         <div className={styles.gridContainer}>
           <div className={styles.grid}>
-            <Image
-              src="/images/brochure1.jpg"
-              alt=""
-              width="230"
-              height="315"
-              style={{ borderRadius: "10px" }}
-            />
+            {imageSrc[0] && (
+              <Image
+                src={imageSrc[0]}
+                alt=""
+                width="230"
+                height="315"
+                style={{ borderRadius: "10px" }}
+              />
+            )}
             <p>Delta ES 토털 엔지니어링 솔루션</p>
           </div>
           <div className={styles.grid}>

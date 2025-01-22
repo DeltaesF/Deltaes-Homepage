@@ -1,7 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function History() {
+  const { imageSrc, error } = useFetchImages(["history.jpg"]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -9,12 +17,14 @@ export default function History() {
           <h1>회사 연혁</h1>
         </div>
         <div className={styles.historyImg}>
-          <Image
-            src="/images/history.jpg"
-            alt=""
-            fill
-            style={{ objectFit: "cover", borderRadius: "10px" }}
-          />
+          {imageSrc[0] && (
+            <Image
+              src={imageSrc[0]}
+              alt=""
+              fill
+              style={{ objectFit: "cover", borderRadius: "10px" }}
+            />
+          )}
         </div>
         <div className={styles.line}></div>
         <div className={styles.service}>

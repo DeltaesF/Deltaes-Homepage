@@ -1,7 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Ceo() {
+  const { imageSrc, error } = useFetchImages(["ceo.jpg"]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -13,12 +21,14 @@ export default function Ceo() {
           <p className={styles.titleSub2}>여러분을 진심으로 환영합니다.</p>
         </div>
         <div className={styles.ceoImg}>
-          <Image
-            src="/images/ceo.jpg"
-            alt=""
-            fill
-            style={{ objectFit: "cover" }}
-          />
+          {imageSrc[0] && (
+            <Image
+              src={imageSrc[0]}
+              alt=""
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          )}
         </div>
         <div className={styles.ceoImgDes}>
           <h2>고객의 중요 프로세스활성화​</h2>

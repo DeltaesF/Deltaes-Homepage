@@ -1,7 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Direction() {
+  const { imageSrc, error } = useFetchImages(["deltaes.jpg"]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -9,13 +17,15 @@ export default function Direction() {
           <h1>오시는 길</h1>
         </div>
         <div className={styles.deltaesImg}>
-          <Image
-            src="/images/deltaes.jpg"
-            alt=""
-            width="600"
-            height="600"
-            style={{ margin: "0 auto" }}
-          />
+          {imageSrc[0] && (
+            <Image
+              src={imageSrc[0]}
+              alt=""
+              width="600"
+              height="600"
+              style={{ margin: "0 auto" }}
+            />
+          )}
         </div>
         <div className={styles.location}>
           <div className={styles.locationTitle}>

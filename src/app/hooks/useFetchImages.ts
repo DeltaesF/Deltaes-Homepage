@@ -27,7 +27,7 @@ export default function useFetchImages(imageNames: string[]) {
       }
     }
     fetchImages();
-  }, [imageNames]); // imageNames가 변경될 때마다 useEffect가 재실행됨
+  }, []);
 
   return { imageSrc, error }; // 훅의 반환값: 이미지 URL 배열과 에러 메시지를 객체 형태로 반환
 }
