@@ -1,13 +1,41 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Consumer() {
+  const { imageSrc, error } = useFetchImages([
+    "consumer1.jpg",
+    "consumer2.jpg",
+    "consumer3.jpg",
+    "consumer4.jpg",
+    "consumer5.jpg",
+    "consumer6.jpg",
+    "consumer7.jpg",
+    "consumer8.jpg",
+    "consumer9.jpg",
+    "consumer10.jpg",
+    "consumer11.jpg",
+    "consumer12.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.first}>
         <div className={styles.imageWrapper}>
-          <Image src="/images/consumer1.jpg" alt="전자기기 및 반도체" fill />
+          {imageSrc[0] && (
+            <Image
+              src={imageSrc[0]}
+              alt="전자기기 및 반도체"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          )}
           <div className={styles.firstDes}>
             <div className={styles.firstDesWrapper}>
               <h1>소비재</h1>
@@ -33,12 +61,14 @@ export default function Consumer() {
           <div className={styles.secondGrid}>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/consumer2.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[1] && (
+                  <Image
+                    src={imageSrc[1]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>의류, 신발 및 악세서리</h3>
@@ -57,12 +87,14 @@ export default function Consumer() {
             </div>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/consumer3.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[2] && (
+                  <Image
+                    src={imageSrc[2]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>스포츠 용품 및 장난감</h3>
@@ -82,12 +114,14 @@ export default function Consumer() {
             </div>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/consumer4.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[3] && (
+                  <Image
+                    src={imageSrc[3]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>홈 & 사무용품</h3>
@@ -107,12 +141,14 @@ export default function Consumer() {
             </div>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/consumer5.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[4] && (
+                  <Image
+                    src={imageSrc[4]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>​식음료</h3>
@@ -129,12 +165,14 @@ export default function Consumer() {
             </div>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/consumer6.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[5] && (
+                  <Image
+                    src={imageSrc[5]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>뷰티, 개인 및 홈케어</h3>
@@ -154,12 +192,14 @@ export default function Consumer() {
             </div>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/consumer7.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[6] && (
+                  <Image
+                    src={imageSrc[6]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>소매</h3>
@@ -200,12 +240,14 @@ export default function Consumer() {
             </Link>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/consumer8.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[7] && (
+              <Image
+                src={imageSrc[7]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
         <div className={styles.siemens2}>
@@ -229,12 +271,14 @@ export default function Consumer() {
             </Link>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/consumer9.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[8] && (
+              <Image
+                src={imageSrc[8]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
         <div className={styles.siemens3}>
@@ -257,12 +301,14 @@ export default function Consumer() {
             </Link>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/consumer10.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[9] && (
+              <Image
+                src={imageSrc[9]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
         <div className={styles.siemens2}>
@@ -284,12 +330,14 @@ export default function Consumer() {
             </Link>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/consumer11.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[10] && (
+              <Image
+                src={imageSrc[10]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
         <div className={styles.siemens3}>
@@ -312,12 +360,14 @@ export default function Consumer() {
             </Link>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/consumer12.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[11] && (
+              <Image
+                src={imageSrc[11]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
       </div>

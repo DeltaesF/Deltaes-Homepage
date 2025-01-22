@@ -1,13 +1,37 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Energy() {
+  const { imageSrc, error } = useFetchImages([
+    "energy1.jpg",
+    "energy2.jpg",
+    "energy3.jpg",
+    "energy4.jpg",
+    "energy5.jpg",
+    "energy6.jpg",
+    "energy7.jpg",
+    "energy8.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.first}>
         <div className={styles.imageWrapper}>
-          <Image src="/images/energy1.jpg" alt="전자기기 및 반도체" fill />
+          {imageSrc[0] && (
+            <Image
+              src={imageSrc[0]}
+              alt="전자기기 및 반도체"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          )}
           <div className={styles.firstDes}>
             <div className={styles.firstDesWrapper}>
               <h1>발전 / 에너지 / 유틸리티</h1>
@@ -31,12 +55,14 @@ export default function Energy() {
           <div className={styles.secondGrid}>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/energy2.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[1] && (
+                  <Image
+                    src={imageSrc[1]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>소유자, 운영자</h3>
@@ -53,12 +79,14 @@ export default function Energy() {
             </div>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/energy3.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[2] && (
+                  <Image
+                    src={imageSrc[2]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>EPC / AEC</h3>
@@ -77,12 +105,14 @@ export default function Energy() {
             </div>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/energy4.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[3] && (
+                  <Image
+                    src={imageSrc[3]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>장비 제조업체</h3>
@@ -122,12 +152,14 @@ export default function Energy() {
             </Link>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/energy5.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[4] && (
+              <Image
+                src={imageSrc[4]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
         <div className={styles.siemens2}>
@@ -152,12 +184,14 @@ export default function Energy() {
             </Link>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/energy6.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[5] && (
+              <Image
+                src={imageSrc[5]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
         <div className={styles.siemens3}>
@@ -180,12 +214,14 @@ export default function Energy() {
             </Link>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/energy7.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[6] && (
+              <Image
+                src={imageSrc[6]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
         <div className={styles.siemens2}>
@@ -213,12 +249,14 @@ export default function Energy() {
             </Link>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/energy8.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[7] && (
+              <Image
+                src={imageSrc[7]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
       </div>

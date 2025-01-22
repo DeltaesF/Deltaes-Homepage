@@ -1,16 +1,27 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Telecom() {
+  const { imageSrc, error } = useFetchImages(["telecom1.jpg", "telecom2.jpg"]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.first}>
         <div className={styles.imageWrapper}>
-          <Image
-            src="/images/telecom1.jpg"
-            alt="가전제품 및 산업용 전자 기기"
-            fill
-          />
+          {imageSrc[0] && (
+            <Image
+              src={imageSrc[0]}
+              alt="가전제품 및 산업용 전자 기기"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          )}
           <div className={styles.firstDes}>
             <div className={styles.firstDesWrapper}>
               <h1>이동통신 및 미디어</h1>
@@ -85,12 +96,14 @@ export default function Telecom() {
             </p>
           </div>
           <div className={styles.secondImage}>
-            <Image
-              src="/images/telecom2.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[1] && (
+              <Image
+                src={imageSrc[1]}
+                alt="가전제품 및 산업용 전자 기기"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
       </div>

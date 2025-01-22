@@ -39,73 +39,87 @@ export default function Brochure() {
             <p>Delta ES 토털 엔지니어링 솔루션</p>
           </div>
           <div className={styles.grid}>
-            <Image
-              src="/images/brochure2.jpg"
-              alt=""
-              width="230"
-              height="325"
-              style={{ borderRadius: "10px" }}
-            />
+            {imageSrc[1] && (
+              <Image
+                src={imageSrc[1]}
+                alt=""
+                width="230"
+                height="315"
+                style={{ borderRadius: "10px" }}
+              />
+            )}
             <p>지멘스 Simcenter CFD 솔루션 (SW)</p>
           </div>
           <div className={styles.grid}>
-            <Image
-              src="/images/brochure3.jpg"
-              alt=""
-              width="230"
-              height="325"
-              style={{ borderRadius: "10px" }}
-            />
+            {imageSrc[2] && (
+              <Image
+                src={imageSrc[2]}
+                alt=""
+                width="230"
+                height="315"
+                style={{ borderRadius: "10px" }}
+              />
+            )}
             <p>지멘스 Simcenter Testing 솔루션 (HW)</p>
           </div>
           <div className={styles.grid}>
-            <Image
-              src="/images/brochure4.jpg"
-              alt=""
-              width="230"
-              height="325"
-              style={{ borderRadius: "10px" }}
-            />
+            {imageSrc[3] && (
+              <Image
+                src={imageSrc[3]}
+                alt=""
+                width="230"
+                height="315"
+                style={{ borderRadius: "10px" }}
+              />
+            )}
             <p>Simcenter POWERTESTER 600A (Eng)</p>
           </div>
           <div className={styles.grid}>
-            <Image
-              src="/images/brochure5.jpg"
-              alt=""
-              width="230"
-              height="325"
-              style={{ borderRadius: "10px" }}
-            />
+            {imageSrc[4] && (
+              <Image
+                src={imageSrc[4]}
+                alt=""
+                width="230"
+                height="315"
+                style={{ borderRadius: "10px" }}
+              />
+            )}
             <p>Simcenter POWERTESTER 1500A</p>
           </div>
           <div className={styles.grid}>
-            <Image
-              src="/images/brochure6.jpg"
-              alt=""
-              width="230"
-              height="325"
-              style={{ borderRadius: "10px" }}
-            />
+            {imageSrc[5] && (
+              <Image
+                src={imageSrc[5]}
+                alt=""
+                width="230"
+                height="315"
+                style={{ borderRadius: "10px" }}
+              />
+            )}
             <p>Simcenter POWERTESTER 1800A</p>
           </div>
           <div className={styles.grid}>
-            <Image
-              src="/images/brochure7.jpg"
-              alt=""
-              width="230"
-              height="325"
-              style={{ borderRadius: "10px" }}
-            />
+            {imageSrc[6] && (
+              <Image
+                src={imageSrc[6]}
+                alt=""
+                width="230"
+                height="315"
+                style={{ borderRadius: "10px" }}
+              />
+            )}
             <p>Simcenter POWERTESTER 2400A</p>
           </div>
           <div className={styles.grid}>
-            <Image
-              src="/images/brochure8.jpg"
-              alt=""
-              width="230"
-              height="325"
-              style={{ borderRadius: "10px" }}
-            />
+            {imageSrc[7] && (
+              <Image
+                src={imageSrc[7]}
+                alt=""
+                width="230"
+                height="315"
+                style={{ borderRadius: "10px" }}
+              />
+            )}
             <p>Simcenter POWERTESTER 3600A</p>
           </div>
         </div>

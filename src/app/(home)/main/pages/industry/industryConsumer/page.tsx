@@ -1,17 +1,34 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function IndustryConsumer() {
+  const { imageSrc, error } = useFetchImages([
+    "industry2-1.jpg",
+    "industry2-2.jpg",
+    "industry2-3.jpg",
+    "industry2-4.jpg",
+    "industry2-5.jpg",
+    "industry2-6.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.first}>
         <div className={styles.imageWrapper}>
-          <Image
-            src="/images/industry2-1.jpg"
-            alt="가전제품 및 산업용 전자 기기"
-            fill
-            style={{ objectFit: "cover" }}
-          />
+          {imageSrc[0] && (
+            <Image
+              src={imageSrc[0]}
+              alt="전자기기 및 반도체"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          )}
           <div className={styles.firstDes}>
             <div className={styles.firstDesWrapper}>
               <h1>가전제품 및 산업용 전자 기기</h1>
@@ -52,12 +69,15 @@ export default function IndustryConsumer() {
                 조율하게 됩니다.
               </p>
             </div>
-            <Image
-              src="/images/industry2-2.jpg"
-              alt=""
-              width="371"
-              height="220"
-            />
+            {imageSrc[1] && (
+              <Image
+                src={imageSrc[1]}
+                alt="전자기기 및 반도체"
+                width="371"
+                height="220"
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
           <div className={styles.solution2}>
             <div>
@@ -75,12 +95,15 @@ export default function IndustryConsumer() {
                 비즈니스에 대한 위험을 줄일 수 있습니다.
               </p>
             </div>
-            <Image
-              src="/images/industry2-3.jpg"
-              alt=""
-              width="371"
-              height="220"
-            />
+            {imageSrc[2] && (
+              <Image
+                src={imageSrc[2]}
+                alt="전자기기 및 반도체"
+                width="371"
+                height="220"
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
           <div className={styles.solution1}>
             <div>
@@ -105,12 +128,15 @@ export default function IndustryConsumer() {
                 수 있습니다.
               </p>
             </div>
-            <Image
-              src="/images/industry2-4.jpg"
-              alt=""
-              width="371"
-              height="220"
-            />
+            {imageSrc[3] && (
+              <Image
+                src={imageSrc[3]}
+                alt="전자기기 및 반도체"
+                width="371"
+                height="220"
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
           <div className={styles.solution2}>
             <div>
@@ -128,12 +154,15 @@ export default function IndustryConsumer() {
                 개발 주기 전반에 걸쳐 생산성, 혁신 및 협업을 향상시킵니다.
               </p>
             </div>
-            <Image
-              src="/images/industry2-5.jpg"
-              alt=""
-              width="371"
-              height="220"
-            />
+            {imageSrc[4] && (
+              <Image
+                src={imageSrc[4]}
+                alt="전자기기 및 반도체"
+                width="371"
+                height="220"
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
           <div className={styles.solution1}>
             <div>
@@ -152,12 +181,15 @@ export default function IndustryConsumer() {
                 디자인 초기에 시뮬레이션 및 테스트 기능이 필요합니다.
               </p>
             </div>
-            <Image
-              src="/images/industry2-6.jpg"
-              alt=""
-              width="371"
-              height="220"
-            />
+            {imageSrc[5] && (
+              <Image
+                src={imageSrc[5]}
+                alt="전자기기 및 반도체"
+                width="371"
+                height="220"
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
       </div>

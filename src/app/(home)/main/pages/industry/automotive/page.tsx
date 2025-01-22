@@ -1,18 +1,39 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Automotive() {
+  const { imageSrc, error } = useFetchImages([
+    "automotive1.jpg",
+    "automotive2.jpg",
+    "automotive3.jpg",
+    "automotive4.jpg",
+    "automotive5.jpg",
+    "automotive6.jpg",
+    "automotive7.jpg",
+    "automotive8.jpg",
+    "automotive9.jpg",
+    "automotive10.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.first}>
         <div className={styles.imageWrapper}>
-          <Image
-            src="/images/automotive1.jpg"
-            alt="전자기기 및 반도체"
-            fill
-            style={{ objectFit: "cover" }}
-          />
+          {imageSrc[0] && (
+            <Image
+              src={imageSrc[0]}
+              alt="전자기기 및 반도체"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          )}
           <div className={styles.firstDes}>
             <div className={styles.firstDesWrapper}>
               <h1>자동차 및 운송</h1>
@@ -33,12 +54,14 @@ export default function Automotive() {
           <div className={styles.secondGrid}>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/automotive2.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[1] && (
+                  <Image
+                    src={imageSrc[1]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>자동차 OEM</h3>
@@ -58,12 +81,14 @@ export default function Automotive() {
             </div>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/automotive3.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[2] && (
+                  <Image
+                    src={imageSrc[2]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>자동차 부품업체</h3>
@@ -82,12 +107,14 @@ export default function Automotive() {
             </div>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/automotive4.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[3] && (
+                  <Image
+                    src={imageSrc[3]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>트럭, 버스 및 특수 차량</h3>
@@ -107,12 +134,14 @@ export default function Automotive() {
             </div>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/automotive5.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[4] && (
+                  <Image
+                    src={imageSrc[4]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>모터사이클, 자전거 및 부품</h3>
@@ -131,12 +160,14 @@ export default function Automotive() {
             </div>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/automotive6.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[5] && (
+                  <Image
+                    src={imageSrc[5]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>철도 시스템</h3>
@@ -178,12 +209,14 @@ export default function Automotive() {
             </Link>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/automotive7.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[6] && (
+              <Image
+                src={imageSrc[6]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
         <div className={styles.siemens2}>
@@ -209,12 +242,14 @@ export default function Automotive() {
             </Link>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/automotive8.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[7] && (
+              <Image
+                src={imageSrc[7]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
         <div className={styles.siemens3}>
@@ -241,12 +276,14 @@ export default function Automotive() {
             </Link>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/automotive9.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[8] && (
+              <Image
+                src={imageSrc[8]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
         <div className={styles.siemens2}>
@@ -272,12 +309,14 @@ export default function Automotive() {
             </Link>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/automotive10.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[9] && (
+              <Image
+                src={imageSrc[9]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
       </div>

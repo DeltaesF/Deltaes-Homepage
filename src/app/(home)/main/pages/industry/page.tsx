@@ -1,18 +1,36 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Industry() {
+  const { imageSrc, error } = useFetchImages([
+    "industry1.jpg",
+    "industry2.jpg",
+    "industry3.jpg",
+    "industry4.jpg",
+    "industry5.jpg",
+    "industry6.jpg",
+    "industry7.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.first}>
         <div className={styles.imageWrapper}>
-          <Image
-            src="/images/industry1.jpg"
-            alt="전자기기 및 반도체"
-            fill
-            style={{ objectFit: "cover" }}
-          />
+          {imageSrc[0] && (
+            <Image
+              src={imageSrc[0]}
+              alt="전자기기 및 반도체"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          )}
           <div className={styles.firstDes}>
             <div className={styles.firstDesWrapper}>
               <h1>전자기기 및 반도체</h1>
@@ -39,12 +57,14 @@ export default function Industry() {
           <div className={styles.secondGrid}>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/industry2.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[1] && (
+                  <Image
+                    src={imageSrc[1]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>소비자 및 산업용 전자 기기</h3>
@@ -58,12 +78,14 @@ export default function Industry() {
             </div>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/industry3.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[2] && (
+                  <Image
+                    src={imageSrc[2]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>가전 제품 및 백색 제품</h3>
@@ -75,12 +97,14 @@ export default function Industry() {
             </div>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/industry4.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[3] && (
+                  <Image
+                    src={imageSrc[3]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>전자 기기 제조 서비스</h3>
@@ -92,12 +116,14 @@ export default function Industry() {
             </div>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/industry5.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[4] && (
+                  <Image
+                    src={imageSrc[4]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>소비자 및 산업용 전자 기기</h3>
@@ -106,12 +132,14 @@ export default function Industry() {
             </div>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/industry6.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[5] && (
+                  <Image
+                    src={imageSrc[5]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>반도체 장비</h3>
@@ -143,12 +171,14 @@ export default function Industry() {
             </Link>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/industry7.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[6] && (
+              <Image
+                src={imageSrc[6]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
       </div>

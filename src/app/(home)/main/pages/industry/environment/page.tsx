@@ -1,13 +1,35 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Environment() {
+  const { imageSrc, error } = useFetchImages([
+    "environment1.jpg",
+    "environment2.jpg",
+    "environment3.jpg",
+    "environment4.jpg",
+    "environment5.jpg",
+    "environment6.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.first}>
         <div className={styles.imageWrapper}>
-          <Image src="/images/environment1.jpg" alt="전자기기 및 반도체" fill />
+          {imageSrc[0] && (
+            <Image
+              src={imageSrc[0]}
+              alt="전자기기 및 반도체"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          )}
           <div className={styles.firstDes}>
             <div className={styles.firstDesWrapper}>
               <h1>환경 및 산업용기계</h1>
@@ -30,12 +52,14 @@ export default function Environment() {
           <div className={styles.secondGrid}>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/environment2.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[1] && (
+                  <Image
+                    src={imageSrc[1]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>몰드, 공구 및 다이</h3>
@@ -81,12 +105,14 @@ export default function Environment() {
             </Link>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/environment3.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[2] && (
+              <Image
+                src={imageSrc[2]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
         <div className={styles.siemens2}>
@@ -120,12 +146,14 @@ export default function Environment() {
             </Link>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/environment4.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[3] && (
+              <Image
+                src={imageSrc[3]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
         <div className={styles.siemens3}>
@@ -149,12 +177,14 @@ export default function Environment() {
             </Link>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/environment5.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[4] && (
+              <Image
+                src={imageSrc[4]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
         <div className={styles.siemens2}>
@@ -173,12 +203,14 @@ export default function Environment() {
             </Link>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/environment6.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[5] && (
+              <Image
+                src={imageSrc[5]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
       </div>

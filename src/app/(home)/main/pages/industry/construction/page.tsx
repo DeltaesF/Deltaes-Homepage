@@ -1,17 +1,40 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Construction() {
+  const { imageSrc, error } = useFetchImages([
+    "construction1.jpg",
+    "construction2.jpg",
+    "construction3.jpg",
+    "construction4.jpg",
+    "construction5.gif",
+    "construction6.jpg",
+    "construction7.jpg",
+    "construction8.jpg",
+    "construction9.jpg",
+    "construction10.jpg",
+    "construction11.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.first}>
         <div className={styles.imageWrapper}>
-          <Image
-            src="/images/construction1.jpg"
-            alt="전자기기 및 반도체"
-            fill
-          />
+          {imageSrc[0] && (
+            <Image
+              src={imageSrc[0]}
+              alt="전자기기 및 반도체"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          )}
           <div className={styles.firstDes}>
             <div className={styles.firstDesWrapper}>
               <h1>건설 / 토목</h1>
@@ -49,12 +72,14 @@ export default function Construction() {
           <div className={styles.secondGrid}>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/construction2.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[1] && (
+                  <Image
+                    src={imageSrc[1]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>클린룸 설계 (Clean Room Design)</h3>
@@ -66,12 +91,14 @@ export default function Construction() {
             </div>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/construction3.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[2] && (
+                  <Image
+                    src={imageSrc[2]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>데이터 센터 (Data Center)</h3>
@@ -82,12 +109,14 @@ export default function Construction() {
             </div>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/construction4.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[3] && (
+                  <Image
+                    src={imageSrc[3]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>빌딩 공조 (Building HVAC)</h3>
@@ -99,12 +128,14 @@ export default function Construction() {
             </div>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/construction5.gif"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[4] && (
+                  <Image
+                    src={imageSrc[4]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>교량구조물 (Bridge )</h3>
@@ -116,12 +147,14 @@ export default function Construction() {
             </div>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/construction6.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[5] && (
+                  <Image
+                    src={imageSrc[5]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>스마트 시티 (Smart City)</h3>
@@ -133,12 +166,14 @@ export default function Construction() {
             </div>
             <div className={styles.grid}>
               <div className={styles.gridDes}>
-                <Image
-                  src="/images/construction7.jpg"
-                  alt="소비자 및 산업용 전자 기기"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[6] && (
+                  <Image
+                    src={imageSrc[6]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.textOverlay}>
                 <h3>도시 바람길 분석</h3>
@@ -181,12 +216,14 @@ export default function Construction() {
             </Link>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/construction8.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[7] && (
+              <Image
+                src={imageSrc[7]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
         <div className={styles.siemens2}>
@@ -221,12 +258,14 @@ export default function Construction() {
             </Link>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/construction9.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[8] && (
+              <Image
+                src={imageSrc[8]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
         <div className={styles.siemens4}>
@@ -245,12 +284,14 @@ export default function Construction() {
             </Link>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/construction10.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[9] && (
+              <Image
+                src={imageSrc[9]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
         <div className={styles.siemens2}>
@@ -286,12 +327,14 @@ export default function Construction() {
             </Link>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/construction11.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[10] && (
+              <Image
+                src={imageSrc[10]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
         <div className={styles.siemens3}>
@@ -332,12 +375,14 @@ export default function Construction() {
             </Link>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/construction10.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[9] && (
+              <Image
+                src={imageSrc[9]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
         <div className={styles.strengthWrapper}>

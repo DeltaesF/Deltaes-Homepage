@@ -1,18 +1,31 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Software() {
+  const { imageSrc, error } = useFetchImages([
+    "software1.jpg",
+    "software2.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.first}>
         <div className={styles.imageWrapper}>
-          <Image
-            src="/images/software1.jpg"
-            alt="전자기기 및 반도체"
-            fill
-            style={{ objectFit: "cover" }}
-          />
+          {imageSrc[0] && (
+            <Image
+              src={imageSrc[0]}
+              alt="전자기기 및 반도체"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          )}
           <div className={styles.firstDes}>
             <div className={styles.firstDesWrapper}>
               <h1>소프트웨어 개발</h1>
@@ -66,12 +79,14 @@ export default function Software() {
             </div>
           </div>
           <div className={styles.siemensImage}>
-            <Image
-              src="/images/software2.jpg"
-              alt="siemens"
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            {imageSrc[1] && (
+              <Image
+                src={imageSrc[1]}
+                alt="전자기기 및 반도체"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
         </div>
       </div>
