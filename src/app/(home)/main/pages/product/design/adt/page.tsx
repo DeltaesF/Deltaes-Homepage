@@ -1,8 +1,23 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Adt() {
+  const { imageSrc, error } = useFetchImages([
+    "adt1.jpg",
+    "adt2.jpg",
+    "adt3.jpg",
+    "flothermxt4.jpg",
+    "adt5.jpg",
+    "adt6.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.firstWrapper}>
@@ -11,12 +26,14 @@ export default function Adt() {
           <h1>TURBOdesign Suite</h1>
           <div className={styles.firstImgP}>
             <div className={styles.firstImg}>
-              <Image
-                src="/images/adt1.jpg"
-                alt="Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[0] && (
+                <Image
+                  src={imageSrc[0]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
             <div className={styles.firstDes}>
               <p>
@@ -107,12 +124,14 @@ export default function Adt() {
                 </p>
               </div>
               <div className={styles.thirdImg}>
-                <Image
-                  src="/images/adt2.jpg"
-                  alt="Simcenter Flotherm XT"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[1] && (
+                  <Image
+                    src={imageSrc[1]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -132,12 +151,14 @@ export default function Adt() {
               </p>
             </div>
             <div className={styles.fourImg1}>
-              <Image
-                src="/images/adt3.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[2] && (
+                <Image
+                  src={imageSrc[2]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <div className={styles.fourImgP2}>
@@ -151,12 +172,14 @@ export default function Adt() {
               </p>
             </div>
             <div className={styles.fourImg2}>
-              <Image
-                src="/images/flothermxt4.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[3] && (
+                <Image
+                  src={imageSrc[3]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <div className={styles.fourImgP1}>
@@ -169,12 +192,14 @@ export default function Adt() {
               </p>
             </div>
             <div className={styles.fourImg1}>
-              <Image
-                src="/images/adt5.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[4] && (
+                <Image
+                  src={imageSrc[4]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <div className={styles.fourImgP2}>
@@ -188,12 +213,14 @@ export default function Adt() {
               </p>
             </div>
             <div className={styles.fourImg2}>
-              <Image
-                src="/images/adt6.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[5] && (
+                <Image
+                  src={imageSrc[5]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
         </div>

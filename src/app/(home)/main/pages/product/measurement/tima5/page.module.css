@@ -72,7 +72,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("/images/timapulse2.jpg");
   background-size: cover; /* 배경 이미지가 영역을 덮도록 설정 */
   background-position: center; /* 배경 이미지를 가운데 정렬 */
   background-repeat: no-repeat; /* 배경 이미지가 반복되지 않도록 설정 */

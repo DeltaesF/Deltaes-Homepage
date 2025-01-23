@@ -1,8 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Simensnx() {
+  const { imageSrc, error } = useFetchImages([
+    "simensnx1.jpg",
+    "simensnx2.jpg",
+    "simensnx3.jpg",
+    "simensnx4.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.firstWrapper}>
@@ -11,12 +24,14 @@ export default function Simensnx() {
           <h1>NX</h1>
           <div className={styles.firstImgP}>
             <div className={styles.firstImg}>
-              <Image
-                src="/images/simensnx1.jpg"
-                alt="Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[0] && (
+                <Image
+                  src={imageSrc[0]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
             <div className={styles.firstDes}>
               <p>
@@ -96,12 +111,14 @@ export default function Simensnx() {
                 </ul>
               </div>
               <div className={styles.thirdImg}>
-                <Image
-                  src="/images/simensnx2.jpg"
-                  alt="Flotherm XT"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[1] && (
+                  <Image
+                    src={imageSrc[1]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -126,12 +143,14 @@ export default function Simensnx() {
               </Link>
             </div>
             <div className={styles.fourImg1}>
-              <Image
-                src="/images/simensnx3.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[2] && (
+                <Image
+                  src={imageSrc[2]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <div className={styles.fourImgP2}>
@@ -149,12 +168,14 @@ export default function Simensnx() {
               </Link>
             </div>
             <div className={styles.fourImg2}>
-              <Image
-                src="/images/simensnx4.jpg"
-                alt=""
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[3] && (
+                <Image
+                  src={imageSrc[3]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
         </div>
