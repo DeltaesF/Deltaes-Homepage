@@ -24,91 +24,94 @@ interface ImgSlice {
 const imgSlice: ImgSlice[] = [
   {
     id: 1,
-    img: "/images/image-slide1.jpg",
+    img: "/api/getftp/image-slide1.jpg",
     title: "Digital Physics & Physical Testing",
     description: "Solution Provider",
-    logo: "/images/footer-logo.png",
+    logo: "/api/getftp/footer-logo.png",
   },
   {
     id: 2,
-    img: "/images/image-slide2.jpg",
+    img: "/api/getftp/image-slide2.jpg",
     title: "Simcenter \n Powertester",
     description: "전력 반도체 신뢰성 평가 측정장비",
   },
   {
     id: 3,
-    img: "/images/image-slide3.jpg",
+    img: "/api/getftp/image-slide3.jpg",
     title: "Simcenter \n T3STER SI",
     description: "반도체 열저항 정션 온도측정 장비",
   },
   {
     id: 4,
-    img: "/images/image-slide4.jpg",
+    img: "/api/getftp/image-slide4.jpg",
     title: "Simcenter \n Flotherm",
     description: "산업계 표준 전기 / 전자 부품 열관리 소프트웨어",
   },
   {
     id: 5,
-    img: "/images/image-slide5.jpg",
+    img: "/api/getftp/image-slide5.jpg",
     title: "Simcenter \n FLOEFD",
     description:
       "실무 사용자를 위한 차세대 \n Multi-Physics CFD 해석 소프트 웨어",
   },
   {
     id: 6,
-    img: "/images/image-slide6.jpg",
+    img: "/api/getftp/image-slide6.jpg",
     title: "Simcenter \n STAR-CCM+",
     description: "CFD 엔지니어를 위한 통합 다중 물리 솔루션",
   },
   {
     id: 7,
-    img: "/images/image-slide7.jpg",
+    img: "/api/getftp/image-slide7.jpg",
     title: "Simcenter \n Amesim & Flomaster",
     description: "시스템 시뮬레이션 및 설계 소프트웨어",
   },
   {
     id: 8,
-    img: "/images/image-slide8.jpg",
+    img: "/api/getftp/image-slide8.jpg",
     title: "Simcenter \n HEEDS",
     description:
       "CAD 및 CAE와 연계되는 강력한 \n ​설계 공간 탐색 및 최적화 소프트웨어",
   },
   {
     id: 9,
-    img: "/images/image-slide9.jpg",
+    img: "/api/getftp/image-slide9.jpg",
     title: "Simcenter 3D",
     description:
       "구조, 진동 , 음향, 열유동, 동역학, 최적화 및 전자기 등의 문제를 \n ​빠르게 해결하는 전문적 엔지니어링 소프트웨어",
   },
   {
     id: 10,
-    img: "/images/image-slide10.jpg",
+    img: "/api/getftp/image-slide10.jpg",
     title: "Simcenter \n TURBOdesign Suite",
     description: "역설계 기법에 의한 유체기계설계 소프트웨어",
   },
   {
     id: 11,
-    img: "/images/image-slide11.jpg",
+    img: "/api/getftp/image-slide11.jpg",
     title: "NANOTEST \n TIMA 5",
     description: "ASTM D-5470 규정에 따른 TIM 재 열물성치 측정장치",
   },
 ];
 
 const customerImg = [
-  { img: "/images/clogo_samsung.png", url: "https://www.samsung.com" },
-  { img: "/images/clogo_lg.png", url: "https://www.lgdisplay.com" },
-  { img: "/images/clogo_hyundai.png", url: "https://www.hyundai.com" },
-  { img: "/images/clogo_hmobis.png", url: "https://www.mobis.co.kr" },
-  { img: "/images/clogo_sk.png", url: "https://www.skhynix.com" },
-  { img: "/images/clogo_doosan.png", url: "https://www.doosanenerbility.com" },
-  { img: "/images/clogo_apro.png", url: "http://apro.re.kr" },
-  { img: "/images/clogo_fadu.png", url: "https://www.fadu.io" },
-  { img: "/images/clogo_telit.png", url: "https://www.telit.com" },
-  { img: "/images/clogo_infineon.png", url: "https://www.infineon.com" },
-  { img: "/images/clogo_jcet.png", url: "https://www.jcetglobal.com" },
-  { img: "/images/clogo_solum.png", url: "https://www.solum-group.co.kr" },
-  { img: "/images/clogo_onsemi.png", url: "https://onsemi-korea.com/" },
-  { img: "/images/clogo_signetics.png", url: "https://www.signetics.com/" },
+  { img: "/api/getftp/clogo_samsung.png", url: "https://www.samsung.com" },
+  { img: "/api/getftp/clogo_lg.png", url: "https://www.lgdisplay.com" },
+  { img: "/api/getftp/clogo_hyundai.png", url: "https://www.hyundai.com" },
+  { img: "/api/getftp/clogo_hmobis.png", url: "https://www.mobis.co.kr" },
+  { img: "/api/getftp/clogo_sk.png", url: "https://www.skhynix.com" },
+  {
+    img: "/api/getftp/clogo_doosan.png",
+    url: "https://www.doosanenerbility.com",
+  },
+  { img: "/api/getftp/clogo_apro.png", url: "http://apro.re.kr" },
+  { img: "/api/getftp/clogo_fadu.png", url: "https://www.fadu.io" },
+  { img: "/api/getftp/clogo_telit.png", url: "https://www.telit.com" },
+  { img: "/api/getftp/clogo_infineon.png", url: "https://www.infineon.com" },
+  { img: "/api/getftp/clogo_jcet.png", url: "https://www.jcetglobal.com" },
+  { img: "/api/getftp/clogo_solum.png", url: "https://www.solum-group.co.kr" },
+  { img: "/api/getftp/clogo_onsemi.png", url: "https://onsemi-korea.com/" },
+  { img: "/api/getftp/clogo_signetics.png", url: "https://www.signetics.com/" },
 ];
 
 type TabName = "공지사항" | "제품소식" | "자료실";
@@ -152,7 +155,7 @@ export default function MainPage() {
             {imgSlice.map((list, id) => (
               <SwiperSlide key={id}>
                 <Image
-                  src={list.img}
+                  src={list.img} // Custom Hook으로 불러온 URL 사용
                   alt="product img"
                   fill
                   style={{ objectFit: "cover" }}
@@ -383,11 +386,11 @@ export default function MainPage() {
                     onClick={() => window.open(item.url, "_blank")}
                   >
                     <Image
-                      src={item.img}
-                      alt={`customer logo ${index}`}
+                      src={item.img} // Custom Hook으로 불러온 URL 사용
+                      alt="product img"
                       width={93}
                       height={45}
-                      style={{ objectFit: "contain" }}
+                      style={{ objectFit: "cover" }}
                     />
                   </div>
                 ))}
