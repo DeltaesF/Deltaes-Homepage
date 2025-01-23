@@ -7,8 +7,26 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Tima5() {
+  const { imageSrc, error } = useFetchImages([
+    "tima5_1.jpg",
+    "tima5_2.jpg",
+    "tima5_3.jpg",
+    "tima5_4.jpg",
+    "tima5_5.jpg",
+    "tima5_6.jpg",
+    "tima5_7.jpg",
+    "tima5_8.jpg",
+    "tima5_9.jpg",
+    "tima5_10.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.firstWrapper}>
@@ -17,12 +35,14 @@ export default function Tima5() {
           <h1>TIMA 5</h1>
           <div className={styles.firstImgP}>
             <div className={styles.firstImg}>
-              <Image
-                src="/images/tima5_1.jpg"
-                alt="Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[0] && (
+                <Image
+                  src={imageSrc[0]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
             <div className={styles.firstDes}>
               <p>
@@ -60,56 +80,66 @@ export default function Tima5() {
           <h2>Technical Specification</h2>
           <div className={styles.thirdImgP}>
             <div className={styles.thirdImg1_1}>
-              <Image
-                src="/images/tima5_2.jpg"
-                alt="Simcenter Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[1] && (
+                <Image
+                  src={imageSrc[1]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <h2>Sample properties</h2>
           <div className={styles.thirdImgP}>
             <div className={styles.thirdImg1_2}>
-              <Image
-                src="/images/tima5_3.jpg"
-                alt="Simcenter Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[2] && (
+                <Image
+                  src={imageSrc[2]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <h2>Measurement conditions</h2>
           <div className={styles.thirdImgP}>
             <div className={styles.thirdImg1_3}>
-              <Image
-                src="/images/tima5_4.jpg"
-                alt="Simcenter Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[3] && (
+                <Image
+                  src={imageSrc[3]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <h2>Measurement accuracy</h2>
           <div className={styles.thirdImgP}>
             <div className={styles.thirdImg1_4}>
-              <Image
-                src="/images/tima5_5.jpg"
-                alt="Simcenter Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[4] && (
+                <Image
+                  src={imageSrc[4]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <h2>Software screenshots</h2>
           <div className={styles.thirdImgP}>
             <div className={styles.thirdImg1_5}>
-              <Image
-                src="/images/tima5_6.jpg"
-                alt="Simcenter Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[5] && (
+                <Image
+                  src={imageSrc[5]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <h2>온칩 가열</h2>
@@ -130,23 +160,27 @@ export default function Tima5() {
               </p>
             </div>
             <div className={styles.thirdImg}>
-              <Image
-                src="/images/tima5_7.jpg"
-                alt="Simcenter Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[6] && (
+                <Image
+                  src={imageSrc[6]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <h2>우수한 TIM 특성화</h2>
           <div className={styles.thirdImgP}>
             <div className={styles.thirdImg2}>
-              <Image
-                src="/images/tima5_8.jpg"
-                alt="Simcenter Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[7] && (
+                <Image
+                  src={imageSrc[7]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
             <div className={styles.thirdDes2}>
               <p>
@@ -183,23 +217,27 @@ export default function Tima5() {
               </p>
             </div>
             <div className={styles.thirdImg3}>
-              <Image
-                src="/images/tima5_9.jpg"
-                alt="Simcenter Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[8] && (
+                <Image
+                  src={imageSrc[8]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <h2>자동화되고 표준화된 측정</h2>
           <div className={styles.thirdImgP}>
             <div className={styles.thirdImg2}>
-              <Image
-                src="/images/tima5_10.jpg"
-                alt="Simcenter Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[9] && (
+                <Image
+                  src={imageSrc[9]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
             <div className={styles.thirdDes2}>
               <p>

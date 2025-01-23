@@ -7,13 +7,21 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Timapules() {
-  const imageSlice = [
-    "/images/timapulse3.jpg",
-    "/images/timapulse4.jpg",
-    "/images/timapulse5.jpg",
-  ];
+  const { imageSrc, error } = useFetchImages([
+    "timapulse1.jpg",
+    "timapulse2.jpg",
+    "timapulse3.jpg",
+    "timapulse4.jpg",
+    "timapulse5.jpg",
+    "timapulse6.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
 
   return (
     <div className={styles.container}>
@@ -23,12 +31,14 @@ export default function Timapules() {
           <h1>TIMA pulse</h1>
           <div className={styles.firstImgP}>
             <div className={styles.firstImg}>
-              <Image
-                src="/images/timapulse1.jpg"
-                alt="Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[0] && (
+                <Image
+                  src={imageSrc[0]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
             <div className={styles.firstDes}>
               <p>NANOTEST TIMA pulse</p>
@@ -45,30 +55,39 @@ export default function Timapules() {
           </div>
         </div>
       </div>
-      <div className={styles.secondWrapper}>
-        <div className={styles.secondContent}>
-          <div className={styles.secondDes}>
-            <div>
-              <h2>TIMA pulse 제품</h2>
-              <h3>TIMA pulse PRODUCT</h3>
-              <button>브로슈어 Download </button>
-              <button>TIMA pulse DATASHEET</button>
+      {imageSrc[1] && (
+        <div
+          className={styles.secondWrapper}
+          style={{
+            backgroundImage: `url(${imageSrc[1]})`, // 동적으로 배경 이미지 설정
+          }}
+        >
+          <div className={styles.secondContent}>
+            <div className={styles.secondDes}>
+              <div>
+                <h2>TIMA pulse 제품</h2>
+                <h3>TIMA pulse PRODUCT</h3>
+                <button>브로슈어 Download</button>
+                <button>TIMA pulse DATASHEET</button>
+              </div>
+              <div></div>
             </div>
-            <div></div>
           </div>
         </div>
-      </div>
+      )}
       <div className={styles.thirdWrapper}>
         <div className={styles.thirdContent}>
           <h2>출력(Output)</h2>
           <div className={styles.thirdImgP}>
             <div className={styles.thirdImg}>
-              <Image
-                src="/images/timapulse6.jpg"
-                alt="Simcenter Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[5] && (
+                <Image
+                  src={imageSrc[5]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
             <div className={styles.thirdDes2}>
               <ul>

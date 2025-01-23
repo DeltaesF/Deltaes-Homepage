@@ -7,8 +7,20 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Latima() {
+  const { imageSrc, error } = useFetchImages([
+    "latima1.jpg",
+    "latima2.jpg",
+    "latima3.jpg",
+    "latima4.jpg",
+    "latima5.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.firstWrapper}>
@@ -17,12 +29,14 @@ export default function Latima() {
           <h1>LaTIMA</h1>
           <div className={styles.firstImgP}>
             <div className={styles.firstImg}>
-              <Image
-                src="/images/latima1.jpg"
-                alt="Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[0] && (
+                <Image
+                  src={imageSrc[0]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
             <div className={styles.firstDes}>
               <p>
@@ -59,12 +73,14 @@ export default function Latima() {
           <h2>테스트해 보세요</h2>
           <div className={styles.thirdImgP}>
             <div className={styles.thirdImg}>
-              <Image
-                src="/images/latima5.jpg"
-                alt="Simcenter Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[4] && (
+                <Image
+                  src={imageSrc[4]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
             <div className={styles.thirdDes2}>
               <p>
@@ -93,12 +109,14 @@ export default function Latima() {
               </p>
             </div>
             <div className={styles.thirdImg2}>
-              <Image
-                src="/images/latima5.jpg"
-                alt="Simcenter Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[4] && (
+                <Image
+                  src={imageSrc[4]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
         </div>

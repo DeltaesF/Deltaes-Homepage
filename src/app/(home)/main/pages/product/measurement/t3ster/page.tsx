@@ -1,7 +1,28 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function T3ster() {
+  const { imageSrc, error } = useFetchImages([
+    "t3ster1.jpg",
+    "t3ster2.jpg",
+    "t3ster3.jpg",
+    "t3ster4.jpg",
+    "t3ster5.jpg",
+    "t3ster6.jpg",
+    "t3ster7.jpg",
+    "t3ster8.jpg",
+    "t3ster9.jpg",
+    "t3ster10.jpg",
+    "t3ster11.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.firstWrapper}>
@@ -10,12 +31,14 @@ export default function T3ster() {
           <h1>T3STER SI</h1>
           <div className={styles.firstImgP}>
             <div className={styles.firstImg}>
-              <Image
-                src="/images/t3ster1.jpg"
-                alt="Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[0] && (
+                <Image
+                  src={imageSrc[0]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
             <div className={styles.firstDes}>
               <p>
@@ -162,12 +185,14 @@ export default function T3ster() {
                 </p>
               </div>
               <div className={styles.thirdImg}>
-                <Image
-                  src="/images/t3ster2.jpg"
-                  alt="Simcenter Flotherm XT"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[1] && (
+                  <Image
+                    src={imageSrc[1]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -193,12 +218,14 @@ export default function T3ster() {
                     the system more easy to learn and use.
                   </p>
                   <div className={styles.fourNewImgDesImg}>
-                    <Image
-                      src="/images/t3ster3.jpg"
-                      alt="Simcenter Flotherm XT"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[2] && (
+                      <Image
+                        src={imageSrc[2]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -212,12 +239,14 @@ export default function T3ster() {
                     approaches for more 'exotic' devices if necessary.
                   </p>
                   <div className={styles.fourNewImgDesImg}>
-                    <Image
-                      src="/images/t3ster5.jpg"
-                      alt="Simcenter Flotherm XT"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[4] && (
+                      <Image
+                        src={imageSrc[4]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -235,12 +264,14 @@ export default function T3ster() {
                     applies the fastest test methodology possible.
                   </p>
                   <div className={styles.fourNewImgDesImg}>
-                    <Image
-                      src="/images/t3ster7.jpg"
-                      alt="Simcenter Flotherm XT"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[6] && (
+                      <Image
+                        src={imageSrc[6]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -258,12 +289,14 @@ export default function T3ster() {
                     boundary conditions even to the slightest extent.
                   </p>
                   <div className={styles.fourNewImgDesImg}>
-                    <Image
-                      src="/images/t3ster9.jpg"
-                      alt="Simcenter Flotherm XT"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[8] && (
+                      <Image
+                        src={imageSrc[8]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -287,12 +320,14 @@ export default function T3ster() {
                     making even complex transient simulations highly accurate.
                   </p>
                   <div className={styles.fourNewImgDesImg}>
-                    <Image
-                      src="/images/t3ster11.jpg"
-                      alt="Simcenter Flotherm XT"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[10] && (
+                      <Image
+                        src={imageSrc[10]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -318,12 +353,14 @@ export default function T3ster() {
                     semiconductor thermal performance.
                   </p>
                   <div className={styles.fourNewImgDesImg}>
-                    <Image
-                      src="/images/t3ster4.jpg"
-                      alt="Simcenter Flotherm XT"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[3] && (
+                      <Image
+                        src={imageSrc[3]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -344,12 +381,14 @@ export default function T3ster() {
                     in a semiconductor package and its thermal environment.
                   </p>
                   <div className={styles.fourNewImgDesImg}>
-                    <Image
-                      src="/images/t3ster6.jpg"
-                      alt="Simcenter Flotherm XT"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[5] && (
+                      <Image
+                        src={imageSrc[5]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -365,12 +404,14 @@ export default function T3ster() {
                     performance.
                   </p>
                   <div className={styles.fourNewImgDesImg}>
-                    <Image
-                      src="/images/t3ster8.jpg"
-                      alt="Simcenter Flotherm XT"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[7] && (
+                      <Image
+                        src={imageSrc[7]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -390,12 +431,14 @@ export default function T3ster() {
                     packages.
                   </p>
                   <div className={styles.fourNewImgDesImg}>
-                    <Image
-                      src="/images/t3ster10.jpg"
-                      alt="Simcenter Flotherm XT"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[9] && (
+                      <Image
+                        src={imageSrc[9]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                 </div>
               </div>

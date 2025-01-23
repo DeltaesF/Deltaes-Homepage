@@ -1,7 +1,31 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Powertester() {
+  const { imageSrc, error } = useFetchImages([
+    "powertester1.jpg",
+    "powertester2.jpg",
+    "powertester3.jpg",
+    "powertester4.jpg",
+    "powertester5.jpg",
+    "powertester6.jpg",
+    "powertester7.jpg",
+    "powertester8.jpg",
+    "powertester9.jpg",
+    "powertester10.jpg",
+    "powertester11.jpg",
+    "powertester12.jpg",
+    "powertester13.jpg",
+    "powertester14.jpg",
+    "powertester15.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.firstWrapper}>
@@ -10,12 +34,14 @@ export default function Powertester() {
           <h1>Powertester</h1>
           <div className={styles.firstImgP}>
             <div className={styles.firstImg}>
-              <Image
-                src="/images/powertester1.jpg"
-                alt="Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[0] && (
+                <Image
+                  src={imageSrc[0]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
             <div className={styles.firstDes}>
               <p>
@@ -114,22 +140,26 @@ export default function Powertester() {
                 </p>
               </div>
               <div className={styles.thirdImg}>
-                <Image
-                  src="/images/powertester2.jpg"
-                  alt="Simcenter Flotherm XT"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[1] && (
+                  <Image
+                    src={imageSrc[1]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
             </div>
             <div className={styles.thirdImgP3}>
               <div className={styles.thirdImg3}>
-                <Image
-                  src="/images/powertester3.jpg"
-                  alt="Simcenter Flotherm XT"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[2] && (
+                  <Image
+                    src={imageSrc[2]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.thirdDes3}>
                 <p>
@@ -164,20 +194,24 @@ export default function Powertester() {
             <div className={styles.thirdImgP4}>
               <h3>Simcenter POWERTESTER comparison table</h3>
               <div className={styles.thirdImg4}>
-                <Image
-                  src="/images/powertester4.jpg"
-                  alt="Simcenter Flotherm XT"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[3] && (
+                  <Image
+                    src={imageSrc[3]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className={styles.thirdImg5}>
-                <Image
-                  src="/images/powertester5.jpg"
-                  alt="Simcenter Flotherm XT"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                {imageSrc[4] && (
+                  <Image
+                    src={imageSrc[4]}
+                    alt="전자기기 및 반도체"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -210,12 +244,14 @@ export default function Powertester() {
                     power modules to be tested.
                   </p>
                   <div className={styles.fourNewImgDesImg}>
-                    <Image
-                      src="/images/powertester6.jpg"
-                      alt="Simcenter Flotherm XT"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[5] && (
+                      <Image
+                        src={imageSrc[5]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -230,12 +266,14 @@ export default function Powertester() {
                     users through the most important settings.
                   </p>
                   <div className={styles.fourNewImgDesImg}>
-                    <Image
-                      src="/images/powertester8.jpg"
-                      alt="Simcenter Flotherm XT"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[7] && (
+                      <Image
+                        src={imageSrc[7]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -251,12 +289,14 @@ export default function Powertester() {
                     PCSec, but PCmin cycling strategies are supported.
                   </p>
                   <div className={styles.fourNewImgDesImg}>
-                    <Image
-                      src="/images/powertester10.jpg"
-                      alt="Simcenter Flotherm XT"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[9] && (
+                      <Image
+                        src={imageSrc[9]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -272,12 +312,14 @@ export default function Powertester() {
                     with ease.
                   </p>
                   <div className={styles.fourNewImgDesImg}>
-                    <Image
-                      src="/images/powertester12.jpg"
-                      alt="Simcenter Flotherm XT"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[11] && (
+                      <Image
+                        src={imageSrc[11]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -303,12 +345,14 @@ export default function Powertester() {
                     happen.
                   </p>
                   <div className={styles.fourNewImgDesImg}>
-                    <Image
-                      src="/images/powertester14.jpg"
-                      alt="Simcenter Flotherm XT"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[13] && (
+                      <Image
+                        src={imageSrc[13]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -324,12 +368,14 @@ export default function Powertester() {
                     systems are prepared for testing SiC devices as well.
                   </p>
                   <div className={styles.fourNewImgDesImg}>
-                    <Image
-                      src="/images/powertester7.jpg"
-                      alt="Simcenter Flotherm XT"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[6] && (
+                      <Image
+                        src={imageSrc[6]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -348,12 +394,14 @@ export default function Powertester() {
                     operation, to meet automotive test requirements.
                   </p>
                   <div className={styles.fourNewImgDesImg}>
-                    <Image
-                      src="/images/powertester9.jpg"
-                      alt="Simcenter Flotherm XT"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[8] && (
+                      <Image
+                        src={imageSrc[8]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -378,12 +426,14 @@ export default function Powertester() {
                     a csv format for analysis in third party software.
                   </p>
                   <div className={styles.fourNewImgDesImg}>
-                    <Image
-                      src="/images/powertester11.jpg"
-                      alt="Simcenter Flotherm XT"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[10] && (
+                      <Image
+                        src={imageSrc[10]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -399,12 +449,14 @@ export default function Powertester() {
                     day.
                   </p>
                   <div className={styles.fourNewImgDesImg}>
-                    <Image
-                      src="/images/powertester13.jpg"
-                      alt="Simcenter Flotherm XT"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[12] && (
+                      <Image
+                        src={imageSrc[12]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -427,12 +479,14 @@ export default function Powertester() {
                   </p>
 
                   <div className={styles.fourNewImgDesImg}>
-                    <Image
-                      src="/images/powertester15.jpg"
-                      alt="Simcenter Flotherm XT"
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
+                    {imageSrc[14] && (
+                      <Image
+                        src={imageSrc[14]}
+                        alt="전자기기 및 반도체"
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    )}
                   </div>
                 </div>
               </div>

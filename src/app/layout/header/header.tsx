@@ -144,7 +144,7 @@ export default function Header() {
                       </li>
                       <li>
                         <Link href="/main/pages/product/measurement/t3ster">
-                          T3STER
+                          T3STER SI
                         </Link>
                       </li>
                       <li>

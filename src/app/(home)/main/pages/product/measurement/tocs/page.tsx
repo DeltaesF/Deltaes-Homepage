@@ -7,8 +7,22 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Tocs() {
+  const { imageSrc, error } = useFetchImages([
+    "tocs1.jpg",
+    "tocs2.jpg",
+    "tocs3.jpg",
+    "tocs4.jpg",
+    "tocs5.jpg",
+    "tocs6.jpg",
+    "tocs7.jpg",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <div className={styles.container}>
       <div className={styles.firstWrapper}>
@@ -17,12 +31,14 @@ export default function Tocs() {
           <h1>TOCS</h1>
           <div className={styles.firstImgP}>
             <div className={styles.firstImg}>
-              <Image
-                src="/images/tocs1.jpg"
-                alt="Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[0] && (
+                <Image
+                  src={imageSrc[0]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
             <div className={styles.firstDes}>
               <p>
@@ -95,23 +111,27 @@ export default function Tocs() {
               </ul>
             </div>
             <div className={styles.thirdImg}>
-              <Image
-                src="/images/tocs5.jpg"
-                alt="Simcenter Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[4] && (
+                <Image
+                  src={imageSrc[4]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
           <h2>열전도도 및 확산도</h2>
           <div className={styles.thirdImgP}>
             <div className={styles.thirdImg2}>
-              <Image
-                src="/images/tocs6.jpg"
-                alt="Simcenter Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[5] && (
+                <Image
+                  src={imageSrc[5]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
             <div className={styles.thirdDes2}>
               <p>
@@ -131,12 +151,14 @@ export default function Tocs() {
               </p>
             </div>
             <div className={styles.thirdImg3}>
-              <Image
-                src="/images/tocs7.jpg"
-                alt="Simcenter Flotherm XT"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {imageSrc[6] && (
+                <Image
+                  src={imageSrc[6]}
+                  alt="전자기기 및 반도체"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
           </div>
         </div>
