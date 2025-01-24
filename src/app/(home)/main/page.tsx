@@ -19,6 +19,7 @@ interface ImgSlice {
   title: string;
   description: string;
   logo?: string;
+  link: string;
 }
 
 const imgSlice: ImgSlice[] = [
@@ -28,24 +29,28 @@ const imgSlice: ImgSlice[] = [
     title: "Digital Physics & Physical Testing",
     description: "Solution Provider",
     logo: "/api/getftp/footer-logo.png",
+    link: "",
   },
   {
     id: 2,
     img: "/api/getftp/image-slide2.jpg",
     title: "Simcenter \n Powertester",
     description: "전력 반도체 신뢰성 평가 측정장비",
+    link: "/main/pages/product/measurement/powertester",
   },
   {
     id: 3,
     img: "/api/getftp/image-slide3.jpg",
     title: "Simcenter \n T3STER SI",
     description: "반도체 열저항 정션 온도측정 장비",
+    link: "/main/pages/product/measurement/t3ster",
   },
   {
     id: 4,
     img: "/api/getftp/image-slide4.jpg",
     title: "Simcenter \n Flotherm",
     description: "산업계 표준 전기 / 전자 부품 열관리 소프트웨어",
+    link: "/main/pages/product/simulation/flotherm",
   },
   {
     id: 5,
@@ -53,18 +58,21 @@ const imgSlice: ImgSlice[] = [
     title: "Simcenter \n FLOEFD",
     description:
       "실무 사용자를 위한 차세대 \n Multi-Physics CFD 해석 소프트 웨어",
+    link: "/main/pages/product/simulation/floefd",
   },
   {
     id: 6,
     img: "/api/getftp/image-slide6.jpg",
     title: "Simcenter \n STAR-CCM+",
     description: "CFD 엔지니어를 위한 통합 다중 물리 솔루션",
+    link: "/main/pages/product/simulation/starccm",
   },
   {
     id: 7,
     img: "/api/getftp/image-slide7.jpg",
     title: "Simcenter \n Amesim & Flomaster",
     description: "시스템 시뮬레이션 및 설계 소프트웨어",
+    link: "/main/pages/product/simulation/flomaster",
   },
   {
     id: 8,
@@ -72,6 +80,7 @@ const imgSlice: ImgSlice[] = [
     title: "Simcenter \n HEEDS",
     description:
       "CAD 및 CAE와 연계되는 강력한 \n ​설계 공간 탐색 및 최적화 소프트웨어",
+    link: "/main/pages/product/simulation/heeds",
   },
   {
     id: 9,
@@ -79,18 +88,21 @@ const imgSlice: ImgSlice[] = [
     title: "Simcenter 3D",
     description:
       "구조, 진동 , 음향, 열유동, 동역학, 최적화 및 전자기 등의 문제를 \n ​빠르게 해결하는 전문적 엔지니어링 소프트웨어",
+    link: "/main/pages/product/simulation/simcenter3d",
   },
   {
     id: 10,
     img: "/api/getftp/image-slide10.jpg",
     title: "Simcenter \n TURBOdesign Suite",
     description: "역설계 기법에 의한 유체기계설계 소프트웨어",
+    link: "/main/pages/product/simulation/adt",
   },
   {
     id: 11,
     img: "/api/getftp/image-slide11.jpg",
     title: "NANOTEST \n TIMA 5",
     description: "ASTM D-5470 규정에 따른 TIM 재 열물성치 측정장치",
+    link: "/main/pages/product/simulation/tima5",
   },
 ];
 
@@ -228,19 +240,22 @@ export default function MainPage() {
                     </div>
                   )}
                   {list.id !== 1 && (
-                    <p
-                      className={styles.imgIntroduceDetail}
-                      style={{
-                        position: "absolute", // 부모 컨테이너 기준으로 절대 위치
-                        right: "0%", // 가운데 정렬
-                        bottom: "-120px",
-                        fontSize: "16px", // 원하는 폰트 크기
-                        fontWeight: "bold", // 폰트 굵기
-                        color: "white", // 텍스트 색상
-                      }}
-                    >
-                      ▶ 자세히 보기
-                    </p>
+                    <Link href={list.link ?? "#"}>
+                      <p
+                        className={styles.imgIntroduceDetail}
+                        style={{
+                          position: "absolute",
+                          right: "0%",
+                          bottom: "-120px",
+                          fontSize: "16px",
+                          fontWeight: "bold",
+                          color: "white",
+                          cursor: "pointer",
+                        }}
+                      >
+                        ▶ 자세히 보기
+                      </p>
+                    </Link>
                   )}
                 </div>
               </SwiperSlide>
