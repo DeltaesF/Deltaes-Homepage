@@ -152,7 +152,12 @@ export default function Signup() {
             <div className={styles.divider}>
               <span>또는</span>
             </div>
-            <button onClick={toggleEmailForm}>이메일로 가입</button>
+            <button
+              onClick={toggleEmailForm}
+              className={styles.signupEmailForm}
+            >
+              이메일로 가입
+            </button>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className={styles.signupForm}>
