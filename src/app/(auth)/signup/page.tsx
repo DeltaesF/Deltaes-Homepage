@@ -5,9 +5,72 @@ import { useState } from "react";
 
 export default function Signup() {
   const [showDetails, setShowDetails] = useState(false);
+  const [showEmailForm, setShowEmailForm] = useState(false);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState<Record<string, string>>({});
+  const [successMessage, setSuccessMessage] = useState("");
 
   const toggleDetails = () => {
     setShowDetails((prev) => !prev);
+  };
+
+  const toggleEmailForm = () => {
+    setShowEmailForm((prevState) => !prevState);
+  };
+
+  const passwordRegex = /^.{8,}$/;
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    const errors: Record<string, string> = {}; // 오류를 객체로 받아서 추가합니다.
+
+    if (!username) {
+      errors.username = "사용자 이름을 입력해주세요.";
+    }
+    if (!email) {
+      errors.email = "이메일을 입력해주세요.";
+    }
+    if (!password) {
+      errors.password = "비밀번호를 입력해주세요.";
+    } else if (!passwordRegex.test(password)) {
+      errors.password = "비밀번호는 8자 이상이어야 합니다.";
+    }
+    if (!confirmPassword) {
+      errors.confirmPassword = "비밀번호 확인란을 입력해주세요.";
+    } else if (password !== confirmPassword) {
+      errors.confirmPassword = "비밀번호가 일치하지 않습니다.";
+    }
+
+    if (Object.keys(errors).length > 0) {
+      // errors에 오류가 있으면 setError(errors)를 호출하여 오류 상태를 업데이트
+      setError(errors);
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/auth/signup", {
+        method: "POST", // POST 요청
+        headers: { "Content-Type": "application/json" }, // 헤더 설정해서 서버에 JSON 형식의 데이터를 전달
+        body: JSON.stringify({ username, email, password }), // JSON 형태로 요청 본문에 담아서 전송
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        setSuccessMessage("회원가입 성공! 로그인 페이지로 이동합니다.");
+        setTimeout(() => {
+          window.location.href = "/login";
+        }, 2000);
+      } else {
+        setError({ general: data.message || "회원가입 실패" });
+      }
+    } catch (error) {
+      console.error("회원가입 오류:", error);
+      setError({ general: "서버 오류, 다시 시도해주세요." });
+    }
   };
 
   return (
@@ -20,76 +83,155 @@ export default function Signup() {
             로그인
           </Link>
         </p>
-        <div className={styles.signupButtonWrapper}>
-          <button className={styles.googleButton}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-              <path
-                style={{
-                  stroke: "none",
-                  fillRule: "nonzero",
-                  fill: "#4285f4",
-                  fillOpacity: 1,
-                }}
-                d="M12.238 9.816v4.649h6.586c-.289 1.496-1.156 2.762-2.457 3.613l3.969 3.02c2.316-2.094 3.652-5.172 3.652-8.825 0-.851-.078-1.668-.222-2.457Zm0 0"
-              />
-              <path
-                style={{
-                  stroke: "none",
-                  fillRule: "nonzero",
-                  fill: "#34a853",
-                  fillOpacity: 1,
-                }}
-                d="m5.379 14.285-.895.672-3.171 2.422A12.268 12.268 0 0 0 12.238 24c3.305 0 6.075-1.07 8.098-2.902l-3.973-3.02c-1.09.719-2.48 1.156-4.125 1.156-3.183 0-5.886-2.105-6.855-4.941Zm0 0"
-              />
-              <path
-                style={{
-                  stroke: "none",
-                  fillRule: "nonzero",
-                  fill: "#fbbc05",
-                  fillOpacity: 1,
-                }}
-                d="M1.313 6.621A11.659 11.659 0 0 0 0 12c0 1.941.477 3.762 1.313 5.379 0 .012 4.074-3.098 4.074-3.098A7.047 7.047 0 0 1 4.997 12c0-.797.144-1.559.39-2.281Zm0 0"
-              />
-              <path
-                style={{
-                  stroke: "none",
-                  fillRule: "nonzero",
-                  fill: "#ea4335",
-                  fillOpacity: 1,
-                }}
-                d="M12.238 4.777c1.801 0 3.403.614 4.684 1.79l3.504-3.434C18.3 1.187 15.543 0 12.238 0 7.453 0 3.328 2.695 1.313 6.621l4.07 3.098c.969-2.836 3.672-4.942 6.855-4.942Zm0 0"
-              />
-            </svg>
-            <span>Google로 가입</span>
-          </button>
-          <button className={styles.facebookButton}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25">
-              <path
-                style={{
-                  stroke: "none",
-                  fillRule: "nonzero",
-                  fill: "#fff",
-                  fillOpacity: 1,
-                }}
-                d="M25.008 12.504C25.008 5.594 19.406 0 12.504 0 5.594 0 0 5.594 0 12.504c0 6.238 4.574 11.414 10.55 12.351v-8.738H7.376v-3.613h3.176V9.75c0-3.137 1.863-4.867 4.719-4.867 1.367 0 2.8.242 2.8.242v3.082h-1.574c-1.555 0-2.039.965-2.039 1.95v2.347h3.469l-.555 3.613h-2.914v8.738c5.977-.937 10.55-6.113 10.55-12.351"
-              />
-              <path
-                style={{
-                  stroke: "none",
-                  fillRule: "nonzero",
-                  fill: "#1877f2",
-                  fillOpacity: 1,
-                }}
-                d="m17.371 16.117.555-3.613h-3.469v-2.348c0-.984.484-1.949 2.04-1.949h1.573V5.125s-1.433-.242-2.8-.242c-2.856 0-4.72 1.73-4.72 4.867v2.754H7.376v3.613h3.176v8.738c.636.098 1.289.153 1.953.153.664 0 1.316-.055 1.953-.153v-8.738h2.914"
-              />
-            </svg>
-            <span>Facebook으로 가입</span>
-          </button>
-          <div className={styles.divider}>
-            <span>또는</span>
+        {!showEmailForm ? (
+          <div className={styles.signupButtonWrapper}>
+            <button className={styles.googleButton}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                <path
+                  style={{
+                    stroke: "none",
+                    fillRule: "nonzero",
+                    fill: "#4285f4",
+                    fillOpacity: 1,
+                  }}
+                  d="M12.238 9.816v4.649h6.586c-.289 1.496-1.156 2.762-2.457 3.613l3.969 3.02c2.316-2.094 3.652-5.172 3.652-8.825 0-.851-.078-1.668-.222-2.457Zm0 0"
+                />
+                <path
+                  style={{
+                    stroke: "none",
+                    fillRule: "nonzero",
+                    fill: "#34a853",
+                    fillOpacity: 1,
+                  }}
+                  d="m5.379 14.285-.895.672-3.171 2.422A12.268 12.268 0 0 0 12.238 24c3.305 0 6.075-1.07 8.098-2.902l-3.973-3.02c-1.09.719-2.48 1.156-4.125 1.156-3.183 0-5.886-2.105-6.855-4.941Zm0 0"
+                />
+                <path
+                  style={{
+                    stroke: "none",
+                    fillRule: "nonzero",
+                    fill: "#fbbc05",
+                    fillOpacity: 1,
+                  }}
+                  d="M1.313 6.621A11.659 11.659 0 0 0 0 12c0 1.941.477 3.762 1.313 5.379 0 .012 4.074-3.098 4.074-3.098A7.047 7.047 0 0 1 4.997 12c0-.797.144-1.559.39-2.281Zm0 0"
+                />
+                <path
+                  style={{
+                    stroke: "none",
+                    fillRule: "nonzero",
+                    fill: "#ea4335",
+                    fillOpacity: 1,
+                  }}
+                  d="M12.238 4.777c1.801 0 3.403.614 4.684 1.79l3.504-3.434C18.3 1.187 15.543 0 12.238 0 7.453 0 3.328 2.695 1.313 6.621l4.07 3.098c.969-2.836 3.672-4.942 6.855-4.942Zm0 0"
+                />
+              </svg>
+              <span>Google로 가입</span>
+            </button>
+            <button className={styles.facebookButton}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25">
+                <path
+                  style={{
+                    stroke: "none",
+                    fillRule: "nonzero",
+                    fill: "#fff",
+                    fillOpacity: 1,
+                  }}
+                  d="M25.008 12.504C25.008 5.594 19.406 0 12.504 0 5.594 0 0 5.594 0 12.504c0 6.238 4.574 11.414 10.55 12.351v-8.738H7.376v-3.613h3.176V9.75c0-3.137 1.863-4.867 4.719-4.867 1.367 0 2.8.242 2.8.242v3.082h-1.574c-1.555 0-2.039.965-2.039 1.95v2.347h3.469l-.555 3.613h-2.914v8.738c5.977-.937 10.55-6.113 10.55-12.351"
+                />
+                <path
+                  style={{
+                    stroke: "none",
+                    fillRule: "nonzero",
+                    fill: "#1877f2",
+                    fillOpacity: 1,
+                  }}
+                  d="m17.371 16.117.555-3.613h-3.469v-2.348c0-.984.484-1.949 2.04-1.949h1.573V5.125s-1.433-.242-2.8-.242c-2.856 0-4.72 1.73-4.72 4.867v2.754H7.376v3.613h3.176v8.738c.636.098 1.289.153 1.953.153.664 0 1.316-.055 1.953-.153v-8.738h2.914"
+                />
+              </svg>
+              <span>Facebook으로 가입</span>
+            </button>
+            <div className={styles.divider}>
+              <span>또는</span>
+            </div>
+            <button onClick={toggleEmailForm}>이메일로 가입</button>
           </div>
-          <button>이메일로 가입</button>
-        </div>
+        ) : (
+          <form onSubmit={handleSubmit} className={styles.signupForm}>
+            <div className={styles.formGroup}>
+              <label htmlFor="username" className={styles.signupLabel}>
+                사용자 이름
+              </label>
+              <input
+                id="username"
+                type="text"
+                placeholder="사용자 이름"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className={styles.signupInput}
+                autoFocus
+              />
+            </div>
+            {error.username && (
+              <span className={styles.error}>{error.username}</span>
+            )}
+
+            <div className={styles.formGroup}>
+              <label htmlFor="email" className={styles.signupLabel}>
+                이메일
+              </label>
+              <input
+                id="email"
+                type="email"
+                placeholder="example@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className={styles.signupInput}
+              />
+            </div>
+            {error.email && <span className={styles.error}>{error.email}</span>}
+
+            <div className={styles.formGroup}>
+              <label htmlFor="password" className={styles.signupLabel}>
+                비밀번호
+              </label>
+              <input
+                id="password"
+                type="password"
+                placeholder="8자 이상 입력해주세요."
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className={styles.signupInput}
+              />
+            </div>
+            {error.password && (
+              <span className={styles.error}>{error.password}</span>
+            )}
+            <div className={styles.formGroup}>
+              <label htmlFor="confirmPassword" className={styles.signupLabel}>
+                비밀번호 확인
+              </label>
+              <input
+                id="confirmPassword"
+                type="password"
+                placeholder="비밀번호 확인해주세요."
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className={styles.signupInput}
+              />
+            </div>
+            {error.confirmPassword && (
+              <span className={styles.error}>{error.confirmPassword}</span>
+            )}
+            <button type="submit" className={styles.signupButton}>
+              가입하기
+            </button>
+            {successMessage && (
+              <span className={styles.success}>{successMessage}</span>
+            )}
+            {error.general && (
+              <span className={styles.error}>{error.general}</span>
+            )}
+          </form>
+        )}
 
         <div className={styles.container}>
           <input type="checkbox" className={styles.checkbox} />

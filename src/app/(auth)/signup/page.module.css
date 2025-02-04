@@ -79,6 +79,9 @@
   display: flex;
   align-items: center;
 }
+.button {
+  cursor: pointer;
+}
 
 .login {
   color: #237473;
@@ -106,6 +109,55 @@
   color: #000;
 }
 
+.signupForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.formGroup {
+  width: 320px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.signupLabel {
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 110px;
+  height: 48px;
+  text-align: right;
+}
+.signupInput {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.error {
+  font-size: 8px;
+  color: red;
+}
+
+.signupButton {
+  border: none;
+  width: 320px;
+  height: 48px;
+  background-color: #ccc;
+  color: white;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.signupButton:hover {
+  transition: 0.5s ease;
+  background-color: gray;
+  cursor: pointer;
+}
 .container {
   font-family: Arial, sans-serif;
   line-height: 1.5;
