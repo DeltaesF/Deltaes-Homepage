@@ -2,8 +2,10 @@ import { findUserByEmail } from "@/app/db/auth";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { serialize } from "cookie";
 
 const JWT_SECRET = process.env.JWT_SECRET as string; // JWT 토큰을 서명할 때 사용할 비밀 키
+const REFRESH_SECRET = process.env.REFRESH_SECRET as string;
 
 export async function POST(req: Request) {
   try {
@@ -39,22 +41,32 @@ export async function POST(req: Request) {
         { status: 401 },
       );
     }
-    // 비밀번호가 일치하면 JWT 토큰 생성
-    const token = jwt.sign(
+
+    // 액세스 토큰 (1시간 유효)
+    const accessToken = jwt.sign(
       { id: user.id, email: user.email, username: user.username }, // JWT payload (토큰에 포함할 사용자 정보)
       JWT_SECRET, // 서명에 사용할 비밀 키
       { expiresIn: "1h" }, // 토큰 만료 시간 (1시간)
     );
 
-    return NextResponse.json(
-      {
-        // 성공 메시지 및 토큰, 사용자 정보 반환
-        message: "로그인 성공",
-        token,
-        user: { id: user.id, username: user.username, email: user.email },
-      },
-      { status: 200 },
-    );
+    // 리프레시 토큰 (7일 유효)
+    const refreshToken = jwt.sign({ id: user.id }, REFRESH_SECRET, {
+      expiresIn: "7d",
+    });
+
+    // httpOnly 쿠키에 리프레시 토큰 저장
+    const refreshCookie = serialize("refreshToken", refreshToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: 7 * 24 * 60 * 60, // 7일
+      path: "/",
+    });
+
+    return new NextResponse(JSON.stringify({ accessToken }), {
+      status: 200,
+      headers: { "Set-Cookie": refreshCookie },
+    });
   } catch (error) {
     console.error("로그인 오류:", error);
     return NextResponse.json(
