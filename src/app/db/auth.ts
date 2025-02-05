@@ -1,4 +1,4 @@
-import { createPool, ResultSetHeader } from "mysql2/promise";
+import { createPool, ResultSetHeader, RowDataPacket } from "mysql2/promise";
 
 // DB 연결 설정
 const db = createPool({
@@ -8,6 +8,14 @@ const db = createPool({
   database: process.env.DB_DATABASE,
   port: parseInt(process.env.DB_HOST!.split(":")[1]),
 });
+
+// User 타입 정의
+interface User extends RowDataPacket {
+  id: number;
+  username: string;
+  email: string;
+  password: string;
+}
 
 // 회원가입 기능을 위한 DB쿼리 함수
 export async function signupUser( // users 테이블에 데이터를 삽입하는 함수
@@ -20,4 +28,13 @@ export async function signupUser( // users 테이블에 데이터를 삽입하�
     [username, email, hashedPassword],
   );
   return result;
+}
+
+// 로그인 기능 (이메일로 유저 찾기)
+export async function findUserByEmail(email: string): Promise<User | null> {
+  // 쿼리 실행 후 반환된 결과에서 실제 데이터만 추출
+  const [rows] = await db.query("SELECT * FROM users WHERE email = ?", [email]);
+
+  // rows는 QueryResult 객체의 'rows' 배열을 포함
+  return (rows as User[]).length > 0 ? (rows as User[])[0] : null;
 }
