@@ -3,6 +3,7 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import { useState } from "react";
+import { useAuth } from "@/app/context/AuthContext";
 
 export default function Login() {
   const [shwoLoginForm, setShowLoginForm] = useState(false);
@@ -10,6 +11,8 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<Record<string, string>>({});
   const [successMessage, setSuccessMessage] = useState("");
+
+  const { login } = useAuth();
 
   const toggleLoginForm = () => {
     setShowLoginForm((prev) => !prev);
@@ -32,25 +35,12 @@ export default function Login() {
       return;
     }
     try {
-      const response = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+      await login(email, password); // ✅ AuthContext의 login 함수 호출 (fetch 제거)
 
-      const data = await response.json();
-      if (response.ok) {
-        setSuccessMessage("로그인 성공! 메인 페이지로 이동합니다.");
-        setTimeout(() => {
-          window.location.href = "/main";
-        }, 2000);
-      } else {
-        if (response.status === 401) {
-          setError({ general: "이메일 또는 비밀번호가 올바르지 않습니다." });
-        } else {
-          setError({ general: data.message || "로그인 실패" });
-        }
-      }
+      setSuccessMessage("로그인 성공!");
+      setTimeout(() => {
+        window.location.href = "/main";
+      }, 2000);
     } catch (error) {
       console.error("로그인 오류:", error);
       setError({ general: "서버 오류, 다시 시도해주세요." });

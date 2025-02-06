@@ -6,6 +6,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 interface User {
   username: string;
   email: string;
+  role: "user" | "admin";
 }
 
 // 인증 상태와 관련된 값과 메서드
@@ -45,12 +46,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
     });
+
     const data = await res.json();
+    console.log("AuthContext 로그인 응답:", data); // 응답 확인
+
     if (res.ok) {
       setAccessToken(data.accessToken);
       setUser(data.user);
+    } else {
+      throw new Error(data.message || "로그인 실패");
     }
   };
+
+  useEffect(() => {
+    console.log("현재 user 상태:", user); // user 상태 확인
+  }, [user]);
 
   const logout = async () => {
     await fetch("/api/auth/logout", { method: "POST", credentials: "include" });

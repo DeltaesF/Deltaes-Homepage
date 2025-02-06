@@ -44,7 +44,12 @@ export async function POST(req: Request) {
 
     // 액세스 토큰 (1시간 유효)
     const accessToken = jwt.sign(
-      { id: user.id, email: user.email, username: user.username }, // JWT payload (토큰에 포함할 사용자 정보)
+      {
+        id: user.id,
+        email: user.email,
+        username: user.username,
+        role: user.role,
+      }, // JWT payload (토큰에 포함할 사용자 정보)
       JWT_SECRET, // 서명에 사용할 비밀 키
       { expiresIn: "1h" }, // 토큰 만료 시간 (1시간)
     );
@@ -63,10 +68,20 @@ export async function POST(req: Request) {
       path: "/",
     });
 
-    return new NextResponse(JSON.stringify({ accessToken }), {
-      status: 200,
-      headers: { "Set-Cookie": refreshCookie },
-    });
+    return new NextResponse(
+      JSON.stringify({
+        accessToken,
+        user: {
+          username: user.username,
+          email: user.email,
+          role: user.role,
+        },
+      }),
+      {
+        status: 200,
+        headers: { "Set-Cookie": refreshCookie },
+      },
+    );
   } catch (error) {
     console.error("로그인 오류:", error);
     return NextResponse.json(

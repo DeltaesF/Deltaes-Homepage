@@ -24,7 +24,7 @@ export async function signupUser( // users 테이블에 데이터를 삽입하�
   hashedPassword: string,
 ) {
   const [result] = await db.execute<ResultSetHeader>(
-    "INSERT INTO users (username, email, password) VALUES (?, ?, ?)", // 쿼리를 실행해 사용자 데이터를 데이터베이스에 저장 ?는 각각 username, email, password값에 값이 바인딩
+    "INSERT INTO users (username, email, password) VALUES (?, ?, ?, ?)", // 쿼리를 실행해 사용자 데이터를 데이터베이스에 저장 ?는 각각 username, email, password값에 값이 바인딩
     [username, email, hashedPassword],
   );
   return result;
@@ -32,9 +32,30 @@ export async function signupUser( // users 테이블에 데이터를 삽입하�
 
 // 로그인 기능 (이메일로 유저 찾기)
 export async function findUserByEmail(email: string): Promise<User | null> {
-  // 쿼리 실행 후 반환된 결과에서 실제 데이터만 추출
-  const [rows] = await db.query("SELECT * FROM users WHERE email = ?", [email]);
+  try {
+    console.log("🔍 [DB] 이메일 검색 실행:", email);
+    const [rows] = await db.query("SELECT * FROM users WHERE email = ?", [
+      email,
+    ]);
+    console.log("✅ [DB] 조회 결과:", rows); // 👉 결과 확인
 
-  // rows는 QueryResult 객체의 'rows' 배열을 포함
-  return (rows as User[]).length > 0 ? (rows as User[])[0] : null;
+    return (rows as User[]).length > 0 ? (rows as User[])[0] : null;
+  } catch (error) {
+    console.error("❌ [DB] 유저 검색 오류:", error);
+    return null;
+  }
+}
+
+// 로그인 기능 (ID로 유저 찾기)
+export async function findUserById(id: number): Promise<User | null> {
+  try {
+    console.log("🔍 [DB] ID로 유저 검색 실행:", id);
+    const [rows] = await db.query("SELECT * FROM users WHERE id = ?", [id]);
+    console.log("✅ [DB] 조회 결과:", rows); // 👉 결과 확인
+
+    return (rows as User[]).length > 0 ? (rows as User[])[0] : null;
+  } catch (error) {
+    console.error("❌ [DB] 유저 검색 오류:", error);
+    return null;
+  }
 }
