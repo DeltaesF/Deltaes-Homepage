@@ -38,7 +38,12 @@ export async function GET() {
 
     // 새로운 액세스 토큰 발급
     const newAccessToken = sign(
-      { id: user.id, email: user.email, username: user.username, role: "USER" }, // role 필드 추가
+      {
+        id: user.id,
+        email: user.email,
+        username: user.username,
+        role: ["user", "admin"],
+      }, // role 필드 추가
       JWT_SECRET,
       { expiresIn: "1h" },
     );
@@ -49,7 +54,7 @@ export async function GET() {
         user: {
           username: user.username,
           email: user.email,
-          role: "USER", // role 추가
+          role: ["user", "admin"], // role 추가
         },
       },
       { status: 200 },
