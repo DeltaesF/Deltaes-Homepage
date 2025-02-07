@@ -48,8 +48,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     });
 
     const data = await res.json();
-    console.log("AuthContext 로그인 응답:", data); // 응답 확인
-
     if (res.ok) {
       setAccessToken(data.accessToken);
       setUser(data.user);
@@ -57,10 +55,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       throw new Error(data.message || "로그인 실패");
     }
   };
-
+  // 리프레시 토큰 재생성
   useEffect(() => {
-    console.log("현재 user 상태:", user); // user 상태 확인
-  }, [user]);
+    refreshAccessToken();
+  }, []);
 
   const logout = async () => {
     await fetch("/api/auth/logout", { method: "POST", credentials: "include" });

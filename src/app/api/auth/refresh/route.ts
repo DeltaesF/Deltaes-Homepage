@@ -42,7 +42,7 @@ export async function GET() {
         id: user.id,
         email: user.email,
         username: user.username,
-        role: ["user", "admin"],
+        role: user.role,
       }, // role 필드 추가
       JWT_SECRET,
       { expiresIn: "1h" },
@@ -54,18 +54,11 @@ export async function GET() {
         user: {
           username: user.username,
           email: user.email,
-          role: ["user", "admin"], // role 추가
+          role: user.role, // role 추가
         },
       },
       { status: 200 },
     );
-
-    // // 리프레시 토큰이 유효하면, 해당 사용자의 ID를 바탕으로 새로운 액세스 토큰을 생성
-    // const newAccessToken = sign({ id: decoded.id }, JWT_SECRET, {
-    //   expiresIn: "1h",
-    // });
-
-    // return NextResponse.json({ accessToken: newAccessToken }, { status: 200 });
   } catch (error) {
     console.error("토큰 재발급 오류:", error);
     return NextResponse.json({ message: "토큰 재발급 실패" }, { status: 401 });

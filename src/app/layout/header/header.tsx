@@ -57,10 +57,16 @@ export default function Header() {
               </svg>
               {user ? (
                 <div>
-                  <span>
-                    {user.username} {user.role === "admin" ? "관리자님" : "님"}
-                  </span>
-                  <button onClick={logout}>로그아웃</button>
+                  {user.role === "admin" ? (
+                    <Link href="/profile">
+                      <span>{user.username} 관리자님</span>
+                    </Link>
+                  ) : (
+                    <span>{user.username} 님</span>
+                  )}
+                  <button style={{ marginLeft: "10px" }} onClick={logout}>
+                    로그아웃
+                  </button>
                 </div>
               ) : (
                 <div>
