@@ -42,7 +42,8 @@ export async function POST(req: Request) {
       );
     }
 
-    await updataLastLogin(user.id);
+    // 로그인 후 마지막 로그인 시간 업데이트
+    await updataLastLogin(user.id); // 로그인 후 last_login 업데이트
 
     // 액세스 토큰 (1시간 유효)
     const accessToken = jwt.sign(
@@ -77,6 +78,7 @@ export async function POST(req: Request) {
           username: user.username,
           email: user.email,
           role: user.role,
+          lastLogin: user.last_login,
         },
       }),
       {

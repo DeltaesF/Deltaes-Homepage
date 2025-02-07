@@ -43,7 +43,7 @@ export async function GET() {
         email: user.email,
         username: user.username,
         role: user.role,
-      }, // role 필드 추가
+      },
       JWT_SECRET,
       { expiresIn: "1h" },
     );
@@ -54,7 +54,8 @@ export async function GET() {
         user: {
           username: user.username,
           email: user.email,
-          role: user.role, // role 추가
+          role: user.role,
+          lastLogin: user.last_login,
         },
       },
       { status: 200 },
