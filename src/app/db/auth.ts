@@ -51,3 +51,12 @@ export async function findUserById(id: number): Promise<User | null> {
     return null;
   }
 }
+
+// 로그인 시 최근 활동 업데이트 함수
+export async function updataLastLogin(userId: number) {
+  const [result] = await db.execute<ResultSetHeader>(
+    "UPDATE users SET last_login = NOW() WHERE id = ?",
+    [userId],
+  );
+  return result;
+}

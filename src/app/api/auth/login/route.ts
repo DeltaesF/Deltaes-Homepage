@@ -1,4 +1,4 @@
-import { findUserByEmail } from "@/app/db/auth";
+import { findUserByEmail, updataLastLogin } from "@/app/db/auth";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
@@ -41,6 +41,8 @@ export async function POST(req: Request) {
         { status: 401 },
       );
     }
+
+    await updataLastLogin(user.id);
 
     // 액세스 토큰 (1시간 유효)
     const accessToken = jwt.sign(
