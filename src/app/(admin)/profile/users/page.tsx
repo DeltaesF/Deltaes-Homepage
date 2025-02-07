@@ -1,8 +1,8 @@
-import { useAuth } from "@/app/context/AuthContext";
+import { useUser } from "@/app/context/UserContext";
 import styles from "./page.module.css";
 
 export default function Users() {
-  const { user } = useAuth();
+  const { users } = useUser();
 
   return (
     <div>
@@ -16,11 +16,20 @@ export default function Users() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>{user?.username}</td>
-            <td>{user?.email}</td>
-            <td>{user?.role}</td>
-          </tr>
+          {users.map((user) => (
+            <tr key={user.id}>
+              <td>{user.username}</td>
+              <td>{user.email}</td>
+              <td>{user.role === "admin" ? "관리자" : "일반 회원"}</td>
+              <td>
+                {new Date(user.last_login).toLocaleDateString("ko-KR", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
