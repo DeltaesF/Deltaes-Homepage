@@ -4,6 +4,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 // 사용자 정보에 포함될 필드 (username, email)
 interface User {
+  id: number;
   username: string;
   email: string;
   role: "user" | "admin";
@@ -55,10 +56,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       throw new Error(data.message || "로그인 실패");
     }
   };
-  // 리프레시 토큰 재생성
-  useEffect(() => {
-    refreshAccessToken();
-  }, []);
 
   const logout = async () => {
     await fetch("/api/auth/logout", { method: "POST", credentials: "include" });

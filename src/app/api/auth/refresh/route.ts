@@ -52,6 +52,7 @@ export async function GET() {
       {
         accessToken: newAccessToken,
         user: {
+          id: user.id,
           username: user.username,
           email: user.email,
           role: user.role,
