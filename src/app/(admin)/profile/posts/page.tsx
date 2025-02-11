@@ -2,9 +2,15 @@
 
 import { usePostsList } from "@/app/context/PostsListContext";
 import styles from "./page.module.css";
+import Link from "next/link";
+import { useEffect } from "react";
 
 export default function Posts() {
   const { postsList, error, fetchPostsList } = usePostsList();
+
+  useEffect(() => {
+    fetchPostsList();
+  }, [fetchPostsList]);
 
   return (
     <div>
@@ -23,7 +29,9 @@ export default function Posts() {
             <tr key={post.id}>
               <td>{post.id}</td>
               <td>{post.username}</td>
-              <td>{post.title}</td>
+              <td>
+                <Link href={`/profile/posts/${post.id}`}>{post.title}</Link>
+              </td>
               <td>
                 {new Date(post.created_at).toLocaleDateString("ko-KR", {
                   year: "numeric",

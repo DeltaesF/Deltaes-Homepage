@@ -1,7 +1,7 @@
 "use client";
 import { useAuth } from "@/app/context/AuthContext";
 import { useEffect, useState } from "react";
-
+import styles from "./page.module.css";
 interface WriteProps {
   setSelectMenu: (menu: string) => void;
 }
@@ -22,7 +22,7 @@ export default function Write({ setSelectMenu }: WriteProps) {
   };
 
   const handleContentChange = (e: React.FormEvent<HTMLDivElement>) => {
-    setContent(e.currentTarget.innerHTML);
+    setContent(e.currentTarget.innerHTML); // 변경된 HTML을 저장
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -109,86 +109,68 @@ export default function Write({ setSelectMenu }: WriteProps) {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <div>
-          <label htmlFor="title">제목</label>
           <input
             type="text"
             id="title"
             value={title}
             onChange={handleTitleChange}
             required
-            style={{
-              minHeight: "20px",
-              border: "1px solid #ddd",
-              padding: "10px",
-              cursor: "text",
-            }}
+            className={styles.input}
+            placeholder="제목을 입력해주세요"
           />
         </div>
-        <div>
-          <label htmlFor="content">내용</label>
-          <div>
-            <div>
-              <button
-                type="button"
-                onClick={() => toggleStyle("fontSize", "20px", "inherit")}
-              >
-                큰 글씨
-              </button>
-              <button
-                type="button"
-                onClick={() => toggleStyle("fontWeight", "bold", "normal")}
-              >
-                굵게
-              </button>
-              <button
-                type="button"
-                onClick={() => toggleStyle("fontStyle", "italic", "normal")}
-              >
-                기울이기
-              </button>
-              <button
-                type="button"
-                onClick={() =>
-                  toggleStyle("textDecoration", "underline", "none")
-                }
-              >
-                밑줄
-              </button>
-              <button
-                type="button"
-                onClick={() => toggleStyle("color", "red", "black")}
-              >
-                빨강
-              </button>
-            </div>
-            <div
-              id="content"
-              contentEditable
-              onInput={handleContentChange}
-              style={{
-                minHeight: "200px",
-                border: "1px solid #ddd",
-                padding: "10px",
-                cursor: "text",
-              }}
-            ></div>
+        <div className={styles.editorContainer}>
+          <div className={styles.toolbar}>
+            <button
+              type="button"
+              onClick={() => toggleStyle("fontSize", "20px", "inherit")}
+            >
+              큰 글씨
+            </button>
+            <button
+              type="button"
+              onClick={() => toggleStyle("fontWeight", "bold", "normal")}
+            >
+              굵게
+            </button>
+            <button
+              type="button"
+              onClick={() => toggleStyle("fontStyle", "italic", "normal")}
+            >
+              기울이기
+            </button>
+            <button
+              type="button"
+              onClick={() => toggleStyle("textDecoration", "underline", "none")}
+            >
+              밑줄
+            </button>
+            <button
+              type="button"
+              onClick={() => toggleStyle("color", "red", "black")}
+            >
+              빨강
+            </button>
           </div>
+          <div
+            id="content"
+            contentEditable
+            onInput={handleContentChange}
+            className={styles.content}
+          ></div>
         </div>
-        <button type="submit">글 작성</button>
+        <button type="submit" className={styles.submitBtn}>
+          글 작성
+        </button>
       </form>
       {message && (
         <div
-          style={{
-            marginTop: "10px",
-            padding: "10px",
-            backgroundColor:
-              messageType === "success" ? "lightgreen" : "lightcoral",
-            color: messageType === "success" ? "green" : "red",
-            borderRadius: "5px",
-          }}
+          className={`${styles.message} ${
+            messageType === "success" ? styles.success : styles.error
+          }`}
         >
           {message}
         </div>
