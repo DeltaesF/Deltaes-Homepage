@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { AuthProvider } from "./context/AuthContext";
 import { UserProvider } from "./context/UserContext";
+import { PostsListProvider } from "./context/PostsListContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,7 +31,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>
-          <UserProvider>{children}</UserProvider>
+          <UserProvider>
+            <PostsListProvider>{children}</PostsListProvider>
+          </UserProvider>
         </AuthProvider>
       </body>
     </html>

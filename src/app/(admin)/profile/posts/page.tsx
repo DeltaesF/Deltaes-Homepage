@@ -1,25 +1,36 @@
+"use client";
+
+import { usePostsList } from "@/app/context/PostsListContext";
 import styles from "./page.module.css";
 
 export default function Posts() {
-  const posts = [
-    { id: 1, title: "안녕하세요", views: 12 },
-    { id: 2, title: "반갑습니다.", views: 9 },
-  ];
+  const { postsList, error, fetchPostsList } = usePostsList();
+
   return (
     <div>
       <table className={styles.table}>
         <thead>
           <tr>
             <th>번호</th>
+            <th>작성자</th>
             <th>게시글</th>
+            <th>작성일</th>
             <th>조회수</th>
           </tr>
         </thead>
         <tbody>
-          {posts.map((post) => (
+          {postsList.map((post) => (
             <tr key={post.id}>
               <td>{post.id}</td>
+              <td>{post.username}</td>
               <td>{post.title}</td>
+              <td>
+                {new Date(post.created_at).toLocaleDateString("ko-KR", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </td>
               <td>
                 <div className={styles.views}>
                   <svg

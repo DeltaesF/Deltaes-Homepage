@@ -2,7 +2,11 @@
 import { useAuth } from "@/app/context/AuthContext";
 import { useEffect, useState } from "react";
 
-export default function Write() {
+interface WriteProps {
+  setSelectMenu: (menu: string) => void;
+}
+
+export default function Write({ setSelectMenu }: WriteProps) {
   const { user } = useAuth();
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
@@ -44,6 +48,10 @@ export default function Write() {
         setIsSaved(true);
         setMessage("글이 성공적으로 작성되었습니다!");
         setMessageType("success");
+
+        setTimeout(() => {
+          setSelectMenu("게시물 관리");
+        }, 1000);
       } else {
         setMessage(data.error || "글 작성에 실패했습니다.");
         setMessageType("error");
@@ -72,6 +80,34 @@ export default function Write() {
     };
   }, [isSaved]);
 
+  // 스타일 적용 / 제거 함수
+  const toggleStyle = (style: string, value: string, defaultValue: string) => {
+    const selection = window.getSelection();
+    if (!selection?.rangeCount) return;
+
+    const range = selection.getRangeAt(0);
+    const selectedText = selection.toString();
+
+    if (!selectedText) return;
+
+    let span = range.commonAncestorContainer.parentElement as HTMLSpanElement;
+
+    if (span && span.tagName === "SPAN" && span.style[style as any] === value) {
+      // 이미 스타일이 적용된 경우, 스타일을 초기값으로 변경
+      span.style[style as any] = defaultValue;
+
+      // 기본 스타일로 돌아가면 span을 제거 (텍스트를 다시 원래 상태로)
+      if (span.getAttribute("style") === "") {
+        span.replaceWith(...span.childNodes);
+      }
+    } else {
+      // 새로운 <span> 태그 생성하여 스타일 적용
+      const newSpan = document.createElement("span");
+      newSpan.style[style as any] = value;
+      range.surroundContents(newSpan);
+    }
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -93,17 +129,53 @@ export default function Write() {
         </div>
         <div>
           <label htmlFor="content">내용</label>
-          <div
-            id="content"
-            contentEditable
-            onInput={handleContentChange}
-            style={{
-              minHeight: "200px",
-              border: "1px solid #ddd",
-              padding: "10px",
-              cursor: "text",
-            }}
-          ></div>
+          <div>
+            <div>
+              <button
+                type="button"
+                onClick={() => toggleStyle("fontSize", "20px", "inherit")}
+              >
+                큰 글씨
+              </button>
+              <button
+                type="button"
+                onClick={() => toggleStyle("fontWeight", "bold", "normal")}
+              >
+                굵게
+              </button>
+              <button
+                type="button"
+                onClick={() => toggleStyle("fontStyle", "italic", "normal")}
+              >
+                기울이기
+              </button>
+              <button
+                type="button"
+                onClick={() =>
+                  toggleStyle("textDecoration", "underline", "none")
+                }
+              >
+                밑줄
+              </button>
+              <button
+                type="button"
+                onClick={() => toggleStyle("color", "red", "black")}
+              >
+                빨강
+              </button>
+            </div>
+            <div
+              id="content"
+              contentEditable
+              onInput={handleContentChange}
+              style={{
+                minHeight: "200px",
+                border: "1px solid #ddd",
+                padding: "10px",
+                cursor: "text",
+              }}
+            ></div>
+          </div>
         </div>
         <button type="submit">글 작성</button>
       </form>

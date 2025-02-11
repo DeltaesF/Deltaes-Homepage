@@ -18,7 +18,7 @@ export default function AdminPage() {
     } else if (selectMenu === "회원 관리") {
       return <Users />;
     } else if (selectMenu === "글 작성") {
-      return <Write />;
+      return <Write setSelectMenu={setSelectMenu} />;
     }
   };
   return (

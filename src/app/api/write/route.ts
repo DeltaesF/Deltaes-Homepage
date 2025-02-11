@@ -1,5 +1,5 @@
 // 글 작성 api
-import { createPool, ResultSetHeader } from "mysql2/promise";
+import { createPool, ResultSetHeader, RowDataPacket } from "mysql2/promise";
 import { NextResponse } from "next/server";
 
 // DB 연결 설정
@@ -34,4 +34,17 @@ export async function POST(req: Request) {
   }
 }
 
-export async function GET() {}
+export async function GET() {
+  try {
+    const [posts] = await db.query<RowDataPacket[]>(
+      `SELECT p.id, p.title, p.content, p.created_at, p.updated_at, p.views, u.username
+       FROM posts p
+       JOIN users u ON p.user_id = u.id
+       ORDER BY p.created_at DESC`,
+    );
+    return NextResponse.json({ posts }, { status: 200 });
+  } catch (error) {
+    console.error("게시글 조회 오류:", error);
+    return NextResponse.json({ error: "서버 오류" }, { status: 500 });
+  }
+}
