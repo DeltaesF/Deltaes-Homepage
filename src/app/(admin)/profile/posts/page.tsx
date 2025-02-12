@@ -10,7 +10,7 @@ export default function Posts() {
 
   useEffect(() => {
     fetchPostsList();
-  }, [fetchPostsList]);
+  }, []);
 
   return (
     <div>
@@ -30,7 +30,12 @@ export default function Posts() {
               <td>{post.id}</td>
               <td>{post.username}</td>
               <td>
-                <Link href={`/profile/posts/${post.id}`}>{post.title}</Link>
+                <Link
+                  href={`/profile/posts/${post.id}`}
+                  className={styles.postLink}
+                >
+                  {post.title}
+                </Link>
               </td>
               <td>
                 {new Date(post.created_at).toLocaleDateString("ko-KR", {

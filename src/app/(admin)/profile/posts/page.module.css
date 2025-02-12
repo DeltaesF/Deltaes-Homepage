@@ -21,6 +21,14 @@
   background-color: #f9f9f9;
 }
 
+.postLink {
+  color: black;
+  text-decoration: none;
+}
+.postLink:hover {
+  /* color: rgb(32, 108, 194); */
+  color: rgb(24, 94, 175);
+}
 .views {
   display: flex;
   align-items: center;

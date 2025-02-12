@@ -1,5 +1,5 @@
 .container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
   background: #fff;
@@ -7,9 +7,22 @@
   border-radius: 10px;
 }
 
-.wrapper {
-  width: 1000px;
+.content {
+  width: 800px;
   height: auto;
-  background-color: white;
+  background-color: #fff;
   margin: 0 auto;
+  padding: 50px;
+  border: 1px solid #ddd;
+}
+
+.header span {
+  margin-right: 10px;
+}
+
+.divider {
+  width: 800px;
+  height: 1px;
+  background-color: #ccc;
+  margin: 40px auto;
 }

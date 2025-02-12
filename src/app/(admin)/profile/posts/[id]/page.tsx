@@ -41,28 +41,36 @@ export default function DetailPosts() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.wrapper}>
-        <div className={styles.content}>
-          <header>
-            <div>
-              <span>작성자: {post?.username}</span>
-              <span>
-                작성일:
-                {post?.created_at
-                  ? new Date(post.created_at).toLocaleDateString("ko-KR", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })
-                  : "날짜 없음"}
-              </span>
-              <span>조회수: {post?.views}</span>
-            </div>
-            <h1>{post?.title}</h1>
-          </header>
-          <span></span>
-          <div dangerouslySetInnerHTML={{ __html: post?.content || "" }}></div>
-        </div>
+      <div className={styles.content}>
+        <header>
+          <div className={styles.header}>
+            <span>작성자: {post?.username}</span>
+            <span>
+              작성일:{" "}
+              {post?.created_at
+                ? new Date(post.created_at).toLocaleDateString("ko-KR", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })
+                : "날짜 없음"}
+            </span>
+            <span>조회수: {post?.views}</span>
+          </div>
+          <h1>{post?.title}</h1>
+          <span>
+            최종 수정일:{" "}
+            {post?.updated_at
+              ? new Date(post.updated_at).toLocaleDateString("ko-KR", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })
+              : "날짜 없음"}
+          </span>
+        </header>
+        <div className={styles.divider}></div>
+        <div dangerouslySetInnerHTML={{ __html: post?.content || "" }}></div>
       </div>
     </div>
   );

@@ -16,6 +16,9 @@ export default function Write({ setSelectMenu }: WriteProps) {
     null,
   );
   const [isSaved, setIsSaved] = useState(false);
+  const [fontSize, setFontSize] = useState("14px");
+  const [textColor, setTextColor] = useState("black");
+  const [bgColor, setBgColor] = useState("white");
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
@@ -92,20 +95,51 @@ export default function Write({ setSelectMenu }: WriteProps) {
 
     let span = range.commonAncestorContainer.parentElement as HTMLSpanElement;
 
-    if (span && span.tagName === "SPAN" && span.style[style as any] === value) {
-      // 이미 스타일이 적용된 경우, 스타일을 초기값으로 변경
-      span.style[style as any] = defaultValue;
+    if (span && span.tagName === "SPAN") {
+      // 이미 적용된 스타일이면 원래대로 되돌리기
+      if (span.style[style as any] === value) {
+        span.style[style as any] = defaultValue;
 
-      // 기본 스타일로 돌아가면 span을 제거 (텍스트를 다시 원래 상태로)
-      if (span.getAttribute("style") === "") {
-        span.replaceWith(...span.childNodes);
+        // 스타일이 없으면 span 제거
+        if (span.getAttribute("style") === "") {
+          span.replaceWith(...span.childNodes);
+        }
+      } else {
+        // 기존 스타일이 없으면 스타일 적용
+        span.style[style as any] = value;
       }
     } else {
-      // 새로운 <span> 태그 생성하여 스타일 적용
+      // 새로운 <span> 생성 후 스타일 적용
       const newSpan = document.createElement("span");
       newSpan.style[style as any] = value;
-      range.surroundContents(newSpan);
+
+      try {
+        range.surroundContents(newSpan);
+      } catch (error) {
+        console.warn("선택된 범위가 올바르지 않습니다.", error);
+      }
     }
+  };
+
+  // 글자 크기 변경
+  const handleFontSizeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedSize = e.target.value;
+    setFontSize(selectedSize);
+    toggleStyle("fontSize", selectedSize, "16px");
+  };
+
+  // 텍스트 색상 변경
+  const handleTextColorChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedColor = e.target.value;
+    setTextColor(selectedColor);
+    toggleStyle("color", selectedColor, "black");
+  };
+
+  // 배경색 변경
+  const handleBgColorChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedBgColor = e.target.value;
+    setBgColor(selectedBgColor);
+    toggleStyle("backgroundColor", selectedBgColor, "white");
   };
 
   return (
@@ -124,12 +158,98 @@ export default function Write({ setSelectMenu }: WriteProps) {
         </div>
         <div className={styles.editorContainer}>
           <div className={styles.toolbar}>
-            <button
-              type="button"
-              onClick={() => toggleStyle("fontSize", "20px", "inherit")}
-            >
-              큰 글씨
-            </button>
+            <div className={styles.centered}>
+              <label htmlFor="fontSize">크기</label>
+              <select
+                id="fontSize"
+                value={fontSize}
+                onChange={handleFontSizeChange}
+                className={styles.select}
+              >
+                {[
+                  "6",
+                  "8",
+                  "10",
+                  "12",
+                  "14",
+                  "16",
+                  "18",
+                  "20",
+                  "24",
+                  "28",
+                  "32",
+                  "36",
+                  "40",
+                  "44",
+                  "48",
+                  "52",
+                  "60",
+                  "72",
+                ].map((size) => (
+                  <option key={size} value={`${size}px`}>
+                    {size}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className={styles.centered}>
+              <label htmlFor="textColor">색상</label>
+              <select
+                id="textColor"
+                value={textColor}
+                onChange={handleTextColorChange}
+                className={styles.select}
+              >
+                {[
+                  "white",
+                  "black",
+                  "red",
+                  "orange",
+                  "yellow",
+                  "green",
+                  "turquoise",
+                  "blue",
+                  "pink",
+                  "purple",
+                  "brown",
+                  "skyblue",
+                ].map((color) => (
+                  <option key={color} value={color}>
+                    {color}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className={styles.centered}>
+              <label htmlFor="bgColor">배경색</label>
+              <select
+                id="bgColor"
+                value={bgColor}
+                onChange={handleBgColorChange}
+                className={styles.select}
+              >
+                {[
+                  "white",
+                  "black",
+                  "red",
+                  "orange",
+                  "yellow",
+                  "green",
+                  "turquoise",
+                  "blue",
+                  "pink",
+                  "purple",
+                  "brown",
+                  "skyblue",
+                ].map((color) => (
+                  <option key={color} value={color}>
+                    {color}
+                  </option>
+                ))}
+              </select>
+            </div>
             <button
               type="button"
               onClick={() => toggleStyle("fontWeight", "bold", "normal")}
@@ -147,12 +267,6 @@ export default function Write({ setSelectMenu }: WriteProps) {
               onClick={() => toggleStyle("textDecoration", "underline", "none")}
             >
               밑줄
-            </button>
-            <button
-              type="button"
-              onClick={() => toggleStyle("color", "red", "black")}
-            >
-              빨강
             </button>
           </div>
           <div

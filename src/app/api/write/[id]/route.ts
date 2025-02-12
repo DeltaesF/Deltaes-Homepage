@@ -1,4 +1,4 @@
-import { createPool, RowDataPacket } from "mysql2/promise";
+import { createPool, ResultSetHeader, RowDataPacket } from "mysql2/promise";
 import { NextResponse } from "next/server";
 
 // DB 연결 설정
@@ -18,6 +18,13 @@ export async function GET(
   try {
     const { id } = params;
 
+    // 조회수 증가
+    await db.execute<ResultSetHeader>(
+      "UPDATE posts SET views = views + 1 WHERE id = ?",
+      [id],
+    );
+
+    // id에 맞는 게시글 가져오기
     const [rows] = await db.query<RowDataPacket[]>(
       `SELECT p.id, p.title, p.content, p.created_at, p.updated_at, p.views, u.username
        FROM posts p
