@@ -19,6 +19,8 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "필수 필드 누락" }, { status: 400 });
     }
 
+    console.log("Received images:", images); // images 값 확인
+
     const [result] = await db.execute<ResultSetHeader>(
       "INSERT INTO posts (title, content, user_id, images) VALUES (?, ?, ?, ?)",
       [title, content, user_id, JSON.stringify(images || [])],

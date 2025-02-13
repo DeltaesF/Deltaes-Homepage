@@ -11,6 +11,7 @@ export default function Write({ setSelectMenu }: WriteProps) {
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
   const [image, setImage] = useState<File | null>(null);
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [messageType, setMessageType] = useState<"success" | "error" | null>(
     null,
@@ -45,6 +46,45 @@ export default function Write({ setSelectMenu }: WriteProps) {
     }
   };
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setImage(file);
+    }
+  };
+
+  const uploadImage = async () => {
+    if (!image) return;
+
+    const formData = new FormData();
+    formData.append("image", image);
+
+    try {
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+      console.log("Upload API Response:", data);
+
+      const FTP_HOST = process.env.FTP_HOST;
+
+      if (response.ok) {
+        // 이미지 URL을 받아와서 이미지 다운로드 API URL로 변환
+        const fileUrl = data.fileUrl.replace(
+          `${FTP_HOST}/images/`,
+          "/api/getftp/",
+        );
+        setImageUrl(fileUrl);
+      } else {
+        alert("이미지 업로드 실패");
+      }
+    } catch (error) {
+      console.error("업로드 중 오류 발생:", error);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -58,6 +98,7 @@ export default function Write({ setSelectMenu }: WriteProps) {
           title,
           content,
           user_id: user?.id, // 로그인된 사용자 ID를 서버로 전달
+          images: imageUrl ? [imageUrl] : [], // 이미지 URL을 배열로 전달
         }),
       });
 
@@ -296,6 +337,13 @@ export default function Write({ setSelectMenu }: WriteProps) {
           글 작성
         </button>
       </form>
+      <input type="file" onChange={handleImageChange} />
+      <button type="button" onClick={uploadImage}>
+        이미지 업로드
+      </button>
+
+      {/* 이미지 미리보기 */}
+      {imageUrl && <img src={imageUrl} alt="업로드된 이미지" />}
       {message && (
         <div
           className={`${styles.message} ${
