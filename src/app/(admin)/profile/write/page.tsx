@@ -25,7 +25,24 @@ export default function Write({ setSelectMenu }: WriteProps) {
   };
 
   const handleContentChange = (e: React.FormEvent<HTMLDivElement>) => {
-    setContent(e.currentTarget.innerHTML); // 변경된 HTML을 저장
+    const contentDiv = e.currentTarget;
+    setContent(contentDiv.innerHTML);
+
+    // 마지막 입력된 노드를 가져옴
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) return;
+
+    const range = selection.getRangeAt(0);
+    const lastNode = range.startContainer;
+
+    if (lastNode.nodeType === Node.ELEMENT_NODE) {
+      const lastElement = lastNode as HTMLElement;
+
+      // 현재 줄의 첫 번째 요소가 <span> 태그라면 스타일 제거
+      if (lastElement.tagName === "SPAN") {
+        lastElement.removeAttribute("style");
+      }
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -45,7 +62,6 @@ export default function Write({ setSelectMenu }: WriteProps) {
       });
 
       const data = await response.json();
-      console.log("data: 타입", data);
 
       if (response.ok) {
         setIsSaved(true);

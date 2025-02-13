@@ -2,6 +2,7 @@
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "./page.module.css";
+import Image from "next/image";
 
 interface Post {
   id: number;
@@ -11,6 +12,7 @@ interface Post {
   created_at: string;
   updated_at: string;
   username: string;
+  images: string[];
 }
 
 export default function DetailPosts() {
@@ -70,6 +72,7 @@ export default function DetailPosts() {
           </span>
         </header>
         <div className={styles.divider}></div>
+        <div className={styles.images}></div>
         <div dangerouslySetInnerHTML={{ __html: post?.content || "" }}></div>
       </div>
     </div>
