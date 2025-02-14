@@ -26,7 +26,7 @@ export async function GET(
 
     // id에 맞는 게시글 가져오기
     const [rows] = await db.query<RowDataPacket[]>(
-      `SELECT p.id, p.title, p.content, p.created_at, p.updated_at, p.views, u.username
+      `SELECT p.id, p.title, p.content, p.created_at, p.updated_at, p.views, u.username, p.images
        FROM posts p
        JOIN users u ON p.user_id = u.id
        WHERE p.id = ?`,
@@ -40,7 +40,11 @@ export async function GET(
       );
     }
 
-    return NextResponse.json({ post: rows[0] }, { status: 200 });
+    // 이미지를 포함하여 반환
+    return NextResponse.json(
+      { post: rows[0] }, // images가 이미 전체 URL로 저장되었으므로 그대로 반환
+      { status: 200 },
+    );
   } catch (error) {
     console.error("게시글 조회 오류:", error);
     return NextResponse.json({ error: "서버 오류" }, { status: 500 });

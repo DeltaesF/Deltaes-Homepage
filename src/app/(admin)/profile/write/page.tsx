@@ -53,6 +53,24 @@ export default function Write({ setSelectMenu }: WriteProps) {
     }
   };
 
+  const insertImageAtCursor = (imageUrl: string) => {
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) return;
+
+    const range = selection.getRangeAt(0);
+    const img = document.createElement("img");
+    img.src = imageUrl;
+    img.alt = "업로드된 이미지";
+    img.style.maxWidth = "100%"; // 이미지 크기 조절 (선택 사항)
+
+    // 이미지 삽입
+    range.deleteContents(); // 기존 선택된 내용 지우기 (선택된 텍스트가 있을 경우)
+    range.insertNode(img);
+    // 커서를 이미지 뒤로 이동시켜서, 이후에 텍스트 입력이 가능하도록
+    range.setStartAfter(img);
+    range.setEndAfter(img);
+  };
+
   const uploadImage = async () => {
     if (!image) return;
 
@@ -77,6 +95,7 @@ export default function Write({ setSelectMenu }: WriteProps) {
           "/api/getftp/",
         );
         setImageUrl(fileUrl);
+        insertImageAtCursor(fileUrl); // contentEditable에 이미지 삽입
       } else {
         alert("이미지 업로드 실패");
       }
@@ -97,8 +116,8 @@ export default function Write({ setSelectMenu }: WriteProps) {
         body: JSON.stringify({
           title,
           content,
-          user_id: user?.id, // 로그인된 사용자 ID를 서버로 전달
-          images: imageUrl ? [imageUrl] : [], // 이미지 URL을 배열로 전달
+          user_id: user?.id,
+          images: imageUrl ? [imageUrl] : [],
         }),
       });
 

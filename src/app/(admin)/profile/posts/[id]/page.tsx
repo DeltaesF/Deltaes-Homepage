@@ -34,12 +34,19 @@ export default function DetailPosts() {
           setError(data.error || "게시글을 불러오는 데 실패했습니다.");
         }
       } catch (error) {
+        console.log(error);
         setError("서버와 연결할 수 없습니다.");
       }
     };
 
     fetchPost();
   }, [id]);
+
+  useEffect(() => {
+    if (post) {
+      console.log("Post data:", post); // 가져온 게시글 데이터를 확인
+    }
+  }, [post]);
 
   return (
     <div className={styles.container}>
@@ -72,8 +79,13 @@ export default function DetailPosts() {
           </span>
         </header>
         <div className={styles.divider}></div>
-        <div className={styles.images}></div>
         <div dangerouslySetInnerHTML={{ __html: post?.content || "" }}></div>
+        {/* 이미지 출력 */}
+        <div className={styles.images}>
+          {post?.images?.map((image, index) => (
+            <img key={index} src={image} alt={`image-${index}`} />
+          ))}
+        </div>
       </div>
     </div>
   );
