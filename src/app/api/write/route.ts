@@ -39,7 +39,7 @@ export async function POST(req: Request) {
 export async function GET() {
   try {
     const [posts] = await db.query<RowDataPacket[]>(
-      `SELECT p.id, p.title, p.content, p.created_at, p.updated_at, p.views, u.username
+      `SELECT p.id, p.title, p.content, p.created_at, p.updated_at, p.views, u.username, p.images
        FROM posts p
        JOIN users u ON p.user_id = u.id
        ORDER BY p.created_at DESC`,

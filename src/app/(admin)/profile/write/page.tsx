@@ -116,8 +116,8 @@ export default function Write({ setSelectMenu }: WriteProps) {
         body: JSON.stringify({
           title,
           content,
-          user_id: user?.id,
-          images: imageUrl ? [imageUrl] : [],
+          user_id: user?.id, // 로그인된 사용자 ID를 서버로 전달
+          images: imageUrl ? [imageUrl] : [], // 이미지 URL을 배열로 전달
         }),
       });
 

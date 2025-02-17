@@ -9,6 +9,7 @@ interface Post {
   created_at: string;
   updated_at: string;
   username: string;
+  images: string;
 }
 
 interface PostsListContextType {
