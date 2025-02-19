@@ -356,7 +356,7 @@ export default function Write({ setSelectMenu }: WriteProps) {
           글 작성
         </button>
       </form>
-      <input type="file" onChange={handleImageChange} />
+      <input type="file" accept="image/*" onChange={handleImageChange} />
       <button type="button" onClick={uploadImage}>
         이미지 업로드
       </button>

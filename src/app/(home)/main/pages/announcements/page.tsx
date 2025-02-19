@@ -3,6 +3,7 @@
 import { usePostsList } from "@/app/context/PostsListContext";
 import styles from "./page.module.css";
 import { useEffect } from "react";
+import Link from "next/link";
 
 export default function Announcements() {
   const { postsList, error, fetchPostsList } = usePostsList();
@@ -32,15 +33,18 @@ export default function Announcements() {
           {postsList.map((post) => (
             <div key={post.id} className={styles.gridItem}>
               <div className={styles.gridItemPost}>
-                <h1>{post.title}</h1>
-                {Array.isArray(post.images) && post.images.length > 0 ? (
-                  post.images.map((image, index) => (
-                    <img key={index} src={image} alt={`이미지 ${index}`} />
-                  ))
-                ) : post.images && post.images.length > 0 ? (
-                  <img src={post.images} alt="이미지" />
-                ) : null}{" "}
-                {/* images가 없으면 렌더링하지 않음 */}
+                <Link
+                  href={`/main/pages/announcements/${post.id}`}
+                  className={styles.postLink}
+                >
+                  <h1>{post.title}</h1>
+                </Link>
+                {Array.isArray(JSON.parse(post.images)) &&
+                JSON.parse(post.images).length > 0
+                  ? JSON.parse(post.images).map((image, index) => (
+                      <img key={index} src={image} alt={`이미지 ${index}`} />
+                    ))
+                  : null}
               </div>
             </div>
           ))}

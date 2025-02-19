@@ -44,6 +44,7 @@ export async function GET() {
        JOIN users u ON p.user_id = u.id
        ORDER BY p.created_at DESC`,
     );
+
     return NextResponse.json({ posts }, { status: 200 });
   } catch (error) {
     console.error("게시글 조회 오류:", error);
