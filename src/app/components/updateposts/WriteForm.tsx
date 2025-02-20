@@ -2,11 +2,21 @@
 import { useAuth } from "@/app/context/AuthContext";
 import { useEffect, useState } from "react";
 import styles from "./writeForm.module.css";
+import useFetchImages from "@/app/hooks/useFetchImages";
+import Image from "next/image";
 interface WriteProps {
   setSelectMenu: (menu: string) => void;
 }
 
 export default function WriteForm({ setSelectMenu }: WriteProps) {
+  const { imageSrc, error } = useFetchImages([
+    "text.png",
+    "textBackground.png",
+    "bold.png",
+    "italic.png",
+    "underline.png",
+    "image.png",
+  ]);
   const { user } = useAuth();
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
@@ -20,6 +30,9 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
   const [fontSize, setFontSize] = useState("14px");
   const [textColor, setTextColor] = useState("black");
   const [bgColor, setBgColor] = useState("white");
+
+  const [showTextColor, setShowTextColor] = useState(false);
+  const [showBgColor, setShowBgColor] = useState(false);
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
@@ -218,6 +231,14 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
     toggleStyle("backgroundColor", selectedBgColor, "white");
   };
 
+  const handleTextImageClick = () => {
+    setShowTextColor(!showTextColor); // 토글 상태 변경
+  };
+
+  const handleBgImageClick = () => {
+    setShowBgColor(!showBgColor); // 토글 상태 변경
+  };
+
   return (
     <div className={styles.container}>
       <form onSubmit={handleSubmit} className={styles.form}>
@@ -235,7 +256,6 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
         <div className={styles.editorContainer}>
           <div className={styles.toolbar}>
             <div className={styles.centered}>
-              <label htmlFor="fontSize">크기</label>
               <select
                 id="fontSize"
                 value={fontSize}
@@ -270,79 +290,131 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
             </div>
 
             <div className={styles.centered}>
-              <label htmlFor="textColor">색상</label>
-              <select
-                id="textColor"
-                value={textColor}
-                onChange={handleTextColorChange}
-                className={styles.select}
-              >
-                {[
-                  "white",
-                  "black",
-                  "red",
-                  "orange",
-                  "yellow",
-                  "green",
-                  "turquoise",
-                  "blue",
-                  "pink",
-                  "purple",
-                  "brown",
-                  "skyblue",
-                ].map((color) => (
-                  <option key={color} value={color}>
-                    {color}
-                  </option>
-                ))}
-              </select>
+              {imageSrc[0] && (
+                <div onClick={handleTextImageClick}>
+                  <Image
+                    src={imageSrc[0]}
+                    alt="text"
+                    width={20}
+                    height={20}
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+              )}
+              {showTextColor && (
+                <select
+                  id="textColor"
+                  value={textColor}
+                  onChange={handleTextColorChange}
+                  className={styles.select}
+                >
+                  {[
+                    "white",
+                    "black",
+                    "red",
+                    "orange",
+                    "yellow",
+                    "green",
+                    "turquoise",
+                    "blue",
+                    "pink",
+                    "purple",
+                    "brown",
+                    "skyblue",
+                  ].map((color) => (
+                    <option key={color} value={color}>
+                      {color}
+                    </option>
+                  ))}
+                </select>
+              )}
             </div>
 
             <div className={styles.centered}>
-              <label htmlFor="bgColor">배경색</label>
-              <select
-                id="bgColor"
-                value={bgColor}
-                onChange={handleBgColorChange}
-                className={styles.select}
-              >
-                {[
-                  "white",
-                  "black",
-                  "red",
-                  "orange",
-                  "yellow",
-                  "green",
-                  "turquoise",
-                  "blue",
-                  "pink",
-                  "purple",
-                  "brown",
-                  "skyblue",
-                ].map((color) => (
-                  <option key={color} value={color}>
-                    {color}
-                  </option>
-                ))}
-              </select>
+              {imageSrc[1] && (
+                <div onClick={handleBgImageClick}>
+                  <Image
+                    src={imageSrc[1]}
+                    alt="text-background"
+                    width={24}
+                    height={24}
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+              )}
+              {showBgColor && (
+                <select
+                  id="bgColor"
+                  value={bgColor}
+                  onChange={handleBgColorChange}
+                  className={styles.select}
+                >
+                  {[
+                    "white",
+                    "black",
+                    "red",
+                    "orange",
+                    "yellow",
+                    "green",
+                    "turquoise",
+                    "blue",
+                    "pink",
+                    "purple",
+                    "brown",
+                    "skyblue",
+                  ].map((color) => (
+                    <option key={color} value={color}>
+                      {color}
+                    </option>
+                  ))}
+                </select>
+              )}
             </div>
+
             <button
               type="button"
               onClick={() => toggleStyle("fontWeight", "bold", "normal")}
+              className={styles.styleBtn}
             >
-              굵게
+              {imageSrc[2] && (
+                <Image
+                  src={imageSrc[2]}
+                  alt="bold"
+                  width={20}
+                  height={20}
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </button>
             <button
               type="button"
               onClick={() => toggleStyle("fontStyle", "italic", "normal")}
+              className={styles.styleBtn}
             >
-              기울이기
+              {imageSrc[3] && (
+                <Image
+                  src={imageSrc[3]}
+                  alt="text"
+                  width={20}
+                  height={20}
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </button>
             <button
               type="button"
               onClick={() => toggleStyle("textDecoration", "underline", "none")}
+              className={styles.styleBtn}
             >
-              밑줄
+              {imageSrc[4] && (
+                <Image
+                  src={imageSrc[4]}
+                  alt="underline"
+                  width={20}
+                  height={20}
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </button>
           </div>
           <div
@@ -356,7 +428,30 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
           글 작성
         </button>
       </form>
-      <input type="file" accept="image/*" onChange={handleImageChange} />
+      <div>
+        <label htmlFor="file-input">
+          {imageSrc[5] ? (
+            <Image
+              src={imageSrc[5]}
+              alt="Selected"
+              width={20}
+              height={20}
+              style={{ objectFit: "cover" }}
+            />
+          ) : (
+            <div style={{ width: 200, height: 200, border: "1px solid #ccc" }}>
+              이미지 선택
+            </div>
+          )}
+        </label>
+        <input
+          id="file-input"
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+          style={{ display: "none" }} // input 숨기기
+        />
+      </div>
       <button type="button" onClick={uploadImage}>
         이미지 업로드
       </button>
