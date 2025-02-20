@@ -65,7 +65,7 @@ export default function HomePosts() {
             </span>
             <span>조회수: {post?.views}</span>
           </div>
-          <h1>{post?.title}</h1>
+          <h1 className={styles.title}>{post?.title}</h1>
           <span>
             최종 수정일:{" "}
             {post?.updated_at
@@ -78,7 +78,10 @@ export default function HomePosts() {
           </span>
         </header>
         <div className={styles.divider}></div>
-        <div dangerouslySetInnerHTML={{ __html: post?.content || "" }}></div>
+        <div
+          dangerouslySetInnerHTML={{ __html: post?.content || "" }}
+          className={styles.postContent}
+        ></div>
         {/* 이미지 출력 */}
         <div className={styles.images}>
           {(Array.isArray(post?.images) ? post?.images : []).map(

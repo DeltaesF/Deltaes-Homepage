@@ -2,7 +2,6 @@
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "./page.module.css";
-import { useRouter } from "next/router";
 
 interface Post {
   id: number;
@@ -34,9 +33,12 @@ export default function DetailPosts() {
       try {
         const res = await fetch(`/api/write/${id}`);
         const data = await res.json();
+        console.log(data);
 
         if (res.ok) {
           setPost(data.post);
+          console.log("Fetched post:", data.post); // 추가된 로그
+
           // 기존 데이터로 상태 초기화
           setTitle(data.post.title);
           setContent(data.post.content);
@@ -52,6 +54,12 @@ export default function DetailPosts() {
 
     fetchPost();
   }, [id]);
+
+  useEffect(() => {
+    if (post) {
+      console.log("Updated post:", post.updated_at); // 상태 변화 시 로깅
+    }
+  }, [post]); // post가 변경될 때마다 실행
 
   const handleDelete = async () => {
     if (!id || !post) return;
@@ -78,6 +86,7 @@ export default function DetailPosts() {
     }
   };
 
+  // 수정 버튼 클릭 시
   const handleEdit = () => {
     setIsEditing(true);
   };
@@ -123,7 +132,37 @@ export default function DetailPosts() {
     <div className={styles.container}>
       <div className={styles.content}>
         {isEditing ? (
-          <form onSubmit={handleSubmit}></form>
+          // 🔹 수정 모드 (폼 표시)
+          <form onSubmit={handleSubmit} className={styles.form}>
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+              className={styles.editInput}
+              placeholder="제목을 입력해주세요"
+            />
+            <div
+              contentEditable
+              ref={(el) => {
+                if (el && content && el.innerHTML !== content) {
+                  el.innerHTML = content; // 초기 값만 설정
+                }
+              }}
+              onInput={(e) => setContent(e.currentTarget.innerHTML)}
+              className={styles.editContent}
+            ></div>
+            <button type="submit" className={styles.editButton}>
+              수정 완료
+            </button>
+            <button
+              type="button"
+              className={styles.editButton}
+              onClick={() => setIsEditing(false)}
+            >
+              취소
+            </button>
+          </form>
         ) : (
           <>
             <header>

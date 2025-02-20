@@ -8,7 +8,7 @@
 }
 
 .content {
-  width: 800px;
+  width: 850px;
   height: auto;
   background-color: #fff;
   margin: 0 auto;
@@ -21,8 +21,18 @@
 }
 
 .divider {
-  width: 800px;
+  width: 750px;
   height: 1px;
   background-color: #ccc;
   margin: 40px auto;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 500;
+  margin: 10px 0;
+}
+
+.postContent {
+  line-height: 1.4;
 }
