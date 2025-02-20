@@ -11,6 +11,7 @@ export default function Users() {
           <tr>
             <th>이름</th>
             <th>이메일</th>
+            <th>연락처</th>
             <th>회원 상태</th>
             <th>최근 활동</th>
           </tr>
@@ -20,13 +21,16 @@ export default function Users() {
             <tr key={user.id}>
               <td>{user.username}</td>
               <td>{user.email}</td>
+              <td>{user.phone_number}</td>
               <td>{user.role === "admin" ? "관리자" : "일반 회원"}</td>
               <td>
-                {new Date(user.last_login).toLocaleDateString("ko-KR", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
+                {user.last_login
+                  ? new Date(user.last_login).toLocaleDateString("ko-KR", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })
+                  : null}
               </td>
             </tr>
           ))}

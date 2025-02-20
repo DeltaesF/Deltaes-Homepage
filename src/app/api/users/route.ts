@@ -16,13 +16,14 @@ interface User extends RowDataPacket {
   email: string;
   role: string;
   last_login: Date;
+  phone_number: number;
 }
 
 // 모든 유저 정보를 반환하는 API
 export async function GET() {
   try {
     const [rows] = await db.query<User[]>(
-      "SELECT id, username, email, role, last_login FROM users",
+      "SELECT id, username, email, role, last_login, phone_number FROM users",
     );
     return NextResponse.json(rows, { status: 200 });
   } catch (error) {

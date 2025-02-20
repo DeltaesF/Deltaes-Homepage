@@ -8,6 +8,7 @@ interface User {
   username: string;
   email: string;
   role: string;
+  phone_number: number;
 }
 
 // UserContext에서 사용할 상태와 메서드를 정의하는 타입입니다.

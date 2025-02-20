@@ -10,8 +10,10 @@ export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [error, setError] = useState<Record<string, string>>({});
   const [successMessage, setSuccessMessage] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
 
   const toggleDetails = () => {
     setShowDetails((prev) => !prev);
@@ -44,6 +46,12 @@ export default function Signup() {
     } else if (password !== confirmPassword) {
       errors.confirmPassword = "비밀번호가 일치하지 않습니다.";
     }
+    if (!phoneNumber) {
+      errors.phoneNumber = "사용자 이름을 입력해주세요.";
+    }
+    if (!isChecked) {
+      errors.checkbox = "개인정보 수집·이용 동의서를 체크해주세요.";
+    }
 
     if (Object.keys(errors).length > 0) {
       // errors에 오류가 있으면 setError(errors)를 호출하여 오류 상태를 업데이트
@@ -51,25 +59,49 @@ export default function Signup() {
       return;
     }
 
+    console.log("입력한 전화번호:", phoneNumber); // 디버깅용 로그 추가
     try {
       const response = await fetch("/api/auth/signup", {
         method: "POST", // POST 요청
         headers: { "Content-Type": "application/json" }, // 헤더 설정해서 서버에 JSON 형식의 데이터를 전달
-        body: JSON.stringify({ username, email, password }), // JSON 형태로 요청 본문에 담아서 전송
+        body: JSON.stringify({
+          username,
+          email,
+          password,
+          phone_number: phoneNumber,
+        }), // JSON 형태로 요청 본문에 담아서 전송
       });
 
+      console.log("서버로 보낼 데이터:", {
+        username,
+        email,
+        password,
+        phone_number: phoneNumber,
+      });
       const data = await response.json();
       if (response.ok) {
         setSuccessMessage("회원가입 성공! 로그인 페이지로 이동합니다.");
         setTimeout(() => {
           window.location.href = "/login";
         }, 2000);
+        console.log("서버로 보낼 데이터:", {
+          username,
+          email,
+          password,
+          phone_number: phoneNumber,
+        });
       } else {
         setError({ general: data.message || "회원가입 실패" });
       }
     } catch (error) {
       console.error("회원가입 오류:", error);
       setError({ general: "서버 오류, 다시 시도해주세요." });
+      console.log("서버로 보낼 데이터:", {
+        username,
+        email,
+        password,
+        phone_number: phoneNumber,
+      });
     }
   };
 
@@ -163,7 +195,7 @@ export default function Signup() {
           <form onSubmit={handleSubmit} className={styles.signupForm}>
             <div className={styles.formGroup}>
               <label htmlFor="username" className={styles.signupLabel}>
-                사용자 이름
+                이름
               </label>
               <input
                 id="username"
@@ -226,6 +258,22 @@ export default function Signup() {
             {error.confirmPassword && (
               <span className={styles.error}>{error.confirmPassword}</span>
             )}
+            <div className={styles.formGroup}>
+              <label htmlFor="phoneNumber" className={styles.signupLabel}>
+                연락처
+              </label>
+              <input
+                id="phoneNumber"
+                type="text"
+                placeholder="연락처를 입력해주세요."
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                className={styles.signupInput}
+              />
+            </div>
+            {error.phoneNumber && (
+              <span className={styles.error}>{error.phoneNumber}</span>
+            )}
             <button type="submit" className={styles.signupButton}>
               가입하기
             </button>
@@ -239,20 +287,38 @@ export default function Signup() {
         )}
 
         <div className={styles.container}>
-          <input type="checkbox" className={styles.checkbox} />
+          <input
+            type="checkbox"
+            className={styles.checkbox}
+            checked={isChecked}
+            onChange={(e) => setIsChecked(e.target.checked)}
+          />
           <label className={styles.label}>
-            공개 프로필로 사이트에 가입합니다.
+            (필수)개인정보 수집·이용 동의서
             <span onClick={toggleDetails} className={styles.toggleLink}>
               {showDetails ? "접기" : "자세히 보기"}
             </span>
           </label>
           {showDetails && (
             <div className={styles.details}>
-              회원가입 시 프로필이 자동으로 공개로 설정됩니다. <br />
-              공개 설정은 가입 후 프로필 설정에서 변경할 수 있습니다.
+              deltaes는 홈페이지 회원 가입 시 회원 서비스 제공에 필요한 최소한의
+              정보를 수집하고 있으며 개인정보파일에 수집되는 항목은 다음과
+              같습니다. - 이름, 이메일, 연락처 <br />
+              <br />
+              deltaes가 제공하는 맞춤화된 서비스(각종 서비스 안내 및 참가신청,
+              고객문의 등)을 위해 수집합니다. <br />
+              <br />
+              deltaes는 원칙적으로 이용자의 개인정보를 수집 및 이용 목적범위
+              내에서 처리하며, 이용자의 사전 동의 없이는 본래의 범위를 초과하여
+              처리하거나 제3자에게 제공하지 않습니다. <br />
+              <br />
+              개인정보의 보유기간 - 회원탈퇴 시까지
             </div>
           )}
         </div>
+        {error.checkbox && (
+          <span className={styles.error}>{error.checkbox}</span>
+        )}
         <div className={styles.close}>
           <Link href="/main">
             <svg

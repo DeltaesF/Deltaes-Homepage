@@ -22,10 +22,11 @@ export async function signupUser( // users 테이블에 데이터를 삽입하�
   username: string,
   email: string,
   hashedPassword: string,
+  phoneNumber: number,
 ) {
   const [result] = await db.execute<ResultSetHeader>(
-    "INSERT INTO users (username, email, password) VALUES (?, ?, ?)", // 쿼리를 실행해 사용자 데이터를 데이터베이스에 저장 ?는 각각 username, email, password값에 값이 바인딩
-    [username, email, hashedPassword],
+    "INSERT INTO users (username, email, password, phone_number) VALUES (?, ?, ?, ?)", // 쿼리를 실행해 사용자 데이터를 데이터베이스에 저장 ?는 각각 username, email, password값에 값이 바인딩
+    [username, email, hashedPassword, phoneNumber],
   );
   return result;
 }
