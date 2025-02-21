@@ -297,7 +297,7 @@ export default function Header() {
                     <Link href="/pages/product/item3">교육 안내</Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item3">행사소식</Link>
+                    <Link href="/main/pages/announcements/event">행사소식</Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
                     <Link href="/pages/product/item3">제품소식</Link>

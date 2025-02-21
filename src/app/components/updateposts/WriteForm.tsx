@@ -180,32 +180,42 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
     const range = selection.getRangeAt(0);
     const selectedText = selection.toString();
 
-    if (!selectedText) return;
+    if (!selectedText && style !== "hr") return; // 텍스트가 선택되지 않으면 <hr /> 삽입만 허용
 
     let span = range.commonAncestorContainer.parentElement as HTMLSpanElement;
 
-    if (span && span.tagName === "SPAN") {
-      // 이미 적용된 스타일이면 원래대로 되돌리기
-      if (span.style[style as any] === value) {
-        span.style[style as any] = defaultValue;
-
-        // 스타일이 없으면 span 제거
-        if (span.getAttribute("style") === "") {
-          span.replaceWith(...span.childNodes);
-        }
-      } else {
-        // 기존 스타일이 없으면 스타일 적용
-        span.style[style as any] = value;
+    if (style === "hr") {
+      // 수평선 추가
+      const hr = document.createElement("hr");
+      try {
+        range.insertNode(hr); // 커서 위치에 <hr /> 삽입
+      } catch (error) {
+        console.warn("수평선 삽입 실패", error);
       }
     } else {
-      // 새로운 <span> 생성 후 스타일 적용
-      const newSpan = document.createElement("span");
-      newSpan.style[style as any] = value;
+      if (span && span.tagName === "SPAN") {
+        // 이미 적용된 스타일이면 원래대로 되돌리기
+        if (span.style[style as any] === value) {
+          span.style[style as any] = defaultValue;
 
-      try {
-        range.surroundContents(newSpan);
-      } catch (error) {
-        console.warn("선택된 범위가 올바르지 않습니다.", error);
+          // 스타일이 없으면 span 제거
+          if (span.getAttribute("style") === "") {
+            span.replaceWith(...span.childNodes);
+          }
+        } else {
+          // 기존 스타일이 없으면 스타일 적용
+          span.style[style as any] = value;
+        }
+      } else {
+        // 새로운 <span> 생성 후 스타일 적용
+        const newSpan = document.createElement("span");
+        newSpan.style[style as any] = value;
+
+        try {
+          range.surroundContents(newSpan);
+        } catch (error) {
+          console.warn("선택된 범위가 올바르지 않습니다.", error);
+        }
       }
     }
   };
@@ -237,6 +247,11 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
 
   const handleBgImageClick = () => {
     setShowBgColor(!showBgColor); // 토글 상태 변경
+  };
+
+  // 수평선 추가 버튼 클릭 핸들러
+  const handleInsertHr = () => {
+    toggleStyle("hr", "", ""); // style 파라미터에 'hr'을 전달하여 <hr /> 삽입
   };
 
   return (
@@ -415,6 +430,13 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
                   style={{ objectFit: "cover" }}
                 />
               )}
+            </button>
+            <button
+              type="button"
+              onClick={handleInsertHr} // 수평선 삽입
+              className={styles.styleBtn}
+            >
+              ---
             </button>
           </div>
           <div
