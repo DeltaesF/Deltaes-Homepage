@@ -278,15 +278,19 @@ export default function Header() {
                 </Link>
                 <ul className={styles.dropdownMenu}>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item3">
+                    <Link href="/main/pages/consulting/testing">
                       BMT / POC & 파일럿 테스트
                     </Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item3">고객별 맞춤교육</Link>
+                    <Link href="/main/pages/consulting/clients">
+                      고객별 맞춤교육
+                    </Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item3">엔지니어링 컨설팅</Link>
+                    <Link href="/main/pages/consulting/engineering">
+                      엔지니어링 컨설팅
+                    </Link>
                   </li>
                 </ul>
               </li>
@@ -294,19 +298,27 @@ export default function Header() {
                 <Link href="/main/pages/announcements">공지사항</Link>
                 <ul className={styles.dropdownMenu}>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item3">교육 안내</Link>
+                    <Link href="/main/pages/announcements/training">
+                      교육 안내
+                    </Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
                     <Link href="/main/pages/announcements/event">행사소식</Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item3">제품소식</Link>
+                    <Link href="/main/pages/announcements/productnews">
+                      제품소식
+                    </Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item3">자료실</Link>
+                    <Link href="/main/pages/announcements/resources">
+                      자료실
+                    </Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item3">평가판 신청</Link>
+                    <Link href="/main/pages/announcements/request">
+                      평가판 신청
+                    </Link>
                   </li>
                 </ul>
               </li>

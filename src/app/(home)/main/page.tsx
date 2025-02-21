@@ -12,6 +12,8 @@ import React, { useState } from "react";
 import Announcements from "./pages/announcements/page";
 import ProductNews from "./pages/announcements/productnews/page";
 import Resources from "./pages/announcements/resources/page";
+import { usePostsList } from "@/app/context/PostsListContext";
+import { useRouter } from "next/navigation";
 
 interface ImgSlice {
   id: number;
@@ -129,8 +131,11 @@ const customerImg = [
 type TabName = "공지사항" | "제품소식" | "자료실";
 
 export default function MainPage() {
+  const { postsList } = usePostsList();
   const [isPaused, setIsPaused] = useState(false);
   const [activeTab, setActiveTab] = useState<TabName>("공지사항");
+
+  const router = useRouter();
 
   const tabs: TabName[] = ["공지사항", "제품소식", "자료실"];
 
@@ -139,13 +144,55 @@ export default function MainPage() {
 
   const tabComponents = () => {
     if (activeTab === "공지사항") {
-      return <Announcements />;
+      const post = postsList.length > 0 ? postsList[0] : null;
+
+      return post ? (
+        <div>
+          <div className={styles.gridItemPost}>
+            <Link
+              href={`/main/pages/announcements/${post.id}`}
+              className={styles.postLink}
+            >
+              <h1>{post.title}</h1>
+            </Link>
+            {Array.isArray(JSON.parse(post.images)) &&
+            JSON.parse(post.images).length > 0
+              ? JSON.parse(post.images).map((image, index) => (
+                  <img key={index} src={image} alt={`이미지 ${index}`} />
+                ))
+              : null}
+          </div>
+          <div className={styles.created}>
+            <span>
+              {post?.created_at
+                ? new Date(post.created_at).toLocaleDateString("ko-KR", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })
+                : "날짜 없음"}
+            </span>
+          </div>
+        </div>
+      ) : (
+        <p>공지사항이 없습니다.</p>
+      );
     } else if (activeTab === "제품소식") {
       return <ProductNews />;
     } else if (activeTab === "자료실") {
       return <Resources />;
     } else {
       return null;
+    }
+  };
+
+  const handleMoreClick = () => {
+    if (activeTab === "공지사항") {
+      router.push("/main/pages/announcements");
+    } else if (activeTab === "제품소식") {
+      router.push("/main/pages/announcements/productnews");
+    } else if (activeTab === "자료실") {
+      router.push("/main/pages/announcements/resources");
     }
   };
 
@@ -313,7 +360,14 @@ export default function MainPage() {
                 <div className={styles.sContentSub}>sodyd</div>
               </div>
               <div className={styles.sFooter}>
-                <button className={styles.sButton}>더보기</button>
+                <button
+                  className={styles.sButton}
+                  onClick={() =>
+                    router.push("/main/pages/announcements/training")
+                  }
+                >
+                  더보기
+                </button>
               </div>
             </div>
           </div>
@@ -327,7 +381,12 @@ export default function MainPage() {
                 <div className={styles.sContentSub2}>sodyd</div>
               </div>
               <div className={styles.sFooter}>
-                <button className={styles.sButton}>더보기</button>
+                <button
+                  className={styles.sButton}
+                  onClick={() => router.push("/main/pages/announcements/event")}
+                >
+                  더보기
+                </button>
               </div>
             </div>
           </div>
@@ -349,7 +408,9 @@ export default function MainPage() {
                   <div className={styles.sContentSub3}>{tabComponents()}</div>
                 </div>
                 <div className={styles.sFooter}>
-                  <button className={styles.sButton}>더보기</button>
+                  <button className={styles.sButton} onClick={handleMoreClick}>
+                    더보기
+                  </button>
                 </div>
               </div>
             </div>

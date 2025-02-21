@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 import { useEffect } from "react";
 import Link from "next/link";
 
-export default function Resources() {
+export default function Clients() {
   const { postsList, error, fetchPostsList } = usePostsList();
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export default function Resources() {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.title}>
-          <h1>자료실</h1>
+          <h1>컨설팅 사례</h1>
         </div>
         <div className={styles.gridContainer}>
           <div className={styles.gridItem}>

@@ -1,0 +1,116 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.first {
+  width: 100vw;
+  height: 100%;
+  overflow: hidden;
+}
+
+.imageWrapper {
+  width: 100vw;
+  height: 500px;
+  position: relative;
+}
+
+.certifiedEducation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  width: 950px;
+  height: 344px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.certifiedEducation1 {
+  flex: 1;
+}
+
+.certifiedEducation2 {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.certifiedEducation2 h2 {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.certifiedEducation2 h1 {
+  font-size: 37px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.certifiedEducation2 p {
+  font-size: 14px;
+  line-height: 2;
+}
+
+.second {
+  background-color: rgb(4, 4, 23);
+  color: white;
+  width: 100vw;
+  height: 1200px;
+  text-align: center;
+}
+.second h2 {
+  font-size: 32px;
+  font-weight: 700;
+  display: inline-block;
+  border-bottom: 5px solid #162481;
+  padding-bottom: 10px;
+  margin-top: 70px;
+}
+.calender {
+  width: 800px;
+  height: 600px;
+  background-color: white;
+  margin: 0 auto;
+  margin-top: 70px;
+}
+
+.calenderC {
+  margin-top: 20px;
+  color: white;
+}
+.calenderC h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.calenderC p {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.calenderC a {
+  text-decoration: none;
+}
+
+.calenderC button {
+  margin-top: 20px;
+  border: 1px solid white;
+  background-color: rgb(19, 26, 74);
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  width: 300px;
+  height: 60px;
+}
+.calenderC button:hover {
+  background-color: white;
+  color: black;
+}

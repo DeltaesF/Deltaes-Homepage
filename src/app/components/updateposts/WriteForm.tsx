@@ -450,14 +450,21 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
           글 작성
         </button>
       </form>
-      <div>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "10px",
+          marginTop: "10px",
+        }}
+      >
         <label htmlFor="file-input">
           {imageSrc[5] ? (
             <Image
               src={imageSrc[5]}
               alt="Selected"
-              width={20}
-              height={20}
+              width={28}
+              height={28}
               style={{ objectFit: "cover" }}
             />
           ) : (
@@ -473,13 +480,11 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
           onChange={handleImageChange}
           style={{ display: "none" }} // input 숨기기
         />
+        <button type="button" onClick={uploadImage}>
+          이미지 업로드
+        </button>
       </div>
-      <button type="button" onClick={uploadImage}>
-        이미지 업로드
-      </button>
 
-      {/* 이미지 미리보기 */}
-      {imageUrl && <img src={imageUrl} alt="업로드된 이미지" />}
       {message && (
         <div
           className={`${styles.message} ${
