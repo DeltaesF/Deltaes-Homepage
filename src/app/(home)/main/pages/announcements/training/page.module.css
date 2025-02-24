@@ -74,15 +74,14 @@
   margin-top: 70px;
 }
 .calender {
-  width: 800px;
-  height: 600px;
-  background-color: white;
-  margin: 0 auto;
   margin-top: 70px;
+}
+.calender iframe {
+  margin: 0 auto;
 }
 
 .calenderC {
-  margin-top: 20px;
+  margin-top: 30px;
   color: white;
 }
 .calenderC h3 {

@@ -180,7 +180,39 @@ export default function MainPage() {
     } else if (activeTab === "제품소식") {
       return <ProductNews />;
     } else if (activeTab === "자료실") {
-      return <Resources />;
+      const post = postsList.length > 0 ? postsList[0] : null;
+
+      return post ? (
+        <div>
+          <div className={styles.gridItemPost}>
+            <Link
+              href={`/main/pages/announcements/${post.id}`}
+              className={styles.postLink}
+            >
+              <h1>{post.title}</h1>
+            </Link>
+            {Array.isArray(JSON.parse(post.images)) &&
+            JSON.parse(post.images).length > 0
+              ? JSON.parse(post.images).map((image, index) => (
+                  <img key={index} src={image} alt={`이미지 ${index}`} />
+                ))
+              : null}
+          </div>
+          <div className={styles.created}>
+            <span>
+              {post?.created_at
+                ? new Date(post.created_at).toLocaleDateString("ko-KR", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })
+                : "날짜 없음"}
+            </span>
+          </div>
+        </div>
+      ) : (
+        <p>공지사항이 없습니다.</p>
+      );
     } else {
       return null;
     }
@@ -311,7 +343,7 @@ export default function MainPage() {
         </div>
         <article className={styles.article}>
           <div className={styles.f}>
-            <Link href="">
+            <Link href="/main/pages/product">
               <h2>제품안내</h2>
               <p>
                 델타이에스가 제공하는 <br /> CAE 프로그램을 확인 하세요
@@ -320,7 +352,7 @@ export default function MainPage() {
             </Link>
           </div>
           <div className={styles.f}>
-            <Link href="">
+            <Link href="/main/pages/industry">
               <h2>적용산업</h2>
               <p>
                 우리의 일상 전반에 적용된 <br /> 엔지니어링 사례를 확인 하세요
@@ -329,7 +361,7 @@ export default function MainPage() {
             </Link>
           </div>
           <div className={styles.f}>
-            <Link href="">
+            <Link href="/main/pages/consulting">
               <h2>엔지니어링 컨설팅 서비스</h2>
               <p>
                 우리의 일상 전반에 적용된 <br /> 엔지니어링 사례를 확인 하세요
@@ -338,7 +370,7 @@ export default function MainPage() {
             </Link>
           </div>
           <div className={styles.f}>
-            <Link href="">
+            <Link href="/main/pages/announcements/training">
               <h2>교육안내</h2>
               <p>
                 고객이 원하는 눈높이에 <br /> 맞춘 교육을 지원 합니다

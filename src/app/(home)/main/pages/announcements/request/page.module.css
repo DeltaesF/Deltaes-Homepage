@@ -6,9 +6,16 @@
   text-align: center;
 }
 
-.wrapper {
-  width: 1000px;
-  margin: 0 auto;
+.first {
+  width: 100vw;
+  height: 100%;
+  overflow: hidden;
+}
+
+.imageWrapper {
+  width: 100vw;
+  height: 450px;
+  position: relative;
 }
 
 .title {
@@ -18,4 +25,60 @@
   border-bottom: 5px solid #162481;
   padding-bottom: 10px;
   margin-top: 80px;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.second {
+  margin-top: 60px;
+  width: 100vw;
+  height: 1000px;
+}
+
+.secondSub {
+  color: white;
+  width: 610px;
+  height: 180px; /* 버튼을 감싸기 위해 높이 조정 */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column; /* 내부 요소를 세로 정렬 */
+  align-items: center; /* 가운데 정렬 */
+}
+
+.secondSub h2 {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.secondSub h2 strong {
+  color: #47c6c8;
+}
+
+.secondSub .buttonContainer {
+  display: flex;
+  justify-content: space-between; /* 버튼을 양쪽으로 정렬 */
+  width: 100%; /* 부모 컨테이너의 너비를 따라감 */
+}
+
+.secondSub button {
+  font-size: 16px;
+  font-weight: bold;
+  width: 280px;
+  height: 50px;
+  background-color: #237374;
+  margin-top: 30px;
+}
+.secondSub button:hover {
+  background-color: #17bfc2;
+}
+
+.inquire {
+  width: 1000px;
+  height: 750px;
+  background-color: #324158;
+  margin: 0 auto;
 }

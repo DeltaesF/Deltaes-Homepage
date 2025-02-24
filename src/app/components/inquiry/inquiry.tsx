@@ -1,8 +1,14 @@
+"use client";
+
 import styles from "./inquiry.module.css";
 
 export default function Inquiry() {
+  const onClick = () => {
+    window.location.href =
+      "mailto:example@example.com?subject=문의하기&body=안녕하세요, 문의드립니다.";
+  };
   return (
-    <div className={styles.inquiryContainer}>
+    <div className={styles.inquiryContainer} onClick={onClick}>
       <div className={styles.inquiry}>
         <svg
           width="28"
