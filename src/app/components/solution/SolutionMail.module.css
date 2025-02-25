@@ -1,0 +1,47 @@
+.solutionMail {
+  width: 980px;
+  height: 400px;
+  background-color: #232424;
+  margin: 0 auto;
+  margin-top: 40px;
+  padding: 20px;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.wrapper h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.wrapper div {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.input {
+  width: 280px;
+  height: 50px;
+  border-radius: 5px;
+  padding-left: 15px;
+}
+
+.content {
+  width: 940px;
+  height: 110px;
+  border-radius: 5px;
+  padding-left: 15px;
+}
+
+.btn {
+  margin-top: 10px;
+  width: 200px;
+  height: 50px;
+  background-color: rgb(36, 138, 212);
+  font-weight: bold;
+  align-self: flex-end;
+}

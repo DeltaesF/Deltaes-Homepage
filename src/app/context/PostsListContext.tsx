@@ -10,6 +10,7 @@ interface Post {
   updated_at: string;
   username: string;
   images: string;
+  category: string;
 }
 
 interface PostsListContextType {

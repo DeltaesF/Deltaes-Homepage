@@ -13,17 +13,18 @@ const db = createPool({
 
 export async function POST(req: Request) {
   try {
-    const { title, content, user_id, images } = await req.json();
+    const { title, content, user_id, images, category } = await req.json();
 
-    if (!title || !content || !user_id) {
+    if (!title || !content || !user_id || !category) {
       return NextResponse.json({ error: "필수 필드 누락" }, { status: 400 });
     }
 
     console.log("Received images:", images); // images 값 확인
+    console.log("Received category:", category);
 
     const [result] = await db.execute<ResultSetHeader>(
-      "INSERT INTO posts (title, content, user_id, images) VALUES (?, ?, ?, ?)",
-      [title, content, user_id, JSON.stringify(images || [])],
+      "INSERT INTO posts (title, content, user_id, images, category) VALUES (?, ?, ?, ?, ?)",
+      [title, content, user_id, JSON.stringify(images || []), category],
     );
 
     return NextResponse.json(
@@ -39,7 +40,7 @@ export async function POST(req: Request) {
 export async function GET() {
   try {
     const [posts] = await db.query<RowDataPacket[]>(
-      `SELECT p.id, p.title, p.content, p.created_at, p.updated_at, p.views, u.username, p.images
+      `SELECT p.id, p.title, p.content, p.created_at, p.updated_at, p.views, u.username, p.images, p.category
        FROM posts p
        JOIN users u ON p.user_id = u.id
        ORDER BY p.created_at DESC`,

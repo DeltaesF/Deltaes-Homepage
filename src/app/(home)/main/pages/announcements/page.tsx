@@ -4,6 +4,7 @@ import { usePostsList } from "@/app/context/PostsListContext";
 import styles from "./page.module.css";
 import { useEffect } from "react";
 import Link from "next/link";
+import SolutionMail from "@/app/components/solution/SolutionMail";
 
 export default function Announcements() {
   const { postsList, error, fetchPostsList } = usePostsList();
@@ -13,6 +14,10 @@ export default function Announcements() {
   }, []);
 
   console.log(postsList);
+
+  const filteredPosts = postsList.filter(
+    (post) => post.category === "공지사항",
+  );
 
   return (
     <div className={styles.container}>
@@ -30,7 +35,7 @@ export default function Announcements() {
               <img src="https://placehold.co/70x70" />
             </div>
           </div>
-          {postsList.map((post) => (
+          {filteredPosts.map((post) => (
             <div key={post.id} className={styles.gridItem}>
               <div className={styles.gridItemPost}>
                 <Link
@@ -60,8 +65,7 @@ export default function Announcements() {
             </div>
           ))}
         </div>
-
-        <div className={styles.solutionMail}>솔루션 문의</div>
+        <SolutionMail />
       </div>
     </div>
   );

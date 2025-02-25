@@ -8,7 +8,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Announcements from "./pages/announcements/page";
 import ProductNews from "./pages/announcements/productnews/page";
 import Resources from "./pages/announcements/resources/page";
@@ -97,14 +97,14 @@ const imgSlice: ImgSlice[] = [
     img: "/api/getftp/image-slide10.jpg",
     title: "Simcenter \n TURBOdesign Suite",
     description: "역설계 기법에 의한 유체기계설계 소프트웨어",
-    link: "/main/pages/product/simulation/adt",
+    link: "/main/pages/product/simulation/battery",
   },
   {
     id: 11,
     img: "/api/getftp/image-slide11.jpg",
     title: "NANOTEST \n TIMA 5",
     description: "ASTM D-5470 규정에 따른 TIM 재 열물성치 측정장치",
-    link: "/main/pages/product/simulation/tima5",
+    link: "/main/pages/product/measurement/tima5",
   },
 ];
 
@@ -227,6 +227,31 @@ export default function MainPage() {
       router.push("/main/pages/announcements/resources");
     }
   };
+
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    async function fetchEvents() {
+      try {
+        const res = await fetch("/api/calendar");
+        const data = await res.json();
+
+        console.log(data);
+
+        // 필요한 데이터만 필터링하여 상태에 저장
+        const filteredEvents = data.items.map((event) => ({
+          title: event.summary,
+          start: event.start.date, // 날짜만 가져옴
+          end: event.end.date, // 날짜만 가져옴
+        }));
+
+        setEvents(filteredEvents); // 상태에 저장
+      } catch (error) {
+        console.error("Error fetching calendar events:", error);
+      }
+    }
+    fetchEvents();
+  }, []);
 
   return (
     <main className={styles.main}>
@@ -388,8 +413,28 @@ export default function MainPage() {
             </div>
             <div className={styles.sContainer}>
               <div className={styles.sContent}>
-                <div className={styles.sContentSub}>sodyd</div>
-                <div className={styles.sContentSub}>sodyd</div>
+                <div className={styles.sContentSub}>
+                  {events.length > 0 ? (
+                    <ul style={{ listStyle: "none", padding: 0 }}>
+                      {events.map((event, index) => (
+                        <li
+                          key={index}
+                          style={{
+                            marginBottom: "10px",
+                            borderRadius: "5px",
+                            lineHeight: 1.2,
+                          }}
+                        >
+                          <strong>{event.title}</strong> <br />
+                          🗓️ {new Date(event.start).toLocaleDateString()} ~{" "}
+                          {new Date(event.end).toLocaleDateString()}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p>이벤트가 없습니다.</p>
+                  )}
+                </div>
               </div>
               <div className={styles.sFooter}>
                 <button

@@ -33,9 +33,14 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
 
   const [showTextColor, setShowTextColor] = useState(false);
   const [showBgColor, setShowBgColor] = useState(false);
+  const [category, setCategory] = useState("");
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
+  };
+
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setCategory(e.target.value);
   };
 
   const handleContentChange = (e: React.FormEvent<HTMLDivElement>) => {
@@ -131,6 +136,7 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
           content,
           user_id: user?.id, // 로그인된 사용자 ID를 서버로 전달
           images: imageUrl ? [imageUrl] : [], // 이미지 URL을 배열로 전달
+          category,
         }),
       });
 
@@ -257,7 +263,7 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
   return (
     <div className={styles.container}>
       <form onSubmit={handleSubmit} className={styles.form}>
-        <div>
+        <div className={styles.titleCategoryContainer}>
           <input
             type="text"
             id="title"
@@ -267,6 +273,25 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
             className={styles.input}
             placeholder="제목을 입력해주세요"
           />
+          <select
+            value={category}
+            onChange={handleCategoryChange}
+            required
+            className={styles.select}
+          >
+            <option value="" disabled>
+              카테고리 선택
+            </option>
+            <optgroup label="공지사항">
+              <option value="공지사항">공지사항</option>
+              <option value="행사소식">행사소식</option>
+              <option value="제품소식">제품소식</option>
+              <option value="자료실">자료실</option>
+            </optgroup>
+            <optgroup label="엔지니어링 컨설팅 서비스">
+              <option value="고객별 맞춤교육">고객별 맞춤교육</option>
+            </optgroup>
+          </select>
         </div>
         <div className={styles.editorContainer}>
           <div className={styles.toolbar}>

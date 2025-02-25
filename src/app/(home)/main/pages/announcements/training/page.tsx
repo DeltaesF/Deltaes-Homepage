@@ -98,7 +98,6 @@ export default function Training() {
         </div>
       </div>
       <div>
-        <h2>📅 캘린더 일정 목록</h2>
         {events.length > 0 ? (
           <ul style={{ listStyle: "none", padding: 0 }}>
             {events.map((event, index) => (
@@ -106,9 +105,8 @@ export default function Training() {
                 key={index}
                 style={{
                   marginBottom: "10px",
-                  padding: "8px",
-                  border: "1px solid #ddd",
                   borderRadius: "5px",
+                  lineHeight: 1.2,
                 }}
               >
                 <strong>{event.title}</strong> <br />
