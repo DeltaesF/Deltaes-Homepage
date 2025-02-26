@@ -4,6 +4,7 @@ import { usePostsList } from "@/app/context/PostsListContext";
 import styles from "./page.module.css";
 import { useEffect } from "react";
 import Link from "next/link";
+import SolutionMail from "@/app/components/solution/SolutionMail";
 
 export default function Event() {
   const { postsList, error, fetchPostsList } = usePostsList();
@@ -19,13 +20,13 @@ export default function Event() {
   );
 
   return (
-    <div className={styles.container}>
-      <div className={styles.wrapper}>
-        <div className={styles.title}>
+    <main className={styles.container}>
+      <section className={styles.wrapper}>
+        <header className={styles.title}>
           <h1>행사소식</h1>
-        </div>
-        <div className={styles.gridContainer}>
-          <div className={styles.gridItem}>
+        </header>
+        <section className={styles.gridContainer}>
+          <article className={styles.gridItem}>
             <div className={styles.gridItemPost}>
               <h1>
                 안녕하세요 반갑습니다 글자 줄 설정 중 입니다. 3줄 까지만 보이고
@@ -33,9 +34,9 @@ export default function Event() {
               </h1>
               <img src="https://placehold.co/70x70" />
             </div>
-          </div>
+          </article>
           {filteredPosts.map((post) => (
-            <div key={post.id} className={styles.gridItem}>
+            <article key={post.id} className={styles.gridItem}>
               <div className={styles.gridItemPost}>
                 <Link
                   href={`/main/pages/announcements/${post.id}`}
@@ -61,12 +62,12 @@ export default function Event() {
                     : "날짜 없음"}
                 </span>
               </div>
-            </div>
+            </article>
           ))}
-        </div>
+        </section>
 
-        <div className={styles.solutionMail}>솔루션 문의</div>
-      </div>
-    </div>
+        <SolutionMail />
+      </section>
+    </main>
   );
 }

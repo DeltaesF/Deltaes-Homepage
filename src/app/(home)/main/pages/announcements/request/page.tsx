@@ -11,9 +11,9 @@ export default function Request() {
     return <p>Error: {error}</p>;
   }
   return (
-    <div className={styles.container}>
-      <div className={styles.first}>
-        <div className={styles.imageWrapper}>
+    <section className={styles.container}>
+      <article className={styles.first}>
+        <figure className={styles.imageWrapper}>
           {imageSrc[0] && (
             <Image
               src={imageSrc[0]}
@@ -22,10 +22,10 @@ export default function Request() {
               style={{ objectFit: "cover" }}
             />
           )}
-          <h1 className={styles.title}>평가판 체험하기</h1>
-        </div>
-      </div>
-      <div className={styles.second}>
+          <figcaption className={styles.title}>평가판 체험하기</figcaption>
+        </figure>
+      </article>
+      <article className={styles.second}>
         <div className={styles.secondSub}>
           <h2>
             지금 바로 <strong>1달 무료 평가판</strong>을 통해 Simcenter 제품의
@@ -38,7 +38,7 @@ export default function Request() {
         </div>
 
         <div className={styles.inquire}></div>
-      </div>
-    </div>
+      </article>
+    </section>
   );
 }

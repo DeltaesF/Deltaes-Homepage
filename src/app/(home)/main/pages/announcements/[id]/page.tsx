@@ -49,8 +49,8 @@ export default function HomePosts() {
   }, [post]);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.content}>
+    <article className={styles.container}>
+      <section className={styles.content}>
         <header>
           <div className={styles.header}>
             <span>작성자: {post?.username}</span>
@@ -80,19 +80,19 @@ export default function HomePosts() {
           </span>
         </header>
         <div className={styles.divider}></div>
-        <div
+        <section
           dangerouslySetInnerHTML={{ __html: post?.content || "" }}
           className={styles.postContent}
-        ></div>
+        ></section>
         {/* 이미지 출력 */}
-        <div className={styles.images}>
+        <figure className={styles.images}>
           {(Array.isArray(post?.images) ? post?.images : []).map(
             (image, index) => (
               <img key={index} src={image} alt={`Image ${index}`} />
             ),
           )}
-        </div>
-      </div>
-    </div>
+        </figure>
+      </section>
+    </article>
   );
 }
