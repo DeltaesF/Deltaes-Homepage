@@ -14,6 +14,10 @@ export default function Event() {
 
   console.log(postsList);
 
+  const filteredPosts = postsList.filter(
+    (post) => post.category === "행사소식",
+  );
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -30,7 +34,7 @@ export default function Event() {
               <img src="https://placehold.co/70x70" />
             </div>
           </div>
-          {postsList.map((post) => (
+          {filteredPosts.map((post) => (
             <div key={post.id} className={styles.gridItem}>
               <div className={styles.gridItemPost}>
                 <Link

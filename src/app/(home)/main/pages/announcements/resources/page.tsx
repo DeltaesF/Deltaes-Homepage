@@ -14,6 +14,8 @@ export default function Resources() {
 
   console.log(postsList);
 
+  const filteredPosts = postsList.filter((post) => post.category === "자료실");
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -30,7 +32,7 @@ export default function Resources() {
               <img src="https://placehold.co/70x70" />
             </div>
           </div>
-          {postsList.map((post) => (
+          {filteredPosts.map((post) => (
             <div key={post.id} className={styles.gridItem}>
               <div className={styles.gridItemPost}>
                 <Link

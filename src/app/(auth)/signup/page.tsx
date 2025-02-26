@@ -106,8 +106,8 @@ export default function Signup() {
   };
 
   return (
-    <div className={styles.signupContainer}>
-      <div className={styles.signupWrapper}>
+    <section className={styles.signupContainer}>
+      <article className={styles.signupWrapper}>
         <h1>가입하기</h1>
         <p>
           이미 계정이 있습니까?
@@ -116,7 +116,7 @@ export default function Signup() {
           </Link>
         </p>
         {!showEmailForm ? (
-          <div className={styles.signupButtonWrapper}>
+          <nav className={styles.signupButtonWrapper}>
             <button className={styles.googleButton}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
                 <path
@@ -190,10 +190,10 @@ export default function Signup() {
             >
               이메일로 가입
             </button>
-          </div>
+          </nav>
         ) : (
           <form onSubmit={handleSubmit} className={styles.signupForm}>
-            <div className={styles.formGroup}>
+            <fieldset className={styles.formGroup}>
               <label htmlFor="username" className={styles.signupLabel}>
                 이름
               </label>
@@ -206,12 +206,12 @@ export default function Signup() {
                 className={styles.signupInput}
                 autoFocus
               />
-            </div>
+            </fieldset>
             {error.username && (
               <span className={styles.error}>{error.username}</span>
             )}
 
-            <div className={styles.formGroup}>
+            <fieldset className={styles.formGroup}>
               <label htmlFor="email" className={styles.signupLabel}>
                 이메일
               </label>
@@ -223,10 +223,10 @@ export default function Signup() {
                 onChange={(e) => setEmail(e.target.value)}
                 className={styles.signupInput}
               />
-            </div>
+            </fieldset>
             {error.email && <span className={styles.error}>{error.email}</span>}
 
-            <div className={styles.formGroup}>
+            <fieldset className={styles.formGroup}>
               <label htmlFor="password" className={styles.signupLabel}>
                 비밀번호
               </label>
@@ -238,11 +238,11 @@ export default function Signup() {
                 onChange={(e) => setPassword(e.target.value)}
                 className={styles.signupInput}
               />
-            </div>
+            </fieldset>
             {error.password && (
               <span className={styles.error}>{error.password}</span>
             )}
-            <div className={styles.formGroup}>
+            <fieldset className={styles.formGroup}>
               <label htmlFor="confirmPassword" className={styles.signupLabel}>
                 비밀번호 확인
               </label>
@@ -254,11 +254,11 @@ export default function Signup() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 className={styles.signupInput}
               />
-            </div>
+            </fieldset>
             {error.confirmPassword && (
               <span className={styles.error}>{error.confirmPassword}</span>
             )}
-            <div className={styles.formGroup}>
+            <fieldset className={styles.formGroup}>
               <label htmlFor="phoneNumber" className={styles.signupLabel}>
                 연락처
               </label>
@@ -270,7 +270,7 @@ export default function Signup() {
                 onChange={(e) => setPhoneNumber(e.target.value)}
                 className={styles.signupInput}
               />
-            </div>
+            </fieldset>
             {error.phoneNumber && (
               <span className={styles.error}>{error.phoneNumber}</span>
             )}
@@ -286,7 +286,7 @@ export default function Signup() {
           </form>
         )}
 
-        <div className={styles.container}>
+        <aside className={styles.container}>
           <input
             type="checkbox"
             className={styles.checkbox}
@@ -315,7 +315,7 @@ export default function Signup() {
               개인정보의 보유기간 - 회원탈퇴 시까지
             </div>
           )}
-        </div>
+        </aside>
         {error.checkbox && (
           <span className={styles.error}>{error.checkbox}</span>
         )}
@@ -337,7 +337,7 @@ export default function Signup() {
             </svg>
           </Link>
         </div>
-      </div>
-    </div>
+      </article>
+    </section>
   );
 }

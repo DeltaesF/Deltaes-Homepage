@@ -48,8 +48,8 @@ export default function Login() {
   };
 
   return (
-    <div className={styles.loginContainer}>
-      <div className={styles.loginWrapper}>
+    <section className={styles.loginContainer}>
+      <article className={styles.loginWrapper}>
         <h1>로그인</h1>
         <p>
           아직 계정이 없으신가요?
@@ -58,7 +58,7 @@ export default function Login() {
           </Link>
         </p>
         {!shwoLoginForm ? (
-          <div className={styles.loginButtonWrapper}>
+          <nav className={styles.loginButtonWrapper}>
             <button className={styles.googleButton}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
                 <path
@@ -132,10 +132,10 @@ export default function Login() {
             >
               이메일로 로그인
             </button>
-          </div>
+          </nav>
         ) : (
           <form onSubmit={handleLogin} className={styles.loginForm}>
-            <div className={styles.formGroup}>
+            <fieldset className={styles.formGroup}>
               <label htmlFor="email" className={styles.loginLabel}>
                 이메일
               </label>
@@ -147,10 +147,10 @@ export default function Login() {
                 onChange={(e) => setEmail(e.target.value)}
                 className={styles.loginInput}
               />
-            </div>
+            </fieldset>
             {error.email && <span className={styles.error}>{error.email}</span>}
 
-            <div className={styles.formGroup}>
+            <fieldset className={styles.formGroup}>
               <label htmlFor="password" className={styles.loginLabel}>
                 비밀번호
               </label>
@@ -162,14 +162,12 @@ export default function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 className={styles.loginInput}
               />
-            </div>
+            </fieldset>
             {error.password && (
               <span className={styles.error}>{error.password}</span>
             )}
 
-            <div>
-              <p>비밀번호 찾기</p>
-            </div>
+            <p>비밀번호 찾기</p>
             <button type="submit" className={styles.loginButton}>
               가입하기
             </button>
@@ -199,7 +197,7 @@ export default function Login() {
             </svg>
           </Link>
         </div>
-      </div>
-    </div>
+      </article>
+    </section>
   );
 }

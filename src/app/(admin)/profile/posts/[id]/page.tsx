@@ -12,6 +12,7 @@ interface Post {
   updated_at: string;
   username: string;
   images: string[];
+  category: string;
 }
 
 export default function DetailPosts() {
@@ -179,6 +180,7 @@ export default function DetailPosts() {
                     : "날짜 없음"}
                 </span>
                 <span>조회수: {post?.views}</span>
+                <span>카테고리: {post?.category}</span>
                 <div
                   className={styles.menuIcon}
                   onClick={() => setMenuOpen(!menuOpen)}

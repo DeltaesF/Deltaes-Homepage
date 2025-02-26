@@ -12,6 +12,7 @@ interface Post {
   updated_at: string;
   username: string;
   images: string[];
+  category: string;
 }
 
 export default function HomePosts() {
@@ -43,7 +44,7 @@ export default function HomePosts() {
 
   useEffect(() => {
     if (post) {
-      console.log("Post data:", post); // 가져온 게시글 데이터를 확인
+      console.log("Post data:", post);
     }
   }, [post]);
 
@@ -64,6 +65,7 @@ export default function HomePosts() {
                 : "날짜 없음"}
             </span>
             <span>조회수: {post?.views}</span>
+            <span>카테고리: {post?.category}</span>
           </div>
           <h1 className={styles.title}>{post?.title}</h1>
           <span>

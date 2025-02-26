@@ -3,34 +3,8 @@
 import useFetchImages from "@/app/hooks/useFetchImages";
 import styles from "./page.module.css";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 export default function Training() {
-  const [events, setEvents] = useState([]);
-
-  useEffect(() => {
-    async function fetchEvents() {
-      try {
-        const res = await fetch("/api/calendar");
-        const data = await res.json();
-
-        console.log(data);
-
-        // 필요한 데이터만 필터링하여 상태에 저장
-        const filteredEvents = data.items.map((event) => ({
-          title: event.summary,
-          start: event.start.date, // 날짜만 가져옴
-          end: event.end.date, // 날짜만 가져옴
-        }));
-
-        setEvents(filteredEvents); // 상태에 저장
-      } catch (error) {
-        console.error("Error fetching calendar events:", error);
-      }
-    }
-    fetchEvents();
-  }, []);
-
   const { imageSrc, error } = useFetchImages(["studyB1.jpg", "studyB2.jpg"]);
 
   if (error) {
@@ -85,7 +59,6 @@ export default function Training() {
             src={`https://calendar.google.com/calendar/embed?src=${process.env.GOOGLE_CALENDARID}&ctz=Asia%2FSeoul`}
             width="800"
             height="600"
-            scrolling="no"
           ></iframe>
         </div>
         <div className={styles.calenderC}>
@@ -96,28 +69,6 @@ export default function Training() {
           </p>
           <button>2025 Delta ES 교육 일정표</button>
         </div>
-      </div>
-      <div>
-        {events.length > 0 ? (
-          <ul style={{ listStyle: "none", padding: 0 }}>
-            {events.map((event, index) => (
-              <li
-                key={index}
-                style={{
-                  marginBottom: "10px",
-                  borderRadius: "5px",
-                  lineHeight: 1.2,
-                }}
-              >
-                <strong>{event.title}</strong> <br />
-                🗓️ {new Date(event.start).toLocaleDateString()} ~{" "}
-                {new Date(event.end).toLocaleDateString()}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>이벤트가 없습니다.</p>
-        )}
       </div>
     </div>
   );

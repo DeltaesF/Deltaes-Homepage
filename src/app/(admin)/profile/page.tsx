@@ -22,8 +22,8 @@ export default function AdminPage() {
     }
   };
   return (
-    <div className={styles.container}>
-      <div className={styles.sidebar}>
+    <section className={styles.container}>
+      <aside className={styles.sidebar}>
         <span>
           <Link href="/main" className={styles.link}>
             홈으로 이동
@@ -56,8 +56,8 @@ export default function AdminPage() {
             </button>
           </li>
         </ul>
-      </div>
-      <div className={styles.content}>{renderContent()}</div>
-    </div>
+      </aside>
+      <main className={styles.content}>{renderContent()}</main>
+    </section>
   );
 }

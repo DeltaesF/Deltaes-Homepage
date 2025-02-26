@@ -26,7 +26,7 @@ export async function GET(
 
     // id에 맞는 게시글 가져오기
     const [rows] = await db.query<RowDataPacket[]>(
-      `SELECT p.id, p.title, p.content, p.created_at, p.updated_at, p.views, u.username, p.images
+      `SELECT p.id, p.title, p.content, p.created_at, p.updated_at, p.views, u.username, p.images, p.category
        FROM posts p
        JOIN users u ON p.user_id = u.id
        WHERE p.id = ?`,
