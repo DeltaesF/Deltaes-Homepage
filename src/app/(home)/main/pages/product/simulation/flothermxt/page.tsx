@@ -32,8 +32,13 @@ export default function FlothermXT() {
   return (
     <div>
       {loading ? (
-        <div>
-          <p>loading...</p>
+        <div className={styles.loading}>
+          <Image
+            src="/loading1.gif"
+            alt="Loading..."
+            width={200}
+            height={200}
+          />
         </div>
       ) : (
         <div className={styles.container}>
