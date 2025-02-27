@@ -12,15 +12,15 @@ export default function Ceo() {
   }
   return (
     <div className={styles.container}>
-      <div className={styles.wrapper}>
-        <div className={styles.title}>
+      <main className={styles.wrapper}>
+        <section className={styles.title}>
           <h1>CEO 인사말</h1>
           <p className={styles.titleSub}>
             (주) Delta ES 홈페이지를 방문해 주신
           </p>
           <p className={styles.titleSub2}>여러분을 진심으로 환영합니다.</p>
-        </div>
-        <div className={styles.ceoImg}>
+        </section>
+        <figure className={styles.ceoImg}>
           {imageSrc[0] && (
             <Image
               src={imageSrc[0]}
@@ -29,8 +29,8 @@ export default function Ceo() {
               style={{ objectFit: "cover" }}
             />
           )}
-        </div>
-        <div className={styles.ceoImgDes}>
+        </figure>
+        <section className={styles.ceoImgDes}>
           <h2>고객의 중요 프로세스활성화​</h2>
           <p>
             우리는 고객이 어디에 있든 협력하여 지 속 가능한 맞춤형 솔루션을
@@ -42,9 +42,9 @@ export default function Ceo() {
             시뮬레이션 기반의 제품 설계 최적화 기술로 우리나라의 중소기업 혁신에
             기여하고, 지역 사회의 일부라는 사실을 자랑스럽게 생각합니다.
           </p>
-        </div>
+        </section>
         <div className={styles.line}></div>
-        <div className={styles.cIntroduce}>
+        <section className={styles.cIntroduce}>
           <h2>Delta ES 개요 소개영상</h2>
           <div className={styles.cIntroduceSub}>
             <p>
@@ -61,7 +61,7 @@ export default function Ceo() {
             <video src=""></video>
           </div>
           <div className={styles.line}></div>
-          <div className={styles.conclusion}>
+          <section className={styles.conclusion}>
             <span>성실함과 꾸준한 노력으로</span>
             <h2>국내 CAE/CFD 해석 분야 엔지니어링 시장을 선도하겠습니다</h2>
             <p>
@@ -78,9 +78,9 @@ export default function Ceo() {
               070-8255-6001 로 연락 주세요. <br />
               <br /> 감사합니다.
             </p>
-          </div>
-        </div>
-      </div>
+          </section>
+        </section>
+      </main>
     </div>
   );
 }

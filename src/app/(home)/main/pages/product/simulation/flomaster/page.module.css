@@ -279,9 +279,10 @@
 }
 
 .textOverlay h3 {
-  font-size: 23px;
+  font-size: 20px;
   font-weight: bold;
   color: #138f8f;
+  line-height: 1.2;
 }
 
 .textOverlay p {

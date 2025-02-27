@@ -16,6 +16,7 @@ export default function Latima() {
     "latima3.jpg",
     "latima4.jpg",
     "latima5.jpg",
+    "timapulse2.jpg",
   ]);
 
   if (error) {
@@ -55,19 +56,27 @@ export default function Latima() {
           </div>
         </div>
       </div>
-      <div className={styles.secondWrapper}>
-        <div className={styles.secondContent}>
-          <div className={styles.secondDes}>
-            <div>
-              <h2>LaTIMA 제품 이미지</h2>
-              <h3>LaTIMA PRODUCT</h3>
-              <button>브로슈어 Download </button>
-              <button>TIMA pulse DATASHEET</button>
+
+      {imageSrc[5] && (
+        <div
+          className={styles.secondWrapper}
+          style={{
+            backgroundImage: `url(${imageSrc[5]})`, // 동적으로 배경 이미지 설정
+          }}
+        >
+          <div className={styles.secondContent}>
+            <div className={styles.secondDes}>
+              <div>
+                <h2>LaTIMA 제품 이미지</h2>
+                <h3>LaTIMA PRODUCT</h3>
+                <button>브로슈어 Download </button>
+                <button>TIMA pulse DATASHEET</button>
+              </div>
+              <div></div>
             </div>
-            <div className={styles.secondImg}></div>
           </div>
         </div>
-      </div>
+      )}
       <div className={styles.thirdWrapper}>
         <div className={styles.thirdContent}>
           <h2>테스트해 보세요</h2>

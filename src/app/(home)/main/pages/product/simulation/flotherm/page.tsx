@@ -196,7 +196,7 @@ export default function Flotherm() {
                 </li>
               </ul>
             </div>
-            <div className={styles.fourImg1}>
+            <div className={styles.fourImgD}>
               {imageSrc[3] && (
                 <Image
                   src={imageSrc[3]}
@@ -221,7 +221,7 @@ export default function Flotherm() {
                 </li>
               </ul>
             </div>
-            <div className={styles.fourImg2}>
+            <div className={styles.fourImgD2}>
               {imageSrc[4] && (
                 <Image
                   src={imageSrc[4]}
@@ -247,7 +247,7 @@ export default function Flotherm() {
                 </li>
               </ul>
             </div>
-            <div className={styles.fourImg1}>
+            <div className={styles.fourImgD3}>
               {imageSrc[5] && (
                 <Image
                   src={imageSrc[5]}
@@ -359,7 +359,7 @@ export default function Flotherm() {
                 불러들여 옵니다.
               </p>
             </div>
-            <div className={styles.fourImg2}>
+            <div className={styles.fourImgD4}>
               {imageSrc[10] && (
                 <Image
                   src={imageSrc[10]}
@@ -384,7 +384,7 @@ export default function Flotherm() {
                 </li>
               </ul>
             </div>
-            <div className={styles.fourImg1}>
+            <div className={styles.fourImgD5}>
               {imageSrc[11] && (
                 <Image
                   src={imageSrc[11]}

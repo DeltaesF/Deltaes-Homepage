@@ -207,7 +207,7 @@
 
 .fourWrapper {
   width: 100vw;
-  height: 2100px;
+  height: 2400px;
   background-color: #d1e0ee;
   display: flex;
   justify-content: center;
@@ -365,4 +365,30 @@
   background-color: #fff;
   margin-right: 10px;
   border-radius: 5px;
+}
+
+.fourImgD {
+  width: 479px;
+  height: 310px;
+  position: relative;
+}
+.fourImgD2 {
+  width: 479px;
+  height: 198px;
+  position: relative;
+}
+.fourImgD3 {
+  width: 482px;
+  height: 100px;
+  position: relative;
+}
+.fourImgD4 {
+  width: 482px;
+  height: 182px;
+  position: relative;
+}
+.fourImgD5 {
+  width: 449px;
+  height: 241px;
+  position: relative;
 }

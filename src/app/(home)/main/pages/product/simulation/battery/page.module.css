@@ -443,3 +443,10 @@
   margin-right: 10px;
   border-radius: 5px;
 }
+
+.imageD {
+  position: relative;
+  width: 430px;
+  height: 274px;
+  margin-right: 30px;
+}

@@ -21,12 +21,12 @@ export default function Brochure() {
   }
   return (
     <div className={styles.container}>
-      <div className={styles.wrapper}>
-        <div className={styles.title}>
+      <main className={styles.wrapper}>
+        <header className={styles.title}>
           <h1>온라인 브로슈어</h1>
-        </div>
-        <div className={styles.gridContainer}>
-          <div className={styles.grid}>
+        </header>
+        <section className={styles.gridContainer}>
+          <figure className={styles.grid}>
             {imageSrc[0] && (
               <Image
                 src={imageSrc[0]}
@@ -37,8 +37,8 @@ export default function Brochure() {
               />
             )}
             <p>Delta ES 토털 엔지니어링 솔루션</p>
-          </div>
-          <div className={styles.grid}>
+          </figure>
+          <figure className={styles.grid}>
             {imageSrc[1] && (
               <Image
                 src={imageSrc[1]}
@@ -49,8 +49,8 @@ export default function Brochure() {
               />
             )}
             <p>지멘스 Simcenter CFD 솔루션 (SW)</p>
-          </div>
-          <div className={styles.grid}>
+          </figure>
+          <figure className={styles.grid}>
             {imageSrc[2] && (
               <Image
                 src={imageSrc[2]}
@@ -61,8 +61,8 @@ export default function Brochure() {
               />
             )}
             <p>지멘스 Simcenter Testing 솔루션 (HW)</p>
-          </div>
-          <div className={styles.grid}>
+          </figure>
+          <figure className={styles.grid}>
             {imageSrc[3] && (
               <Image
                 src={imageSrc[3]}
@@ -73,8 +73,8 @@ export default function Brochure() {
               />
             )}
             <p>Simcenter POWERTESTER 600A (Eng)</p>
-          </div>
-          <div className={styles.grid}>
+          </figure>
+          <figure className={styles.grid}>
             {imageSrc[4] && (
               <Image
                 src={imageSrc[4]}
@@ -85,8 +85,8 @@ export default function Brochure() {
               />
             )}
             <p>Simcenter POWERTESTER 1500A</p>
-          </div>
-          <div className={styles.grid}>
+          </figure>
+          <figure className={styles.grid}>
             {imageSrc[5] && (
               <Image
                 src={imageSrc[5]}
@@ -97,8 +97,8 @@ export default function Brochure() {
               />
             )}
             <p>Simcenter POWERTESTER 1800A</p>
-          </div>
-          <div className={styles.grid}>
+          </figure>
+          <figure className={styles.grid}>
             {imageSrc[6] && (
               <Image
                 src={imageSrc[6]}
@@ -109,8 +109,8 @@ export default function Brochure() {
               />
             )}
             <p>Simcenter POWERTESTER 2400A</p>
-          </div>
-          <div className={styles.grid}>
+          </figure>
+          <figure className={styles.grid}>
             {imageSrc[7] && (
               <Image
                 src={imageSrc[7]}
@@ -121,9 +121,9 @@ export default function Brochure() {
               />
             )}
             <p>Simcenter POWERTESTER 3600A</p>
-          </div>
-        </div>
-      </div>
+          </figure>
+        </section>
+      </main>
       <div className={styles.brochureMovie}>
         <div className={styles.movieContent}></div>
       </div>

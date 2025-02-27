@@ -6,6 +6,7 @@ export default function useFetchImages(imageNames: string[]) {
   const [imageSrc, setImageSrc] = useState<string[]>(
     new Array(imageNames.length).fill(null), // 초기 값 모든 항목을 null로 설정
   );
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -18,10 +19,19 @@ export default function useFetchImages(imageNames: string[]) {
           if (!res.ok) throw new Error(`failed to load ${imageName}`);
           const imageBlob = await res.blob(); // blob 형태로 이미지 데이터 받음
           return URL.createObjectURL(imageBlob); // blob 데이터 URL로 변환하여 반환
+
+          // const imageUrl = URL.createObjectURL(imageBlob);
+
+          // // 미리 브라우저에서 로드하여 캐싱
+          // const img = new Image();
+          // img.src = imageUrl;
+
+          // return imageUrl;
         });
 
         const imageUrls = await Promise.all(imagePromises); // Promise.all을 사용해서 모든 이미지 반환
         setImageSrc(imageUrls);
+        setLoading(false);
       } catch (err) {
         setError(err instanceof Error ? err.message : "An error occurred");
       }
@@ -29,5 +39,5 @@ export default function useFetchImages(imageNames: string[]) {
     fetchImages();
   }, []);
 
-  return { imageSrc, error }; // 훅의 반환값: 이미지 URL 배열과 에러 메시지를 객체 형태로 반환
+  return { imageSrc, loading, error }; // 훅의 반환값: 이미지 URL 배열과 에러 메시지를 객체 형태로 반환
 }

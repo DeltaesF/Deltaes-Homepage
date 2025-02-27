@@ -18,6 +18,7 @@ export default function Tocs() {
     "tocs5.jpg",
     "tocs6.jpg",
     "tocs7.jpg",
+    "timapulse2.jpg",
   ]);
 
   if (error) {
@@ -61,19 +62,26 @@ export default function Tocs() {
           </div>
         </div>
       </div>
-      <div className={styles.secondWrapper}>
-        <div className={styles.secondContent}>
-          <div className={styles.secondDes}>
-            <div>
-              <h2>TOCS 제품 이미지</h2>
-              <h3>TOCS PRODUCT</h3>
-              <button>브로슈어 Download </button>
-              <button>TIMA pulse DATASHEET</button>
+      {imageSrc[7] && (
+        <div
+          className={styles.secondWrapper}
+          style={{
+            backgroundImage: `url(${imageSrc[7]})`, // 동적으로 배경 이미지 설정
+          }}
+        >
+          <div className={styles.secondContent}>
+            <div className={styles.secondDes}>
+              <div>
+                <h2>TOCS 제품 이미지</h2>
+                <h3>TOCS PRODUCT</h3>
+                <button>브로슈어 Download </button>
+                <button>TIMA pulse DATASHEET</button>
+              </div>
+              <div></div>
             </div>
-            <div className={styles.secondImg}></div>
           </div>
         </div>
-      </div>
+      )}
       <div className={styles.thirdWrapper}>
         <div className={styles.thirdContent}>
           <h2>3-오메가 특성화 시스템</h2>

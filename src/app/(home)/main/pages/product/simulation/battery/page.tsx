@@ -229,7 +229,7 @@ export default function Battery() {
                 있습니다.{" "}
               </p>
             </div>
-            <div className={styles.fourImg2}>
+            <div className={styles.imageD}>
               {imageSrc[2] && (
                 <Image
                   src={imageSrc[2]}

@@ -243,13 +243,13 @@
 .fourGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 50px;
   justify-content: center;
   margin-top: 40px;
 }
 
 .grid {
-  width: 330px;
+  width: 300px;
   height: 360px;
   background-color: #f0f0f0;
   overflow: hidden;
@@ -284,9 +284,10 @@
 }
 
 .textOverlay h3 {
-  font-size: 23px;
+  font-size: 20px;
   font-weight: bold;
   color: #138f8f;
+  line-height: 1.2;
 }
 
 .textOverlay p {

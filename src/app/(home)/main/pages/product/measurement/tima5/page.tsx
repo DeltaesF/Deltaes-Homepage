@@ -21,6 +21,7 @@ export default function Tima5() {
     "tima5_8.jpg",
     "tima5_9.jpg",
     "tima5_10.jpg",
+    "timapulse2.jpg",
   ]);
 
   if (error) {
@@ -62,19 +63,26 @@ export default function Tima5() {
           </div>
         </div>
       </div>
-      <div className={styles.secondWrapper}>
-        <div className={styles.secondContent}>
-          <div className={styles.secondDes}>
-            <div>
-              <h2>TIMA 5 제품 영상</h2>
-              <h3>TIMA 5 기능 · 강점 요약한 영상입니다.</h3>
-              <button>브로슈어 Download </button>
-              <button>TIMA pulse DATASHEET</button>
+      {imageSrc[10] && (
+        <div
+          className={styles.secondWrapper}
+          style={{
+            backgroundImage: `url(${imageSrc[10]})`, // 동적으로 배경 이미지 설정
+          }}
+        >
+          <div className={styles.secondContent}>
+            <div className={styles.secondDes}>
+              <div>
+                <h2>TIMA 5 제품 영상</h2>
+                <h3>TIMA 5 기능 · 강점 요약한 영상입니다.</h3>
+                <button>브로슈어 Download </button>
+                <button>TIMA pulse DATASHEET</button>
+              </div>
+              <div></div>
             </div>
-            <div className={styles.secondImg}></div>
           </div>
         </div>
-      </div>
+      )}
       <div className={styles.thirdWrapper}>
         <div className={styles.thirdContent}>
           <h2>Technical Specification</h2>

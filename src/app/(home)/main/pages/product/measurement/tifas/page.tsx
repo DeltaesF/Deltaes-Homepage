@@ -66,8 +66,8 @@ export default function Tifas() {
           <div className={styles.secondContent}>
             <div className={styles.secondDes}>
               <div>
-                <h2>TIMA pulse 제품</h2>
-                <h3>TIMA pulse PRODUCT</h3>
+                <h2>TIFAS 제품</h2>
+                <h3>TIFAS PRODUCT</h3>
                 <button>브로슈어 Download</button>
                 <button>TIMA pulse DATASHEET</button>
               </div>
