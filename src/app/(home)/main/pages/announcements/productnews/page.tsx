@@ -1,43 +1,73 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { usePostsList } from "@/app/context/PostsListContext";
+import styles from "./page.module.css";
+import { useEffect } from "react";
+import Link from "next/link";
+import SolutionMail from "@/app/components/solution/SolutionMail";
 
-export default function Productnews() {
-  const [posts, setPosts] = useState<any[]>([]);
+export default function ProductNews() {
+  const { postsList, error, fetchPostsList } = usePostsList();
 
   useEffect(() => {
-    const fetchBlogPosts = async () => {
-      try {
-        const res = await fetch("/api/wixToken");
-        const data = await res.json();
-
-        console.log("WIX 블로그 데이터:", data);
-
-        // API 응답 형식에 맞게 수정 (예: data.posts가 배열인지 확인)
-        setPosts(data.posts || []);
-      } catch (err) {
-        console.error("API 호출 오류:", err);
-      }
-    };
-
-    fetchBlogPosts();
+    fetchPostsList();
   }, []);
 
+  console.log(postsList);
+
+  const filteredPosts = postsList.filter(
+    (post) => post.category === "제품소식",
+  );
+
   return (
-    <div>
-      <h1>WIX 블로그 글 목록</h1>
-      <ul>
-        {posts.length > 0 ? (
-          posts.map((post) => (
-            <li key={post.id}>
-              <h2>{post.title}</h2>
-              <p>{post.excerpt}</p>
-            </li>
-          ))
-        ) : (
-          <p>블로그 글을 불러오는 중...</p>
-        )}
-      </ul>
-    </div>
+    <main className={styles.container}>
+      <section className={styles.wrapper}>
+        <header className={styles.title}>
+          <h1>제품소식</h1>
+        </header>
+        <section className={styles.gridContainer}>
+          <article className={styles.gridItem}>
+            <div className={styles.gridItemPost}>
+              <h1>
+                안녕하세요 반갑습니다 글자 줄 설정 중 입니다. 3줄 까지만 보이고
+                나머지 글을 ...으로 표현이 됩니다.
+              </h1>
+              <img src="https://placehold.co/70x70" />
+            </div>
+          </article>
+          {filteredPosts.map((post) => (
+            <article key={post.id} className={styles.gridItem}>
+              <div className={styles.gridItemPost}>
+                <Link
+                  href={`/main/pages/announcements/${post.id}`}
+                  className={styles.postLink}
+                >
+                  <h1>{post.title}</h1>
+                </Link>
+                {Array.isArray(JSON.parse(post.images)) &&
+                JSON.parse(post.images).length > 0
+                  ? JSON.parse(post.images).map((image, index) => (
+                      <img key={index} src={image} alt={`이미지 ${index}`} />
+                    ))
+                  : null}
+              </div>
+              <div className={styles.created}>
+                <span>
+                  {post?.created_at
+                    ? new Date(post.created_at).toLocaleDateString("ko-KR", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })
+                    : "날짜 없음"}
+                </span>
+              </div>
+            </article>
+          ))}
+        </section>
+
+        <SolutionMail />
+      </section>
+    </main>
   );
 }

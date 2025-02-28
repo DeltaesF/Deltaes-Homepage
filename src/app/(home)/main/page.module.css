@@ -18,6 +18,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-height: calc(1.2em * 3); /* 줄 간격 * 3줄 */
+  color: black;
 }
 
 .gridItemPost img {
@@ -30,6 +31,7 @@
   text-align: left;
   padding-left: 10px;
   font-size: 14px;
+  color: black;
 }
 
 .main {
@@ -153,7 +155,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color:;
 }
 .sButton {
   width: 200px;

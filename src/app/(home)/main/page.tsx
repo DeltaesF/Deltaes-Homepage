@@ -144,7 +144,10 @@ export default function MainPage() {
 
   const tabComponents = () => {
     if (activeTab === "공지사항") {
-      const post = postsList.length > 0 ? postsList[0] : null;
+      const filteredPosts = postsList.filter(
+        (post) => post.category === "공지사항",
+      );
+      const post = filteredPosts.length > 0 ? filteredPosts[0] : null;
 
       return post ? (
         <div>
@@ -178,15 +181,16 @@ export default function MainPage() {
         <p>공지사항이 없습니다.</p>
       );
     } else if (activeTab === "제품소식") {
-      return <ProductNews />;
-    } else if (activeTab === "자료실") {
-      const post = postsList.length > 0 ? postsList[0] : null;
+      const filteredPosts = postsList.filter(
+        (post) => post.category === "제품소식",
+      );
+      const post = filteredPosts.length > 0 ? filteredPosts[0] : null;
 
       return post ? (
         <div>
           <div className={styles.gridItemPost}>
             <Link
-              href={`/main/pages/announcements/${post.id}`}
+              href={`/main/pages/productnews/${post.id}`}
               className={styles.postLink}
             >
               <h1>{post.title}</h1>
@@ -211,7 +215,44 @@ export default function MainPage() {
           </div>
         </div>
       ) : (
-        <p>공지사항이 없습니다.</p>
+        <p>제품소식이 없습니다.</p>
+      );
+    } else if (activeTab === "자료실") {
+      const filteredPosts = postsList.filter(
+        (post) => post.category === "자료실",
+      );
+      const post = filteredPosts.length > 0 ? filteredPosts[0] : null;
+
+      return post ? (
+        <div>
+          <div className={styles.gridItemPost}>
+            <Link
+              href={`/main/pages/resources/${post.id}`}
+              className={styles.postLink}
+            >
+              <h1>{post.title}</h1>
+            </Link>
+            {Array.isArray(JSON.parse(post.images)) &&
+            JSON.parse(post.images).length > 0
+              ? JSON.parse(post.images).map((image, index) => (
+                  <img key={index} src={image} alt={`이미지 ${index}`} />
+                ))
+              : null}
+          </div>
+          <div className={styles.created}>
+            <span>
+              {post?.created_at
+                ? new Date(post.created_at).toLocaleDateString("ko-KR", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })
+                : "날짜 없음"}
+            </span>
+          </div>
+        </div>
+      ) : (
+        <p>자료가 없습니다.</p>
       );
     } else {
       return null;
@@ -252,6 +293,8 @@ export default function MainPage() {
     }
     fetchEvents();
   }, []);
+
+  const eventPosts = postsList.filter((post) => post.category === "행사소식");
 
   return (
     <main className={styles.main}>
@@ -454,8 +497,50 @@ export default function MainPage() {
             </div>
             <div className={styles.sContainer2}>
               <div className={styles.sContent}>
-                <div className={styles.sContentSub2}>sodyd</div>
-                <div className={styles.sContentSub2}>sodyd</div>
+                <div className={styles.sContentSub3}>
+                  {eventPosts.length > 0 ? (
+                    eventPosts.map((post) => (
+                      <div>
+                        <div key={post.id} className={styles.gridItemPost}>
+                          <Link
+                            href={`/main/pages/event/${post.id}`}
+                            className={styles.postLink}
+                          >
+                            <h1>{post.title}</h1>
+                          </Link>
+                          {Array.isArray(JSON.parse(post.images)) &&
+                          JSON.parse(post.images).length > 0
+                            ? JSON.parse(post.images).map((image, index) => (
+                                <img
+                                  key={index}
+                                  src={image}
+                                  alt={`이미지 ${index}`}
+                                />
+                              ))
+                            : null}
+                        </div>
+                        <div className={styles.created}>
+                          <span>
+                            {post?.created_at
+                              ? new Date(post.created_at).toLocaleDateString(
+                                  "ko-KR",
+                                  {
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric",
+                                  },
+                                )
+                              : "날짜 없음"}
+                          </span>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <div className={styles.sContentSub3}>
+                      행사 소식이 없습니다.
+                    </div>
+                  )}
+                </div>
               </div>
               <div className={styles.sFooter}>
                 <button

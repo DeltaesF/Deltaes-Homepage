@@ -77,7 +77,7 @@ export default function DetailPosts() {
 
       if (res.ok) {
         alert("게시글이 삭제되었습니다.");
-        window.location.href = "/profile/posts"; // 삭제 후 목록 페이지로 이동
+        window.location.href = "/profile"; // 삭제 후 목록 페이지로 이동
       } else {
         alert(data.error || "게시글 삭제에 실패했습니다.");
       }
