@@ -3,14 +3,24 @@
 import { usePostsList } from "@/app/context/PostsListContext";
 import styles from "./page.module.css";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Posts() {
   const { postsList, error, fetchPostsList } = usePostsList();
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 15;
 
   useEffect(() => {
     fetchPostsList();
   }, []);
+
+  // 현재 페이지의 게시글을 계산
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = postsList.slice(indexOfFirstPost, indexOfLastPost);
+
+  // 총 페이지 수 계산
+  const totalPages = Math.ceil(postsList.length / postsPerPage);
 
   return (
     <section>
@@ -18,7 +28,7 @@ export default function Posts() {
         <table className={styles.table}>
           <thead>
             <tr>
-              <th>번호</th>
+              <th>카테고리</th>
               <th>작성자</th>
               <th>게시글</th>
               <th>작성일</th>
@@ -26,9 +36,9 @@ export default function Posts() {
             </tr>
           </thead>
           <tbody>
-            {postsList.map((post) => (
+            {currentPosts.map((post) => (
               <tr key={post.id}>
-                <td>{post.id}</td>
+                <td className={styles.postCategory}>{post.category}</td>
                 <td>{post.username}</td>
                 <td>
                   <Link
@@ -62,6 +72,29 @@ export default function Posts() {
             ))}
           </tbody>
         </table>
+
+        {/* 페이지네이션 컨트롤 */}
+        <div className={styles.pagination}>
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            className={styles.pageButton}
+          >
+            이전
+          </button>
+          <span className={styles.pageInfo}>
+            {currentPage} / {totalPages}
+          </span>
+          <button
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+            className={styles.pageButton}
+          >
+            다음
+          </button>
+        </div>
       </article>
     </section>
   );

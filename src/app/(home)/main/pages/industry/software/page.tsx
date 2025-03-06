@@ -7,8 +7,8 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Software() {
   const { imageSrc, loading, error } = useFetchImages([
-    "software1.jpg",
-    "software2.jpg",
+    "software1.avif",
+    "software2.avif",
   ]);
 
   if (error) {

@@ -11,13 +11,13 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Tifas() {
   const { imageSrc, loading, error } = useFetchImages([
-    "tifas1.jpg",
-    "timapulse2.jpg",
-    "tifas2.jpg",
-    "tifas3.jpg",
-    "tifas4.jpg",
-    "tifas5.jpg",
-    "tifas6.jpg",
+    "tifas1.avif",
+    "timapulse2.avif",
+    "tifas2.avif",
+    "tifas3.avif",
+    "tifas4.avif",
+    "tifas5.avif",
+    "tifas6.avif",
   ]);
 
   if (error) {

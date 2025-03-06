@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Direction() {
-  const { imageSrc, error } = useFetchImages(["deltaes.jpg"]);
+  const { imageSrc, error } = useFetchImages(["deltaes.avif"]);
 
   if (error) {
     return <p>Error: {error}</p>;

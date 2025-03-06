@@ -7,13 +7,7 @@ import Link from "next/link";
 import SolutionMail from "@/app/components/solution/SolutionMail";
 
 export default function Announcements() {
-  const { postsList, error, fetchPostsList } = usePostsList();
-
-  useEffect(() => {
-    fetchPostsList();
-  }, []);
-
-  console.log(postsList);
+  const { postsList, error } = usePostsList();
 
   const filteredPosts = postsList.filter(
     (post) => post.category === "공지사항",
@@ -26,15 +20,6 @@ export default function Announcements() {
           <h1>공지사항</h1>
         </header>
         <section className={styles.gridContainer}>
-          <article className={styles.gridItem}>
-            <div className={styles.gridItemPost}>
-              <h1>
-                안녕하세요 반갑습니다 글자 줄 설정 중 입니다. 3줄 까지만 보이고
-                나머지 글을 ...으로 표현이 됩니다.
-              </h1>
-              <img src="https://placehold.co/70x70" />
-            </div>
-          </article>
           {filteredPosts.map((post) => (
             <article key={post.id} className={styles.gridItem}>
               <div className={styles.gridItemPost}>

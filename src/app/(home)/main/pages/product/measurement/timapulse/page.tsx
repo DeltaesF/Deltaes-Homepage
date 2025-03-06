@@ -11,12 +11,12 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Timapules() {
   const { imageSrc, loading, error } = useFetchImages([
-    "timapulse1.jpg",
-    "timapulse2.jpg",
-    "timapulse3.jpg",
-    "timapulse4.jpg",
-    "timapulse5.jpg",
-    "timapulse6.jpg",
+    "timapulse1.avif",
+    "timapulse2.avif",
+    "timapulse3.avif",
+    "timapulse4.avif",
+    "timapulse5.avif",
+    "timapulse6.avif",
   ]);
 
   if (error) {

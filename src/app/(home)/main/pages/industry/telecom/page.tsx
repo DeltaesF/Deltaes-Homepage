@@ -6,8 +6,8 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Telecom() {
   const { imageSrc, loading, error } = useFetchImages([
-    "telecom1.jpg",
-    "telecom2.jpg",
+    "telecom1.avif",
+    "telecom2.avif",
   ]);
 
   if (error) {

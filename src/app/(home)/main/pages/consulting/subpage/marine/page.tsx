@@ -6,11 +6,11 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Marine() {
   const { imageSrc, error } = useFetchImages([
-    "subpageMarine1.jpg",
+    "subpageMarine1.avif",
     "subpageMarine2.gif",
     "subpageMarine3.gif",
     "subpageMarine4.gif",
-    "subpageMarine5.jpg",
+    "subpageMarine5.avif",
   ]);
 
   if (error) {

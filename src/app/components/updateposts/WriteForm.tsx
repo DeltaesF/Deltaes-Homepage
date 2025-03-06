@@ -289,7 +289,14 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
               <option value="자료실">자료실</option>
             </optgroup>
             <optgroup label="엔지니어링 컨설팅 서비스">
-              <option value="고객별 맞춤교육">고객별 맞춤교육</option>
+              <option value="전자기기/반도체/디스플레이">
+                전자기기/반도체/디스플레이
+              </option>
+              <option value="환경">환경</option>
+              <option value="건축/토목/산업용기계">건축/토목/산업용기계</option>
+              <option value="자동차">자동차</option>
+              <option value="소비재">소비재</option>
+              <option value="에너지">에너지</option>
             </optgroup>
           </select>
         </div>
@@ -480,7 +487,7 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
           display: "flex",
           alignItems: "center",
           gap: "10px",
-          marginTop: "10px",
+          marginTop: "20px",
         }}
       >
         <label htmlFor="file-input">

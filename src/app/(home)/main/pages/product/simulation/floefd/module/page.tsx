@@ -6,19 +6,19 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Module() {
   const { imageSrc, error } = useFetchImages([
-    "floefd7.jpg",
-    "floefd8.jpg",
-    "floefd9.jpg",
-    "floefd10.jpg",
-    "floefd11.jpg",
-    "floefd12.jpg",
-    "floefd13.jpg",
-    "floefd14.jpg",
-    "floefd15.jpg",
-    "floefd16.jpg",
-    "floefd17.jpg",
-    "floefd18.jpg",
-    "floefd19.jpg",
+    "floefd7.avif",
+    "floefd8.avif",
+    "floefd9.avif",
+    "floefd10.avif",
+    "floefd11.avif",
+    "floefd12.avif",
+    "floefd13.avif",
+    "floefd14.avif",
+    "floefd15.avif",
+    "floefd16.avif",
+    "floefd17.avif",
+    "floefd18.avif",
+    "floefd19.avif",
   ]);
 
   if (error) {

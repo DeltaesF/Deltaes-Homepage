@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Finance() {
-  const { imageSrc, error } = useFetchImages(["subpageFinance1.jpg"]);
+  const { imageSrc, error } = useFetchImages(["subpageFinance1.avif"]);
 
   if (error) {
     return <p>Error: {error}</p>;

@@ -7,12 +7,12 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Battery() {
   const { imageSrc, loading, error } = useFetchImages([
-    "battery1.jpg",
-    "battery2.jpg",
-    "battery3.jpg",
-    "battery4.jpg",
-    "battery5.jpg",
-    "battery6.jpg",
+    "battery1.avif",
+    "battery2.avif",
+    "battery3.avif",
+    "battery4.avif",
+    "battery5.avif",
+    "battery6.avif",
   ]);
 
   if (error) {

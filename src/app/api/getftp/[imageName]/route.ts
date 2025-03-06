@@ -52,6 +52,8 @@ export async function GET(req: Request) {
       ".png": "image/png",
       ".gif": "image/gif",
       ".mp4": "video/mp4",
+      ".avif": "image/avif",
+      ".webp": "image/webp",
     };
 
     const contentType = mimeTypes[ext] || "application/octet-stream"; // 알 수 없는 경우 기본값

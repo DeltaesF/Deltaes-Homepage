@@ -7,8 +7,8 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Finance() {
   const { imageSrc, loading, error } = useFetchImages([
-    "finance1.jpg",
-    "finance2.jpg",
+    "finance1.avif",
+    "finance2.avif",
   ]);
 
   if (error) {

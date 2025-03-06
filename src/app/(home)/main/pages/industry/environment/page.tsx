@@ -7,12 +7,12 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Environment() {
   const { imageSrc, loading, error } = useFetchImages([
-    "environment1.jpg",
-    "environment2.jpg",
-    "environment3.jpg",
-    "environment4.jpg",
-    "environment5.jpg",
-    "environment6.jpg",
+    "environment1.avif",
+    "environment2.avif",
+    "environment3.avif",
+    "environment4.avif",
+    "environment5.avif",
+    "environment6.avif",
   ]);
 
   if (error) {

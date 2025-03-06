@@ -7,14 +7,14 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Energy() {
   const { imageSrc, loading, error } = useFetchImages([
-    "energy1.jpg",
-    "energy2.jpg",
-    "energy3.jpg",
-    "energy4.jpg",
-    "energy5.jpg",
-    "energy6.jpg",
-    "energy7.jpg",
-    "energy8.jpg",
+    "energy1.avif",
+    "energy2.avif",
+    "energy3.avif",
+    "energy4.avif",
+    "energy5.avif",
+    "energy6.avif",
+    "energy7.avif",
+    "energy8.avif",
   ]);
 
   if (error) {

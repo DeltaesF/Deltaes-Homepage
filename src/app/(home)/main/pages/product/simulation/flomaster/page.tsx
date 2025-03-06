@@ -7,15 +7,15 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Flomaster() {
   const { imageSrc, loading, error } = useFetchImages([
-    "flomaster1.jpg",
-    "flomaster2.jpg",
-    "flomaster3.jpg",
-    "flomaster4.jpg",
-    "flomaster5.jpg",
-    "flomaster6.jpg",
-    "flomaster7.jpg",
-    "flomaster8.jpg",
-    "flomaster9.jpg",
+    "flomaster1.avif",
+    "flomaster2.avif",
+    "flomaster3.avif",
+    "flomaster4.avif",
+    "flomaster5.avif",
+    "flomaster6.avif",
+    "flomaster7.avif",
+    "flomaster8.avif",
+    "flomaster9.avif",
   ]);
 
   if (error) {

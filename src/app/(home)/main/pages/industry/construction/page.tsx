@@ -7,17 +7,17 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Construction() {
   const { imageSrc, loading, error } = useFetchImages([
-    "construction1.jpg",
-    "construction2.jpg",
-    "construction3.jpg",
-    "construction4.jpg",
+    "construction1.avif",
+    "construction2.avif",
+    "construction3.avif",
+    "construction4.avif",
     "construction5.gif",
-    "construction6.jpg",
-    "construction7.jpg",
-    "construction8.jpg",
-    "construction9.jpg",
-    "construction10.jpg",
-    "construction11.jpg",
+    "construction6.avif",
+    "construction7.avif",
+    "construction8.avif",
+    "construction9.avif",
+    "construction10.avif",
+    "construction11.avif",
   ]);
 
   if (error) {

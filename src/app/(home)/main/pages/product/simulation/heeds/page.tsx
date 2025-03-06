@@ -7,11 +7,11 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Heeds() {
   const { imageSrc, loading, error } = useFetchImages([
-    "heeds1.jpg",
-    "heeds2.jpg",
-    "heeds3.jpg",
-    "heeds4.jpg",
-    "heeds5.jpg",
+    "heeds1.avif",
+    "heeds2.avif",
+    "heeds3.avif",
+    "heeds4.avif",
+    "heeds5.avif",
   ]);
 
   if (error) {

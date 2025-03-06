@@ -6,12 +6,12 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function IndustryConsumer() {
   const { imageSrc, loading, error } = useFetchImages([
-    "industry2-1.jpg",
-    "industry2-2.jpg",
-    "industry2-3.jpg",
-    "industry2-4.jpg",
-    "industry2-5.jpg",
-    "industry2-6.jpg",
+    "industry2-1.avif",
+    "industry2-2.avif",
+    "industry2-3.avif",
+    "industry2-4.avif",
+    "industry2-5.avif",
+    "industry2-6.avif",
   ]);
 
   if (error) {

@@ -6,10 +6,10 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Consumer() {
   const { imageSrc, error } = useFetchImages([
-    "subpageConsumer1.jpg",
-    "subpageConsumer2.jpg",
-    "subpageConsumer3.jpg",
-    "subpageConsumer4.jpg",
+    "subpageConsumer1.avif",
+    "subpageConsumer2.avif",
+    "subpageConsumer3.avif",
+    "subpageConsumer4.avif",
     "subpageConsumer5.gif",
   ]);
 

@@ -6,17 +6,17 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function T3ster() {
   const { imageSrc, loading, error } = useFetchImages([
-    "t3ster1.jpg",
-    "t3ster2.jpg",
-    "t3ster3.jpg",
-    "t3ster4.jpg",
-    "t3ster5.jpg",
-    "t3ster6.jpg",
-    "t3ster7.jpg",
-    "t3ster8.jpg",
-    "t3ster9.jpg",
-    "t3ster10.jpg",
-    "t3ster11.jpg",
+    "t3ster1.avif",
+    "t3ster2.avif",
+    "t3ster3.avif",
+    "t3ster4.avif",
+    "t3ster5.avif",
+    "t3ster6.avif",
+    "t3ster7.avif",
+    "t3ster8.avif",
+    "t3ster9.avif",
+    "t3ster10.avif",
+    "t3ster11.avif",
   ]);
 
   if (error) {

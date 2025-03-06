@@ -6,11 +6,11 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Starccm() {
   const { imageSrc, loading, error } = useFetchImages([
-    "starccm1.jpg",
-    "starccm2.jpg",
-    "starccm3.jpg",
-    "starccm4.jpg",
-    "starccm5.jpg",
+    "starccm1.avif",
+    "starccm2.avif",
+    "starccm3.avif",
+    "starccm4.avif",
+    "starccm5.avif",
   ]);
 
   if (error) {

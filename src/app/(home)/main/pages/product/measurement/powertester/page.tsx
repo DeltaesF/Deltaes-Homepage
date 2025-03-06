@@ -6,21 +6,21 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Powertester() {
   const { imageSrc, loading, error } = useFetchImages([
-    "powertester1.jpg",
-    "powertester2.jpg",
-    "powertester3.jpg",
-    "powertester4.jpg",
-    "powertester5.jpg",
-    "powertester6.jpg",
-    "powertester7.jpg",
-    "powertester8.jpg",
-    "powertester9.jpg",
-    "powertester10.jpg",
-    "powertester11.jpg",
-    "powertester12.jpg",
-    "powertester13.jpg",
-    "powertester14.jpg",
-    "powertester15.jpg",
+    "powertester1.avif",
+    "powertester2.avif",
+    "powertester3.avif",
+    "powertester4.avif",
+    "powertester5.avif",
+    "powertester6.avif",
+    "powertester7.avif",
+    "powertester8.avif",
+    "powertester9.avif",
+    "powertester10.avif",
+    "powertester11.avif",
+    "powertester12.avif",
+    "powertester13.avif",
+    "powertester14.avif",
+    "powertester15.avif",
   ]);
 
   if (error) {

@@ -11,17 +11,17 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Tima5() {
   const { imageSrc, loading, error } = useFetchImages([
-    "tima5_1.jpg",
-    "tima5_2.jpg",
-    "tima5_3.jpg",
-    "tima5_4.jpg",
-    "tima5_5.jpg",
-    "tima5_6.jpg",
-    "tima5_7.jpg",
-    "tima5_8.jpg",
-    "tima5_9.jpg",
-    "tima5_10.jpg",
-    "timapulse2.jpg",
+    "tima5_1.avif",
+    "tima5_2.avif",
+    "tima5_3.avif",
+    "tima5_4.avif",
+    "tima5_5.avif",
+    "tima5_6.avif",
+    "tima5_7.avif",
+    "tima5_8.avif",
+    "tima5_9.avif",
+    "tima5_10.avif",
+    "timapulse2.avif",
   ]);
 
   if (error) {

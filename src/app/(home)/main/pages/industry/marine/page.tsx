@@ -7,15 +7,15 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Marine() {
   const { imageSrc, loading, error } = useFetchImages([
-    "marine1.jpg",
-    "marine2.jpg",
-    "marine3.jpg",
-    "marine4.jpg",
-    "marine5.jpg",
-    "marine6.jpg",
-    "marine7.jpg",
-    "marine8.jpg",
-    "marine9.jpg",
+    "marine1.avif",
+    "marine2.avif",
+    "marine3.avif",
+    "marine4.avif",
+    "marine5.avif",
+    "marine6.avif",
+    "marine7.avif",
+    "marine8.avif",
+    "marine9.avif",
   ]);
 
   if (error) {

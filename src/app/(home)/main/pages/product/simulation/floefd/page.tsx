@@ -7,16 +7,16 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Floefd() {
   const { imageSrc, loading, error } = useFetchImages([
-    "floefd1.jpg",
-    "floefd2.jpg",
-    "floefd3.jpg",
-    "floefd4.jpg",
-    "floefd5.jpg",
-    "floefd6.jpg",
-    "floefd7.jpg",
-    "floefd8.jpg",
-    "floefd9.jpg",
-    "floefd10.jpg",
+    "floefd1.avif",
+    "floefd2.avif",
+    "floefd3.avif",
+    "floefd4.avif",
+    "floefd5.avif",
+    "floefd6.avif",
+    "floefd7.avif",
+    "floefd8.avif",
+    "floefd9.avif",
+    "floefd10.avif",
   ]);
 
   if (error) {

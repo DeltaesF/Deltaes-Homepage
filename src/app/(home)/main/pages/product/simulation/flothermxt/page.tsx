@@ -7,22 +7,22 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function FlothermXT() {
   const { imageSrc, loading, error } = useFetchImages([
-    "flothermxt1.jpg",
-    "flothermxt2.jpg",
-    "flothermxt3.jpg",
-    "flothermxt4.jpg",
-    "flothermxt5.jpg",
-    "flothermxt6.jpg",
-    "flothermxt7.jpg",
-    "flothermxt8.jpg",
-    "flothermxt9.jpg",
-    "flothermxt10.jpg",
-    "flothermxt11.jpg",
-    "flothermxt12.jpg",
-    "flothermxt13.jpg",
-    "flothermxt14.jpg",
-    "flothermxt15.jpg",
-    "flothermxt16.jpg",
+    "flothermxt1.avif",
+    "flothermxt2.avif",
+    "flothermxt3.avif",
+    "flothermxt4.avif",
+    "flothermxt5.avif",
+    "flothermxt6.avif",
+    "flothermxt7.avif",
+    "flothermxt8.avif",
+    "flothermxt9.avif",
+    "flothermxt10.avif",
+    "flothermxt11.avif",
+    "flothermxt12.avif",
+    "flothermxt13.avif",
+    "flothermxt14.avif",
+    "flothermxt15.avif",
+    "flothermxt16.avif",
   ]);
 
   if (error) {

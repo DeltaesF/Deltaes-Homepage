@@ -7,16 +7,16 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Automotive() {
   const { imageSrc, loading, error } = useFetchImages([
-    "automotive1.jpg",
-    "automotive2.jpg",
-    "automotive3.jpg",
-    "automotive4.jpg",
-    "automotive5.jpg",
-    "automotive6.jpg",
-    "automotive7.jpg",
-    "automotive8.jpg",
-    "automotive9.jpg",
-    "automotive10.jpg",
+    "automotive1.avif",
+    "automotive2.avif",
+    "automotive3.avif",
+    "automotive4.avif",
+    "automotive5.avif",
+    "automotive6.avif",
+    "automotive7.avif",
+    "automotive8.avif",
+    "automotive9.avif",
+    "automotive10.avif",
   ]);
 
   if (error) {

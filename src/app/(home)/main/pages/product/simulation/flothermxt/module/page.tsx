@@ -6,11 +6,11 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Module() {
   const { imageSrc, loading, error } = useFetchImages([
-    "flothermxt11.jpg",
-    "flothermxt12.jpg",
-    "flothermxt14.jpg",
-    "flothermxt15.jpg",
-    "flothermxt16.jpg",
+    "flothermxt11.avif",
+    "flothermxt12.avif",
+    "flothermxt14.avif",
+    "flothermxt15.avif",
+    "flothermxt16.avif",
   ]);
 
   if (error) {

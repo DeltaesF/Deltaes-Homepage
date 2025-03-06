@@ -7,10 +7,10 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Simensnx() {
   const { imageSrc, loading, error } = useFetchImages([
-    "simensnx1.jpg",
-    "simensnx2.jpg",
-    "simensnx3.jpg",
-    "simensnx4.jpg",
+    "simensnx1.avif",
+    "simensnx2.avif",
+    "simensnx3.avif",
+    "simensnx4.avif",
   ]);
 
   if (error) {

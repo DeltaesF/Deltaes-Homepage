@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 import Image from "next/image";
 
 export default function Training() {
-  const { imageSrc, error } = useFetchImages(["studyB1.jpg", "studyB2.jpg"]);
+  const { imageSrc, error } = useFetchImages(["studyB1.avif", "studyB2.avif"]);
 
   if (error) {
     return <p>Error: {error}</p>;

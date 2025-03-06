@@ -11,14 +11,14 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Tocs() {
   const { imageSrc, loading, error } = useFetchImages([
-    "tocs1.jpg",
-    "tocs2.jpg",
-    "tocs3.jpg",
-    "tocs4.jpg",
-    "tocs5.jpg",
-    "tocs6.jpg",
-    "tocs7.jpg",
-    "timapulse2.jpg",
+    "tocs1.avif",
+    "tocs2.avif",
+    "tocs3.avif",
+    "tocs4.avif",
+    "tocs5.avif",
+    "tocs6.avif",
+    "tocs7.avif",
+    "timapulse2.avif",
   ]);
 
   if (error) {

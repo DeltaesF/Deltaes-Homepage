@@ -11,12 +11,12 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Latima() {
   const { imageSrc, loading, error } = useFetchImages([
-    "latima1.jpg",
-    "latima2.jpg",
-    "latima3.jpg",
-    "latima4.jpg",
-    "latima5.jpg",
-    "timapulse2.jpg",
+    "latima1.avif",
+    "latima2.avif",
+    "latima3.avif",
+    "latima4.avif",
+    "latima5.avif",
+    "timapulse2.avif",
   ]);
 
   if (error) {

@@ -7,14 +7,14 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Amesim() {
   const { imageSrc, loading, error } = useFetchImages([
-    "amesim1.jpg",
-    "amesim2.jpg",
-    "amesim3.jpg",
-    "amesim4.jpg",
-    "amesim5.jpg",
-    "amesim6.jpg",
-    "amesim7.jpg",
-    "flomaster8.jpg",
+    "amesim1.avif",
+    "amesim2.avif",
+    "amesim3.avif",
+    "amesim4.avif",
+    "amesim5.avif",
+    "amesim6.avif",
+    "amesim7.avif",
+    "flomaster8.avif",
   ]);
 
   if (error) {

@@ -7,12 +7,12 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Simcenter3d() {
   const { imageSrc, loading, error } = useFetchImages([
-    "simcenter3d1.jpg",
-    "simcenter3d2.jpg",
-    "simcenter3d3.jpg",
-    "simcenter3d4.jpg",
-    "simcenter3d5.jpg",
-    "simcenter3d6.jpg",
+    "simcenter3d1.avif",
+    "simcenter3d2.avif",
+    "simcenter3d3.avif",
+    "simcenter3d4.avif",
+    "simcenter3d5.avif",
+    "simcenter3d6.avif",
   ]);
 
   if (error) {

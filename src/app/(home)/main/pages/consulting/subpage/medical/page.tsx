@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Medical() {
-  const { imageSrc, error } = useFetchImages(["subpageMedical1.jpg"]);
+  const { imageSrc, error } = useFetchImages(["subpageMedical1.avif"]);
 
   if (error) {
     return <p>Error: {error}</p>;

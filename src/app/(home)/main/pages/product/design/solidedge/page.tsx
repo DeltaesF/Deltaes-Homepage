@@ -6,13 +6,13 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Solidedge() {
   const { imageSrc, loading, error } = useFetchImages([
-    "solidedge1.jpg",
-    "solidedge2.jpg",
-    "solidedge3.jpg",
-    "solidedge4.jpg",
-    "solidedge5.jpg",
-    "solidedge6.jpg",
-    "solidedge7.jpg",
+    "solidedge1.avif",
+    "solidedge2.avif",
+    "solidedge3.avif",
+    "solidedge4.avif",
+    "solidedge5.avif",
+    "solidedge6.avif",
+    "solidedge7.avif",
   ]);
 
   if (error) {

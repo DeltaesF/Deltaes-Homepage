@@ -7,18 +7,21 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Industry() {
   const { imageSrc, error } = useFetchImages([
-    "industry1.jpg",
-    "industry2.jpg",
-    "industry3.jpg",
-    "industry4.jpg",
-    "industry5.jpg",
-    "industry6.jpg",
-    "industry7.jpg",
+    "industry1.avif",
+    "industry2.avif",
+    "industry3.avif",
+    "industry4.avif",
+    "industry5.avif",
+    "industry6.avif",
+    "industry7.avif",
+    "text.avif",
   ]);
 
   if (error) {
     return <p>Error: {error}</p>;
   }
+
+  console.log(imageSrc);
   return (
     <div className={styles.container}>
       <div className={styles.first}>

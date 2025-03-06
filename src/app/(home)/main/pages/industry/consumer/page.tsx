@@ -7,18 +7,18 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Consumer() {
   const { imageSrc, loading, error } = useFetchImages([
-    "consumer1.jpg",
-    "consumer2.jpg",
-    "consumer3.jpg",
-    "consumer4.jpg",
-    "consumer5.jpg",
-    "consumer6.jpg",
-    "consumer7.jpg",
-    "consumer8.jpg",
-    "consumer9.jpg",
-    "consumer10.jpg",
-    "consumer11.jpg",
-    "consumer12.jpg",
+    "consumer1.avif",
+    "consumer2.avif",
+    "consumer3.avif",
+    "consumer4.avif",
+    "consumer5.avif",
+    "consumer6.avif",
+    "consumer7.avif",
+    "consumer8.avif",
+    "consumer9.avif",
+    "consumer10.avif",
+    "consumer11.avif",
+    "consumer12.avif",
   ]);
 
   if (error) {

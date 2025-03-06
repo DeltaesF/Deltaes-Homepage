@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Ceo() {
-  const { imageSrc, error } = useFetchImages(["ceo.jpg"]);
+  const { imageSrc, error } = useFetchImages(["ceo.avif"]);
 
   if (error) {
     return <p>Error: {error}</p>;

@@ -5,8 +5,18 @@ import styles from "./header.module.css";
 import Image from "next/image";
 import { useState } from "react";
 import { useAuth } from "@/app/context/AuthContext";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Header() {
+  const { imageSrc, error } = useFetchImages([
+    "partner.avif",
+    "header-logo.avif",
+  ]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
   const [isMenuModal, setIsMenuModal] = useState<boolean>(false);
   const { user, logout } = useAuth();
 
@@ -75,12 +85,14 @@ export default function Header() {
               )}
             </div>
             <div className={styles.partner}>
-              <Image
-                src="/images/partner.jpg"
-                alt="partner"
-                width="117"
-                height="57"
-              />
+              {imageSrc[0] && (
+                <Image
+                  src={imageSrc[0]}
+                  alt="partner"
+                  width="117"
+                  height="57"
+                />
+              )}
             </div>
           </div>
         </div>
@@ -88,12 +100,9 @@ export default function Header() {
         <div className={styles.menuContainer}>
           <div className={styles.logo}>
             <Link href="/main">
-              <Image
-                src="/images/header-logo.png"
-                alt="logo"
-                width="176"
-                height="52"
-              />
+              {imageSrc[1] && (
+                <Image src={imageSrc[1]} alt="logo" width="176" height="52" />
+              )}
             </Link>
           </div>
           <nav className={styles.nav}>

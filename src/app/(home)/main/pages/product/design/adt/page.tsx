@@ -7,12 +7,12 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Adt() {
   const { imageSrc, loading, error } = useFetchImages([
-    "adt1.jpg",
-    "adt2.jpg",
-    "adt3.jpg",
-    "flothermxt4.jpg",
-    "adt5.jpg",
-    "adt6.jpg",
+    "adt1.avif",
+    "adt2.avif",
+    "adt3.avif",
+    "flothermxt4.avif",
+    "adt5.avif",
+    "adt6.avif",
   ]);
 
   if (error) {

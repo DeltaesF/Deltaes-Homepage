@@ -7,18 +7,18 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Aerospace() {
   const { imageSrc, loading, error } = useFetchImages([
-    "aerospace1.jpg",
-    "consumer10.jpg",
-    "aerospace2.jpg",
-    "aerospace3.jpg",
-    "aerospace4.jpg",
-    "aerospace5.jpg",
-    "aerospace6.jpg",
-    "aerospace7.jpg",
-    "consumer9.jpg",
-    "aerospace4.jpg",
-    "aerospace8.jpg",
-    "aerospace9.jpg",
+    "aerospace1.avif",
+    "consumer10.avif",
+    "aerospace2.avif",
+    "aerospace3.avif",
+    "aerospace4.avif",
+    "aerospace5.avif",
+    "aerospace6.avif",
+    "aerospace7.avif",
+    "consumer9.avif",
+    "aerospace4.avif",
+    "aerospace8.avif",
+    "aerospace9.avif",
   ]);
 
   if (error) {

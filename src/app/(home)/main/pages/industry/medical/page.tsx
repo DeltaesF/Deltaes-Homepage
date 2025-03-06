@@ -7,14 +7,14 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Medical() {
   const { imageSrc, loading, error } = useFetchImages([
-    "medical1.jpg",
-    "medical2.jpg",
-    "medical3.jpg",
-    "medical4.jpg",
-    "medical5.jpg",
-    "medical6.jpg",
-    "medical7.jpg",
-    "medical8.jpg",
+    "medical1.avif",
+    "medical2.avif",
+    "medical3.avif",
+    "medical4.avif",
+    "medical5.avif",
+    "medical6.avif",
+    "medical7.avif",
+    "medical8.avif",
   ]);
 
   if (error) {

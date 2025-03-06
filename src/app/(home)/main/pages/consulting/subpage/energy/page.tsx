@@ -6,10 +6,10 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Energy() {
   const { imageSrc, error } = useFetchImages([
-    "subpageEnergy1.jpg",
+    "subpageEnergy1.avif",
     "subpageEnergy2.gif",
-    "subpageEnergy3.jpg",
-    "subpageEnergy4.jpg",
+    "subpageEnergy3.avif",
+    "subpageEnergy4.avif",
     "subpageEnergy5.gif",
   ]);
 

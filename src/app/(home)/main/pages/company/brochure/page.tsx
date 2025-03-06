@@ -6,14 +6,14 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Brochure() {
   const { imageSrc, error } = useFetchImages([
-    "brochure1.jpg",
-    "brochure2.jpg",
-    "brochure3.jpg",
-    "brochure4.jpg",
-    "brochure5.jpg",
-    "brochure6.jpg",
-    "brochure7.jpg",
-    "brochure8.jpg",
+    "brochure1.avif",
+    "brochure2.avif",
+    "brochure3.avif",
+    "brochure4.avif",
+    "brochure5.avif",
+    "brochure6.avif",
+    "brochure7.avif",
+    "brochure8.avif",
   ]);
 
   if (error) {
