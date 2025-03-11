@@ -300,7 +300,12 @@ export default function MainPage() {
     fetchEvents();
   }, []);
 
-  const eventPosts = postsList.filter((post) => post.category === "행사소식");
+  const eventPosts = postsList
+    .filter((post) => post.category === "행사소식")
+    .slice()
+    .reverse();
+
+  const latestPost = eventPosts.length > 0 ? eventPosts[0] : null;
 
   return (
     <main className={styles.main}>
@@ -504,45 +509,42 @@ export default function MainPage() {
             <div className={styles.sContainer2}>
               <div className={styles.sContent}>
                 <div className={styles.sContentSub3}>
-                  {eventPosts.length > 0 ? (
-                    eventPosts
-                      .sort((a, b) => a.id - b.id)
-                      .map((post) => (
-                        <div>
-                          <div key={post.id} className={styles.gridItemPost}>
-                            <Link
-                              href={`/main/pages/announcements/${post.id}`}
-                              className={styles.postLink}
-                            >
-                              <h1>{post.title}</h1>
-                            </Link>
-                            {Array.isArray(JSON.parse(post.images)) &&
-                            JSON.parse(post.images).length > 0
-                              ? JSON.parse(post.images).map((image, index) => (
-                                  <img
-                                    key={index}
-                                    src={image}
-                                    alt={`이미지 ${index}`}
-                                  />
-                                ))
-                              : null}
-                          </div>
-                          <div className={styles.created}>
-                            <span>
-                              {post?.created_at
-                                ? new Date(post.created_at).toLocaleDateString(
-                                    "ko-KR",
-                                    {
-                                      year: "numeric",
-                                      month: "long",
-                                      day: "numeric",
-                                    },
-                                  )
-                                : "날짜 없음"}
-                            </span>
-                          </div>
-                        </div>
-                      ))
+                  {latestPost ? (
+                    <div>
+                      <div className={styles.gridItemPost}>
+                        <Link
+                          href={`/main/pages/announcements/${latestPost.id}`}
+                          className={styles.postLink}
+                        >
+                          <h1>{latestPost.title}</h1>
+                        </Link>
+                        {Array.isArray(JSON.parse(latestPost.images)) &&
+                        JSON.parse(latestPost.images).length > 0
+                          ? JSON.parse(latestPost.images).map(
+                              (image, index) => (
+                                <img
+                                  key={index}
+                                  src={image}
+                                  alt={`이미지 ${index}`}
+                                />
+                              ),
+                            )
+                          : null}
+                      </div>
+                      <div className={styles.created}>
+                        <span>
+                          {latestPost?.created_at
+                            ? new Date(
+                                latestPost.created_at,
+                              ).toLocaleDateString("ko-KR", {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                              })
+                            : "날짜 없음"}
+                        </span>
+                      </div>
+                    </div>
                   ) : (
                     <div className={styles.sContentSub3}>
                       행사 소식이 없습니다.

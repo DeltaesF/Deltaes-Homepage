@@ -1,10 +1,12 @@
 .solutionMail {
   width: 980px;
   height: 400px;
-  background-color: #232424;
+  /* background-color: #232424; */
+  background-color: #324158;
   margin: 0 auto;
   margin-top: 40px;
   padding: 20px;
+  color: black;
 }
 .wrapper {
   display: flex;
@@ -16,6 +18,7 @@
   font-weight: bold;
   margin-top: 10px;
   margin-bottom: 10px;
+  color: white;
 }
 .wrapper div {
   display: flex;
@@ -34,7 +37,7 @@
   width: 940px;
   height: 110px;
   border-radius: 5px;
-  padding-left: 15px;
+  padding: 15px;
 }
 
 .btn {
@@ -44,4 +47,5 @@
   background-color: rgb(36, 138, 212);
   font-weight: bold;
   align-self: flex-end;
+  color: white;
 }

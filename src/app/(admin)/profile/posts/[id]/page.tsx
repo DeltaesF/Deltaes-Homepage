@@ -120,6 +120,7 @@ export default function DetailPosts() {
             : null,
         );
         setIsEditing(false); // 수정 완료 후 다시 보기 모드로 변경
+        window.location.href = "/profile";
       } else {
         alert("게시글 수정에 실패했습니다.");
       }
