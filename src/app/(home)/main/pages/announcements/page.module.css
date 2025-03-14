@@ -99,3 +99,80 @@
   font-size: 16px;
   margin: 0 10px;
 }
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  /*최대 크기 1024px*/
+}
+@media screen and (max-width: 480px) {
+  /*최대 크기 480px*/
+  .wrapper {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .title {
+    font-size: 28px;
+    border-bottom: 3px solid #162481;
+    padding-bottom: 5px;
+    margin-top: 40px;
+  }
+
+  .gridContainer {
+    display: grid;
+    grid-template-columns: repeat(1, 100%);
+    gap: 10px;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  .gridItem {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    background-color: white;
+    color: black;
+    border-radius: 8px;
+  }
+
+  .gridItemPost {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .gridItemPost h1 {
+    font-size: 16px;
+    font-weight: bold;
+    -webkit-line-clamp: 2; /* 모바일에서는 2줄로 줄임 */
+    max-height: calc(1.2em * 2);
+  }
+
+  .gridItemPost img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+
+  .created {
+    font-size: 12px;
+    text-align: right;
+    padding-right: 10px;
+  }
+
+  .pagination {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .pageButton {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .pageInfo {
+    font-size: 14px;
+  }
+  .solutionMail {
+    display: none;
+  }
+}

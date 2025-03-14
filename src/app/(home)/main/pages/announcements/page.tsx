@@ -92,7 +92,9 @@ export default function Announcements() {
             다음
           </button>
         </div>
-        <SolutionMail />
+        <div className={styles.solutionMail}>
+          <SolutionMail />
+        </div>
       </section>
     </main>
   );
