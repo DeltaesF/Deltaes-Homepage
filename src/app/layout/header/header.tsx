@@ -28,6 +28,8 @@ export default function Header() {
     setIsMenuModal(false);
   };
 
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
@@ -462,6 +464,67 @@ export default function Header() {
               )}
             </ul>
           </nav>
+          <div>
+            <div
+              className={styles.hamburger}
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? (
+                <svg
+                  preserveAspectRatio="xMidYMid meet"
+                  data-bbox="29.6 26 148 148"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="29.6 26 148 148"
+                  role="presentation"
+                  aria-hidden="true"
+                  width="30"
+                  height="30"
+                  fill="white"
+                >
+                  <g>
+                    <path d="M177.6 147.3L130.3 100l47.3-47.3L150.9 26l-47.3 47.3L56.3 26 29.6 52.7 76.9 100l-47.3 47.3L56.3 174l47.3-47.3 47.3 47.3 26.7-26.7z"></path>
+                  </g>
+                </svg>
+              ) : (
+                <svg
+                  id="icon-svg-menu"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <rect width="24" height="24" fill="none"></rect>
+                  <path
+                    d="M192,2707v-1.25h17.5V2707Zm0-6.375v-1.25h17.5v1.25Zm0-6.375V2693h17.5v1.25Z"
+                    transform="translate(-189 -2688)"
+                  ></path>
+                </svg>
+              )}
+            </div>
+            {/* 네비게이션 메뉴 */}
+            <div className={`${styles.navMenu} ${isOpen ? styles.open : ""}`}>
+              <ul>
+                <li>
+                  <Link href="/main/pages/product">제품안내</Link>
+                </li>
+                <li>
+                  <Link href="/main/pages/industry">적용산업</Link>
+                </li>
+                <li>
+                  <Link href="/main/pages/consulting/engineering">
+                    컨설팅서비스
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/main/pages/announcements">공지사항</Link>
+                </li>
+                <li>
+                  <Link href="/main/pages/company/ceo">회사소개</Link>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </header>

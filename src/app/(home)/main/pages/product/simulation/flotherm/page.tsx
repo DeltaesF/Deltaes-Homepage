@@ -417,7 +417,7 @@ export default function Flotherm() {
             <div className={styles.fiveContent}>
               <div className={styles.fiveHeader}>
                 <h2>추가 모듈</h2>
-                <Link href="/main/pages/product/simulation/flothermxt/module">
+                <Link href="/main/pages/product/simulation/flotherm/module">
                   <button>자세히 보기</button>
                 </Link>
               </div>

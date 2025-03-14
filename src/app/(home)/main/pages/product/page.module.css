@@ -53,3 +53,66 @@
   margin-top: 10px;
   padding: 15px;
 }
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  /*최대 크기 1024px*/
+  .wrapper {
+    width: 100%; /* 화면 크기에 맞춰 조정 */
+    padding: 0 20px;
+  }
+
+  .title {
+    font-size: 24px; /* 제목 크기 줄이기 */
+    margin-top: 40px;
+    padding-bottom: 5px;
+    border-bottom: 3px solid #162481;
+  }
+
+  .tabWrapper {
+    flex-wrap: wrap; /* 가로로 너무 길 경우 줄바꿈 */
+    gap: 5px; /* 간격 추가 */
+  }
+
+  .tabItem {
+    width: auto; /* 고정 너비 제거 */
+    flex: 1; /* 자동 크기 조절 */
+    font-size: 14px; /* 폰트 크기 줄이기 */
+    height: 40px; /* 높이 줄이기 */
+  }
+
+  .tabContent {
+    padding: 10px;
+    font-size: 14px; /* 내용 글씨 크기 조절 */
+  }
+}
+@media screen and (max-width: 480px) {
+  /*최대 크기 480px*/
+  .wrapper {
+    width: 100%; /* 화면 크기에 맞춰 조정 */
+    padding: 0 20px;
+  }
+
+  .title {
+    font-size: 24px; /* 제목 크기 줄이기 */
+    margin-top: 40px;
+    padding-bottom: 5px;
+    border-bottom: 3px solid #162481;
+  }
+
+  .tabWrapper {
+    flex-wrap: wrap; /* 가로로 너무 길 경우 줄바꿈 */
+    gap: 5px; /* 간격 추가 */
+  }
+
+  .tabItem {
+    width: auto; /* 고정 너비 제거 */
+    flex: 1; /* 자동 크기 조절 */
+    font-size: 14px; /* 폰트 크기 줄이기 */
+    height: 40px; /* 높이 줄이기 */
+  }
+
+  .tabContent {
+    padding: 10px;
+    font-size: 14px; /* 내용 글씨 크기 조절 */
+  }
+}

@@ -53,12 +53,7 @@
   height: 370px;
   position: relative;
 }
-.imgIntroduce {
-}
-.imgIntroduceTitle {
-}
-.imgIntroduceDec {
-}
+
 .imgIntroduceDetail {
   font-size: 15px;
   font-weight: bold;
@@ -213,7 +208,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30px;
 }
 
 .customerHeading {
@@ -238,7 +232,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
 }
 .customerSlice {
   position: relative;
@@ -266,4 +259,185 @@
 
 .arrowLeft {
   transform: rotate(180deg);
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  /*최대 크기 1024px*/
+  .section {
+    height: auto; /* 세로 높이 자동 조정 */
+  }
+  .imgSlice {
+    position: relative;
+    width: 100%;
+  }
+  .imgIntroduceTitle {
+    font-size: 14px; /* 글씨 크기 줄이기 */
+    font-weight: bold;
+    position: absolute;
+    top: -50px;
+    right: 0px;
+    left: 0px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+  }
+
+  .imgIntroduceDec {
+    font-size: 12px;
+    font-weight: bold;
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    left: 0px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+  }
+  .imgIntroduceDetail {
+    font-size: 14px; /* 글씨 크기 줄이기 */
+    font-weight: bold;
+    position: absolute;
+    top: 150px;
+    right: 0px;
+    left: 0px;
+    text-align: center; /* 중앙 정렬 */
+    color: white;
+    cursor: pointer;
+  }
+
+  /* .article 부분에서 h2만 보이게 수정 */
+  .article {
+    width: 100%; /* 너비를 100%로 설정 */
+    flex-direction: column; /* 열 방향으로 배치 */
+    margin-top: 30px;
+  }
+
+  .f {
+    width: 100%; /* 각 항목의 너비를 100%로 설정 */
+    height: 40px; /* 높이를 자동으로 설정 */
+    margin-bottom: 20px; /* 항목 간 간격 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* h2만 보이도록 설정하고 나머지 요소는 숨김 */
+  .f h2 {
+    font-size: 18px; /* 제목 크기 축소 */
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+  }
+
+  .f p,
+  .f span {
+    display: none; /* p, span 태그 숨김 */
+  }
+  /* 이미지 크기 조정 */
+  .imgIntroduce img {
+    display: none;
+  }
+
+  /* .section1 {
+    display: none;
+  } */
+
+  .s:nth-of-type(1) {
+    display: none;
+  }
+  .customerContainer {
+    width: 550px;
+  }
+  .article2 {
+    gap: 20px;
+  }
+}
+@media screen and (max-width: 480px) {
+  /*최대 크기 480px*/
+  .section {
+    height: auto; /* 세로 높이 자동 조정 */
+  }
+  .imgSlice {
+    position: relative;
+    width: 100%;
+  }
+  .imgIntroduceTitle {
+    font-size: 14px; /* 글씨 크기 줄이기 */
+    font-weight: bold;
+    position: absolute;
+    top: -50px;
+    right: 0px;
+    left: 0px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+  }
+
+  .imgIntroduceDec {
+    font-size: 12px;
+    font-weight: bold;
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    left: 0px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+  }
+  .imgIntroduceDetail {
+    font-size: 14px; /* 글씨 크기 줄이기 */
+    font-weight: bold;
+    position: absolute;
+    top: 150px;
+    right: 0px;
+    left: 0px;
+    text-align: center; /* 중앙 정렬 */
+    color: white;
+    cursor: pointer;
+  }
+
+  /* .article 부분에서 h2만 보이게 수정 */
+  .article {
+    width: 100%; /* 너비를 100%로 설정 */
+    flex-direction: column; /* 열 방향으로 배치 */
+    margin-top: 30px;
+  }
+
+  .f {
+    width: 100%; /* 각 항목의 너비를 100%로 설정 */
+    height: 40px; /* 높이를 자동으로 설정 */
+    margin-bottom: 20px; /* 항목 간 간격 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* h2만 보이도록 설정하고 나머지 요소는 숨김 */
+  .f h2 {
+    font-size: 18px; /* 제목 크기 축소 */
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+  }
+
+  .f p,
+  .f span {
+    display: none; /* p, span 태그 숨김 */
+  }
+  /* 이미지 크기 조정 */
+  .imgIntroduce img {
+    display: none;
+  }
+
+  .section1 {
+    display: none;
+  }
+  .customerContainer {
+    width: 200px;
+  }
+  .article2 {
+    gap: 20px;
+  }
 }

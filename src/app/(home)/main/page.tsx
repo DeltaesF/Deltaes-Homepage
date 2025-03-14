@@ -356,6 +356,7 @@ export default function MainPage() {
                           display: "block",
                           fontWeight: "bold",
                         }}
+                        className={styles.TitleSpan}
                       >
                         {t}
                       </span>
@@ -562,28 +563,26 @@ export default function MainPage() {
               </div>
             </div>
           </div>
-          <div>
-            <div className={styles.s}>
-              <div className={styles.sHeader2}>
-                {tabs.map((tab) => (
-                  <div
-                    key={tab}
-                    className={`${styles.sHeader2Sub} ${activeTab === tab ? styles.activeTab : ""}`}
-                    onClick={() => setActiveTab(tab)}
-                  >
-                    <div>{tab}</div>
-                  </div>
-                ))}
+          <div className={styles.s}>
+            <div className={styles.sHeader2}>
+              {tabs.map((tab) => (
+                <div
+                  key={tab}
+                  className={`${styles.sHeader2Sub} ${activeTab === tab ? styles.activeTab : ""}`}
+                  onClick={() => setActiveTab(tab)}
+                >
+                  <div>{tab}</div>
+                </div>
+              ))}
+            </div>
+            <div className={styles.sContainer2}>
+              <div className={styles.sContent}>
+                <div className={styles.sContentSub3}>{tabComponents()}</div>
               </div>
-              <div className={styles.sContainer2}>
-                <div className={styles.sContent}>
-                  <div className={styles.sContentSub3}>{tabComponents()}</div>
-                </div>
-                <div className={styles.sFooter}>
-                  <button className={styles.sButton} onClick={handleMoreClick}>
-                    더보기
-                  </button>
-                </div>
+              <div className={styles.sFooter}>
+                <button className={styles.sButton} onClick={handleMoreClick}>
+                  더보기
+                </button>
               </div>
             </div>
           </div>
@@ -596,30 +595,7 @@ export default function MainPage() {
             <br />
             고객사
           </h2>
-          <div
-            className={styles.customerContainer}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            <button className={styles.arrowLeft}>
-              <svg
-                width="26px"
-                height="40px"
-                viewBox="0 0 26 40"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g stroke="none" stroke-width="1" fill-rule="evenodd">
-                  <g
-                    transform="translate(-35.000000, -28.000000)"
-                    fill-rule="nonzero"
-                    fill="rgb(173, 180, 227)"
-                  >
-                    <polygon points="60.4571429 47.8 40.6571429 67.6 35 61.9428571 49.1433951 47.7994621 35 33.6571429 40.6571429 28"></polygon>
-                  </g>
-                </g>
-              </svg>
-            </button>
+          <div className={styles.customerContainer}>
             <div className={styles.customerSlice}>
               <div
                 className={styles.customerSliceAnimation}
@@ -644,25 +620,6 @@ export default function MainPage() {
                 ))}
               </div>
             </div>
-            <button className={styles.arrowRight}>
-              <svg
-                width="26px"
-                height="40px"
-                viewBox="0 0 26 40"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g stroke="none" stroke-width="1" fill-rule="evenodd">
-                  <g
-                    transform="translate(-35.000000, -28.000000)"
-                    fill-rule="nonzero"
-                    fill="rgb(173, 180, 227)"
-                  >
-                    <polygon points="60.4571429 47.8 40.6571429 67.6 35 61.9428571 49.1433951 47.7994621 35 33.6571429 40.6571429 28"></polygon>
-                  </g>
-                </g>
-              </svg>
-            </button>
           </div>
         </article>
       </section>
