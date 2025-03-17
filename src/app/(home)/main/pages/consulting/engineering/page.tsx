@@ -378,7 +378,7 @@ export default function Engineering() {
               <div className={styles.tabContent}>
                 <div className={styles.tabContent}>{tabComponents()}</div>
               </div>
-              <div>
+              <div className={styles.solutionMail}>
                 <SolutionMail />
               </div>
             </div>
