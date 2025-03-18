@@ -1,5 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 .env
+homepage-451907-ec4b5beef201.json
 
 # dependencies
 /node_modules
