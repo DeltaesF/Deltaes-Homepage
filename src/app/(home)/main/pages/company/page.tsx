@@ -54,6 +54,14 @@ export default function Company() {
     }
   };
 
+  const [files, setFiles] = useState<{ id: string; name: string }[]>([]);
+
+  useEffect(() => {
+    fetch("/api/drive/list")
+      .then((res) => res.json())
+      .then((data) => setFiles(data.files));
+  }, []);
+
   return (
     // <div>
     //   {imageSrc[0] && (
@@ -82,6 +90,21 @@ export default function Company() {
         업로드
       </button>
       {message && <p className="mt-2">{message}</p>}
+      <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+        {files.length > 0 ? (
+          files.map((file) => (
+            <Image
+              key={file.id}
+              src={`https://drive.google.com/uc?id=${file.id}`}
+              alt={file.name}
+              width={200}
+              height={200}
+            />
+          ))
+        ) : (
+          <p>이미지를 불러오는 중...</p>
+        )}
+      </div>
     </div>
   );
 }
