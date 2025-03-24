@@ -486,3 +486,301 @@
   height: 230px;
   position: relative;
 }
+
+@media screen and (max-width: 480px) {
+  /*최대 크기 480px*/
+  .firstWrapper {
+    height: auto;
+    padding: 30px 15px; /* 좌우 여백 추가 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .firstContent {
+    width: 100%;
+    text-align: center;
+  }
+
+  .firstContent h2 {
+    font-size: 24px; /* 폰트 크기 줄이기 */
+  }
+
+  .firstContent h1 {
+    font-size: 28px; /* 폰트 크기 줄이기 */
+    margin-top: 5px;
+  }
+
+  .firstImgP {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 중앙 정렬 */
+    margin-top: 20px;
+  }
+
+  .firstImg {
+    width: 100%;
+    height: 250px; /* 이미지 크기 조절 */
+    margin-right: 0;
+  }
+
+  .firstDes {
+    width: 100%;
+    text-align: center;
+    font-size: 12px; /* 폰트 크기 줄이기 */
+  }
+
+  .firstDes p {
+    margin-top: 10px;
+  }
+
+  .firstDes button {
+    width: 100%;
+    max-width: 180px;
+    height: 40px;
+    align-self: center;
+    margin-top: 20px;
+  }
+
+  .secondWrapper {
+    height: auto;
+    padding: 30px 15px; /* 좌우 여백 추가 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .secondContent {
+    width: 100%;
+    text-align: center;
+    gap: 40px; /* 간격 조정 */
+  }
+
+  .secondContent h2 {
+    font-size: 24px; /* 제목 크기 조절 */
+  }
+
+  .secondDes {
+    gap: 30px; /* 항목 간격 줄이기 */
+  }
+
+  .secondDes > div {
+    flex-direction: column; /* 수직 정렬 */
+    align-items: center; /* 중앙 정렬 */
+    text-align: center;
+    gap: 10px;
+  }
+
+  .secondDes h3 {
+    font-size: 28px; /* 숫자 크기 조절 */
+  }
+
+  .secondDes div p {
+    font-size: 13px; /* 글자 크기 줄이기 */
+    line-height: 1.4;
+  }
+  /* 최대 크기 480px */
+  .thirdWrapper {
+    height: auto;
+    padding: 30px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .thirdContent {
+    width: 100%;
+  }
+
+  .thirdContent h2 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .thirdSubContent {
+    width: 100%;
+  }
+
+  .thirdImg {
+    width: 100%;
+    height: 250px;
+  }
+
+  .thirdImgDes p {
+    font-size: 12px;
+  }
+
+  .thirdDes {
+    font-size: 12px;
+    text-align: left;
+    padding: 0 15px;
+  }
+
+  .thirdImgP {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+
+  .thirdImg2 {
+    width: 100%;
+    height: 200px;
+    margin: 0 auto;
+  }
+
+  .thirdDes2 {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.4;
+    text-align: left;
+    font-size: 12px;
+    gap: 15px;
+  }
+
+  .thirdDes2 h3 {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .thirdDes2 p {
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .thirdDes2 div {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .thirdDes2 div ul {
+    padding-left: 15px;
+  }
+
+  .thirdDes2 div li {
+    list-style-type: disc;
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+
+  .thirdDes2 div p {
+    margin: 10px 0;
+    font-weight: 500;
+    font-size: 13px;
+  }
+
+  /* .thirdDes2 {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 15px;
+  }
+
+  .thirdDes2 ul {
+    padding-left: 0;
+  }
+
+  .thirdDes2 li {
+    list-style-type: none;
+    font-size: 12px;
+    line-height: 1.5;
+  } */
+  .fourWrapper {
+    height: auto;
+    padding: 30px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .fourContent {
+    width: 100%;
+  }
+  .fourContent h2 {
+    font-size: 28px;
+    text-align: center;
+  }
+  .fourImgP1,
+  .fourImgP2 {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 30px;
+    gap: 30px;
+    margin-top: 70px;
+  }
+  .fourDes1,
+  .fourDes2 {
+    width: 100%;
+    font-size: 12px;
+    padding: 0 10px;
+    margin: 0;
+  }
+  .fourDes1 h3,
+  .fourDes2 h3 {
+    font-size: 16px;
+    text-align: center;
+  }
+  .fourImg1,
+  .fourImg2,
+  .fourImgD,
+  .fourImgD2,
+  .fourImgD3,
+  .fourImgD4,
+  .fourImgD5 {
+    width: 100%;
+    height: 200px;
+    margin: 10px 0;
+  }
+
+  .fiveWrapper {
+    height: auto;
+    padding: 50px 0;
+  }
+
+  .fiveContent {
+    width: 90%;
+  }
+
+  .fiveHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .fiveHeader h2 {
+    font-size: 24px;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .fiveHeader button {
+    width: 120px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .fiveImgGrid {
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 15px;
+    margin-top: 30px;
+  }
+
+  .fiveImgP {
+    margin-top: 30px;
+  }
+
+  .fiveImg1 {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3; /* 가로 4: 세로 3 비율 유지 */
+  }
+
+  .fiveDes1 h3 {
+    font-size: 18px;
+  }
+}
