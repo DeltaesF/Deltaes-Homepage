@@ -29,6 +29,7 @@ export default function Header() {
   };
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isIndustryOpen, setIsIndustryOpen] = useState(false);
 
   return (
     <header className={styles.header}>
@@ -508,9 +509,75 @@ export default function Header() {
                 <li>
                   <Link href="/main/pages/product">제품안내</Link>
                 </li>
-                <li>
-                  <Link href="/main/pages/industry">적용산업</Link>
+                {/* 적용산업 메뉴 */}
+                <li
+                  className={styles.dropdown}
+                  onClick={() => setIsIndustryOpen(!isIndustryOpen)}
+                >
+                  적용산업
                 </li>
+
+                {/* 서브 메뉴 */}
+                <ul
+                  className={`${styles.dropdownMenu} ${
+                    isIndustryOpen ? styles.show : ""
+                  }`}
+                >
+                  <li>
+                    <Link href="/main/pages/industry">전자기기 및 반도체</Link>
+                  </li>
+                  <li>
+                    <Link href="/main/pages/industry/automotive">
+                      자동차 및 운송
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/main/pages/industry/telecom">
+                      이동통신 및 미디어
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/main/pages/industry/environment">
+                      환경 및 산업용기계
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/main/pages/industry/construction">
+                      건설 / 토목
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/main/pages/industry/energy">
+                      발전 / 에너지 / 유틸리티
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/main/pages/industry/medical">
+                      의료기기 / 제약 / 헬스케어
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/main/pages/industry/consumer">소비재</Link>
+                  </li>
+                  <li>
+                    <Link href="/main/pages/industry/aerospace">
+                      항공 / 우주 / 방산
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/main/pages/industry/marine">조선 / 해양</Link>
+                  </li>
+                  <li>
+                    <Link href="/main/pages/industry/finance">
+                      보험 및 금융
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/main/pages/industry/software">
+                      소프트웨어 개발
+                    </Link>
+                  </li>
+                </ul>
                 <li>
                   <Link href="/main/pages/consulting/engineering">
                     컨설팅서비스

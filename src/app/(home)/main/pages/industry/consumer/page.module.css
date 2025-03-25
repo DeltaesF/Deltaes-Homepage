@@ -307,3 +307,351 @@
   border: 1px solid black;
   color: black;
 }
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  /* 태블릿 (768px~1024px) */
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .first {
+    width: 100vw;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .imageWrapper {
+    width: 100vw;
+    height: 450px;
+    position: relative;
+  }
+
+  .firstDes {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1a9c9d99;
+    color: white;
+    text-align: center;
+    width: 70%;
+    height: auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .firstDesWrapper {
+    width: 90%;
+    height: auto;
+  }
+
+  .firstDes h1 {
+    font-size: 32px;
+    margin-bottom: 25px;
+  }
+
+  .leftAlignContent {
+    text-align: center;
+    color: white;
+  }
+
+  .leftAlignContent h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .leftAlignContent p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .second {
+    width: 100vw;
+    height: auto;
+    background-color: #0f2a44;
+    display: flex;
+    justify-content: center;
+    padding: 60px 0;
+  }
+
+  .secondWrapper {
+    width: 85%;
+    height: auto;
+    margin-top: 40px;
+  }
+
+  .secondWrapper h2 {
+    font-size: 28px;
+    text-align: center;
+    color: white;
+  }
+
+  .secondGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  .grid {
+    width: 100%;
+    height: auto;
+  }
+
+  .gridDes {
+    height: 250px;
+  }
+
+  .textOverlay {
+    height: auto;
+    padding: 20px;
+  }
+
+  .textOverlay h3 {
+    font-size: 20px;
+  }
+
+  .textOverlay p {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+
+  .third {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .siemens,
+  .siemens2,
+  .siemens3 {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    margin-top: 50px;
+  }
+
+  .siemensDes,
+  .siemensDes2,
+  .siemensDes3 {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+  }
+
+  .siemensDes h2,
+  .siemensDes3 h2 {
+    font-size: 24px;
+  }
+
+  .siemensDes h3,
+  .siemensDes2 h3,
+  .siemensDes3 h3 {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .siemensDes p,
+  .siemensDes2 p,
+  .siemensDes3 p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .siemensImage {
+    /* width: 100%; */
+    display: none;
+  }
+
+  .siemensDes button,
+  .siemensDes2 button,
+  .siemensDes3 button {
+    width: 100%;
+    max-width: 200px;
+    height: 45px;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* 모바일 (최대 480px) */
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .first {
+    width: 100vw;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .imageWrapper {
+    width: 100vw;
+    height: 300px;
+    position: relative;
+  }
+
+  .firstDes {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1a9c9d99;
+    color: white;
+    text-align: center;
+    width: 90%;
+    height: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .firstDesWrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  .firstDes h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .leftAlignContent {
+    text-align: center;
+    color: white;
+  }
+
+  .leftAlignContent h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .leftAlignContent p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .second {
+    width: 100vw;
+    height: auto;
+    background-color: #0f2a44;
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+  }
+
+  .secondWrapper {
+    width: 90%;
+    height: auto;
+    margin-top: 30px;
+  }
+
+  .secondWrapper h2 {
+    font-size: 24px;
+    text-align: center;
+    color: white;
+  }
+
+  .secondGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .grid {
+    width: 100%;
+    height: auto;
+  }
+
+  .gridDes {
+    height: 200px;
+  }
+
+  .textOverlay {
+    height: auto;
+    padding: 15px;
+  }
+
+  .textOverlay h3 {
+    font-size: 18px;
+  }
+
+  .textOverlay p {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+
+  .third {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .siemens,
+  .siemens2,
+  .siemens3 {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    margin-top: 50px;
+  }
+
+  .siemensDes,
+  .siemensDes2,
+  .siemensDes3 {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+  }
+
+  .siemensDes h2,
+  .siemensDes3 h2 {
+    font-size: 24px;
+  }
+
+  .siemensDes h3,
+  .siemensDes2 h3,
+  .siemensDes3 h3 {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .siemensDes p,
+  .siemensDes2 p,
+  .siemensDes3 p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .siemensImage {
+    /* width: 100%; */
+    display: none;
+  }
+
+  .siemensDes button,
+  .siemensDes2 button,
+  .siemensDes3 button {
+    width: 100%;
+    max-width: 200px;
+    height: 45px;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+}

@@ -301,6 +301,30 @@
   cursor: pointer;
 }
 
+/* 서브메뉴 기본 숨김 */
+.dropdownMenu {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background-color: white;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  min-width: 200px;
+}
+
+/* 서브메뉴 보이게 */
+.show {
+  display: block;
+}
+
+/* 서브메뉴 항목 스타일 */
+.dropdownMenu li {
+  padding: 8px 12px;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   /*최소 크기 768px 최대 크기 1024px*/
   .header {
@@ -333,6 +357,17 @@
     padding-right: 20px; /* 화면 오른쪽에서 50px 떨어지게 */
     z-index: 1100; /* navMenu보다 위에 배치 */
     cursor: pointer;
+  }
+
+  .dropdownMenu {
+    position: static;
+    display: none;
+    background: none;
+    box-shadow: none;
+  }
+
+  .show {
+    display: block;
   }
 }
 @media screen and (max-width: 480px) {
@@ -367,5 +402,16 @@
     padding-right: 20px; /* 화면 오른쪽에서 50px 떨어지게 */
     z-index: 1100; /* navMenu보다 위에 배치 */
     cursor: pointer;
+  }
+
+  .dropdownMenu {
+    position: static;
+    display: none;
+    background: none;
+    box-shadow: none;
+  }
+
+  .show {
+    display: block;
   }
 }

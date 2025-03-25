@@ -123,3 +123,217 @@
   line-height: 1.6;
   font-size: 14px;
 }
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .first {
+    width: 100vw;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .imageWrapper {
+    width: 100vw;
+    height: 400px;
+    position: relative;
+  }
+
+  .firstDes {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1a9c9d99;
+    color: white;
+    text-align: center;
+    width: 80%;
+    height: auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .firstDesWrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  .firstDes h1 {
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+
+  .leftAlignContent {
+    text-align: center;
+    color: white;
+  }
+
+  .leftAlignContent h2 {
+    font-size: 20px;
+    margin-bottom: 18px;
+  }
+
+  .leftAlignContent p {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .second {
+    width: 100%;
+    padding: 30px;
+  }
+
+  .secondWrapper {
+    flex-direction: column;
+    width: 90%;
+    gap: 30px;
+  }
+
+  .secondDes {
+    width: 100%;
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .secondImage {
+    width: 100%;
+    height: auto;
+  }
+
+  .secondDes h2 {
+    font-size: 28px;
+  }
+
+  .secondDes h3 {
+    font-size: 20px;
+    margin-top: 15px;
+  }
+
+  .secondDes p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-top: 25px;
+  }
+
+  .secondUl {
+    padding-left: 15px;
+  }
+
+  .secondUl li {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .first {
+    width: 100vw;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .imageWrapper {
+    width: 100vw;
+    height: 300px;
+    position: relative;
+  }
+
+  .firstDes {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1a9c9d99;
+    color: white;
+    text-align: center;
+    width: 90%;
+    height: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .firstDesWrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  .firstDes h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .leftAlignContent {
+    text-align: center;
+    color: white;
+  }
+
+  .leftAlignContent h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .leftAlignContent p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .second {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .secondWrapper {
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+  }
+
+  .secondDes {
+    width: 100%;
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .secondImage {
+    width: 100%;
+    height: auto;
+  }
+
+  .secondDes h2 {
+    font-size: 24px;
+  }
+
+  .secondDes h3 {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+
+  .secondDes p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 20px;
+  }
+
+  .secondUl {
+    padding-left: 10px;
+  }
+
+  .secondUl li {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
