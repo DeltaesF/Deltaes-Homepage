@@ -96,29 +96,22 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
     formData.append("image", image);
 
     try {
-      const response = await fetch("/api/upload", {
+      const response = await fetch("/api/driveupload", {
         method: "POST",
         body: formData,
       });
-
       const data = await response.json();
-      console.log("Upload API Response:", data);
-
-      const FTP_HOST = process.env.FTP_HOST;
 
       if (response.ok) {
-        // 이미지 URL을 받아와서 이미지 다운로드 API URL로 변환
-        const fileUrl = data.fileUrl.replace(
-          `${FTP_HOST}/images/`,
-          "/api/getftp/",
-        );
+        const fileUrl = data.fileUrl;
         setImageUrl(fileUrl);
-        insertImageAtCursor(fileUrl); // contentEditable에 이미지 삽입
+        insertImageAtCursor(fileUrl); // ✅ 이미지 삽입 함수 호출
+        console.log(fileUrl);
       } else {
         alert("이미지 업로드 실패");
       }
     } catch (error) {
-      console.error("업로드 중 오류 발생:", error);
+      console.error("업로드 오류:", error);
     }
   };
 

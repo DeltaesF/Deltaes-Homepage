@@ -2,6 +2,7 @@
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "./page.module.css";
+import Image from "next/image";
 
 interface Post {
   id: number;
@@ -86,11 +87,20 @@ export default function HomePosts() {
         ></section>
         {/* 이미지 출력 */}
         <figure className={styles.images}>
-          {(Array.isArray(post?.images) ? post?.images : []).map(
-            (image, index) => (
-              <img key={index} src={image} alt={`Image ${index}`} />
-            ),
-          )}
+          {(Array.isArray(post?.images)
+            ? post?.images
+            : JSON.parse(post?.images || "[]")
+          ).map((image, index) => (
+            <Image
+              key={index}
+              src={image}
+              alt={`Uploaded Image ${index}`}
+              width={9000} // 원본보다 너무 작게 설정하지 않기
+              height={9000}
+              style={{ width: "100%", height: "auto" }}
+              quality={100} // 화질 개선
+            />
+          ))}
         </figure>
       </section>
     </article>

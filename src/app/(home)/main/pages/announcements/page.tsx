@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 import { useState } from "react";
 import Link from "next/link";
 import SolutionMail from "@/app/components/solution/SolutionMail";
+import Image from "next/image";
 
 export default function Announcements() {
   const { postsList, error } = usePostsList();
@@ -52,7 +53,14 @@ export default function Announcements() {
                   {Array.isArray(JSON.parse(post.images)) &&
                   JSON.parse(post.images).length > 0
                     ? JSON.parse(post.images).map((image, index) => (
-                        <img key={index} src={image} alt={`이미지 ${index}`} />
+                        <div key={index} className={styles.imageContainer}>
+                          <Image
+                            src={image}
+                            alt={`이미지 ${index}`}
+                            width={70} // 원하는 기본 너비
+                            height={70} // 원하는 기본 높이
+                          />
+                        </div>
                       ))
                     : null}
                 </div>

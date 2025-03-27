@@ -1,27 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import styles from "./page.module.css";
 import { useEffect, useState } from "react";
-import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Company() {
-  // const { imageSrc, error } = useFetchImages([
-  //   "adt1.jpg",
-  //   "adt2.jpg",
-  //   "adt3.jpg",
-  // ]);
-
-  // if (error) {
-  //   return <p>Error: {error}</p>;
-  // }
-
   const [file, setFile] = useState<File | null>(null);
+  const [preview, setPreview] = useState<string | null>(null);
   const [message, setMessage] = useState("");
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      setFile(e.target.files[0]);
+      const selectedFile = e.target.files[0];
+      setFile(selectedFile);
+      // 🔹 미리보기 URL 생성
+      const objectUrl = URL.createObjectURL(selectedFile);
+      setPreview(objectUrl);
     }
   };
 
@@ -63,26 +56,18 @@ export default function Company() {
   }, []);
 
   return (
-    // <div>
-    //   {imageSrc[0] && (
-    //     <div>
-    //       <Image src={imageSrc[0]} alt="소비자" width={300} height={300} />
-    //     </div>
-    //   )}
-    //   {imageSrc[1] && (
-    //     <div>
-    //       <Image src={imageSrc[1]} alt="소비자" width={300} height={300} />
-    //     </div>
-    //   )}
-    //   {imageSrc[2] && (
-    //     <div>
-    //       <Image src={imageSrc[2]} alt="소비자" width={300} height={300} />
-    //     </div>
-    //   )}
-    // </div>
     <div className="p-4">
       <h1 className="text-xl font-bold mb-4">Google Drive 파일 업로드</h1>
       <input type="file" onChange={handleFileChange} className="mb-2" />
+      {preview && (
+        <div className="mb-2">
+          <img
+            src={preview}
+            alt="미리보기"
+            className="w-40 h-40 object-cover border rounded"
+          />
+        </div>
+      )}
       <button
         onClick={handleUpload}
         className="px-4 py-2 bg-blue-500 text-white rounded"
@@ -93,13 +78,14 @@ export default function Company() {
       <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
         {files.length > 0 ? (
           files.map((file) => (
-            <Image
-              key={file.id}
-              src={`https://drive.google.com/uc?id=${file.id}`}
-              alt={file.name}
-              width={200}
-              height={200}
-            />
+            <div key={file.id} style={{ position: "relative" }}>
+              <Image
+                src={`https://drive.google.com/uc?id=${file.id}`}
+                alt={file.name}
+                width={200} // 🔹 원하는 기본 크기 설정
+                height={200}
+              />
+            </div>
           ))
         ) : (
           <p>이미지를 불러오는 중...</p>
