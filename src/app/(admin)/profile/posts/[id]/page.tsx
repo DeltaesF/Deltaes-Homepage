@@ -216,7 +216,7 @@ export default function DetailPosts() {
               dangerouslySetInnerHTML={{ __html: post?.content || "" }}
               className={styles.postContent}
             ></div>
-            <div className={styles.images}>
+            {/* <div className={styles.images}>
               {(Array.isArray(post?.images)
                 ? post?.images
                 : JSON.parse(post?.images || "[]")
@@ -231,7 +231,7 @@ export default function DetailPosts() {
                   quality={100} // 화질 개선
                 />
               ))}
-            </div>
+            </div> */}
           </>
         )}
       </div>

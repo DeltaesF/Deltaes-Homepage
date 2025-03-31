@@ -85,6 +85,13 @@ export default function HomePosts() {
           dangerouslySetInnerHTML={{ __html: post?.content || "" }}
           className={styles.postContent}
         ></section>
+        <div className={styles.images}>
+          {(Array.isArray(post?.images) ? post?.images : []).map(
+            (image, index) => (
+              <img key={index} src={image} alt={`Image ${index}`} />
+            ),
+          )}
+        </div>
       </section>
     </article>
   );

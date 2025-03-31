@@ -88,21 +88,11 @@ export default function HomePosts() {
         ></section>
         {/* 이미지 출력 */}
         <figure className={styles.images}>
-          {post?.images &&
-            (typeof post.images === "string"
-              ? JSON.parse(post.images)
-              : post.images
-            ).map((image, index) => (
-              <Image
-                key={index}
-                src={image}
-                alt={`Uploaded Image ${index}`}
-                width={900}
-                height={600}
-                style={{ width: "100%", height: "auto" }}
-                quality={100}
-              />
-            ))}
+          {(Array.isArray(post?.images) ? post?.images : []).map(
+            (image, index) => (
+              <img key={index} src={image} alt={`Image ${index}`} />
+            ),
+          )}
         </figure>
       </section>
     </article>

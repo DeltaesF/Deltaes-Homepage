@@ -21,7 +21,7 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
   const [image, setImage] = useState<File | null>(null);
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [imageUrl, setImageUrl] = useState<string[]>([]);
   const [message, setMessage] = useState<string | null>(null);
   const [messageType, setMessageType] = useState<"success" | "error" | null>(
     null,
@@ -72,25 +72,35 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
   };
 
   const insertImageAtCursor = (imageUrl: string) => {
+    const contentDiv = document.getElementById("content");
+    if (!contentDiv) return;
+
     const selection = window.getSelection();
     if (!selection || selection.rangeCount === 0) return;
 
     const range = selection.getRangeAt(0);
     const img = document.createElement("img");
     img.src = imageUrl;
-    img.alt = "업로드된 이미지";
-    img.style.maxWidth = "100%"; // 이미지 크기 조절 (선택 사항)
+    img.alt = "";
+    img.style.maxWidth = "100%";
+    img.style.display = "block"; // 줄 바꿈 효과 적용
 
-    // 이미지 삽입
-    range.deleteContents(); // 기존 선택된 내용 지우기 (선택된 텍스트가 있을 경우)
+    range.deleteContents();
     range.insertNode(img);
-    // 커서를 이미지 뒤로 이동시켜서, 이후에 텍스트 입력이 가능하도록
+
+    // 이미지 삽입 후, 커서를 이미지 다음 위치로 이동
     range.setStartAfter(img);
     range.setEndAfter(img);
+    selection.removeAllRanges();
+    selection.addRange(range);
   };
 
   const uploadImage = async () => {
     if (!image) return;
+
+    // 미리보기 URL 생성
+    const previewUrl = URL.createObjectURL(image);
+    insertImageAtCursor(previewUrl);
 
     const formData = new FormData();
     formData.append("image", image);
@@ -104,7 +114,7 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
 
       if (response.ok) {
         const fileUrl = data.fileUrl;
-        setImageUrl(fileUrl);
+        setImageUrl((prevUrls) => [...prevUrls, fileUrl]);
         insertImageAtCursor(fileUrl); // ✅ 이미지 삽입 함수 호출
         console.log(fileUrl);
       } else {
@@ -128,7 +138,7 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
           title,
           content,
           user_id: user?.id, // 로그인된 사용자 ID를 서버로 전달
-          images: imageUrl ? [imageUrl] : [], // 이미지 URL을 배열로 전달
+          images: imageUrl, // 이미지 URL을 배열로 전달
           category,
         }),
       });
