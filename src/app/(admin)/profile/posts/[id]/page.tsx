@@ -27,7 +27,6 @@ export default function DetailPosts() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [images, setImages] = useState<string[]>([]);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null); // 이미지 URL 저장
 
   useEffect(() => {
     if (!id) return; // id가 없으면 API 요청 안 함

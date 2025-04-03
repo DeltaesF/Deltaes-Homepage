@@ -17,6 +17,8 @@ export async function POST(req: Request) {
     const formData = await req.formData();
     const file = formData.get("image") as File;
 
+    console.log("📥 요청된 파일 데이터:", req.formData());
+
     if (!file) {
       return NextResponse.json({ error: "파일이 없습니다." }, { status: 400 });
     }

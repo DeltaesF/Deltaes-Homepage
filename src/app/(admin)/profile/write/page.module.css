@@ -1,64 +1,24 @@
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
-  background: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-}
-
-.form {
+.titleCategoryContainer {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.label {
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.input {
-  width: 980px;
-  font-size: 18px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.editorContainer {
-  display: flex;
-  flex-direction: column;
+  align-items: center;
   gap: 10px;
 }
 
-.toolbar {
-  display: flex;
-  gap: 8px;
-}
-
-.toolbar button {
-  background: #f4f4f4;
-  border: 1px solid #ccc;
-  padding: 8px 12px;
-  cursor: pointer;
-  font-size: 14px;
-  border-radius: 5px;
-  transition: 0.2s;
-}
-
-.toolbar button:hover {
-  background: #ddd;
-}
-
-.content {
-  min-height: 300px;
-  border: 1px solid #ddd;
-  padding: 15px;
-  border-radius: 5px;
-  cursor: text;
+.input {
+  flex: 1;
+  padding: 10px;
   font-size: 16px;
-  line-height: 1.5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: white;
+  cursor: pointer;
+  appearance: none;
 }
 
 .submitBtn {
@@ -70,6 +30,7 @@
   border-radius: 5px;
   cursor: pointer;
   transition: 0.2s;
+  margin-top: 10px;
 }
 
 .submitBtn:hover {
@@ -90,16 +51,4 @@
 .error {
   background-color: lightcoral;
   color: red;
-}
-
-.centered {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  margin-right: 5px;
-}
-
-.select {
-  border: none;
 }

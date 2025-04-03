@@ -1,0 +1,14 @@
+.editorContainer {
+  margin-top: 10px;
+}
+
+.editorContainer :global(.ql-editor) {
+  font-size: 16px;
+  min-height: 450px;
+  max-height: 500px;
+  padding-bottom: 50px;
+}
+
+.editorContainer :global(.ql-toolbar) {
+  border-radius: 8px;
+}

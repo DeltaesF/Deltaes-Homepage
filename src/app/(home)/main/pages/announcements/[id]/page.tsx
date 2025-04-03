@@ -86,10 +86,6 @@ export default function HomePosts() {
           dangerouslySetInnerHTML={{ __html: post?.content || "" }}
           className={styles.postContent}
         ></section>
-        <img
-          src="https://drive.usercontent.google.com/download?id=1zNI-5jt4sExoKWCr0IKWMJavLEqdcjM-"
-          alt="테스트 이미지"
-        />
       </section>
     </article>
   );
