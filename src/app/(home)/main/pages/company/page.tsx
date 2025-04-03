@@ -55,6 +55,9 @@ export default function Company() {
       .then((data) => setFiles(data.files));
   }, []);
 
+  const imageUrl =
+    "https://drive.google.com/uc?export=view&id=1UYorvjopev35buWyKfoQN6M-lWsvGg8H";
+
   return (
     <div className="p-4">
       <h1 className="text-xl font-bold mb-4">Google Drive 파일 업로드</h1>
@@ -75,7 +78,7 @@ export default function Company() {
         업로드
       </button>
       {message && <p className="mt-2">{message}</p>}
-      <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+      {/* <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
         {files.length > 0 ? (
           files.map((file) => (
             <div key={file.id} style={{ position: "relative" }}>
@@ -90,7 +93,19 @@ export default function Company() {
         ) : (
           <p>이미지를 불러오는 중...</p>
         )}
-      </div>
+      </div> */}
+      <img
+        src="https://drive.google.com/uc?export=view&id=1UYorvjopev35buWyKfoQN6M-lWsvGg8H
+"
+        alt=""
+      />
+      <Image
+        src={imageUrl}
+        alt="Google Drive Image"
+        width={600}
+        height={400}
+        layout="responsive"
+      />
     </div>
   );
 }

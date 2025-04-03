@@ -46,7 +46,7 @@ export default function HomePosts() {
 
   useEffect(() => {
     if (post) {
-      console.log("Post data:", post);
+      console.log("Rendered img src:", post?.content);
     }
   }, [post]);
 
@@ -86,14 +86,10 @@ export default function HomePosts() {
           dangerouslySetInnerHTML={{ __html: post?.content || "" }}
           className={styles.postContent}
         ></section>
-        {/* 이미지 출력 */}
-        <figure className={styles.images}>
-          {(Array.isArray(post?.images) ? post?.images : []).map(
-            (image, index) => (
-              <img key={index} src={image} alt={`Image ${index}`} />
-            ),
-          )}
-        </figure>
+        <img
+          src="https://drive.usercontent.google.com/download?id=1zNI-5jt4sExoKWCr0IKWMJavLEqdcjM-"
+          alt="테스트 이미지"
+        />
       </section>
     </article>
   );

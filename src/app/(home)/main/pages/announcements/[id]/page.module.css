@@ -37,3 +37,9 @@
 .postContent {
   line-height: 1.4;
 }
+
+.postContent img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}

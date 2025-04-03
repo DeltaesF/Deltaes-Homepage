@@ -92,6 +92,13 @@
   line-height: 1.4;
 }
 
+/* .postContent img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 10px 0;
+} */
+
 .editInput {
   width: 750px;
   font-size: 18px;

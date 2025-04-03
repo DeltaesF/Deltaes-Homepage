@@ -27,6 +27,7 @@ export default function DetailPosts() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [images, setImages] = useState<string[]>([]);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null); // 이미지 URL 저장
 
   useEffect(() => {
     if (!id) return; // id가 없으면 API 요청 안 함
@@ -39,7 +40,7 @@ export default function DetailPosts() {
 
         if (res.ok) {
           setPost(data.post);
-          console.log("Fetched post:", data.post); // 추가된 로그
+          console.log(data.post);
 
           // 기존 데이터로 상태 초기화
           setTitle(data.post.title);

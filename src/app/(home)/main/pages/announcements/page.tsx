@@ -32,6 +32,16 @@ export default function Announcements() {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = sortedPosts.slice(indexOfFirstPost, indexOfLastPost);
 
+  console.log(postsList);
+
+  const convertGoogleDriveURL = (url: string) => {
+    if (url.includes("drive.google.com")) {
+      const match = url.match(/id=([^&]+)/);
+      return match ? `https://lh3.googleusercontent.com/d/${match[1]}` : null;
+    }
+    return url;
+  };
+
   return (
     <main className={styles.container}>
       <section className={styles.wrapper}>
@@ -41,42 +51,55 @@ export default function Announcements() {
         <section className={styles.gridContainer}>
           {currentPosts
             .sort((a, b) => a.id - b.id)
-            .map((post) => (
-              <article key={post.id} className={styles.gridItem}>
-                <div className={styles.gridItemPost}>
-                  <Link
-                    href={`/main/pages/announcements/${post.id}`}
-                    className={styles.postLink}
-                  >
-                    <h1>{post.title}</h1>
-                  </Link>
-                  {Array.isArray(JSON.parse(post.images)) &&
-                  JSON.parse(post.images).length > 0
-                    ? JSON.parse(post.images).map((image, index) => (
-                        <div key={index} className={styles.imageContainer}>
-                          <Image
-                            src={image}
-                            alt={`이미지 ${index}`}
-                            width={70} // 원하는 기본 너비
-                            height={70} // 원하는 기본 높이
-                          />
-                        </div>
-                      ))
-                    : null}
-                </div>
-                <div className={styles.created}>
-                  <span>
-                    {post?.created_at
-                      ? new Date(post.created_at).toLocaleDateString("ko-KR", {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })
-                      : "날짜 없음"}
-                  </span>
-                </div>
-              </article>
-            ))}
+            .map((post) => {
+              let images: string[] = [];
+
+              try {
+                const parsedImages = JSON.parse(post.images);
+                images = Array.isArray(parsedImages) ? parsedImages.flat() : [];
+              } catch (error) {
+                console.error("이미지 파싱 오류:", error);
+              }
+
+              // ✅ 대표 이미지 1개 선택
+              const mainImage = images.length > 0 ? images[0] : null;
+              const validSrc = mainImage
+                ? convertGoogleDriveURL(mainImage) || mainImage
+                : null;
+
+              // ✅ 대표 이미지가 잘 변환됐는지 확인
+              console.log("대표 이미지 URL:", validSrc);
+              console.log("포스트 ID:", post.id);
+              console.log("원본 이미지 데이터:", post.images);
+              console.log("파싱된 이미지 배열:", images);
+
+              return (
+                <article key={post.id} className={styles.gridItem}>
+                  <div className={styles.gridItemPost}>
+                    <Link
+                      href={`/main/pages/announcements/${post.id}`}
+                      className={styles.postLink}
+                    >
+                      <h1>{post.title}</h1>
+                    </Link>
+                    {/* ✅ 대표 이미지 1개만 표시 */}
+                    {validSrc && (
+                      <div className={styles.imageContainer}>
+                        <Image
+                          src={validSrc}
+                          alt="대표 이미지"
+                          width={70}
+                          height={70}
+                          onError={(e) =>
+                            console.error("이미지 로드 실패:", validSrc, e)
+                          }
+                        />
+                      </div>
+                    )}
+                  </div>
+                </article>
+              );
+            })}
         </section>
         {/* 페이지네이션 컨트롤 */}
         <div className={styles.pagination}>

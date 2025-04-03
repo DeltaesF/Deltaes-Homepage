@@ -34,6 +34,9 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
   const [showTextColor, setShowTextColor] = useState(false);
   const [showBgColor, setShowBgColor] = useState(false);
   const [category, setCategory] = useState("");
+  const [selectedImage, setSelectedImage] = useState<HTMLImageElement | null>(
+    null,
+  );
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
@@ -66,6 +69,7 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
+    console.log("선택된 파일:", file);
     if (file) {
       setImage(file);
     }
@@ -84,6 +88,7 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
     img.alt = "";
     img.style.maxWidth = "100%";
     img.style.display = "block"; // 줄 바꿈 효과 적용
+    img.onclick = () => setSelectedImage(img);
 
     range.deleteContents();
     range.insertNode(img);
@@ -97,13 +102,14 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
 
   const uploadImage = async () => {
     if (!image) return;
-
-    // 미리보기 URL 생성
-    const previewUrl = URL.createObjectURL(image);
-    insertImageAtCursor(previewUrl);
+    console.log("업로드할 이미지:", image); // ✅ 업로드할 파일 정보 확인
 
     const formData = new FormData();
     formData.append("image", image);
+
+    for (const pair of formData.entries()) {
+      console.log("FormData 내용:", pair[0], pair[1]); // ✅ FormData에 이미지가 제대로 들어가는지 확인
+    }
 
     try {
       const response = await fetch("/api/driveupload", {
@@ -117,8 +123,10 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
         setImageUrl((prevUrls) => [...prevUrls, fileUrl]);
         insertImageAtCursor(fileUrl); // ✅ 이미지 삽입 함수 호출
         console.log(fileUrl);
+        console.log("업로드 성공:", data); // ✅ 업로드 성공 여부 확인
       } else {
         alert("이미지 업로드 실패");
+        console.error("업로드 실패:", data);
       }
     } catch (error) {
       console.error("업로드 오류:", error);
@@ -128,6 +136,12 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // content에서 blob: URL 제거
+    const filteredContent = content.replace(/<img src="blob:[^"]+"[^>]*>/g, "");
+
+    console.log("저장할 내용:", filteredContent);
+    console.log("저장할 이미지 배열:", imageUrl);
+
     try {
       const response = await fetch("/api/write", {
         method: "POST",
@@ -136,7 +150,7 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
         },
         body: JSON.stringify({
           title,
-          content,
+          content: filteredContent,
           user_id: user?.id, // 로그인된 사용자 ID를 서버로 전달
           images: imageUrl, // 이미지 URL을 배열로 전달
           category,
@@ -144,6 +158,7 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
       });
 
       const data = await response.json();
+      console.log("서버 응답:", data); // ✅ 서버 응답 확인
 
       if (response.ok) {
         setIsSaved(true);
@@ -161,6 +176,14 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
       console.error("글 제출 실패:", error);
       setMessage("글 작성에 실패했습니다. 다시 시도해 주세요.");
       setMessageType("error");
+    }
+  };
+
+  // ✅ 선택한 이미지 삭제 기능
+  const removeSelectedImage = () => {
+    if (selectedImage) {
+      selectedImage.remove();
+      setSelectedImage(null);
     }
   };
 
@@ -517,6 +540,9 @@ export default function WriteForm({ setSelectMenu }: WriteProps) {
         />
         <button type="button" onClick={uploadImage}>
           이미지 업로드
+        </button>
+        <button type="button" onClick={removeSelectedImage}>
+          이미지 삭제
         </button>
       </div>
 
