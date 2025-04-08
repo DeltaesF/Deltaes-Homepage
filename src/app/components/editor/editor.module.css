@@ -12,3 +12,7 @@
 .editorContainer :global(.ql-toolbar) {
   border-radius: 8px;
 }
+
+.ql-file::before {
+  content: "📎"; /* 클립 아이콘 */
+}

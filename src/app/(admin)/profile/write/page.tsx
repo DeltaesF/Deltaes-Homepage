@@ -29,10 +29,20 @@ export default function Write({ setSelectMenu }: WriteProps) {
     return txt.value;
   }
 
+  const extractImageUrls = (html: string): string[] => {
+    const div = document.createElement("div");
+    div.innerHTML = html;
+    const imgTags = div.querySelectorAll("img");
+    return Array.from(imgTags)
+      .map((img) => img.getAttribute("src") || "")
+      .filter(Boolean);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const decodedContent = decodeHTMLEntities(content);
+    const imageUrls = extractImageUrls(decodedContent);
 
     try {
       const response = await fetch("/api/write", {
@@ -45,6 +55,7 @@ export default function Write({ setSelectMenu }: WriteProps) {
           content: decodedContent,
           user_id: user?.id, // 로그인된 사용자 ID를 서버로 전달
           category,
+          images: JSON.stringify(imageUrls),
         }),
       });
 
