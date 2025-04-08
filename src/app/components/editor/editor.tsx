@@ -1,41 +1,105 @@
 "use client";
 
-import dynamic from "next/dynamic";
+import React, { useRef, useMemo } from "react";
+import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import styles from "./editor.module.css";
 
-// ✅ SSR(서버사이드 렌더링) 비활성화 설정
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-
 interface EditorProps {
   value: string;
-  onChange: (content: string) => void;
+  onChange: (value: string) => void;
 }
 
 export default function Editor({ value, onChange }: EditorProps) {
-  const modules = {
-    toolbar: {
-      container: [
-        [{ header: [1, 2, 3, 4, 5, 6, false] }], // 제목 크기
-        [{ font: [] }], // 폰트 종류
-        [{ list: "ordered" }, { list: "bullet" }], // 번호 목록, 불릿 목록
-        ["bold", "italic", "underline", "strike"], // 글씨 굵게, 기울기, 밑줄, 취소선
-        [{ color: [] }, { background: [] }], // 글자색, 배경색
-        [{ align: [] }], // 정렬
-        ["blockquote", "code-block"], // 인용구, 코드 블록
-        ["link", "image", "video"], // 링크, 이미지, 비디오 추가
-        ["clean"], // 서식 초기화
-      ],
-    },
+  const quillRef = useRef<ReactQuill | null>(null);
+
+  const imageHandler = () => {
+    const input = document.createElement("input");
+    input.setAttribute("type", "file");
+    input.setAttribute("accept", "image/*");
+    input.click();
+
+    input.addEventListener("change", async () => {
+      const file = input.files?.[0];
+      if (!file) return;
+
+      const formData = new FormData();
+      formData.append("image", file);
+
+      try {
+        const res = await fetch("/api/driveupload", {
+          method: "POST",
+          body: formData,
+        });
+
+        const data = await res.json();
+        const imageUrl = data.fileUrl;
+        console.log(imageUrl);
+
+        const editor = quillRef.current?.getEditor();
+        const range = editor?.getSelection();
+
+        if (editor && range) {
+          editor.insertEmbed(range.index, "image", imageUrl);
+          editor.setSelection(range.index + 1);
+        } else {
+          alert("에디터에 커서를 먼저 클릭해 주세요!");
+        }
+      } catch (err) {
+        console.error("이미지 업로드 실패:", err);
+      }
+    });
   };
+
+  const modules = useMemo(
+    () => ({
+      toolbar: {
+        container: [
+          [{ header: [1, 2, 3, 4, 5, 6, false] }],
+          [{ font: [] }],
+          [{ list: "ordered" }, { list: "bullet" }],
+          ["bold", "italic", "underline", "strike"],
+          [{ color: [] }, { background: [] }],
+          [{ align: [] }],
+          ["blockquote", "code-block"],
+          ["link", "image", "video"],
+          ["clean"],
+        ],
+        handlers: {
+          image: imageHandler,
+        },
+      },
+    }),
+    [],
+  );
+
+  const formats = [
+    "header",
+    "font",
+    "list",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "color",
+    "background",
+    "align",
+    "blockquote",
+    "code-block",
+    "link",
+    "image",
+    "video",
+  ];
 
   return (
     <div className={styles.editorContainer}>
       <ReactQuill
+        ref={quillRef}
         theme="snow"
         value={value}
         onChange={onChange}
         modules={modules}
+        formats={formats}
       />
     </div>
   );

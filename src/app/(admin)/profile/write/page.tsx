@@ -2,7 +2,11 @@
 import styles from "./page.module.css";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/app/context/AuthContext";
-import Editor from "@/app/components/editor/editor";
+import dynamic from "next/dynamic";
+
+const Editor = dynamic(() => import("@/app/components/editor/editor"), {
+  ssr: false,
+});
 
 interface WriteProps {
   setSelectMenu: (menu: string) => void;
@@ -19,8 +23,16 @@ export default function Write({ setSelectMenu }: WriteProps) {
   );
   const [isSaved, setIsSaved] = useState(false);
 
+  function decodeHTMLEntities(html: string) {
+    const txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const decodedContent = decodeHTMLEntities(content);
 
     try {
       const response = await fetch("/api/write", {
@@ -30,7 +42,7 @@ export default function Write({ setSelectMenu }: WriteProps) {
         },
         body: JSON.stringify({
           title,
-          content,
+          content: decodedContent,
           user_id: user?.id, // 로그인된 사용자 ID를 서버로 전달
           category,
         }),
