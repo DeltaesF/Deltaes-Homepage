@@ -1,30 +1,66 @@
 "use client";
 
+import { useRef, useState } from "react";
 import styles from "./inquiry.module.css";
 
 export default function Inquiry() {
-  const onClick = () => {
-    window.location.href =
-      "mailto:example@example.com?subject=문의하기&body=안녕하세요, 문의드립니다.";
-  };
+  const [showMessenger, setShowMessenger] = useState(false);
+  const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState<any[]>([]);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const toggleMessenger = () => setShowMessenger((prev) => !prev);
+
   return (
-    <div className={styles.inquiryContainer} onClick={onClick}>
-      <div className={styles.inquiry}>
-        <svg
-          width="28"
-          height="28"
-          viewBox="0 0 32 32"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="rgb(255, 255, 255)"
-        >
-          <path
-            d="M21.133 16.933a1.4 1.4 0 11.001-2.8 1.4 1.4 0 010 2.8m-4.667 0a1.4 1.4 0 110-2.8 1.4 1.4 0 010 2.8m-5.6 0a1.4 1.4 0 110-2.8 1.4 1.4 0 010 2.8m18.904-3.656c-1.013-5.655-5.753-10.22-11.528-11.105-4.343-.667-8.642.627-11.807 3.547-3.168 2.917-4.763 7.043-4.38 11.318.59 6.582 6.08 11.952 12.768 12.487 1.153.095 2.303.05 3.428-.13a14.12 14.12 0 002.428-.612.59.59 0 01.364-.006l3.714 1.167c.785.246 1.588-.331 1.588-1.144l-.002-3.517c0-.17.086-.301.157-.38a14.028 14.028 0 001.58-2.147c1.705-2.862 2.29-6.14 1.69-9.478"
-            fill="currentColor"
-            fill-rule="nonzero"
-          ></path>
-        </svg>
-        <h3>실시간 문의</h3>
+    <>
+      <div className={styles.inquiryContainer} onClick={toggleMessenger}>
+        <div className={styles.inquiry}>
+          <svg
+            width="28"
+            height="28"
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="rgb(255, 255, 255)"
+          >
+            <path
+              d="M21.133 16.933a1.4 1.4 0 11.001-2.8 1.4 1.4 0 010 2.8m-4.667 0a1.4 1.4 0 110-2.8 1.4 1.4 0 010 2.8m-5.6 0a1.4 1.4 0 110-2.8 1.4 1.4 0 010 2.8m18.904-3.656c-1.013-5.655-5.753-10.22-11.528-11.105-4.343-.667-8.642.627-11.807 3.547-3.168 2.917-4.763 7.043-4.38 11.318.59 6.582 6.08 11.952 12.768 12.487 1.153.095 2.303.05 3.428-.13a14.12 14.12 0 002.428-.612.59.59 0 01.364-.006l3.714 1.167c.785.246 1.588-.331 1.588-1.144l-.002-3.517c0-.17.086-.301.157-.38a14.028 14.028 0 001.58-2.147c1.705-2.862 2.29-6.14 1.69-9.478"
+              fill="currentColor"
+              fillRule="nonzero"
+            />
+          </svg>
+          <h3>실시간 문의</h3>
+        </div>
       </div>
-    </div>
+
+      {showMessenger && (
+        <div className={styles.messengerBox}>
+          <div className={styles.messengerHeader}>문의하기</div>
+          <div className={styles.messageList}>
+            {messages.map((msg) => (
+              <div
+                key={msg.id}
+                className={`${styles.messageBubble} ${
+                  msg.sender === "user"
+                    ? styles.userMessage
+                    : styles.adminMessage
+                }`}
+              >
+                {msg.content}
+              </div>
+            ))}
+            <div ref={scrollRef} />
+          </div>
+          <div className={styles.inputArea}>
+            <input
+              type="text"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="메시지를 입력하세요"
+            />
+            <button>보내기</button>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

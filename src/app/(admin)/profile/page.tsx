@@ -7,6 +7,7 @@ import Users from "./users/page";
 import { useAuth } from "@/app/context/AuthContext";
 import Link from "next/link";
 import Write from "./write/page";
+import Inquiry from "./inquiry/page";
 
 export default function AdminPage() {
   const [selectMenu, setSelectMenu] = useState("게시물 관리");
@@ -19,6 +20,8 @@ export default function AdminPage() {
       return <Users />;
     } else if (selectMenu === "글 작성") {
       return <Write setSelectMenu={setSelectMenu} />;
+    } else if (selectMenu === "문의 사항") {
+      return <Inquiry />;
     }
   };
   return (
@@ -53,6 +56,14 @@ export default function AdminPage() {
               onClick={() => setSelectMenu("글 작성")}
             >
               글 작성
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.menuButton}
+              onClick={() => setSelectMenu("문의 사항")}
+            >
+              문의 사항
             </button>
           </li>
         </ul>
