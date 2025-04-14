@@ -9,7 +9,7 @@ const Editor = dynamic(() => import("@/app/components/editor/editor"), {
 });
 
 interface WriteProps {
-  setSelectMenu: (menu: string) => void;
+  setSelectMenu?: (menu: string) => void;
 }
 
 export default function Write({ setSelectMenu }: WriteProps) {
@@ -68,7 +68,7 @@ export default function Write({ setSelectMenu }: WriteProps) {
         setMessageType("success");
 
         setTimeout(() => {
-          setSelectMenu("게시물 관리");
+          setSelectMenu?.("게시물 관리");
         }, 1000);
       } else {
         setMessage(data.error || "글 작성에 실패했습니다.");
