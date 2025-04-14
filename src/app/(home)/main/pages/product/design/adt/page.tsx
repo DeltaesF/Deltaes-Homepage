@@ -130,9 +130,10 @@ export default function Adt() {
                 <div className={styles.thirdImgP}>
                   <div className={styles.thirdDes2}>
                     <p>
-                      "직접" 설계 접근 방식과 달리 TURBOdesign Suite는 스팬 방향
-                      작업 분포, 전체 자오선 평면의 블레이드 하중 및 적층 조건과
-                      같은 입력을 사용하여 3D 흐름 현상에 직접 영향을 미칩니다.
+                      <span>{"직접"}</span> 설계 접근 방식과 달리 TURBOdesign
+                      Suite는 스팬 방향 작업 분포, 전체 자오선 평면의 블레이드
+                      하중 및 적층 조건과 같은 입력을 사용하여 3D 흐름 현상에
+                      직접 영향을 미칩니다.
                     </p>
                   </div>
                   <div className={styles.thirdImg}>

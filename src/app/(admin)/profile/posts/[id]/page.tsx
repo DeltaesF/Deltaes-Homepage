@@ -217,6 +217,7 @@ export default function DetailPosts() {
             ></div>
           </>
         )}
+        {error && <p className="text-red-500">{error}</p>}
       </div>
     </div>
   );

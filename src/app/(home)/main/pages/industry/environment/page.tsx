@@ -75,7 +75,8 @@ export default function Environment() {
                   <div className={styles.textOverlay}>
                     <h3>몰드, 공구 및 다이</h3>
                     <p>
-                      공구 설계 및 제조사는 "더 빠르고 더 우수한, 더 저렴한"
+                      공구 설계 및 제조사는{" "}
+                      <span>{"더 빠르고 더 우수한, 더 저렴한"}</span>
                       제품에 대한 요구사항을 해결합니다.
                     </p>
                     <div className={styles.detailButton}>

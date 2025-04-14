@@ -54,11 +54,11 @@ export default function Engineering() {
                     </Link>
                     {Array.isArray(JSON.parse(post.images)) &&
                     JSON.parse(post.images).length > 0
-                      ? JSON.parse(post.images).map((image, index) => (
+                      ? JSON.parse(post.images).map((image: string) => (
                           <img
-                            key={index}
+                            key={`${post.id}-${image}`}
                             src={image}
-                            alt={`이미지 ${index}`}
+                            alt="게시글 이미지"
                           />
                         ))
                       : null}
@@ -105,11 +105,11 @@ export default function Engineering() {
                     </Link>
                     {Array.isArray(JSON.parse(post.images)) &&
                     JSON.parse(post.images).length > 0
-                      ? JSON.parse(post.images).map((image, index) => (
+                      ? JSON.parse(post.images).map((image: string) => (
                           <img
-                            key={index}
+                            key={`${post.id}-${image}`}
                             src={image}
-                            alt={`이미지 ${index}`}
+                            alt="게시글 이미지"
                           />
                         ))
                       : null}
@@ -156,11 +156,11 @@ export default function Engineering() {
                     </Link>
                     {Array.isArray(JSON.parse(post.images)) &&
                     JSON.parse(post.images).length > 0
-                      ? JSON.parse(post.images).map((image, index) => (
+                      ? JSON.parse(post.images).map((image: string) => (
                           <img
-                            key={index}
+                            key={`${post.id}-${image}`}
                             src={image}
-                            alt={`이미지 ${index}`}
+                            alt="게시글 이미지"
                           />
                         ))
                       : null}
@@ -206,11 +206,11 @@ export default function Engineering() {
                     </Link>
                     {Array.isArray(JSON.parse(post.images)) &&
                     JSON.parse(post.images).length > 0
-                      ? JSON.parse(post.images).map((image, index) => (
+                      ? JSON.parse(post.images).map((image: string) => (
                           <img
-                            key={index}
+                            key={`${post.id}-${image}`}
                             src={image}
-                            alt={`이미지 ${index}`}
+                            alt="게시글 이미지"
                           />
                         ))
                       : null}
@@ -256,11 +256,11 @@ export default function Engineering() {
                     </Link>
                     {Array.isArray(JSON.parse(post.images)) &&
                     JSON.parse(post.images).length > 0
-                      ? JSON.parse(post.images).map((image, index) => (
+                      ? JSON.parse(post.images).map((image: string) => (
                           <img
-                            key={index}
+                            key={`${post.id}-${image}`}
                             src={image}
-                            alt={`이미지 ${index}`}
+                            alt="게시글 이미지"
                           />
                         ))
                       : null}
@@ -306,11 +306,11 @@ export default function Engineering() {
                     </Link>
                     {Array.isArray(JSON.parse(post.images)) &&
                     JSON.parse(post.images).length > 0
-                      ? JSON.parse(post.images).map((image, index) => (
+                      ? JSON.parse(post.images).map((image: string) => (
                           <img
-                            key={index}
+                            key={`${post.id}-${image}`}
                             src={image}
-                            alt={`이미지 ${index}`}
+                            alt="게시글 이미지"
                           />
                         ))
                       : null}
@@ -367,6 +367,7 @@ export default function Engineering() {
               <div className={styles.tabBtnWrapper}>
                 {tabs.map((tab) => (
                   <div
+                    key={tab}
                     className={styles.tabBtn}
                     onClick={() => setActiveTab(tab)}
                   >

@@ -86,6 +86,7 @@ export default function HomePosts() {
           className={styles.postContent}
         ></section>
       </section>
+      {error && <p className="text-red-500">{error}</p>}
     </article>
   );
 }
