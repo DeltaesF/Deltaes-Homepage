@@ -12,6 +12,11 @@ import React, { useEffect, useState } from "react";
 import { usePostsList } from "@/app/context/PostsListContext";
 import { useRouter } from "next/navigation";
 
+interface Event {
+  title: string;
+  start: string;
+  end: string;
+}
 interface ImgSlice {
   id: number;
   img: string;
@@ -158,7 +163,7 @@ export default function MainPage() {
             </Link>
             {Array.isArray(JSON.parse(post.images)) &&
             JSON.parse(post.images).length > 0
-              ? JSON.parse(post.images).map((image, index) => (
+              ? JSON.parse(post.images).map((image: string, index: number) => (
                   <img key={index} src={image} alt={`이미지 ${index}`} />
                 ))
               : null}
@@ -277,7 +282,7 @@ export default function MainPage() {
     }
   };
 
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState<Event[]>([]);
 
   useEffect(() => {
     async function fetchEvents() {
@@ -288,11 +293,17 @@ export default function MainPage() {
         console.log(data);
 
         // 필요한 데이터만 필터링하여 상태에 저장
-        const filteredEvents = data.items.map((event) => ({
-          title: event.summary,
-          start: event.start.date, // 날짜만 가져옴
-          end: event.end.date, // 날짜만 가져옴
-        }));
+        const filteredEvents = data.items.map(
+          (event: {
+            summary: string;
+            start: { date: string };
+            end: { date: string };
+          }) => ({
+            title: event.summary,
+            start: event.start.date,
+            end: event.end.date,
+          }),
+        );
 
         setEvents(filteredEvents); // 상태에 저장
       } catch (error) {
@@ -524,7 +535,7 @@ export default function MainPage() {
                         {Array.isArray(JSON.parse(latestPost.images)) &&
                         JSON.parse(latestPost.images).length > 0
                           ? JSON.parse(latestPost.images).map(
-                              (image, index) => (
+                              (image: string, index: number) => (
                                 <img
                                   key={index}
                                   src={image}
