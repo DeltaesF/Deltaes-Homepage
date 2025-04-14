@@ -7,7 +7,7 @@ import Users from "./users/page";
 import { useAuth } from "@/app/context/AuthContext";
 import Link from "next/link";
 import Inquiry from "./inquiry/page";
-import Write from "./write/page";
+import Write from "@/app/components/write/Write";
 
 export default function AdminPage() {
   const [selectMenu, setSelectMenu] = useState("게시물 관리");

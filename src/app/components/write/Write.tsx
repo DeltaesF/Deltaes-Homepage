@@ -1,5 +1,5 @@
 "use client";
-import styles from "./page.module.css";
+import styles from "./Write.module.css";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/app/context/AuthContext";
 import dynamic from "next/dynamic";
