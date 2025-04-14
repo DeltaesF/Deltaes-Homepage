@@ -20,10 +20,12 @@ export default function SolutionMail() {
       )
       .then(
         (result) => {
+          console.log("메일 전송 결과:", result);
           alert("이메일 전송에 성공했습니다.");
-          formRef.current?.reset(); // ✅ 폼 초기화 (별도 상태 관리 필요 없음)
+          formRef.current?.reset();
         },
         (error) => {
+          console.error("메일 전송 오류:", error);
           alert("이메일 전송에 실패했습니다.");
         },
       );

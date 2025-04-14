@@ -132,7 +132,7 @@ type TabName = "공지사항" | "제품소식" | "자료실";
 
 export default function MainPage() {
   const { postsList } = usePostsList();
-  const [isPaused, setIsPaused] = useState(false);
+  const [isPaused] = useState(false);
   const [activeTab, setActiveTab] = useState<TabName>("공지사항");
 
   const router = useRouter();
@@ -196,8 +196,12 @@ export default function MainPage() {
             </Link>
             {Array.isArray(JSON.parse(post.images)) &&
             JSON.parse(post.images).length > 0
-              ? JSON.parse(post.images).map((image, index) => (
-                  <img key={index} src={image} alt={`이미지 ${index}`} />
+              ? JSON.parse(post.images).map((image: string) => (
+                  <img
+                    key={`${post.id}-${image}`}
+                    src={image}
+                    alt="게시글 이미지"
+                  />
                 ))
               : null}
           </div>
@@ -234,8 +238,12 @@ export default function MainPage() {
             </Link>
             {Array.isArray(JSON.parse(post.images)) &&
             JSON.parse(post.images).length > 0
-              ? JSON.parse(post.images).map((image, index) => (
-                  <img key={index} src={image} alt={`이미지 ${index}`} />
+              ? JSON.parse(post.images).map((image: string) => (
+                  <img
+                    key={`${post.id}-${image}`}
+                    src={image}
+                    alt="게시글 이미지"
+                  />
                 ))
               : null}
           </div>

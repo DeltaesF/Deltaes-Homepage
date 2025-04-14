@@ -39,6 +39,7 @@ export async function findUserByEmail(email: string): Promise<User | null> {
     ]);
     return (rows as User[]).length > 0 ? (rows as User[])[0] : null;
   } catch (error) {
+    console.error("메일 전송 오류:", error);
     return null;
   }
 }
@@ -49,6 +50,7 @@ export async function findUserById(id: number): Promise<User | null> {
     const [rows] = await db.query("SELECT * FROM users WHERE id = ?", [id]);
     return (rows as User[]).length > 0 ? (rows as User[])[0] : null;
   } catch (error) {
+    console.error("메일 전송 오류:", error);
     return null;
   }
 }

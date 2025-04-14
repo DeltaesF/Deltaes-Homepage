@@ -14,7 +14,7 @@ export default function useFetchImages(imageNames: string[]) {
     async function fetchImages() {
       try {
         // imageNames 배열을 순회하며 각 이미지 파일 fetch 후 blob URL로 반환
-        const imagePromises = imageNames.map(async (imageName, index) => {
+        const imagePromises = imageNames.map(async (imageName) => {
           const res = await fetch(`/api/getftp/${imageName}`);
           if (!res.ok) throw new Error(`failed to load ${imageName}`);
           const imageBlob = await res.blob(); // blob 형태로 이미지 데이터 받음

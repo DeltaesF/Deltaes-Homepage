@@ -3,9 +3,9 @@
 import Link from "next/link";
 import styles from "./header.module.css";
 import Image from "next/image";
-import { useAuth } from "@/app/context/AuthContext";
 import useFetchImages from "@/app/hooks/useFetchImages";
 import { useState } from "react";
+import { useAuth } from "@/app/context/AuthContext";
 
 export default function Header() {
   const { imageSrc, error } = useFetchImages([

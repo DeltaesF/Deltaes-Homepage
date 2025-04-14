@@ -6,7 +6,7 @@ import styles from "./inquiry.module.css";
 export default function Inquiry() {
   const [showMessenger, setShowMessenger] = useState(false);
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState<any[]>([]);
+  const [messages] = useState<any[]>([]);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const toggleMessenger = () => setShowMessenger((prev) => !prev);
