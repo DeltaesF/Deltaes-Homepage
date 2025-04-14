@@ -2,7 +2,6 @@
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "./page.module.css";
-import Image from "next/image";
 
 interface Post {
   id: number;
@@ -85,13 +84,6 @@ export default function HomePosts() {
           dangerouslySetInnerHTML={{ __html: post?.content || "" }}
           className={styles.postContent}
         ></section>
-        {/* <div className={styles.images}>
-          {(Array.isArray(post?.images) ? post?.images : []).map(
-            (image, index) => (
-              <img key={index} src={image} alt={`Image ${index}`} />
-            ),
-          )}
-        </div> */}
       </section>
     </article>
   );

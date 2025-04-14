@@ -2,12 +2,11 @@
 
 import { usePostsList } from "@/app/context/PostsListContext";
 import styles from "./page.module.css";
-import { useEffect } from "react";
 import Link from "next/link";
 import SolutionMail from "@/app/components/solution/SolutionMail";
 
 export default function Resources() {
-  const { postsList, error } = usePostsList();
+  const { postsList } = usePostsList();
 
   const filteredPosts = postsList.filter((post) => post.category === "자료실");
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import styles from "./SolutionMail.module.css";
 import emailjs from "emailjs-com";
 

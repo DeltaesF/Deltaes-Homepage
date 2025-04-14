@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./page.module.css";
-import { useRouter } from "next/navigation";
 import SolutionMail from "@/app/components/solution/SolutionMail";
 import useFetchImages from "@/app/hooks/useFetchImages";
 import Image from "next/image";

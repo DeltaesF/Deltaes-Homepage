@@ -8,7 +8,7 @@ import SolutionMail from "@/app/components/solution/SolutionMail";
 import Image from "next/image";
 
 export default function Announcements() {
-  const { postsList, error } = usePostsList();
+  const { postsList } = usePostsList();
 
   const categories = ["공지사항", "행사소식", "제품소식", "자료실"];
 

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Posts() {
-  const { postsList, error, fetchPostsList } = usePostsList();
+  const { postsList, fetchPostsList } = usePostsList();
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 15;
 

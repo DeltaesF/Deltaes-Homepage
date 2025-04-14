@@ -9,9 +9,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import React, { useEffect, useState } from "react";
-import Announcements from "./pages/announcements/page";
-import ProductNews from "./pages/announcements/productnews/page";
-import Resources from "./pages/announcements/resources/page";
 import { usePostsList } from "@/app/context/PostsListContext";
 import { useRouter } from "next/navigation";
 
@@ -141,9 +138,6 @@ export default function MainPage() {
   const router = useRouter();
 
   const tabs: TabName[] = ["공지사항", "제품소식", "자료실"];
-
-  const handleMouseEnter = () => setIsPaused(true);
-  const handleMouseLeave = () => setIsPaused(false);
 
   const tabComponents = () => {
     if (activeTab === "공지사항") {

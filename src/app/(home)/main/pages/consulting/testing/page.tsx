@@ -2,12 +2,12 @@
 
 import { usePostsList } from "@/app/context/PostsListContext";
 import styles from "./page.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import SolutionMail from "@/app/components/solution/SolutionMail";
 
 export default function Testing() {
-  const { postsList, error } = usePostsList();
+  const { postsList } = usePostsList();
 
   const categories = [
     "고객별 맞춤교육",
