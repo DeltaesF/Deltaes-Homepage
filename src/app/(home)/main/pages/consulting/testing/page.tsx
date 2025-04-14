@@ -59,8 +59,12 @@ export default function Testing() {
                   </Link>
                   {Array.isArray(JSON.parse(post.images)) &&
                   JSON.parse(post.images).length > 0
-                    ? JSON.parse(post.images).map((image, index) => (
-                        <img key={index} src={image} alt={`이미지 ${index}`} />
+                    ? JSON.parse(post.images).map((image: string) => (
+                        <img
+                          key={`${post.id}-${image}`}
+                          src={image}
+                          alt="게시글 이미지"
+                        />
                       ))
                     : null}
                 </div>
