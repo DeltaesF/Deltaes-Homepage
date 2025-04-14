@@ -8,7 +8,7 @@ function readableStreamToNodeReadable(
 ) {
   const reader = readableStream.getReader();
   const nodeReadable = new Readable({
-    read(size) {
+    read() {
       reader
         .read()
         .then(({ done, value }) => {

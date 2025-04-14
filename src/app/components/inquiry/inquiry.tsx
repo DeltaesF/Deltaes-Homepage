@@ -3,10 +3,16 @@
 import { useRef, useState } from "react";
 import styles from "./inquiry.module.css";
 
+type Message = {
+  id: string | number;
+  sender: "user" | "admin";
+  content: string;
+};
+
 export default function Inquiry() {
   const [showMessenger, setShowMessenger] = useState(false);
   const [message, setMessage] = useState("");
-  const [messages] = useState<any[]>([]);
+  const [messages] = useState<Message[]>([]);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const toggleMessenger = () => setShowMessenger((prev) => !prev);

@@ -251,7 +251,7 @@ export default function T3ster() {
                         Simcenter T3STER SI can test most common semiconductor
                         types, diodes, MOSFET-s, IGBT-s, digital VLSI IC-s and
                         more. Our engineering team is always keen on finding
-                        suitable test approaches for more 'exotic' devices if
+                        suitable test approaches for more {"exotic"} devices if
                         necessary.
                       </p>
                       <div className={styles.fourNewImgDesImg}>
@@ -368,7 +368,7 @@ export default function T3ster() {
                         well. Measuring the same sample with any calibrated
                         Simcenter T3STER SI system we produce will always
                         provide comparable test results. This makes Simcenter
-                        T3STER SI measurements a 'common language' among
+                        T3STER SI measurements a {"common language"} among
                         different test groups and organizations when they share
                         and compare information on semiconductor thermal
                         performance.
