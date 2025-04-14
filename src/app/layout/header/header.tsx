@@ -333,7 +333,7 @@ export default function Header() {
                 </ul>
               </li>
               <li className={`${styles.li} ${styles.dropdown}`}>
-                <Link href="/main/pages/company">회사소개</Link>
+                회사소개
                 <ul className={styles.dropdownMenu}>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
                     <Link href="/main/pages/company/ceo">CEO 인사말</Link>
