@@ -33,7 +33,7 @@ export default function Editor({ value, onChange }: EditorProps) {
 
       if (editor && range) {
         editor.insertEmbed(range.index, "image", imageUrl);
-        editor.setSelection(range.index + 1);
+        editor.setSelection(range.index + 1, 0);
       } else {
         alert("에디터에 커서를 먼저 클릭해 주세요!");
       }
@@ -81,7 +81,7 @@ export default function Editor({ value, onChange }: EditorProps) {
 
         if (editor && range) {
           editor.insertText(range.index, file.name, "link", fileUrl);
-          editor.setSelection(range.index + file.name.length);
+          editor.setSelection(range.index + file.name.length, 0);
         } else {
           alert("에디터에 커서를 먼저 클릭해 주세요!");
         }
