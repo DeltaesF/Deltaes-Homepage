@@ -8,6 +8,10 @@ import { useState } from "react";
 import { useAuth } from "@/app/context/AuthContext";
 
 export default function Header() {
+  const [isMenuModal, setIsMenuModal] = useState<boolean>(false);
+  const { user, logout } = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
+  const [isIndustryOpen, setIsIndustryOpen] = useState(false);
   const { imageSrc, error } = useFetchImages([
     "partner.avif",
     "header-logo.avif",
@@ -17,9 +21,6 @@ export default function Header() {
     return <p>Error: {error}</p>;
   }
 
-  const [isMenuModal, setIsMenuModal] = useState<boolean>(false);
-  const { user, logout } = useAuth();
-
   const openModal = () => {
     setIsMenuModal(true);
   };
@@ -27,9 +28,6 @@ export default function Header() {
   const closeModal = () => {
     setIsMenuModal(false);
   };
-
-  const [isOpen, setIsOpen] = useState(false);
-  const [isIndustryOpen, setIsIndustryOpen] = useState(false);
 
   return (
     <header className={styles.header}>
