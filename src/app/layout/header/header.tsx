@@ -5,17 +5,17 @@ import styles from "./header.module.css";
 import Image from "next/image";
 import useFetchImages from "@/app/hooks/useFetchImages";
 import { useState } from "react";
-import { useAuth } from "@/app/context/AuthContext";
+import { useUser } from "@/app/context/UserContext";
 
 export default function Header() {
   const [isMenuModal, setIsMenuModal] = useState<boolean>(false);
-  const { user, logout } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [isIndustryOpen, setIsIndustryOpen] = useState(false);
   const { imageSrc, error } = useFetchImages([
     "partner.avif",
     "header-logo.avif",
   ]);
+  const { user, logout } = useUser();
 
   if (error) {
     return <p>Error: {error}</p>;
@@ -70,10 +70,10 @@ export default function Header() {
                 <div>
                   {user.role === "admin" ? (
                     <Link href="/profile">
-                      <span>{user.username} 관리자님</span>
+                      <span>{user.userName} 관리자님</span>
                     </Link>
                   ) : (
-                    <span>{user.username} 님</span>
+                    <span>{user.userName} 님</span>
                   )}
                   <button style={{ marginLeft: "10px" }} onClick={logout}>
                     로그아웃

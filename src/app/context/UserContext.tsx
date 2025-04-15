@@ -1,51 +1,100 @@
+// context/UserContext.tsx
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
-
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { auth, db } from "../lib/firebase";
 interface User {
-  last_login: string | number | Date;
-  id: number;
-  username: string;
+  uid: string;
   email: string;
-  role: string;
-  phone_number: number;
+  userName: string;
+  phoneNumber?: string;
+  isChecked?: boolean;
+  role: "user" | "admin";
+  createdAt: Date;
+  lastLogin?: Date;
 }
 
-// UserContext에서 사용할 상태와 메서드를 정의하는 타입입니다.
-// users는 유저 목록 배열, setUsers는 상태 업데이트 함수입니다.
 interface UserContextType {
+  user: User | null;
   users: User[];
-  setUsers: React.Dispatch<React.SetStateAction<User[]>>; // 유저 목록을 업데이트하는 함수
+  loading: boolean;
+  logout: () => void;
+  fetchUsers: () => void;
 }
 
-// 로그인 상태와 관련된 정보와 메서드를 관리하는 Context
-const UserContext = createContext<UserContextType | undefined>(undefined);
+const UserContext = createContext<UserContextType>({
+  user: null,
+  users: [],
+  loading: true,
+  logout: () => {},
+  fetchUsers: () => {},
+});
 
-export function UserProvider({ children }: { children: React.ReactNode }) {
+export const UserProvider = ({ children }: { children: React.ReactNode }) => {
+  const [user, setUser] = useState<User | null>(null);
   const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState(true);
 
+  // 로그인 상태 감지 및 Firestore에서 사용자 정보 가져오기
   useEffect(() => {
-    // 예: 유저 목록 API 호출
-    async function fetchUsers() {
-      // 유저 목록을 받아오는 API 호출
-      const response = await fetch("/api/users");
-      // 받아온 데이터는 JSON 형태로 파싱하여 상태에 저장합니다.
-      const data = await response.json();
-      setUsers(data); // 상태 업데이트
-    }
-    fetchUsers();
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      if (firebaseUser) {
+        const userDoc = await getDoc(doc(db, "users", firebaseUser.uid));
+        if (userDoc.exists()) {
+          setUser(userDoc.data() as User);
+        } else {
+          setUser(null);
+        }
+      } else {
+        setUser(null);
+      }
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
   }, []);
 
+  const logout = async () => {
+    await signOut(auth);
+    setUser(null);
+  };
+
+  // 유저 목록을 가져오는 함수
+  const fetchUsers = async () => {
+    try {
+      const userCollection = collection(db, "users");
+      const userSnapshot = await getDocs(userCollection);
+      const usersList = userSnapshot.docs.map((doc) => {
+        const data = doc.data();
+        return {
+          id: doc.id,
+          uid: data.uid,
+          email: data.email,
+          userName: data.userName,
+          phoneNumber: data.phoneNumber || "정보 없음", // 기본값 설정
+          role: data.role,
+          createdAt: data.createdAt.toDate(),
+          lastLogin: data.lastLogin ? data.lastLogin.toDate() : null,
+        };
+      });
+      setUsers(usersList);
+    } catch (error) {
+      console.error("유저 목록을 가져오는 데 실패했습니다.", error);
+    }
+  };
+
+  // 컴포넌트 마운트 후 자동으로 유저 목록을 불러오도록 처리
+  useEffect(() => {
+    fetchUsers(); // 자동으로 유저 목록을 불러옵니다.
+  }, []); // 빈 배열을 넣어 컴포넌트가 처음 렌더링될 때만 실행
+
   return (
-    <UserContext.Provider value={{ users, setUsers }}>
+    <UserContext.Provider value={{ user, users, loading, logout, fetchUsers }}>
       {children}
     </UserContext.Provider>
   );
-}
+};
 
-export function useUser() {
-  const context = useContext(UserContext);
-  if (!context)
-    throw new Error("useUser는 UserProvider 내부에서 사용해야 합니다.");
-  return context;
-}
+export const useUser = () => useContext(UserContext);

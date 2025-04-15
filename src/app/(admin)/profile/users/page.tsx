@@ -1,8 +1,12 @@
-import { useUser } from "@/app/context/UserContext";
+import { useUser } from "@/app/context/UserContext"; // UserContext에서 가져오기
 import styles from "./page.module.css";
 
 export default function Users() {
-  const { users } = useUser();
+  const { users, loading } = useUser(); // users와 loading 가져오기
+
+  if (loading) {
+    return <div>로딩 중...</div>; // 로딩 상태 표시
+  }
 
   return (
     <section>
@@ -19,14 +23,14 @@ export default function Users() {
           </thead>
           <tbody>
             {users.map((user) => (
-              <tr key={user.id}>
-                <td>{user.username}</td>
+              <tr key={user.uid}>
+                <td>{user.userName}</td>
                 <td>{user.email}</td>
-                <td>{user.phone_number}</td>
+                <td>{user.phoneNumber}</td>
                 <td>{user.role === "admin" ? "관리자" : "일반 회원"}</td>
                 <td>
-                  {user.last_login
-                    ? new Date(user.last_login).toLocaleDateString("ko-KR", {
+                  {user.lastLogin
+                    ? new Date(user.lastLogin).toLocaleDateString("ko-KR", {
                         year: "numeric",
                         month: "long",
                         day: "numeric",

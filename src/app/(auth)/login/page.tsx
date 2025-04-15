@@ -3,16 +3,18 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import { useState } from "react";
-import { useAuth } from "@/app/context/AuthContext";
+import { useRouter } from "next/navigation";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/app/lib/firebase";
+import FBGoogleLogin from "@/app/lib/fbgooglelogin";
 
 export default function Login() {
-  const [shwoLoginForm, setShowLoginForm] = useState(false);
+  const [showLoginForm, setShowLoginForm] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<Record<string, string>>({});
   const [successMessage, setSuccessMessage] = useState("");
-
-  const { login } = useAuth();
+  const router = useRouter();
 
   const toggleLoginForm = () => {
     setShowLoginForm((prev) => !prev);
@@ -22,28 +24,31 @@ export default function Login() {
     e.preventDefault();
 
     const errors: Record<string, string> = {};
-
-    if (!email) {
-      errors.email = "이메일을 입력해주세요.";
-    }
-    if (!password) {
-      errors.password = "비밀번호를 입력해주세요.";
-    }
+    if (!email) errors.email = "이메일을 입력해주세요.";
+    if (!password) errors.password = "비밀번호를 입력해주세요.";
 
     if (Object.keys(errors).length > 0) {
       setError(errors);
       return;
     }
-    try {
-      await login(email, password); // ✅ AuthContext의 login 함수 호출 (fetch 제거)
 
-      setSuccessMessage("로그인 성공!");
-      setTimeout(() => {
-        window.location.href = "/main";
-      }, 2000);
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      setSuccessMessage("로그인에 성공했습니다.");
+      router.push("/main");
     } catch (error) {
-      console.error("로그인 오류:", error);
-      setError({ general: "서버 오류, 다시 시도해주세요." });
+      // 👇 에러 타입을 지정해야 타입스크립트가 오류 안 냄
+      const err = error as Error;
+      setError({ general: err.message });
+    }
+  };
+
+  const handleGoogleClick = async () => {
+    const result = await FBGoogleLogin();
+    if (result.success) {
+      router.push("/main");
+    } else {
+      setError({ general: result.error || "구글 로그인에 실패했습니다." });
     }
   };
 
@@ -57,9 +62,9 @@ export default function Login() {
             가입하기
           </Link>
         </p>
-        {!shwoLoginForm ? (
+        {!showLoginForm ? (
           <nav className={styles.loginButtonWrapper}>
-            <button className={styles.googleButton}>
+            <button className={styles.googleButton} onClick={handleGoogleClick}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
                 <path
                   style={{
@@ -99,29 +104,6 @@ export default function Login() {
                 />
               </svg>
               <span>Google로 로그인</span>
-            </button>
-            <button className={styles.facebookButton}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25">
-                <path
-                  style={{
-                    stroke: "none",
-                    fillRule: "nonzero",
-                    fill: "#fff",
-                    fillOpacity: 1,
-                  }}
-                  d="M25.008 12.504C25.008 5.594 19.406 0 12.504 0 5.594 0 0 5.594 0 12.504c0 6.238 4.574 11.414 10.55 12.351v-8.738H7.376v-3.613h3.176V9.75c0-3.137 1.863-4.867 4.719-4.867 1.367 0 2.8.242 2.8.242v3.082h-1.574c-1.555 0-2.039.965-2.039 1.95v2.347h3.469l-.555 3.613h-2.914v8.738c5.977-.937 10.55-6.113 10.55-12.351"
-                />
-                <path
-                  style={{
-                    stroke: "none",
-                    fillRule: "nonzero",
-                    fill: "#1877f2",
-                    fillOpacity: 1,
-                  }}
-                  d="m17.371 16.117.555-3.613h-3.469v-2.348c0-.984.484-1.949 2.04-1.949h1.573V5.125s-1.433-.242-2.8-.242c-2.856 0-4.72 1.73-4.72 4.867v2.754H7.376v3.613h3.176v8.738c.636.098 1.289.153 1.953.153.664 0 1.316-.055 1.953-.153v-8.738h2.914"
-                />
-              </svg>
-              <span>Facebook으로 로그인</span>
             </button>
             <div className={styles.divider}>
               <span>또는</span>
@@ -166,34 +148,23 @@ export default function Login() {
             {error.password && (
               <span className={styles.error}>{error.password}</span>
             )}
+            {error.general && (
+              <span className={styles.error}>{error.general}</span>
+            )}
 
             <p>비밀번호 찾기</p>
             <button type="submit" className={styles.loginButton}>
-              가입하기
+              로그인
             </button>
             {successMessage && (
               <span className={styles.success}>{successMessage}</span>
-            )}
-            {error.general && (
-              <span className={styles.error}>{error.general}</span>
             )}
           </form>
         )}
         <div className={styles.close}>
           <Link href="/main">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            >
-              <g
-                fill-rule="evenodd"
-                filter="url(#close_svg__a)"
-                transform="translate(-421 -24)"
-              >
-                <path d="m439.77 28 1.23 1.23-6.77 6.77 6.77 6.77-1.23 1.23-6.77-6.77-6.77 6.77-1.23-1.23 6.769-6.77L425 29.23l1.23-1.23 6.77 6.769L439.77 28z"></path>
-              </g>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+              {/* 닫기 아이콘 생략 가능 */}
             </svg>
           </Link>
         </div>

@@ -4,14 +4,14 @@ import { useState } from "react";
 import styles from "./page.module.css";
 import Posts from "./posts/page";
 import Users from "./users/page";
-import { useAuth } from "@/app/context/AuthContext";
 import Link from "next/link";
 import Inquiry from "./inquiry/page";
 import Write from "@/app/components/write/Write";
+import { useUser } from "@/app/context/UserContext";
 
 export default function AdminPage() {
   const [selectMenu, setSelectMenu] = useState("게시물 관리");
-  const { user } = useAuth();
+  const { user } = useUser();
 
   const renderContent = () => {
     if (selectMenu === "게시물 관리") {
@@ -32,7 +32,7 @@ export default function AdminPage() {
             홈으로 이동
           </Link>
         </span>
-        <span>{user?.username} 관리자</span>
+        <span>{user?.userName} 관리자</span>
         <ul className={styles.menuList}>
           <li>
             <button

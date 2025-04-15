@@ -1,8 +1,10 @@
 "use client";
 import styles from "./Write.module.css";
 import { useEffect, useState } from "react";
-import { useAuth } from "@/app/context/AuthContext";
 import dynamic from "next/dynamic";
+import { collection, addDoc } from "firebase/firestore";
+import { useUser } from "@/app/context/UserContext";
+import { db } from "@/app/lib/firebase";
 
 const Editor = dynamic(() => import("@/app/components/editor/editor"), {
   ssr: false,
@@ -13,7 +15,7 @@ interface WriteProps {
 }
 
 export default function Write({ setSelectMenu }: WriteProps) {
-  const { user } = useAuth();
+  const { user } = useUser();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [category, setCategory] = useState("");
@@ -45,35 +47,31 @@ export default function Write({ setSelectMenu }: WriteProps) {
     const imageUrls = extractImageUrls(decodedContent);
 
     try {
-      const response = await fetch("/api/write", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title,
-          content: decodedContent,
-          user_id: user?.id, // 로그인된 사용자 ID를 서버로 전달
-          category,
-          images: JSON.stringify(imageUrls),
-        }),
+      if (!user) {
+        setMessage("사용자가 로그인되지 않았습니다.");
+        setMessageType("error");
+        return;
+      }
+
+      // Firestore에 데이터 저장
+      const docRef = await addDoc(collection(db, "posts"), {
+        title,
+        content: decodedContent,
+        user_id: user?.uid, // 로그인된 사용자 ID를 Firestore에 저장
+        category,
+        images: imageUrls,
+        createdAt: new Date(),
       });
 
-      const data = await response.json();
-      console.log("서버 응답:", data); // ✅ 서버 응답 확인
+      console.log("Document written with ID: ", docRef.id); // ✅ Firestore에 저장된 데이터 확인
 
-      if (response.ok) {
-        setIsSaved(true);
-        setMessage("글이 성공적으로 작성되었습니다!");
-        setMessageType("success");
+      setIsSaved(true);
+      setMessage("글이 성공적으로 작성되었습니다!");
+      setMessageType("success");
 
-        setTimeout(() => {
-          setSelectMenu?.("게시물 관리");
-        }, 1000);
-      } else {
-        setMessage(data.error || "글 작성에 실패했습니다.");
-        setMessageType("error");
-      }
+      setTimeout(() => {
+        setSelectMenu?.("게시물 관리");
+      }, 1000);
     } catch (error) {
       console.error("글 제출 실패:", error);
       setMessage("글 작성에 실패했습니다. 다시 시도해 주세요.");
@@ -143,9 +141,7 @@ export default function Write({ setSelectMenu }: WriteProps) {
       </button>
       {message && (
         <div
-          className={`${styles.message} ${
-            messageType === "success" ? styles.success : styles.error
-          }`}
+          className={`${styles.message} ${messageType === "success" ? styles.success : styles.error}`}
         >
           {message}
         </div>
