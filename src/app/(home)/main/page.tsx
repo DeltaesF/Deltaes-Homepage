@@ -9,7 +9,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import React, { useEffect, useState } from "react";
-import { usePostsList } from "@/app/context/PostsListContext";
+// import { usePostsList } from "@/app/context/PostsListContext";
 import { useRouter } from "next/navigation";
 
 interface Event {
@@ -136,7 +136,7 @@ const customerImg = [
 type TabName = "공지사항" | "제품소식" | "자료실";
 
 export default function MainPage() {
-  const { postsList } = usePostsList();
+  // const { postsList } = usePostsList();
   const [isPaused] = useState(false);
   const [activeTab, setActiveTab] = useState<TabName>("공지사항");
 
@@ -144,133 +144,130 @@ export default function MainPage() {
 
   const tabs: TabName[] = ["공지사항", "제품소식", "자료실"];
 
-  const tabComponents = () => {
-    if (activeTab === "공지사항") {
-      const filteredPosts = postsList
-        .filter((post) => post.category === "공지사항")
-        .slice()
-        .reverse();
-      const post = filteredPosts.length > 0 ? filteredPosts[0] : null;
-
-      return post ? (
-        <div>
-          <div className={styles.gridItemPost}>
-            <Link
-              href={`/main/pages/announcements/${post.id}`}
-              className={styles.postLink}
-            >
-              <h1>{post.title}</h1>
-            </Link>
-            {Array.isArray(JSON.parse(post.images)) &&
-            JSON.parse(post.images).length > 0
-              ? JSON.parse(post.images).map((image: string, index: number) => (
-                  <img key={index} src={image} alt={`이미지 ${index}`} />
-                ))
-              : null}
-          </div>
-          <div className={styles.created}>
-            <span>
-              {post?.created_at
-                ? new Date(post.created_at).toLocaleDateString("ko-KR", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })
-                : "날짜 없음"}
-            </span>
-          </div>
-        </div>
-      ) : (
-        <p>공지사항이 없습니다.</p>
-      );
-    } else if (activeTab === "제품소식") {
-      const filteredPosts = postsList
-        .filter((post) => post.category === "제품소식")
-        .slice()
-        .reverse();
-      const post = filteredPosts.length > 0 ? filteredPosts[0] : null;
-
-      return post ? (
-        <div>
-          <div className={styles.gridItemPost}>
-            <Link
-              href={`/main/pages/announcements/${post.id}`}
-              className={styles.postLink}
-            >
-              <h1>{post.title}</h1>
-            </Link>
-            {Array.isArray(JSON.parse(post.images)) &&
-            JSON.parse(post.images).length > 0
-              ? JSON.parse(post.images).map((image: string) => (
-                  <img
-                    key={`${post.id}-${image}`}
-                    src={image}
-                    alt="게시글 이미지"
-                  />
-                ))
-              : null}
-          </div>
-          <div className={styles.created}>
-            <span>
-              {post?.created_at
-                ? new Date(post.created_at).toLocaleDateString("ko-KR", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })
-                : "날짜 없음"}
-            </span>
-          </div>
-        </div>
-      ) : (
-        <p>제품소식이 없습니다.</p>
-      );
-    } else if (activeTab === "자료실") {
-      const filteredPosts = postsList
-        .filter((post) => post.category === "자료실")
-        .slice()
-        .reverse();
-      const post = filteredPosts.length > 0 ? filteredPosts[0] : null;
-
-      return post ? (
-        <div>
-          <div className={styles.gridItemPost}>
-            <Link
-              href={`/main/pages/announcements/${post.id}`}
-              className={styles.postLink}
-            >
-              <h1>{post.title}</h1>
-            </Link>
-            {Array.isArray(JSON.parse(post.images)) &&
-            JSON.parse(post.images).length > 0
-              ? JSON.parse(post.images).map((image: string) => (
-                  <img
-                    key={`${post.id}-${image}`}
-                    src={image}
-                    alt="게시글 이미지"
-                  />
-                ))
-              : null}
-          </div>
-          <div className={styles.created}>
-            <span>
-              {post?.created_at
-                ? new Date(post.created_at).toLocaleDateString("ko-KR", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })
-                : "날짜 없음"}
-            </span>
-          </div>
-        </div>
-      ) : (
-        <p>자료가 없습니다.</p>
-      );
-    } else {
-      return null;
-    }
-  };
+  // const tabComponents = () => {
+  // if (activeTab === "공지사항") {
+  //   const filteredPosts = postsList
+  //     .filter((post) => post.category === "공지사항")
+  //     .slice()
+  //     .reverse();
+  //   const post = filteredPosts.length > 0 ? filteredPosts[0] : null;
+  //   return post ? (
+  //     <div>
+  //       <div className={styles.gridItemPost}>
+  //         <Link
+  //           href={`/main/pages/announcements/${post.id}`}
+  //           className={styles.postLink}
+  //         >
+  //           <h1>{post.title}</h1>
+  //         </Link>
+  //         {Array.isArray(JSON.parse(post.images)) &&
+  //         JSON.parse(post.images).length > 0
+  //           ? JSON.parse(post.images).map((image: string, index: number) => (
+  //               <img key={index} src={image} alt={`이미지 ${index}`} />
+  //             ))
+  //           : null}
+  //       </div>
+  //       <div className={styles.created}>
+  //         <span>
+  //           {post?.created_at
+  //             ? new Date(post.created_at).toLocaleDateString("ko-KR", {
+  //                 year: "numeric",
+  //                 month: "long",
+  //                 day: "numeric",
+  //               })
+  //             : "날짜 없음"}
+  //         </span>
+  //       </div>
+  //     </div>
+  //   ) : (
+  //     <p>공지사항이 없습니다.</p>
+  //   );
+  // } else if (activeTab === "제품소식") {
+  //   const filteredPosts = postsList
+  //     .filter((post) => post.category === "제품소식")
+  //     .slice()
+  //     .reverse();
+  //   const post = filteredPosts.length > 0 ? filteredPosts[0] : null;
+  //   return post ? (
+  //     <div>
+  //       <div className={styles.gridItemPost}>
+  //         <Link
+  //           href={`/main/pages/announcements/${post.id}`}
+  //           className={styles.postLink}
+  //         >
+  //           <h1>{post.title}</h1>
+  //         </Link>
+  //         {Array.isArray(JSON.parse(post.images)) &&
+  //         JSON.parse(post.images).length > 0
+  //           ? JSON.parse(post.images).map((image: string) => (
+  //               <img
+  //                 key={`${post.id}-${image}`}
+  //                 src={image}
+  //                 alt="게시글 이미지"
+  //               />
+  //             ))
+  //           : null}
+  //       </div>
+  //       <div className={styles.created}>
+  //         <span>
+  //           {post?.created_at
+  //             ? new Date(post.created_at).toLocaleDateString("ko-KR", {
+  //                 year: "numeric",
+  //                 month: "long",
+  //                 day: "numeric",
+  //               })
+  //             : "날짜 없음"}
+  //         </span>
+  //       </div>
+  //     </div>
+  //   ) : (
+  //     <p>제품소식이 없습니다.</p>
+  //   );
+  // } else if (activeTab === "자료실") {
+  //   const filteredPosts = postsList
+  //     .filter((post) => post.category === "자료실")
+  //     .slice()
+  //     .reverse();
+  //   const post = filteredPosts.length > 0 ? filteredPosts[0] : null;
+  //   return post ? (
+  //     <div>
+  //       <div className={styles.gridItemPost}>
+  //         <Link
+  //           href={`/main/pages/announcements/${post.id}`}
+  //           className={styles.postLink}
+  //         >
+  //           <h1>{post.title}</h1>
+  //         </Link>
+  //         {Array.isArray(JSON.parse(post.images)) &&
+  //         JSON.parse(post.images).length > 0
+  //           ? JSON.parse(post.images).map((image: string) => (
+  //               <img
+  //                 key={`${post.id}-${image}`}
+  //                 src={image}
+  //                 alt="게시글 이미지"
+  //               />
+  //             ))
+  //           : null}
+  //       </div>
+  //       <div className={styles.created}>
+  //         <span>
+  //           {post?.created_at
+  //             ? new Date(post.created_at).toLocaleDateString("ko-KR", {
+  //                 year: "numeric",
+  //                 month: "long",
+  //                 day: "numeric",
+  //               })
+  //             : "날짜 없음"}
+  //         </span>
+  //       </div>
+  //     </div>
+  //   ) : (
+  //     <p>자료가 없습니다.</p>
+  //   );
+  // } else {
+  //   return null;
+  // }
+  // };
 
   const handleMoreClick = () => {
     if (activeTab === "공지사항") {
@@ -313,12 +310,12 @@ export default function MainPage() {
     fetchEvents();
   }, []);
 
-  const eventPosts = postsList
-    .filter((post) => post.category === "행사소식")
-    .slice()
-    .reverse();
+  // const eventPosts = postsList
+  //   .filter((post) => post.category === "행사소식")
+  //   .slice()
+  //   .reverse();
 
-  const latestPost = eventPosts.length > 0 ? eventPosts[0] : null;
+  // const latestPost = eventPosts.length > 0 ? eventPosts[0] : null;
 
   return (
     <main className={styles.main}>
@@ -523,7 +520,7 @@ export default function MainPage() {
             <div className={styles.sContainer2}>
               <div className={styles.sContent}>
                 <div className={styles.sContentSub3}>
-                  {latestPost ? (
+                  {/* {latestPost ? (
                     <div>
                       <div className={styles.gridItemPost}>
                         <Link
@@ -563,7 +560,7 @@ export default function MainPage() {
                     <div className={styles.sContentSub3}>
                       행사 소식이 없습니다.
                     </div>
-                  )}
+                  )} */}
                 </div>
               </div>
               <div className={styles.sFooter}>
@@ -590,7 +587,7 @@ export default function MainPage() {
             </div>
             <div className={styles.sContainer2}>
               <div className={styles.sContent}>
-                <div className={styles.sContentSub3}>{tabComponents()}</div>
+                {/* <div className={styles.sContentSub3}>{tabComponents()}</div> */}
               </div>
               <div className={styles.sFooter}>
                 <button className={styles.sButton} onClick={handleMoreClick}>
