@@ -134,3 +134,5 @@
 //     return NextResponse.json({ error: "서버 오류" }, { status: 500 });
 //   }
 // }
+
+export {};
