@@ -15,77 +15,78 @@
 //   category: string;
 // }
 
-// export default function HomePosts() {
-//   const { id } = useParams();
-//   const [post, setPost] = useState<Post | null>(null);
-//   const [error, setError] = useState<string | null>(null);
+export default function HomePosts() {
+  return <div />;
+  //   const { id } = useParams();
+  //   const [post, setPost] = useState<Post | null>(null);
+  //   const [error, setError] = useState<string | null>(null);
 
-//   useEffect(() => {
-//     if (!id) return; // id가 없으면 API 요청 안 함
+  //   useEffect(() => {
+  //     if (!id) return; // id가 없으면 API 요청 안 함
 
-//     const fetchPost = async () => {
-//       try {
-//         const res = await fetch(`/api/write/${id}`);
-//         const data = await res.json();
+  //     const fetchPost = async () => {
+  //       try {
+  //         const res = await fetch(`/api/write/${id}`);
+  //         const data = await res.json();
 
-//         if (res.ok) {
-//           setPost(data.post);
-//         } else {
-//           setError(data.error || "게시글을 불러오는 데 실패했습니다.");
-//         }
-//       } catch (error) {
-//         console.log(error);
-//         setError("서버와 연결할 수 없습니다.");
-//       }
-//     };
+  //         if (res.ok) {
+  //           setPost(data.post);
+  //         } else {
+  //           setError(data.error || "게시글을 불러오는 데 실패했습니다.");
+  //         }
+  //       } catch (error) {
+  //         console.log(error);
+  //         setError("서버와 연결할 수 없습니다.");
+  //       }
+  //     };
 
-//     fetchPost();
-//   }, [id]);
+  //     fetchPost();
+  //   }, [id]);
 
-//   useEffect(() => {
-//     if (post) {
-//       console.log("Post data:", post);
-//     }
-//   }, [post]);
+  //   useEffect(() => {
+  //     if (post) {
+  //       console.log("Post data:", post);
+  //     }
+  //   }, [post]);
 
-//   return (
-//     <article className={styles.container}>
-//       <section className={styles.content}>
-//         <header>
-//           <div className={styles.header}>
-//             <span>작성자: {post?.username}</span>
-//             <span>
-//               작성일:{" "}
-//               {post?.created_at
-//                 ? new Date(post.created_at).toLocaleDateString("ko-KR", {
-//                     year: "numeric",
-//                     month: "long",
-//                     day: "numeric",
-//                   })
-//                 : "날짜 없음"}
-//             </span>
-//             <span>조회수: {post?.views}</span>
-//             <span>카테고리: {post?.category}</span>
-//           </div>
-//           <h1 className={styles.title}>{post?.title}</h1>
-//           <span>
-//             최종 수정일:{" "}
-//             {post?.updated_at
-//               ? new Date(post.updated_at).toLocaleDateString("ko-KR", {
-//                   year: "numeric",
-//                   month: "long",
-//                   day: "numeric",
-//                 })
-//               : "날짜 없음"}
-//           </span>
-//         </header>
-//         <div className={styles.divider}></div>
-//         <section
-//           dangerouslySetInnerHTML={{ __html: post?.content || "" }}
-//           className={styles.postContent}
-//         ></section>
-//       </section>
-//       {error && <p className="text-red-500">{error}</p>}
-//     </article>
-//   );
-// }
+  //   return (
+  //     <article className={styles.container}>
+  //       <section className={styles.content}>
+  //         <header>
+  //           <div className={styles.header}>
+  //             <span>작성자: {post?.username}</span>
+  //             <span>
+  //               작성일:{" "}
+  //               {post?.created_at
+  //                 ? new Date(post.created_at).toLocaleDateString("ko-KR", {
+  //                     year: "numeric",
+  //                     month: "long",
+  //                     day: "numeric",
+  //                   })
+  //                 : "날짜 없음"}
+  //             </span>
+  //             <span>조회수: {post?.views}</span>
+  //             <span>카테고리: {post?.category}</span>
+  //           </div>
+  //           <h1 className={styles.title}>{post?.title}</h1>
+  //           <span>
+  //             최종 수정일:{" "}
+  //             {post?.updated_at
+  //               ? new Date(post.updated_at).toLocaleDateString("ko-KR", {
+  //                   year: "numeric",
+  //                   month: "long",
+  //                   day: "numeric",
+  //                 })
+  //               : "날짜 없음"}
+  //           </span>
+  //         </header>
+  //         <div className={styles.divider}></div>
+  //         <section
+  //           dangerouslySetInnerHTML={{ __html: post?.content || "" }}
+  //           className={styles.postContent}
+  //         ></section>
+  //       </section>
+  //       {error && <p className="text-red-500">{error}</p>}
+  //     </article>
+  //   );
+}
