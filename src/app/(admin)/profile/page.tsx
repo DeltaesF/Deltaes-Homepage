@@ -3,11 +3,11 @@
 import { useState } from "react";
 import styles from "./page.module.css";
 import Posts from "./posts/page";
-import Users from "./users/page";
 import Link from "next/link";
 import Inquiry from "./inquiry/page";
 import Write from "@/app/components/write/Write";
 import { useUser } from "@/app/context/UserContext";
+import Users from "./users/page";
 
 export default function AdminPage() {
   const [selectMenu, setSelectMenu] = useState("게시물 관리");

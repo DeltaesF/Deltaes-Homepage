@@ -46,9 +46,13 @@ export async function GET() {
     // 가져온 이벤트에서 필요한 정보만 추출
     const events: CalendarEvent[] = (response.data.items ?? []).map(
       (event) => ({
-        summary: event.summary ?? "", // summary가 null 또는 undefined인 경우 기본값 제공
-        start: { date: event.start?.date ?? "" }, // start.date가 없으면 빈 문자열 제공
-        end: { date: event.end?.date ?? "" }, // end.date가 없으면 빈 문자열 제공
+        summary: event.summary ?? "",
+        start: {
+          date: event.start?.date || event.start?.dateTime || "", // dateTime 추가
+        },
+        end: {
+          date: event.end?.date || event.end?.dateTime || "", // dateTime 추가
+        },
       }),
     );
 

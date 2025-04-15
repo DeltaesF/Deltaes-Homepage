@@ -1,4 +1,4 @@
-import { useUser } from "@/app/context/UserContext"; // UserContext에서 가져오기
+import { useUser } from "@/app/context/UserContext";
 import styles from "./page.module.css";
 
 export default function Users() {
