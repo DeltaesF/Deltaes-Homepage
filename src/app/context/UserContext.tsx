@@ -90,6 +90,11 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     fetchUsers(); // 자동으로 유저 목록을 불러옵니다.
   }, []); // 빈 배열을 넣어 컴포넌트가 처음 렌더링될 때만 실행
 
+  useEffect(() => {
+    console.log("Loading:", loading);
+    console.log("Users:", users);
+  }, [loading, users]);
+
   return (
     <UserContext.Provider value={{ user, users, loading, logout, fetchUsers }}>
       {children}

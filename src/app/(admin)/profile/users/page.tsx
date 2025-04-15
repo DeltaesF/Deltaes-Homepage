@@ -1,3 +1,4 @@
+"use client";
 import { useUser } from "@/app/context/UserContext";
 import styles from "./page.module.css";
 
