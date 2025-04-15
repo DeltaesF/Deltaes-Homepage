@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 
 // import { createContext, useContext, useEffect, useState } from "react";
 
@@ -76,3 +76,5 @@
 //     throw new Error("useAuth는 AuthProvider 내부에서 사용해야 합니다.");
 //   return context;
 // }
+
+export {};
