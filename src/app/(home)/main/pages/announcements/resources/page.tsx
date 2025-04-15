@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 
 // import { usePostsList } from "@/app/context/PostsListContext";
 // import styles from "./page.module.css";
