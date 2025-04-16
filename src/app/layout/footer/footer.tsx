@@ -7,7 +7,7 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 export default function Footer() {
   const { imageSrc, error } = useFetchImages([
     "footer-logo.avif",
-    "partner.avif",
+    "partner.png",
   ]);
 
   if (error) {

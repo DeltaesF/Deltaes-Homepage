@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -16,6 +18,7 @@ export default function Latima() {
     "latima5.avif",
     "timapulse2.avif",
   ]);
+  const filteredImages = imageSrc.slice(1, 4);
 
   if (error) {
     return <p>Error: {error}</p>;
@@ -82,7 +85,27 @@ export default function Latima() {
                     <button>브로슈어 Download </button>
                     <button>TIMA pulse DATASHEET</button>
                   </div>
-                  <div></div>
+                  <div>
+                    <Swiper
+                      modules={[Navigation]}
+                      navigation
+                      spaceBetween={20}
+                      slidesPerView={1}
+                      style={{ width: "454px", height: "222px" }}
+                    >
+                      {filteredImages.map((src, index) => (
+                        <SwiperSlide key={index}>
+                          <Image
+                            src={src}
+                            alt={`slide-${index}`}
+                            width={454}
+                            height={222}
+                            style={{ objectFit: "cover" }}
+                          />
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
+                  </div>
                 </div>
               </div>
             </div>

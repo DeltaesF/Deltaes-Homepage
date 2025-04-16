@@ -3,16 +3,16 @@
 import Link from "next/link";
 import styles from "./header.module.css";
 import Image from "next/image";
-import useFetchImages from "@/app/hooks/useFetchImages";
 import { useState } from "react";
 import { useUser } from "@/app/context/UserContext";
+import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Header() {
   const [isMenuModal, setIsMenuModal] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isIndustryOpen, setIsIndustryOpen] = useState(false);
   const { imageSrc, error } = useFetchImages([
-    "partner.avif",
+    "partner.png",
     "header-logo.avif",
   ]);
   const { user, logout } = useUser();
@@ -187,11 +187,6 @@ export default function Header() {
                       <li>
                         <Link href="/main/pages/product/measurement/latima">
                           LaTIMA
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/main/pages/product/measurement/timapulse">
-                          TIMA pulse
                         </Link>
                       </li>
                       <li>

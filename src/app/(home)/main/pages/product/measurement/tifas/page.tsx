@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -10,13 +12,14 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 export default function Tifas() {
   const { imageSrc, loading, error } = useFetchImages([
     "tifas1.avif",
-    "timapulse2.avif",
     "tifas2.avif",
     "tifas3.avif",
     "tifas4.avif",
     "tifas5.avif",
     "tifas6.avif",
+    "timapulse2.avif",
   ]);
+  const filteredImages = imageSrc.slice(1, 4);
 
   if (error) {
     return <p>Error: {error}</p>;
@@ -66,11 +69,11 @@ export default function Tifas() {
               </div>
             </div>
           </div>
-          {imageSrc[1] && (
+          {imageSrc[6] && (
             <div
               className={styles.secondWrapper}
               style={{
-                backgroundImage: `url(${imageSrc[1]})`, // 동적으로 배경 이미지 설정
+                backgroundImage: `url(${imageSrc[6]})`, // 동적으로 배경 이미지 설정
               }}
             >
               <div className={styles.secondContent}>
@@ -81,7 +84,27 @@ export default function Tifas() {
                     <button>브로슈어 Download</button>
                     <button>TIMA pulse DATASHEET</button>
                   </div>
-                  <div></div>
+                  <div>
+                    <Swiper
+                      modules={[Navigation]}
+                      navigation
+                      spaceBetween={20}
+                      slidesPerView={1}
+                      style={{ width: "454px", height: "222px" }}
+                    >
+                      {filteredImages.map((src, index) => (
+                        <SwiperSlide key={index}>
+                          <Image
+                            src={src}
+                            alt={`slide-${index}`}
+                            width={454}
+                            height={222}
+                            style={{ objectFit: "cover" }}
+                          />
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
+                  </div>
                 </div>
               </div>
             </div>

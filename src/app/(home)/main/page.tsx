@@ -29,7 +29,7 @@ interface ImgSlice {
 const imgSlice: ImgSlice[] = [
   {
     id: 1,
-    img: "/api/getftp/image-slide1.avif",
+    img: "https://drive.google.com/uc?export=view&id=1ogwLvSLVASqKjdAuLyH-Xg0SB5SaECuv",
     title: "Digital Physics & Physical Testing",
     description: "Solution Provider",
     logo: "/api/getftp/footer-logo.avif",
@@ -37,28 +37,28 @@ const imgSlice: ImgSlice[] = [
   },
   {
     id: 2,
-    img: "/api/getftp/image-slide2.avif",
+    img: "https://drive.google.com/uc?export=view&id=17v_XuXPph0R7D8llxt0FuMzUngYgol3F",
     title: "Simcenter \n Powertester",
     description: "전력 반도체 신뢰성 평가 측정장비",
     link: "/main/pages/product/measurement/powertester",
   },
   {
     id: 3,
-    img: "/api/getftp/image-slide3.avif",
+    img: "https://drive.google.com/uc?export=view&id=1LawL_4bTZnA4cJjVAqbFLdpsQIbC_RXM",
     title: "Simcenter \n T3STER SI",
     description: "반도체 열저항 정션 온도측정 장비",
     link: "/main/pages/product/measurement/t3ster",
   },
   {
     id: 4,
-    img: "/api/getftp/image-slide4.avif",
+    img: "https://drive.google.com/uc?export=view&id=1Zk6zf2S4atGZdW1a8kziTtWKogb7sC5Y",
     title: "Simcenter \n Flotherm",
     description: "산업계 표준 전기 / 전자 부품 열관리 소프트웨어",
     link: "/main/pages/product/simulation/flotherm",
   },
   {
     id: 5,
-    img: "/api/getftp/image-slide5.avif",
+    img: "https://drive.google.com/uc?export=view&id=1x0kd2ileZewg0eObQHlngEIld5isVKbZ",
     title: "Simcenter \n FLOEFD",
     description:
       "실무 사용자를 위한 차세대 \n Multi-Physics CFD 해석 소프트 웨어",
@@ -66,21 +66,21 @@ const imgSlice: ImgSlice[] = [
   },
   {
     id: 6,
-    img: "/api/getftp/image-slide6.avif",
+    img: "https://drive.google.com/uc?export=view&id=102VvMaT3-k38QS1FlNb6RoSEBhcTLmOu",
     title: "Simcenter \n STAR-CCM+",
     description: "CFD 엔지니어를 위한 통합 다중 물리 솔루션",
     link: "/main/pages/product/simulation/starccm",
   },
   {
     id: 7,
-    img: "/api/getftp/image-slide7.avif",
+    img: "https://drive.google.com/uc?export=view&id=16xoduuNW22oYpDV3Gcgfr5T3A67xGh1a",
     title: "Simcenter \n Amesim & Flomaster",
     description: "시스템 시뮬레이션 및 설계 소프트웨어",
     link: "/main/pages/product/simulation/flomaster",
   },
   {
     id: 8,
-    img: "/api/getftp/image-slide8.avif",
+    img: "https://drive.google.com/uc?export=view&id=19ubTPG6xq22SQQ-x6KpO1TrZXKRpR-et",
     title: "Simcenter \n HEEDS",
     description:
       "CAD 및 CAE와 연계되는 강력한 \n ​설계 공간 탐색 및 최적화 소프트웨어",
@@ -88,7 +88,7 @@ const imgSlice: ImgSlice[] = [
   },
   {
     id: 9,
-    img: "/api/getftp/image-slide9.avif",
+    img: "https://drive.google.com/uc?export=view&id=1ZAS9iTHUAdmp2h_in3Gt3fMJI17AfruI",
     title: "Simcenter 3D",
     description:
       "구조, 진동 , 음향, 열유동, 동역학, 최적화 및 전자기 등의 문제를 \n ​빠르게 해결하는 전문적 엔지니어링 소프트웨어",
@@ -96,14 +96,14 @@ const imgSlice: ImgSlice[] = [
   },
   {
     id: 10,
-    img: "/api/getftp/image-slide10.avif",
+    img: "https://drive.google.com/uc?export=view&id=1Pd_PtQ-5iLwk-lG2j7flPwIXNfF6kwq9",
     title: "Simcenter \n TURBOdesign Suite",
     description: "역설계 기법에 의한 유체기계설계 소프트웨어",
     link: "/main/pages/product/simulation/battery",
   },
   {
     id: 11,
-    img: "/api/getftp/image-slide11.avif",
+    img: "https://drive.google.com/uc?export=view&id=1yBvO3u7cpGAhmcG7MVcWcjyZ9mMNJbQh",
     title: "NANOTEST \n TIMA 5",
     description: "ASTM D-5470 규정에 따른 TIM 재 열물성치 측정장치",
     link: "/main/pages/product/measurement/tima5",
@@ -111,24 +111,60 @@ const imgSlice: ImgSlice[] = [
 ];
 
 const customerImg = [
-  { img: "/api/getftp/clogo_samsung.avif", url: "https://www.samsung.com" },
-  { img: "/api/getftp/clogo_lg.avif", url: "https://www.lgdisplay.com" },
-  { img: "/api/getftp/clogo_hyundai.avif", url: "https://www.hyundai.com" },
-  { img: "/api/getftp/clogo_hmobis.avif", url: "https://www.mobis.co.kr" },
-  { img: "/api/getftp/clogo_sk.avif", url: "https://www.skhynix.com" },
   {
-    img: "/api/getftp/clogo_doosan.avif",
+    img: "https://drive.google.com/uc?export=view&id=1S_a1xslilwY6oAi8zC_xhrfPlip_GasR",
+    url: "https://www.samsung.com",
+  },
+  {
+    img: "https://drive.google.com/uc?export=view&id=1am7Qao3hQDylP5UZsBvNRA4LvyazH_W7",
+    url: "https://www.lgdisplay.com",
+  },
+  {
+    img: "https://drive.google.com/uc?export=view&id=1Gbtve7cVnVbHr0UjPt5CCl6XP62ztlc7",
+    url: "https://www.hyundai.com",
+  },
+  {
+    img: "https://drive.google.com/uc?export=view&id=1HxfpG6LE2fg7nwpZTwpgeNH5KjIoDPMo",
+    url: "https://www.mobis.co.kr",
+  },
+  {
+    img: "https://drive.google.com/uc?export=view&id=1vsrrXNcBjOuXjPUuV-JBEY5OT8bw3y9C",
+    url: "https://www.skhynix.com",
+  },
+  {
+    img: "https://drive.google.com/uc?export=view&id=1iGPvLfl6Ipm8V3yrNO76Zt_cbBMSCkMh",
     url: "https://www.doosanenerbility.com",
   },
-  { img: "/api/getftp/clogo_apro.avif", url: "http://apro.re.kr" },
-  { img: "/api/getftp/clogo_fadu.avif", url: "https://www.fadu.io" },
-  { img: "/api/getftp/clogo_telit.avif", url: "https://www.telit.com" },
-  { img: "/api/getftp/clogo_infineon.avif", url: "https://www.infineon.com" },
-  { img: "/api/getftp/clogo_jcet.avif", url: "https://www.jcetglobal.com" },
-  { img: "/api/getftp/clogo_solum.avif", url: "https://www.solum-group.co.kr" },
-  { img: "/api/getftp/clogo_onsemi.avif", url: "https://onsemi-korea.com/" },
   {
-    img: "/api/getftp/clogo_signetics.avif",
+    img: "https://drive.google.com/uc?export=view&id=1kNXXiPjC3nbNaiU019VYCgawY8ACjXii",
+    url: "http://apro.re.kr",
+  },
+  {
+    img: "https://drive.google.com/uc?export=view&id=1AqLL5TTGd7FWN09lbtEmnJ5DAXo7gTZD",
+    url: "https://www.fadu.io",
+  },
+  {
+    img: "https://drive.google.com/uc?export=view&id=1BuC_bNW9tnDvTugHv64kiL4au1goiZQT",
+    url: "https://www.telit.com",
+  },
+  {
+    img: "https://drive.google.com/uc?export=view&id=1b7jzjlKN890H4ftQj9V8DFyCjuA83L5U",
+    url: "https://www.infineon.com",
+  },
+  {
+    img: "https://drive.google.com/uc?export=view&id=15YeR7JXyX6qK-Rj6aefLx-E385P105XX",
+    url: "https://www.jcetglobal.com",
+  },
+  {
+    img: "https://drive.google.com/uc?export=view&id=1tbjnccuz5xPoXl8ylMdg9IWG-5M-jbhC",
+    url: "https://www.solum-group.co.kr",
+  },
+  {
+    img: "https://drive.google.com/uc?export=view&id=11fiJV7N2n-W30TnPLlmWXErjHaNcvR50",
+    url: "https://onsemi-korea.com/",
+  },
+  {
+    img: "https://drive.google.com/uc?export=view&id=1tNeGWX_dDDvGbiwnrlT6kefDYANuHuIh",
     url: "https://www.signetics.com/",
   },
 ];
