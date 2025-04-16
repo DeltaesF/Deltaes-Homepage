@@ -1,66 +1,48 @@
-"use client";
+// hooks/usePostsList.ts
+import { useState } from "react";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { db } from "@/app/lib/firebase";
 
-// import { createContext, useContext, useEffect, useState } from "react";
+interface Post {
+  id: string;
+  title: string;
+  content: string;
+  user_id: string;
+  category: string;
+  images: string[];
+  created_at: Date;
+  userName: string;
+  views: number;
+}
 
-// interface Post {
-//   id: number;
-//   title: string;
-//   views: number;
-//   created_at: string;
-//   updated_at: string;
-//   username: string;
-//   images: string;
-//   category: string;
-// }
+export function usePostsList() {
+  const [postsList, setPostsList] = useState<Post[]>([]);
 
-// interface PostsListContextType {
-//   postsList: Post[];
-//   error: string | null;
-//   fetchPostsList: () => Promise<void>;
-// }
+  const fetchPostsList = async () => {
+    try {
+      const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
+      const querySnapshot = await getDocs(q);
 
-// const PostsListContext = createContext<PostsListContextType | undefined>(
-//   undefined,
-// );
+      const postsData: Post[] = querySnapshot.docs.map((doc) => {
+        const data = doc.data();
+        return {
+          id: doc.id,
+          title: data.title,
+          content: data.content,
+          user_id: data.user_id,
+          category: data.category,
+          images: data.images || [],
+          created_at: data.createdAt?.toDate?.() ?? new Date(),
+          views: data.views ?? 0,
+          userName: data.userName ?? "익명", // Firestore에 없으면 기본값
+        };
+      });
 
-// export function PostsListProvider({ children }: { children: React.ReactNode }) {
-//   // ✅ 이름 변경
-//   const [postsList, setPostsList] = useState<Post[]>([]);
-//   const [error, setError] = useState<string | null>(null);
+      setPostsList(postsData);
+    } catch (error) {
+      console.error("게시글 목록을 가져오는 중 오류 발생:", error);
+    }
+  };
 
-//   const fetchPostsList = async () => {
-//     try {
-//       const res = await fetch("/api/write"); // ✅ API 경로 확인
-//       const data = await res.json();
-
-//       if (res.ok) {
-//         setPostsList(data.posts); // ✅ API 응답 필드 확인
-//       } else {
-//         setError(data.error || "게시글을 불러오는 데 실패했습니다.");
-//       }
-//     } catch (error) {
-//       console.error("글 목록 조회 실패:", error);
-//       setError("서버와 연결할 수 없습니다.");
-//     }
-//   };
-
-//   useEffect(() => {
-//     fetchPostsList();
-//   }, []);
-
-//   return (
-//     <PostsListContext.Provider value={{ postsList, error, fetchPostsList }}>
-//       {children}
-//     </PostsListContext.Provider>
-//   );
-// }
-
-// export function usePostsList() {
-//   const context = useContext(PostsListContext);
-//   if (!context) {
-//     throw new Error("usePostsList는 PostsListProvider 내에서 사용해야 합니다.");
-//   }
-//   return context;
-// }
-
-export {};
+  return { postsList, fetchPostsList };
+}

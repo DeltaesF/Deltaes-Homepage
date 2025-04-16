@@ -30,6 +30,9 @@ export async function POST(req: Request) {
     const mimeType = file.type || "application/octet-stream";
     const isImage = mimeType.startsWith("image/");
 
+    console.log("파일 이름:", fileName);
+    console.log("MIME 타입:", mimeType);
+
     // 업로드
     const uploadRes = await drive.files.create({
       requestBody: {
@@ -44,6 +47,8 @@ export async function POST(req: Request) {
     });
 
     const fileId = uploadRes.data.id;
+
+    console.log("업로드된 파일 ID:", fileId);
 
     if (!fileId) {
       return NextResponse.json({ error: "업로드 실패" }, { status: 500 });

@@ -55,12 +55,14 @@ export default function Write({ setSelectMenu }: WriteProps) {
 
       // Firestore에 데이터 저장
       const docRef = await addDoc(collection(db, "posts"), {
+        userName: user.userName,
         title,
         content: decodedContent,
         user_id: user?.uid, // 로그인된 사용자 ID를 Firestore에 저장
         category,
         images: imageUrls,
         createdAt: new Date(),
+        views: 0,
       });
 
       console.log("Document written with ID: ", docRef.id); // ✅ Firestore에 저장된 데이터 확인
