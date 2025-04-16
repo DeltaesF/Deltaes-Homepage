@@ -25,7 +25,7 @@ export async function POST(req: Request) {
     const buffer = Buffer.from(arrayBuffer);
     const stream = Readable.from(buffer);
 
-    const folderId = process.env.GOOGLE_DRIVE_FOLDER_ID;
+    const folderId = process.env.GOOGLE_DRIVE_UPLOADFOLDER_ID;
     const fileName = file.name || "untitled";
     const mimeType = file.type || "application/octet-stream";
     const isImage = mimeType.startsWith("image/");
