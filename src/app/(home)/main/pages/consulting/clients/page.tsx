@@ -53,7 +53,7 @@ export default function Clients() {
   //               <div key={post.id} className={styles.gridItem}>
   //                 <div className={styles.gridItemPost}>
   //                   <Link
-  //                     href={`/main/pages/announcements/${post.id}`}
+  //                     href={`/main/pages/consulting/engineering/subpage/${post.id}`}
   //                     className={styles.postLink}
   //                   >
   //                     <h1>{post.title}</h1>

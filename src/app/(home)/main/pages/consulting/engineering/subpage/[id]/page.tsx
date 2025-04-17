@@ -1,92 +1,99 @@
 "use client";
-// import { useParams } from "next/navigation";
-// import { useEffect, useState } from "react";
-// import styles from "./page.module.css";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import styles from "./page.module.css";
+import { db } from "@/app/lib/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
-// interface Post {
-//   id: number;
-//   title: string;
-//   content: string;
-//   views: number;
-//   created_at: string;
-//   updated_at: string;
-//   username: string;
-//   images: string[];
-//   category: string;
-// }
+interface Post {
+  id: string;
+  title: string;
+  content: string;
+  user_id: string;
+  category: string;
+  images: string[];
+  created_at: Date;
+  userName: string;
+  views: number;
+}
 
-export default function HomePosts() {
-  return <div />;
-  //   const { id } = useParams();
-  //   const [post, setPost] = useState<Post | null>(null);
-  //   const [error, setError] = useState<string | null>(null);
+export default function DetailPosts() {
+  const { id } = useParams();
+  const [post, setPost] = useState<Post | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  //   useEffect(() => {
-  //     if (!id) return; // id가 없으면 API 요청 안 함
+  useEffect(() => {
+    if (!id || typeof id !== "string") return;
 
-  //     const fetchPost = async () => {
-  //       try {
-  //         const res = await fetch(`/api/write/${id}`);
-  //         const data = await res.json();
+    const fetchPost = async () => {
+      const docRef = doc(db, "posts", id);
+      const docSnap = await getDoc(docRef);
 
-  //         if (res.ok) {
-  //           setPost(data.post);
-  //         } else {
-  //           setError(data.error || "게시글을 불러오는 데 실패했습니다.");
-  //         }
-  //       } catch (error) {
-  //         console.log(error);
-  //         setError("서버와 연결할 수 없습니다.");
-  //       }
-  //     };
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        setPost({
+          id: docSnap.id,
+          title: data.title,
+          content: data.content,
+          user_id: data.user_id,
+          category: data.category,
+          images: data.images || [],
+          created_at: data.created_at?.toDate?.() || new Date(),
 
-  //     fetchPost();
-  //   }, [id]);
+          userName: data.userName,
+          views: data.views || 0,
+        });
+      } else {
+        console.log("해당 게시글이 존재하지 않습니다.");
+      }
+    };
 
-  //   useEffect(() => {
-  //     if (post) {
-  //       console.log("Post data:", post);
-  //     }
-  //   }, [post]);
+    fetchPost();
+  }, [id]);
 
-  //   return (
-  //     <article className={styles.container}>
-  //       <section className={styles.content}>
-  //         <header>
-  //           <div className={styles.header}>
-  //             <span>작성자: {post?.username}</span>
-  //             <span>
-  //               작성일:{" "}
-  //               {post?.created_at
-  //                 ? new Date(post.created_at).toLocaleDateString("ko-KR", {
-  //                     year: "numeric",
-  //                     month: "long",
-  //                     day: "numeric",
-  //                   })
-  //                 : "날짜 없음"}
-  //             </span>
-  //             <span>조회수: {post?.views}</span>
-  //             <span>카테고리: {post?.category}</span>
-  //           </div>
-  //           <h1 className={styles.title}>{post?.title}</h1>
-  //           <span>
-  //             최종 수정일:{" "}
-  //             {post?.updated_at
-  //               ? new Date(post.updated_at).toLocaleDateString("ko-KR", {
-  //                   year: "numeric",
-  //                   month: "long",
-  //                   day: "numeric",
-  //                 })
-  //               : "날짜 없음"}
-  //           </span>
-  //         </header>
-  //         <div className={styles.divider}></div>
-  //         <section
-  //           dangerouslySetInnerHTML={{ __html: post?.content || "" }}
-  //           className={styles.postContent}
-  //         ></section>
-  //       </section>
-  //       {error && <p className="text-red-500">{error}</p>}
-  //     </article>
-  //   );
+  if (!post) return <div>Loading...</div>;
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <header>
+          <div className={styles.header}>
+            <span>작성자: {post.userName}</span>
+            <span>
+              작성일:{" "}
+              {post?.created_at
+                ? new Date(post.created_at).toLocaleDateString("ko-KR", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })
+                : "날짜 없음"}
+            </span>
+            <span>조회수: {post.views}</span>
+            <span>카테고리: {post.category}</span>
+            <div
+              className={styles.menuIcon}
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              <div className={styles.menuIcon}>...</div>
+              <div
+                className={`${styles.dropdown} ${menuOpen ? styles.active : ""}`}
+              >
+                <ul>
+                  <li>수정하기</li>
+                  <li>삭제하기</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <h1 className={styles.title}>{post?.title}</h1>
+        </header>
+        <div className={styles.divider}></div>
+        <div
+          dangerouslySetInnerHTML={{ __html: post?.content || "" }}
+          className={styles.postContent}
+        ></div>
+      </div>
+    </div>
+  );
 }

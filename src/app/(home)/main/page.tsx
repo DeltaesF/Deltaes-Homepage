@@ -32,7 +32,7 @@ const imgSlice: ImgSlice[] = [
     img: "https://drive.google.com/uc?export=view&id=1ogwLvSLVASqKjdAuLyH-Xg0SB5SaECuv",
     title: "Digital Physics & Physical Testing",
     description: "Solution Provider",
-    logo: "/api/getftp/footer-logo.avif",
+    logo: "https://drive.google.com/uc?export=view&id=1oH1u15k_OzrePlcAz3p5U1q68F1YlFX5",
     link: "",
   },
   {
