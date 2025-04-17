@@ -64,8 +64,10 @@ export async function POST(req: Request) {
     });
 
     const fileUrl = isImage
-      ? `https://drive.google.com/thumbnail?id=${fileId}`
+      ? `https://lh3.googleusercontent.com/d/${fileId}`
       : `https://drive.google.com/uc?export=download&id=${fileId}`;
+
+    console.log("fileUrl: ", fileUrl);
 
     return NextResponse.json({ fileUrl }, { status: 201 });
   } catch (error) {

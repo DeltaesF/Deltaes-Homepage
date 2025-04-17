@@ -31,6 +31,7 @@ export default function DetailPosts() {
 
       if (docSnap.exists()) {
         const data = docSnap.data();
+        console.log(data);
         setPost({
           id: docSnap.id,
           title: data.title,

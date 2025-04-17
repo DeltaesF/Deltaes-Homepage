@@ -4,6 +4,7 @@ import React, { useRef, useMemo } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import styles from "./editor.module.css";
+import "../hr/hr";
 
 interface EditorProps {
   value: string;
@@ -91,16 +92,26 @@ export default function Editor({ value, onChange }: EditorProps) {
     });
   };
 
+  // 🧩 hr 핸들러 추가
+  const insertHr = () => {
+    const editor = quillRef.current?.getEditor();
+    const range = editor?.getSelection();
+    if (editor && range) {
+      editor.insertEmbed(range.index, "hr", true);
+      editor.setSelection(range.index + 1, 0);
+    }
+  };
+
   const modules = useMemo(
     () => ({
       toolbar: {
         container: [
-          [{ header: [1, 2, 3, false] }],
+          [{ header: [1, 2, 3, 4, 5, 6, false] }],
           [{ font: [] }],
           [{ list: "ordered" }, { list: "bullet" }],
-          ["bold", "italic", "underline", "strike"],
-          [{ color: [] }, { background: [] }],
           [{ align: [] }],
+          ["bold", "italic", "underline", "strike", "hr"],
+          [{ color: [] }, { background: [] }],
           ["blockquote", "code-block"],
           ["link", "image", "video"],
           ["clean"],
@@ -119,6 +130,7 @@ export default function Editor({ value, onChange }: EditorProps) {
               }
             });
           },
+          hr: insertHr,
         },
       },
     }),
@@ -141,6 +153,7 @@ export default function Editor({ value, onChange }: EditorProps) {
     "link",
     "image",
     "video",
+    "hr",
   ];
 
   return (

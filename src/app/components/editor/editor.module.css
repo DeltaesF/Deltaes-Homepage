@@ -16,3 +16,29 @@
 .ql-file::before {
   content: "📎"; /* 클립 아이콘 */
 }
+
+.ql-editor img {
+  max-width: none; /* 이미지 크기 제한 없애기 */
+  width: auto; /* 자동 크기 */
+  height: auto; /* 비율에 맞춰 높이 자동 설정 */
+}
+
+.editorContainer :global(.ql-editor img) {
+  display: inline-block; /* 이미지들을 가로로 나열 */
+  max-width: 100%;
+  height: auto;
+  margin: 10px; /* 이미지를 가로로 배치할 때 간격을 설정 */
+}
+
+/* hr 기본 스타일 */
+.editorContainer :global(.ql-editor hr) {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 24px 0;
+}
+
+/* 툴바 버튼에 이모지 추가 */
+.editorContainer :global(.ql-hr)::before {
+  content: "---"; /* 또는 "―", "⎯", "─" 등등 */
+  font-size: 16px;
+}
