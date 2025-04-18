@@ -1,98 +1,87 @@
 "use client";
 
-// import { usePostsList } from "@/app/context/PostsListContext";
-// import styles from "./page.module.css";
-// import { useState } from "react";
-// import Link from "next/link";
-// import SolutionMail from "@/app/components/solution/SolutionMail";
+import { usePostsList } from "@/app/context/PostsListContext";
+import styles from "./page.module.css";
+import Link from "next/link";
+import SolutionMail from "@/app/components/solution/SolutionMail";
+import Image from "next/image";
+import { useEffect } from "react";
+
+// Google Drive 주소 변환 함수
+const convertGoogleDriveURL = (url: string): string | null => {
+  const match = url.match(/[-\w]{25,}/);
+  return match
+    ? `https://drive.google.com/uc?export=view&id=${match[0]}`
+    : null;
+};
 
 export default function ProductNews() {
-  return <div />;
-  //   const { postsList } = usePostsList();
-  //   const [currentPage, setCurrentPage] = useState(1);
-  //   const postsPerPage = 10;
+  const { postsList, fetchPostsList } = usePostsList();
 
-  //   const filteredPosts = postsList.filter(
-  //     (post) => post.category === "제품소식",
-  //   );
+  const filteredPosts = postsList.filter(
+    (post) => post.category === "제품소식",
+  );
 
-  //   // 현재 페이지의 게시글을 계산
-  //   const indexOfLastPost = currentPage * postsPerPage;
-  //   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  //   const currentPosts = filteredPosts
-  //     .sort((a, b) => a.id - b.id)
-  //     .slice(indexOfFirstPost, indexOfLastPost);
+  useEffect(() => {
+    fetchPostsList();
+  }, []);
 
-  //   // 총 페이지 수 계산
-  //   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+  return (
+    <main className={styles.container}>
+      <section className={styles.wrapper}>
+        <header className={styles.title}>
+          <h1>제품소식</h1>
+        </header>
+        <section className={styles.gridContainer}>
+          {filteredPosts.map((post) => {
+            const images = Array.isArray(post.images)
+              ? post.images
+              : JSON.parse(post.images || "[]");
+            const mainImage = images.length > 0 ? images[0] : null;
+            const validSrc = mainImage
+              ? convertGoogleDriveURL(mainImage) || mainImage
+              : null;
 
-  //   return (
-  //     <main className={styles.container}>
-  //       <section className={styles.wrapper}>
-  //         <header className={styles.title}>
-  //           <h1>제품소식</h1>
-  //         </header>
-  //         <section className={styles.gridContainer}>
-  //           {currentPosts.map((post) => (
-  //             <article key={post.id} className={styles.gridItem}>
-  //               <div className={styles.gridItemPost}>
-  //                 <Link
-  //                   href={`/main/pages/announcements/${post.id}`}
-  //                   className={styles.postLink}
-  //                 >
-  //                   <h1>{post.title}</h1>
-  //                 </Link>
-  //                 {Array.isArray(JSON.parse(post.images)) &&
-  //                 JSON.parse(post.images).length > 0
-  //                   ? JSON.parse(post.images).map((image: string) => (
-  //                       <img
-  //                         key={`${post.id}-${image}`}
-  //                         src={image}
-  //                         alt="게시글 이미지"
-  //                       />
-  //                     ))
-  //                   : null}
-  //               </div>
-  //               <div className={styles.created}>
-  //                 <span>
-  //                   {post?.created_at
-  //                     ? new Date(post.created_at).toLocaleDateString("ko-KR", {
-  //                         year: "numeric",
-  //                         month: "long",
-  //                         day: "numeric",
-  //                       })
-  //                     : "날짜 없음"}
-  //                 </span>
-  //               </div>
-  //             </article>
-  //           ))}
-  //         </section>
-
-  //         {/* 페이지네이션 컨트롤 */}
-  //         <div className={styles.pagination}>
-  //           <button
-  //             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-  //             disabled={currentPage === 1}
-  //             className={styles.pageButton}
-  //           >
-  //             이전
-  //           </button>
-  //           <span className={styles.pageInfo}>
-  //             {currentPage} / {totalPages}
-  //           </span>
-  //           <button
-  //             onClick={() =>
-  //               setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-  //             }
-  //             disabled={currentPage === totalPages}
-  //             className={styles.pageButton}
-  //           >
-  //             다음
-  //           </button>
-  //         </div>
-
-  //         <SolutionMail />
-  //       </section>
-  //     </main>
-  //   );
+            return (
+              <article key={post.id} className={styles.gridItem}>
+                <div className={styles.gridItemPost}>
+                  <Link
+                    href={`/main/pages/announcements/${post.id}`}
+                    className={styles.postLink}
+                  >
+                    <h1>{post.title}</h1>
+                  </Link>
+                  {validSrc && (
+                    <div className={styles.imageWrapper}>
+                      <Image
+                        src={validSrc}
+                        alt="대표 이미지"
+                        width={70}
+                        height={70}
+                        onError={(e) =>
+                          console.error("이미지 로드 실패:", validSrc, e)
+                        }
+                      />
+                    </div>
+                  )}
+                </div>
+                <div className={styles.created}>
+                  <span>
+                    {post?.created_at
+                      ? new Date(post.created_at).toLocaleDateString("ko-KR", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })
+                      : "날짜 없음"}
+                  </span>
+                </div>
+              </article>
+            );
+          })}
+        </section>
+        <SolutionMail />
+      </section>
+    </main>
+  );
 }

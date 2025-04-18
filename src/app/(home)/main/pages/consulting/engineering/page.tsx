@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import SolutionMail from "@/app/components/solution/SolutionMail";
 import useFetchImages from "@/app/hooks/useFetchImages";
@@ -25,7 +25,7 @@ const convertGoogleDriveURL = (url: string): string | null => {
 };
 
 export default function Engineering() {
-  const { postsList } = usePostsList();
+  const { postsList, fetchPostsList } = usePostsList();
   const { loading, error } = useFetchImages([]);
   const [activeTab, setActiveTab] =
     useState<TabName>("전자기기/반도체/디스플레이");
@@ -39,6 +39,10 @@ export default function Engineering() {
     "에너지",
   ];
 
+  useEffect(() => {
+    fetchPostsList();
+  }, []);
+
   const renderPosts = (category: TabName) => {
     const filteredPosts = postsList.filter(
       (post) => post.category === category,
@@ -50,58 +54,52 @@ export default function Engineering() {
 
     return (
       <div className={styles.gridContainer}>
-        {filteredPosts
-          .sort(
-            (a, b) =>
-              new Date(a.created_at).getTime() -
-              new Date(b.created_at).getTime(),
-          )
-          .map((post) => {
-            const images = Array.isArray(post.images)
-              ? post.images
-              : JSON.parse(post.images || "[]");
-            const mainImage = images.length > 0 ? images[0] : null;
-            const validSrc = mainImage
-              ? convertGoogleDriveURL(mainImage) || mainImage
-              : null;
+        {filteredPosts.map((post) => {
+          const images = Array.isArray(post.images)
+            ? post.images
+            : JSON.parse(post.images || "[]");
+          const mainImage = images.length > 0 ? images[0] : null;
+          const validSrc = mainImage
+            ? convertGoogleDriveURL(mainImage) || mainImage
+            : null;
 
-            return (
-              <article key={post.id} className={styles.gridItem}>
-                <div className={styles.gridItemPost}>
-                  <Link
-                    href={`/main/pages/consulting/engineering/subpage/${post.id}`}
-                    className={styles.postLink}
-                  >
-                    <h1>{post.title}</h1>
-                  </Link>
-                  {validSrc && (
-                    <div className={styles.imageContainer}>
-                      <Image
-                        src={validSrc}
-                        alt="대표 이미지"
-                        width={70}
-                        height={70}
-                        onError={(e) =>
-                          console.error("이미지 로드 실패:", validSrc, e)
-                        }
-                      />
-                    </div>
-                  )}
-                </div>
-                <div className={styles.created}>
-                  <span>
-                    {post?.created_at
-                      ? new Date(post.created_at).toLocaleDateString("ko-KR", {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })
-                      : "날짜 없음"}
-                  </span>
-                </div>
-              </article>
-            );
-          })}
+          return (
+            <article key={post.id} className={styles.gridItem}>
+              <div className={styles.gridItemPost}>
+                <Link
+                  href={`/main/pages/consulting/engineering/subpage/${post.id}`}
+                  className={styles.postLink}
+                >
+                  <h1>{post.title}</h1>
+                </Link>
+                {validSrc && (
+                  <div className={styles.imageContainer}>
+                    <Image
+                      src={validSrc}
+                      alt="대표 이미지"
+                      width={70}
+                      height={70}
+                      onError={(e) =>
+                        console.error("이미지 로드 실패:", validSrc, e)
+                      }
+                    />
+                  </div>
+                )}
+              </div>
+              <div className={styles.created}>
+                <span>
+                  {post?.created_at
+                    ? new Date(post.created_at).toLocaleDateString("ko-KR", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })
+                    : "날짜 없음"}
+                </span>
+              </div>
+            </article>
+          );
+        })}
       </div>
     );
   };

@@ -3,6 +3,7 @@
 import useFetchImages from "@/app/hooks/useFetchImages";
 import styles from "./page.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Request() {
   const { imageSrc, error } = useFetchImages(["request.avif"]);
@@ -33,7 +34,11 @@ export default function Request() {
           </h2>
           <div className={styles.buttonContainer}>
             <button>제품 설명 바로가기</button>
-            <button>제품 브로셔 다운로드</button>
+            <button>
+              <Link href={`/main/pages/company/brochure/`}>
+                제품 브로셔 다운로드
+              </Link>
+            </button>
           </div>
         </div>
 
