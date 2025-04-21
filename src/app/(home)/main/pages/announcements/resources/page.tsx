@@ -24,6 +24,8 @@ export default function Resources() {
     fetchPostsList();
   }, []);
 
+  console.log(postsList);
+
   return (
     <main className={styles.container}>
       <section className={styles.wrapper}>

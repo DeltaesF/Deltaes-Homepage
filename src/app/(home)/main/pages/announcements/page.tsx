@@ -33,9 +33,8 @@ export default function Announcements() {
   // 현재 페이지 상태 (1부터 시작)
   const [currentPage, setCurrentPage] = useState(1);
 
-  // 현재 페이지의 게시글 범위 설정 (페이지 순서를 뒤집음)
-  const indexOfLastPost = (totalPages - currentPage + 1) * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const indexOfFirstPost = (currentPage - 1) * postsPerPage;
+  const indexOfLastPost = indexOfFirstPost + postsPerPage;
   const currentPosts = sortedPosts.slice(indexOfFirstPost, indexOfLastPost);
 
   console.log(postsList);
