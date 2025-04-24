@@ -2,20 +2,90 @@
 
 import { useRef, useState } from "react";
 import styles from "./inquiry.module.css";
+import { useUser } from "@/app/context/UserContext";
+import {
+  doc,
+  setDoc,
+  getDoc,
+  collection,
+  addDoc,
+  FieldValue,
+  serverTimestamp,
+} from "firebase/firestore";
+import { db } from "@/app/lib/firebase";
 
-type Message = {
-  id: string | number;
-  sender: "user" | "admin";
+interface Message {
+  id: number;
   content: string;
-};
-
+  sender: "user" | "admin";
+  userId: string;
+  createdAt: FieldValue;
+  email: string;
+  userName: string;
+}
 export default function Inquiry() {
   const [showMessenger, setShowMessenger] = useState(false);
   const [message, setMessage] = useState("");
-  const [messages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [success, setSuccess] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { user } = useUser();
 
-  const toggleMessenger = () => setShowMessenger((prev) => !prev);
+  const toggleMessenger = () => {
+    if (user) {
+      // 로그인된 경우에는 메시지 창을 토글
+      setShowMessenger((prev) => !prev);
+    } else {
+      // 로그인되지 않은 경우에는 로그인 유도 메시지를 표시
+      alert("로그인 후 사용해주세요.");
+    }
+  };
+
+  const handleSendMessage = async () => {
+    if (!message.trim() || !user) return;
+
+    try {
+      const roomId = user.uid;
+      const roomRef = doc(db, "inquiries", roomId);
+      const roomSnap = await getDoc(roomRef);
+
+      // 1️⃣ 사용자 정보가 없다면 inquiries 문서 생성
+      if (!roomSnap.exists()) {
+        await setDoc(roomRef, {
+          userId: user.uid,
+          userName: user.userName,
+          email: user.email,
+          createdAt: serverTimestamp(),
+        });
+      }
+
+      // 2️⃣ 메시지를 messages 하위 컬렉션에 추가
+      const messagesRef = collection(db, "inquiries", roomId, "messages");
+      await addDoc(messagesRef, {
+        content: message,
+        sender: "user",
+        createdAt: serverTimestamp(),
+      });
+
+      // 3️⃣ 프론트에 표시할 임시 메시지 객체
+      const newMessage = {
+        id: Date.now(),
+        email: user.email,
+        userName: user.userName,
+        content: message,
+        sender: "user" as const,
+        userId: user.uid,
+        createdAt: serverTimestamp(),
+      };
+
+      setMessages((prev) => [...prev, newMessage]);
+      setMessage("");
+      setSuccess(true);
+      setTimeout(() => setSuccess(false), 3000);
+    } catch (error) {
+      console.error("메시지 전송 실패:", error);
+    }
+  };
 
   return (
     <>
@@ -63,8 +133,14 @@ export default function Inquiry() {
               onChange={(e) => setMessage(e.target.value)}
               placeholder="메시지를 입력하세요"
             />
-            <button>보내기</button>
+            <button onClick={handleSendMessage}>보내기</button>
           </div>
+          {/* ✅ 성공 알림 */}
+          {success && (
+            <div className={styles.successAlert}>
+              메시지가 성공적으로 전송되었습니다!
+            </div>
+          )}
         </div>
       )}
     </>
