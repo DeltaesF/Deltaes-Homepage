@@ -14,7 +14,7 @@ import {
 } from "firebase/firestore";
 import { db } from "@/app/lib/firebase";
 
-interface Message {
+type Message = {
   id: number;
   content: string;
   sender: "user" | "admin";
@@ -22,7 +22,7 @@ interface Message {
   createdAt: FieldValue;
   email: string;
   userName: string;
-}
+};
 export default function Inquiry() {
   const [showMessenger, setShowMessenger] = useState(false);
   const [message, setMessage] = useState("");
@@ -32,11 +32,10 @@ export default function Inquiry() {
   const { user } = useUser();
 
   const toggleMessenger = () => {
-    if (user) {
-      // 로그인된 경우에는 메시지 창을 토글
+    // user가 null이 아니고, 유효한 로그인 정보인지 확인
+    if (user && user.uid) {
       setShowMessenger((prev) => !prev);
     } else {
-      // 로그인되지 않은 경우에는 로그인 유도 메시지를 표시
       alert("로그인 후 사용해주세요.");
     }
   };

@@ -1,0 +1,67 @@
+.wrapper {
+  padding: 1rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.chatBox {
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  border-radius: 8px;
+  height: 400px;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+}
+
+.messageUser {
+  background-color: #e0e0e0;
+  text-align: left;
+  margin: 0.25rem 0;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+.messageAdmin {
+  background-color: #d0e6ff;
+  text-align: right;
+  margin: 0.25rem 0;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+.inputContainer {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.input {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.refreshButton {
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.9rem;
+  border: 1px solid #3b82f6;
+  background-color: white;
+  color: #3b82f6;
+  border-radius: 6px;
+  cursor: pointer;
+}

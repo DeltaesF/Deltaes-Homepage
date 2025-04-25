@@ -5,7 +5,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { auth, db } from "../lib/firebase";
-interface User {
+type User = {
   uid: string;
   email: string;
   userName: string;
@@ -14,15 +14,15 @@ interface User {
   role: "user" | "admin";
   createdAt: Date;
   lastLogin?: Date;
-}
+};
 
-interface UserContextType {
+type UserContextType = {
   user: User | null;
   users: User[];
   loading: boolean;
   logout: () => void;
   fetchUsers: () => void;
-}
+};
 
 const UserContext = createContext<UserContextType>({
   user: null,
