@@ -17,6 +17,8 @@ export default function Header() {
   ]);
   const { user, logout } = useUser();
 
+  console.log("user 상태:", user);
+
   if (error) {
     return <p>Error: {error}</p>;
   }

@@ -43,7 +43,17 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
       if (firebaseUser) {
         const userDoc = await getDoc(doc(db, "users", firebaseUser.uid));
         if (userDoc.exists()) {
-          setUser(userDoc.data() as User);
+          const data = userDoc.data();
+          setUser({
+            uid: data.uid,
+            email: data.email,
+            userName: data.userName,
+            phoneNumber: data.phoneNumber || "",
+            isChecked: data.isChecked || false,
+            role: data.role || "user",
+            createdAt: data.createdAt?.toDate?.() ?? new Date(),
+            lastLogin: data.lastLogin?.toDate?.() ?? null,
+          });
         } else {
           setUser(null);
         }
@@ -87,8 +97,10 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
   // 컴포넌트 마운트 후 자동으로 유저 목록을 불러오도록 처리
   useEffect(() => {
-    fetchUsers(); // 자동으로 유저 목록을 불러옵니다.
-  }, []); // 빈 배열을 넣어 컴포넌트가 처음 렌더링될 때만 실행
+    if (user) {
+      fetchUsers();
+    }
+  }, [user]);
 
   useEffect(() => {
     console.log("Loading:", loading);
