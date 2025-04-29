@@ -6,13 +6,25 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import SolutionMail from "@/app/components/solution/SolutionMail";
 import Image from "next/image";
+import { useUser } from "@/app/context/UserContext";
 
 export default function Announcements() {
   const { postsList, fetchPostsList } = usePostsList();
+  const { user } = useUser();
 
   useEffect(() => {
     fetchPostsList();
   }, []);
+
+  const handleLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    postCategory: string,
+  ) => {
+    if (postCategory === "자료실" && !user) {
+      e.preventDefault();
+      alert("로그인이 필요한 서비스입니다.");
+    }
+  };
 
   const categories = ["공지사항", "행사소식", "제품소식", "자료실"];
 
@@ -67,6 +79,7 @@ export default function Announcements() {
                 <div className={styles.gridItemPost}>
                   <Link
                     href={`/main/pages/announcements/${post.id}`}
+                    onClick={(e) => handleLinkClick(e, post.category)}
                     className={styles.postLink}
                   >
                     <h1>{post.title}</h1>

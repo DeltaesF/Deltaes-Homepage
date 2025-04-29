@@ -6,6 +6,7 @@ import Link from "next/link";
 import SolutionMail from "@/app/components/solution/SolutionMail";
 import Image from "next/image";
 import { useEffect } from "react";
+import { useUser } from "@/app/context/UserContext";
 
 // Google Drive 주소 변환 함수
 const convertGoogleDriveURL = (url: string): string | null => {
@@ -17,6 +18,7 @@ const convertGoogleDriveURL = (url: string): string | null => {
 
 export default function Resources() {
   const { postsList, fetchPostsList } = usePostsList();
+  const { user } = useUser();
 
   const filteredPosts = postsList.filter((post) => post.category === "자료실");
 
@@ -25,6 +27,13 @@ export default function Resources() {
   }, []);
 
   console.log(postsList);
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!user) {
+      e.preventDefault();
+      alert("로그인이 필요한 서비스입니다.");
+    }
+  };
 
   return (
     <main className={styles.container}>
@@ -47,6 +56,7 @@ export default function Resources() {
                 <div className={styles.gridItemPost}>
                   <Link
                     href={`/main/pages/announcements/${post.id}`}
+                    onClick={handleLinkClick}
                     className={styles.postLink}
                   >
                     <h1>{post.title}</h1>
