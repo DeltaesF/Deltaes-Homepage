@@ -28,6 +28,8 @@ export default function ChatRoom() {
   const [reply, setReply] = useState("");
   const { user } = useUser();
 
+  console.log(inquiryId);
+
   // 🔹 메시지 불러오기 (한 번만)
   const fetchMessages = async () => {
     try {
@@ -73,7 +75,7 @@ export default function ChatRoom() {
 
   return (
     <div className={styles.wrapper}>
-      <h2 className={styles.title}>문의 채팅</h2>
+      <h2 className={styles.title}>문의 채팅 {user?.userName}</h2>
 
       <div className={styles.chatBox}>
         {messages.map((msg) => (
@@ -88,9 +90,11 @@ export default function ChatRoom() {
         ))}
       </div>
 
-      <button onClick={fetchMessages} className={styles.refreshButton}>
-        🔄 새로고침
-      </button>
+      <div className={styles.actions}>
+        <button onClick={fetchMessages} className={styles.refreshButton}>
+          🔄 새로고침
+        </button>
+      </div>
 
       <div className={styles.inputContainer}>
         <input

@@ -4,6 +4,7 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import RequestMail from "@/app/components/request/RequestMail";
 
 export default function Request() {
   const { imageSrc, error } = useFetchImages(["request.avif"]);
@@ -41,8 +42,7 @@ export default function Request() {
             </button>
           </div>
         </div>
-
-        <div className={styles.inquire}></div>
+        <RequestMail />
       </article>
     </section>
   );

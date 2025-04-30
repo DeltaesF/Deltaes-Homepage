@@ -8,7 +8,7 @@ import { useUser } from "@/app/context/UserContext";
 import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Header() {
-  const [isMenuModal, setIsMenuModal] = useState<boolean>(false);
+  // const [isMenuModal, setIsMenuModal] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isIndustryOpen, setIsIndustryOpen] = useState(false);
   const { imageSrc, error } = useFetchImages([
@@ -23,13 +23,13 @@ export default function Header() {
     return <p>Error: {error}</p>;
   }
 
-  const openModal = () => {
-    setIsMenuModal(true);
-  };
+  // const openModal = () => {
+  //   setIsMenuModal(true);
+  // };
 
-  const closeModal = () => {
-    setIsMenuModal(false);
-  };
+  // const closeModal = () => {
+  //   setIsMenuModal(false);
+  // };
 
   return (
     <header className={styles.header}>
@@ -351,12 +351,15 @@ export default function Header() {
                   </li>
                 </ul>
               </li>
-              <li>
+              <li className={styles.li}>
+                <Link href="">Q&A</Link>
+              </li>
+              {/* <li>
                 <button className={styles.menu} onClick={openModal}>
                   MENU
                 </button>
-              </li>
-              {isMenuModal && (
+              </li> */}
+              {/* {isMenuModal && (
                 <div className={styles.overlay}>
                   <div className={styles.modalContainer}>
                     <div className={styles.modalHeader}>
@@ -457,7 +460,7 @@ export default function Header() {
                     </button>
                   </div>
                 </div>
-              )}
+              )} */}
             </ul>
           </nav>
           <div>

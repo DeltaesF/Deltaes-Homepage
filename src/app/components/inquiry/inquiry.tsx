@@ -1,21 +1,24 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./inquiry.module.css";
 import { useUser } from "@/app/context/UserContext";
 import {
   doc,
   setDoc,
   getDoc,
+  query,
+  orderBy,
   collection,
   addDoc,
   FieldValue,
   serverTimestamp,
+  getDocs,
 } from "firebase/firestore";
 import { db } from "@/app/lib/firebase";
 
 type Message = {
-  id: number;
+  id: string;
   content: string;
   sender: "user" | "admin";
   userId: string;
@@ -68,7 +71,7 @@ export default function Inquiry() {
 
       // 3️⃣ 프론트에 표시할 임시 메시지 객체
       const newMessage = {
-        id: Date.now(),
+        id: Date.now().toString(), // ✅ string 타입으로 변환
         email: user.email,
         userName: user.userName,
         content: message,
@@ -85,6 +88,32 @@ export default function Inquiry() {
       console.error("메시지 전송 실패:", error);
     }
   };
+
+  useEffect(() => {
+    const fetchMessages = async () => {
+      if (!user) return;
+
+      const messagesRef = collection(db, "inquiries", user.uid, "messages");
+      const q = query(messagesRef, orderBy("createdAt", "asc"));
+
+      const querySnapshot = await getDocs(q);
+      const loadedMessages = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        content: doc.data().content,
+        sender: doc.data().sender,
+        userId: user.uid,
+        createdAt: doc.data().createdAt,
+        email: user.email,
+        userName: user.userName,
+      }));
+
+      setMessages(loadedMessages);
+    };
+
+    if (showMessenger && user) {
+      fetchMessages();
+    }
+  }, [showMessenger, user]);
 
   return (
     <>
