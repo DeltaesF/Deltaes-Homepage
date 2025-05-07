@@ -47,18 +47,29 @@ export default function Ceo() {
         <section className={styles.cIntroduce}>
           <h2>Delta ES 개요 소개영상</h2>
           <div className={styles.cIntroduceSub}>
-            <p>
-              Delta ES는 고객에게 중요한 프로세스를 개선하여 ROI를 향상시킬 수
-              있는 연구개발의 미션 크리티컬 솔루션을 제공합니다. 우리는 고객이
-              환경 및 운영 효율성을 높이고, 반복적이고 다량의 CO2 배출을
-              발생시키는 제품 검증용 Physical Test 에서 엔지니어링 시뮬레이션
-              기술을 통해 접근함으로써, 비용절감과 개발기간 단축 및 제품의
-              성능향상을 통해 탈 탄소화 할 수 있도록 지원 합니다. 우리는 더욱
-              지속가능한 미래를 향해 나아가고 있습니다. Delta ES 에서는 모든
-              사람을 위해 보다 지속 가능한 세상을 발전시키는 고객의 중요한
-              프로세스 개선을 지원합니다
-            </p>
-            <video src=""></video>
+            <div className={styles.textBox}>
+              <p>
+                Delta ES는 고객에게 중요한 프로세스를 개선하여 ROI를 향상시킬 수
+                있는 연구개발의 미션 크리티컬 솔루션을 제공합니다.
+                <br /> 우리는 고객이 환경 및 운영 효율성을 높이고, 반복적이고
+                다량의 CO2 배출을 발생시키는 제품 검증용 Physical Test에서
+                엔지니어링 시뮬레이션 기술을 통해 접근함으로써, 비용절감과
+                개발기간 단축 및 제품의 성능향상을 통해 탈 탄소화 할 수 있도록
+                지원합니다.
+                <br /> 우리는 더욱 지속가능한 미래를 향해 나아가고 있습니다.
+                Delta ES에서는 모든 사람을 위해 보다 지속 가능한 세상을
+                발전시키는 고객의 중요한 프로세스 개선을 지원합니다.
+              </p>
+            </div>
+            <div className={styles.videoBox}>
+              <iframe
+                src="https://drive.google.com/file/d/1qKLapUEDH0elRZ2KzFR3rS7kL0oFsT7v/preview"
+                width="480"
+                height="270"
+                allow="autoplay"
+                allowFullScreen
+              ></iframe>
+            </div>
           </div>
           <div className={styles.line}></div>
           <section className={styles.conclusion}>

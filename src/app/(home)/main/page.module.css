@@ -126,7 +126,6 @@
 .sContainer {
   width: 320px;
   height: 220px;
-  /* background-color: #9eafbf; */
   background-color: #909eaa;
   border-radius: 0 0 10px 10px;
   padding-top: 15px;
@@ -150,6 +149,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-y: auto; /* 세로 스크롤 추가 */
 }
 .sButton {
   width: 200px;

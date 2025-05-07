@@ -45,4 +45,5 @@
   height: 35px;
   border-radius: 20px;
   background: linear-gradient(to right, blue, orange);
+  cursor: pointer;
 }
