@@ -352,7 +352,7 @@ export default function Header() {
                 </ul>
               </li>
               <li className={styles.li}>
-                <Link href="">Q&A</Link>
+                <Link href="/main/pages/qa">Q&A</Link>
               </li>
               {/* <li>
                 <button className={styles.menu} onClick={openModal}>

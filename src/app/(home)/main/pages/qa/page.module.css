@@ -1,0 +1,120 @@
+.qaContainer {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.qaTitle {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.qaForm {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.qaInput,
+.qaTextarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.qaTextarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.qaButton {
+  padding: 10px;
+  background-color: #2c7be5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.qaButton:hover {
+  background-color: #1a5fd4;
+}
+
+.qaList {
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.qaSubtitle {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.qaItem {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f7f9fc;
+  border-radius: 5px;
+  border: 1px solid #e1e8ed;
+  line-height: 1.6;
+}
+
+.qaLoginMessage {
+  text-align: center;
+  font-size: 1rem;
+  color: #888;
+  margin-bottom: 2rem;
+}
+
+.qaMeta {
+  margin-top: 8px;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+/* 관리자 답변 표시 */
+.qaAnswer {
+  background-color: #f0f8ff;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  border-left: 4px solid #0070f3;
+  border-radius: 4px;
+}
+
+/* 관리자 답변 입력 폼 */
+.qaAnswerForm {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.qaPagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.qaPageButton {
+  padding: 0.5rem 0.9rem;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.qaPageButton:hover {
+  background-color: #f0f0f0;
+}
+
+.qaActivePage {
+  background-color: #0070f3;
+  color: white;
+  border-color: #0070f3;
+}
