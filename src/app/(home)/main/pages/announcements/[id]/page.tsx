@@ -59,16 +59,6 @@ export default function DetailPosts() {
         <header>
           <div className={styles.header}>
             <span>작성자: {post.userName}</span>
-            <span>
-              작성일:{" "}
-              {post?.created_at
-                ? new Date(post.created_at).toLocaleDateString("ko-KR", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })
-                : "날짜 없음"}
-            </span>
             <span>조회수: {post.views}</span>
             <span>카테고리: {post.category}</span>
             <div

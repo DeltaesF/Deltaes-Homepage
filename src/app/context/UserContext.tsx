@@ -14,6 +14,7 @@ type User = {
   role: "user" | "admin";
   createdAt: Date;
   lastLogin?: Date;
+  isAnonymous?: boolean;
 };
 
 type UserContextType = {
@@ -53,6 +54,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
             role: data.role || "user",
             createdAt: data.createdAt?.toDate?.() ?? new Date(),
             lastLogin: data.lastLogin?.toDate?.() ?? null,
+            isAnonymous: firebaseUser.isAnonymous,
           });
         } else {
           setUser(null);

@@ -65,17 +65,6 @@ export default function ProductNews() {
                     </div>
                   )}
                 </div>
-                <div className={styles.created}>
-                  <span>
-                    {post?.created_at
-                      ? new Date(post.created_at).toLocaleDateString("ko-KR", {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })
-                      : "날짜 없음"}
-                  </span>
-                </div>
               </article>
             );
           })}

@@ -1,24 +1,21 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import styles from "./inquiry.module.css";
 import { useUser } from "@/app/context/UserContext";
 import {
   doc,
   setDoc,
   getDoc,
-  query,
-  orderBy,
   collection,
   addDoc,
   FieldValue,
   serverTimestamp,
-  getDocs,
 } from "firebase/firestore";
 import { db } from "@/app/lib/firebase";
 
 type Message = {
-  id: string;
+  id: number;
   content: string;
   sender: "user" | "admin";
   userId: string;
@@ -35,10 +32,11 @@ export default function Inquiry() {
   const { user } = useUser();
 
   const toggleMessenger = () => {
-    // user가 null이 아니고, 유효한 로그인 정보인지 확인
-    if (user && user.uid) {
+    if (user) {
+      // 로그인된 경우에는 메시지 창을 토글
       setShowMessenger((prev) => !prev);
     } else {
+      // 로그인되지 않은 경우에는 로그인 유도 메시지를 표시
       alert("로그인 후 사용해주세요.");
     }
   };
@@ -71,7 +69,7 @@ export default function Inquiry() {
 
       // 3️⃣ 프론트에 표시할 임시 메시지 객체
       const newMessage = {
-        id: Date.now().toString(), // ✅ string 타입으로 변환
+        id: Date.now(),
         email: user.email,
         userName: user.userName,
         content: message,
@@ -88,32 +86,6 @@ export default function Inquiry() {
       console.error("메시지 전송 실패:", error);
     }
   };
-
-  useEffect(() => {
-    const fetchMessages = async () => {
-      if (!user) return;
-
-      const messagesRef = collection(db, "inquiries", user.uid, "messages");
-      const q = query(messagesRef, orderBy("createdAt", "asc"));
-
-      const querySnapshot = await getDocs(q);
-      const loadedMessages = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        content: doc.data().content,
-        sender: doc.data().sender,
-        userId: user.uid,
-        createdAt: doc.data().createdAt,
-        email: user.email,
-        userName: user.userName,
-      }));
-
-      setMessages(loadedMessages);
-    };
-
-    if (showMessenger && user) {
-      fetchMessages();
-    }
-  }, [showMessenger, user]);
 
   return (
     <>
