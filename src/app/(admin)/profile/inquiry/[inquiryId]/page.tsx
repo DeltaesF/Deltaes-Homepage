@@ -10,6 +10,8 @@ import {
   addDoc,
   serverTimestamp,
   Timestamp,
+  doc,
+  getDoc,
 } from "firebase/firestore";
 import { useUser } from "@/app/context/UserContext";
 import { useParams } from "next/navigation";
@@ -26,9 +28,31 @@ export default function ChatRoom() {
   const { inquiryId } = useParams();
   const [messages, setMessages] = useState<Message[]>([]);
   const [reply, setReply] = useState("");
+  const [inquirerName, setInquirerName] = useState("");
   const { user } = useUser();
 
   console.log(inquiryId);
+  console.log(inquirerName);
+
+  const fetchInquirerName = async () => {
+    try {
+      const docRef = doc(db, "inquiries", inquiryId as string);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        setInquirerName(data.userName || "알 수 없음");
+      }
+    } catch (err) {
+      console.error("문의자 이름 불러오기 실패:", err);
+    }
+  };
+
+  useEffect(() => {
+    if (inquiryId) {
+      fetchMessages();
+      fetchInquirerName(); // 🔹 추가
+    }
+  }, [inquiryId]);
 
   // 🔹 메시지 불러오기 (한 번만)
   const fetchMessages = async () => {
@@ -75,7 +99,7 @@ export default function ChatRoom() {
 
   return (
     <div className={styles.wrapper}>
-      <h2 className={styles.title}>문의 채팅 {user?.userName}</h2>
+      <h2 className={styles.title}>문의 채팅 {inquirerName}</h2>
 
       <div className={styles.chatBox}>
         {messages.map((msg) => (

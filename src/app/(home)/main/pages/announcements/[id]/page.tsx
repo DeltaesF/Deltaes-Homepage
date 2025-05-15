@@ -51,6 +51,8 @@ export default function DetailPosts() {
     fetchPost();
   }, [id]);
 
+  console.log(post);
+
   if (!post) return <div>Loading...</div>;
 
   return (

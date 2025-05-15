@@ -17,7 +17,7 @@ import { db } from "@/app/lib/firebase";
 type Message = {
   id: number;
   content: string;
-  sender: "user" | "admin";
+  sender: "user" | "admin" | "guest";
   userId: string;
   createdAt: FieldValue;
   email: string;
@@ -30,55 +30,78 @@ export default function Inquiry() {
   const [success, setSuccess] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const { user } = useUser();
+  const [guestName, setGuestName] = useState("");
+  const [guestEmail, setGuestEmail] = useState("");
 
   const toggleMessenger = () => {
-    if (user) {
-      // 로그인된 경우에는 메시지 창을 토글
-      setShowMessenger((prev) => !prev);
-    } else {
-      // 로그인되지 않은 경우에는 로그인 유도 메시지를 표시
-      alert("로그인 후 사용해주세요.");
-    }
+    // 로그인 여부에 상관없이 메시지 창을 열 수 있게 함
+    setShowMessenger((prev) => !prev);
   };
 
   const handleSendMessage = async () => {
-    if (!message.trim() || !user) return;
+    if (!message.trim()) return;
 
     try {
-      const roomId = user.uid;
-      const roomRef = doc(db, "inquiries", roomId);
+      const isGuest = !user;
+
+      let userId: string;
+      let email: string;
+      let userName: string;
+
+      if (isGuest) {
+        if (!guestName || !guestEmail) {
+          alert("이름과 이메일을 모두 입력해주세요.");
+          return;
+        }
+
+        // guest ID는 localStorage에 저장하여 재사용
+        const savedGuestId = localStorage.getItem("guestId");
+        if (savedGuestId) {
+          userId = savedGuestId;
+        } else {
+          userId = `guest_${Date.now()}`;
+          localStorage.setItem("guestId", userId);
+        }
+        email = guestEmail;
+        userName = guestName;
+      } else {
+        userId = user.uid;
+        email = user.email;
+        userName = user.userName;
+      }
+
+      const roomRef = doc(db, "inquiries", userId);
       const roomSnap = await getDoc(roomRef);
 
-      // 1️⃣ 사용자 정보가 없다면 inquiries 문서 생성
       if (!roomSnap.exists()) {
         await setDoc(roomRef, {
-          userId: user.uid,
-          userName: user.userName,
-          email: user.email,
+          userId,
+          userName,
+          email,
           createdAt: serverTimestamp(),
         });
       }
 
-      // 2️⃣ 메시지를 messages 하위 컬렉션에 추가
-      const messagesRef = collection(db, "inquiries", roomId, "messages");
+      const messagesRef = collection(db, "inquiries", userId, "messages");
       await addDoc(messagesRef, {
         content: message,
-        sender: "user",
+        sender: isGuest ? "guest" : "user",
         createdAt: serverTimestamp(),
       });
 
-      // 3️⃣ 프론트에 표시할 임시 메시지 객체
-      const newMessage = {
-        id: Date.now(),
-        email: user.email,
-        userName: user.userName,
-        content: message,
-        sender: "user" as const,
-        userId: user.uid,
-        createdAt: serverTimestamp(),
-      };
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now(),
+          email,
+          userName,
+          content: message,
+          sender: isGuest ? "guest" : "user",
+          userId,
+          createdAt: serverTimestamp(),
+        },
+      ]);
 
-      setMessages((prev) => [...prev, newMessage]);
       setMessage("");
       setSuccess(true);
       setTimeout(() => setSuccess(false), 3000);
@@ -86,7 +109,6 @@ export default function Inquiry() {
       console.error("메시지 전송 실패:", error);
     }
   };
-
   return (
     <>
       <div className={styles.inquiryContainer} onClick={toggleMessenger}>
@@ -111,6 +133,28 @@ export default function Inquiry() {
       {showMessenger && (
         <div className={styles.messengerBox}>
           <div className={styles.messengerHeader}>문의하기</div>
+          {!user && (
+            <div className={styles.guestInfoBox}>
+              <p className={styles.guestNotice}>
+                비로그인 사용자입니다. <br />
+                <strong>이름</strong>과 <strong>이메일</strong>을 남겨주시면
+                빠른 시일 내에 안내드리겠습니다.
+              </p>
+              <input
+                type="text"
+                value={guestName}
+                onChange={(e) => setGuestName(e.target.value)}
+                placeholder="이름을 입력하세요"
+              />
+              <input
+                type="email"
+                value={guestEmail}
+                onChange={(e) => setGuestEmail(e.target.value)}
+                placeholder="이메일을 입력하세요"
+              />
+            </div>
+          )}
+
           <div className={styles.messageList}>
             {messages.map((msg) => (
               <div
@@ -126,6 +170,7 @@ export default function Inquiry() {
             ))}
             <div ref={scrollRef} />
           </div>
+
           <div className={styles.inputArea}>
             <input
               type="text"
