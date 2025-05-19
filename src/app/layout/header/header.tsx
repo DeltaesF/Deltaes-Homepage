@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useUser } from "@/app/context/UserContext";
 import useFetchImages from "@/app/hooks/useFetchImages";
+import { useNotification } from "@/app/context/NotifyContext";
 
 export default function Header() {
   // const [isMenuModal, setIsMenuModal] = useState<boolean>(false);
@@ -16,6 +17,7 @@ export default function Header() {
     "header-logo.avif",
   ]);
   const { user, logout } = useUser();
+  const { unreadCount } = useNotification();
 
   console.log("user 상태:", user);
 
@@ -80,6 +82,13 @@ export default function Header() {
                   <button style={{ marginLeft: "10px" }} onClick={logout}>
                     로그아웃
                   </button>
+
+                  {/* 알림 표시 (관리자만) */}
+                  {user.role === "admin" && unreadCount > 0 && (
+                    <span className={styles.notificationBadge}>
+                      {unreadCount}
+                    </span>
+                  )}
                 </div>
               ) : (
                 <div>

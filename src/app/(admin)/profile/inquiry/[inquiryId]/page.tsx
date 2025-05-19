@@ -12,6 +12,8 @@ import {
   Timestamp,
   doc,
   getDoc,
+  where,
+  updateDoc,
 } from "firebase/firestore";
 import { useUser } from "@/app/context/UserContext";
 import { useParams } from "next/navigation";
@@ -22,6 +24,7 @@ type Message = {
   content: string;
   sender: "user" | "admin";
   createdAt: Timestamp;
+  isRead: boolean;
 };
 
 export default function ChatRoom() {
@@ -31,8 +34,33 @@ export default function ChatRoom() {
   const [inquirerName, setInquirerName] = useState("");
   const { user } = useUser();
 
-  console.log(inquiryId);
-  console.log(inquirerName);
+  // ✅ 메시지 읽음 처리 함수
+  const markMessagesAsRead = async () => {
+    if (!inquiryId) return;
+    try {
+      const messagesRef = collection(
+        db,
+        "inquiries",
+        inquiryId as string,
+        "messages",
+      );
+      const q = query(
+        messagesRef,
+        where("sender", "==", "user"),
+        where("isRead", "==", false),
+      );
+      const snapshot = await getDocs(q);
+
+      const updatePromises = snapshot.docs.map((docSnap) => {
+        const messageRef = doc(messagesRef, docSnap.id);
+        return updateDoc(messageRef, { isRead: true });
+      });
+
+      await Promise.all(updatePromises);
+    } catch (err) {
+      console.error("메시지 읽음 처리 실패:", err);
+    }
+  };
 
   const fetchInquirerName = async () => {
     try {
@@ -50,11 +78,11 @@ export default function ChatRoom() {
   useEffect(() => {
     if (inquiryId) {
       fetchMessages();
-      fetchInquirerName(); // 🔹 추가
+      fetchInquirerName();
+      markMessagesAsRead(); // ✅ 메시지 읽음 처리 실행
     }
   }, [inquiryId]);
 
-  // 🔹 메시지 불러오기 (한 번만)
   const fetchMessages = async () => {
     try {
       const q = query(
@@ -72,13 +100,6 @@ export default function ChatRoom() {
     }
   };
 
-  useEffect(() => {
-    if (inquiryId) {
-      fetchMessages();
-    }
-  }, [inquiryId]);
-
-  // 🔹 관리자 답변 전송
   const handleSendReply = async () => {
     if (!reply.trim() || !user) return;
     try {
@@ -88,10 +109,11 @@ export default function ChatRoom() {
           content: reply,
           sender: "admin",
           createdAt: serverTimestamp(),
+          isRead: false, // ✅ 추가: 유저가 이 답장을 안 읽은 상태이므로 false
         },
       );
       setReply("");
-      fetchMessages(); // 메시지 다시 불러오기
+      fetchMessages();
     } catch (error) {
       console.error("답변 전송 실패:", error);
     }

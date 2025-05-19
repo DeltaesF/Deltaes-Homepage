@@ -22,6 +22,7 @@ type Message = {
   createdAt: FieldValue;
   email: string;
   userName: string;
+  isRead: boolean;
 };
 export default function Inquiry() {
   const [showMessenger, setShowMessenger] = useState(false);
@@ -79,6 +80,7 @@ export default function Inquiry() {
           userName,
           email,
           createdAt: serverTimestamp(),
+          isRead: false,
         });
       }
 
@@ -87,6 +89,7 @@ export default function Inquiry() {
         content: message,
         sender: isGuest ? "guest" : "user",
         createdAt: serverTimestamp(),
+        isRead: false,
       });
 
       setMessages((prev) => [
@@ -99,6 +102,7 @@ export default function Inquiry() {
           sender: isGuest ? "guest" : "user",
           userId,
           createdAt: serverTimestamp(),
+          isRead: false,
         },
       ]);
 
