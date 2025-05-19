@@ -52,3 +52,29 @@
   background-color: lightcoral;
   color: red;
 }
+
+@media screen and (max-width: 480px) {
+  .titleCategoryContainer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .input,
+  .select {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .submitBtn {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    margin-top: 30px;
+  }
+
+  .message {
+    font-size: 14px;
+    padding: 8px;
+  }
+}

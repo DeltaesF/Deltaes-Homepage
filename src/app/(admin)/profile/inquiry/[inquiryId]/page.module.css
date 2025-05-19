@@ -68,3 +68,50 @@
   border-radius: 6px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 480px) {
+  .wrapper {
+    padding: 0.5rem;
+  }
+
+  .title {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    text-align: center;
+  }
+
+  .chatBox {
+    height: 300px;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .messageUser,
+  .messageAdmin {
+    font-size: 0.875rem;
+    padding: 0.4rem;
+    max-width: 80%;
+  }
+
+  .inputContainer {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .input {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .button {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .refreshButton {
+    width: 100%;
+    font-size: 0.8rem;
+    padding: 0.4rem;
+  }
+}

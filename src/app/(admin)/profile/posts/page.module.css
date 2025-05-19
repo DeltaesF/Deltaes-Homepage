@@ -78,3 +78,57 @@
   font-size: 16px;
   margin: 0 10px;
 }
+
+/* 반응형: 480px 이하 화면 대응 */
+@media screen and (max-width: 480px) {
+  .table {
+    width: 100%;
+    font-size: 14px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .table th,
+  .table td {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .hideOnMobile {
+    display: none;
+  }
+
+  .postCategory {
+    max-width: 50px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .postLink {
+    max-width: 150px;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  .views svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .pagination {
+    gap: 8px;
+  }
+
+  .pageButton {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .pageInfo {
+    font-size: 14px;
+  }
+}

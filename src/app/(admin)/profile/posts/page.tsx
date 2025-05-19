@@ -30,9 +30,9 @@ export default function Posts() {
           <thead>
             <tr>
               <th>카테고리</th>
-              <th>작성자</th>
+              <th className={styles.hideOnMobile}>작성자</th>
               <th>게시글</th>
-              <th>작성일</th>
+              <th className={styles.hideOnMobile}>작성일</th>
               <th>조회수</th>
             </tr>
           </thead>
@@ -40,7 +40,7 @@ export default function Posts() {
             {currentPosts.map((post) => (
               <tr key={post.id}>
                 <td className={styles.postCategory}>{post.category}</td>
-                <td>{post.userName}</td>
+                <td className={styles.hideOnMobile}>{post.userName}</td>
                 <td>
                   <Link
                     href={`/profile/posts/${post.id}`}
@@ -50,7 +50,7 @@ export default function Posts() {
                     {post.title}
                   </Link>
                 </td>
-                <td>
+                <td className={styles.hideOnMobile}>
                   {new Date(post.created_at).toLocaleDateString("ko-KR", {
                     year: "numeric",
                     month: "long",

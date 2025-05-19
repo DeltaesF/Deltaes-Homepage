@@ -56,3 +56,42 @@
   background-color: white;
   padding: 24px;
 }
+
+/* 반응형: 480px 이하 화면 대응 */
+@media screen and (max-width: 480px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  .sidebar span {
+    margin-top: 30px;
+  }
+
+  .menuList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .menuList li {
+    margin: 0 10px 10px 10px;
+  }
+
+  .menuButton {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .content {
+    width: 100%;
+    padding: 16px;
+  }
+}
