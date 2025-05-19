@@ -92,3 +92,168 @@
 .dropdown ul li:hover {
   background-color: #f0f0f0;
 }
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 20px 10px;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .content {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; /* 줄바꿈 대응 (모바일 등) */
+    gap: 10px; /* span 간격 */
+    margin-bottom: 20px;
+  }
+
+  .header span {
+    margin-right: 10px;
+    font-size: 14px;
+  }
+
+  .menuIconWrapper {
+    position: relative;
+    margin-left: auto;
+  }
+
+  .menuIcon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #ddd;
+    cursor: pointer;
+  }
+
+  .menuIcon:hover {
+    background-color: #ccc;
+  }
+
+  .dropdown {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    width: 100px;
+    display: none;
+    z-index: 10;
+  }
+
+  .dropdown.active {
+    display: block;
+  }
+
+  .dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 5px 0;
+  }
+
+  .dropdown ul li {
+    padding: 8px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .dropdown ul li:hover {
+    background-color: #f0f0f0;
+  }
+  .title {
+    font-size: 24px;
+    word-break: break-word;
+  }
+
+  .divider {
+    width: 100%;
+    margin: 30px 0;
+  }
+
+  .editInput {
+    width: 100%;
+    font-size: 16px;
+    padding: 8px;
+  }
+
+  .editContent {
+    font-size: 14px;
+    padding: 10px;
+    min-height: 200px;
+  }
+
+  .editButton {
+    font-size: 14px;
+    padding: 8px 12px;
+    margin-top: 10px;
+  }
+
+  .postContent {
+    font-size: 16px;
+    line-height: 1.5;
+    word-break: break-word;
+  }
+
+  .postContent {
+    font-size: 16px;
+    line-height: 1.5;
+    word-break: break-word;
+    overflow-x: hidden; /* 가로 스크롤 방지 */
+  }
+
+  /* 내부 요소가 넘치지 않도록 처리 */
+  .postContent * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* 테이블 반응형 처리 */
+  .postContent table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    overflow-x: auto;
+    display: block;
+    white-space: normal; /* nowrap → normal */
+  }
+
+  /* 이미지 반응형 */
+  .postContent img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+  }
+
+  /* 코드블록(pre, code) 처리 */
+  .postContent pre {
+    overflow-x: auto;
+    max-width: 100%;
+    white-space: pre-wrap; /* 줄바꿈 처리 */
+    word-break: break-word;
+  }
+
+  /* 텍스트 요소 기본 마진 */
+  .postContent p,
+  .postContent h1,
+  .postContent h2,
+  .postContent h3,
+  .postContent h4,
+  .postContent h5,
+  .postContent h6 {
+    margin: 10px 0;
+  }
+}
