@@ -17,9 +17,10 @@ export default function Header() {
     "header-logo.avif",
   ]);
   const { user, logout } = useUser();
-  const { unreadCount } = useNotification();
+  const { unreadCount, refreshNotifications } = useNotification();
 
   console.log("user 상태:", user);
+  console.log("🔔 알림 수:", unreadCount);
 
   if (error) {
     return <p>Error: {error}</p>;
@@ -82,12 +83,21 @@ export default function Header() {
                   <button style={{ marginLeft: "10px" }} onClick={logout}>
                     로그아웃
                   </button>
-
-                  {/* 알림 표시 (관리자만) */}
-                  {user.role === "admin" && unreadCount > 0 && (
-                    <span className={styles.notificationBadge}>
-                      {unreadCount}
-                    </span>
+                  {/* 관리자일 때만 알림 표시 및 새로고침 버튼 */}
+                  {user.role === "admin" && (
+                    <>
+                      {unreadCount > 0 && (
+                        <span className={styles.notificationBadge}>
+                          {unreadCount}
+                        </span>
+                      )}
+                      <button
+                        onClick={refreshNotifications}
+                        style={{ marginLeft: "8px" }}
+                      >
+                        🔄
+                      </button>
+                    </>
                   )}
                 </div>
               ) : (

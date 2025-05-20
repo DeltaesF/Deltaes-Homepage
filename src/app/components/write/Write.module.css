@@ -2,6 +2,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .input {
@@ -58,6 +60,7 @@
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
+    width: 92%;
   }
 
   .input,
@@ -67,7 +70,7 @@
   }
 
   .submitBtn {
-    width: 100%;
+    width: 92%;
     padding: 10px;
     font-size: 15px;
     margin-top: 30px;

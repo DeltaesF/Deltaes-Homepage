@@ -90,6 +90,7 @@ export default function Inquiry() {
         sender: isGuest ? "guest" : "user",
         createdAt: serverTimestamp(),
         isRead: false,
+        userId,
       });
 
       setMessages((prev) => [

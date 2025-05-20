@@ -42,3 +42,19 @@
   content: "---"; /* 또는 "―", "⎯", "─" 등등 */
   font-size: 16px;
 }
+
+@media screen and (max-width: 480px) {
+  .editorContainer :global(.ql-editor) {
+    min-height: 300px; /* 높이를 줄여서 화면에 맞춤 */
+    max-height: 450px;
+    padding-bottom: 30px;
+    font-size: 14px;
+  }
+
+  .editorContainer :global(.ql-editor img) {
+    width: 92%;
+    margin: 5px 0;
+    display: block; /* 한 줄에 한 개씩 이미지 배치 */
+    height: auto;
+  }
+}

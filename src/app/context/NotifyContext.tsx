@@ -1,55 +1,56 @@
-import { createContext, useContext, useState, useEffect } from "react";
-import {
-  getFirestore,
-  collection,
-  query,
-  where,
-  getCountFromServer,
-} from "firebase/firestore";
-import { getApp } from "firebase/app";
+"use client";
 
-const NotifyContext = createContext({
+import React, { createContext, useContext, useState, ReactNode } from "react";
+import { collectionGroup, query, where, getDocs } from "firebase/firestore";
+import { db } from "../lib/firebase";
+import { useUser } from "./UserContext";
+
+interface NotificationContextProps {
+  unreadCount: number;
+  refreshNotifications: () => Promise<void>;
+}
+
+const NotificationContext = createContext<NotificationContextProps>({
   unreadCount: 0,
-  refreshUnreadCount: () => {},
+  refreshNotifications: async () => {},
 });
 
-export function NotifyProvider({ children }: { children: React.ReactNode }) {
+interface NotificationProviderProps {
+  children: ReactNode;
+}
+
+export const NotificationProvider: React.FC<NotificationProviderProps> = ({
+  children,
+}) => {
+  const { user } = useUser();
   const [unreadCount, setUnreadCount] = useState(0);
 
-  const refreshUnreadCount = async () => {
+  const refreshNotifications = async () => {
+    if (!user) {
+      setUnreadCount(0);
+      return;
+    }
+
     try {
-      const db = getFirestore(getApp());
-      const inquiriesQuery = query(
-        collection(db, "inquiries"),
+      // inquiries 컬렉션 아래 messages 서브컬렉션 전체에서 isRead가 false인 'user'가 보낸 메시지 개수 조회
+      const q = query(
+        collectionGroup(db, "messages"),
         where("isRead", "==", false),
-      );
-      const questionsQuery = query(
-        collection(db, "questions"),
-        where("isRead", "==", false),
+        where("sender", "==", "user"),
       );
 
-      // getCountFromServer는 읽지 않은 도큐먼트 개수만 빠르게 가져옴
-      const inquiriesSnapshot = await getCountFromServer(inquiriesQuery);
-      const questionsSnapshot = await getCountFromServer(questionsQuery);
-
-      setUnreadCount(
-        inquiriesSnapshot.data().count + questionsSnapshot.data().count,
-      );
+      const snapshot = await getDocs(q);
+      setUnreadCount(snapshot.size);
     } catch (error) {
-      console.error("알림 개수 조회 실패:", error);
+      console.error("알림 조회 실패:", error);
     }
   };
 
-  useEffect(() => {
-    // 최초 마운트 시 한번만 호출, 필요시 user 상태 확인 후 호출
-    refreshUnreadCount();
-  }, []);
-
   return (
-    <NotifyContext.Provider value={{ unreadCount, refreshUnreadCount }}>
+    <NotificationContext.Provider value={{ unreadCount, refreshNotifications }}>
       {children}
-    </NotifyContext.Provider>
+    </NotificationContext.Provider>
   );
-}
+};
 
-export const useNotification = () => useContext(NotifyContext);
+export const useNotification = () => useContext(NotificationContext);
