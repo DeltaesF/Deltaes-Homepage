@@ -14,7 +14,7 @@ export default function RequestMail() {
     emailjs
       .sendForm(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_RTEMPLATE_ID!,
         formRef.current, // ✅ form 요소를 직접 사용 (formData 불필요)
         process.env.NEXT_PUBLIC_EMAILJS_USER_ID!,
       )
@@ -64,10 +64,27 @@ export default function RequestMail() {
           />
         </div>
         <div>
-          <input
+          <select
+            name="product"
             className={styles.input2}
-            placeholder="평가판 신청 제품 선택"
-          />
+            defaultValue=""
+            required
+          >
+            <option value="" disabled>
+              평가판 신청 제품 선택
+            </option>
+            <option value="Simcenter FLOEFD">Simcenter FLOEFD</option>
+            <option value="Simcenter Flotherm">Simcenter Flotherm</option>
+            <option value="Simcenter Flotherm XT">Simcenter Flotherm XT</option>
+            <option value="Simcenter Flomaster">Simcenter Flomaster</option>
+            <option value="Simcenter Flovent">Simcenter Flovent</option>
+            <option value="Simcenter TASS(Madymo, Prescan, Tire)">
+              Simcenter TASS(Madymo, Prescan, Tire)
+            </option>
+            <option value="Simcenter Femap">Simcenter Femap</option>
+            <option value="Simcenter Speed">Simcenter Speed</option>
+            <option value="Simcenter HEEDS">Simcenter HEEDS</option>
+          </select>
         </div>
         <div>
           <textarea

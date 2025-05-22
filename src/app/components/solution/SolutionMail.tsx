@@ -14,7 +14,7 @@ export default function SolutionMail() {
     emailjs
       .sendForm(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_STEMPLATE_ID!,
         formRef.current, // ✅ form 요소를 직접 사용 (formData 불필요)
         process.env.NEXT_PUBLIC_EMAILJS_USER_ID!,
       )
