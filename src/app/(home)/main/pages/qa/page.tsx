@@ -10,6 +10,8 @@ import {
   orderBy,
   query,
   Timestamp,
+  doc,
+  updateDoc,
 } from "firebase/firestore";
 import { db } from "@/app/lib/firebase";
 
@@ -47,6 +49,16 @@ export default function QA() {
 
   const isAdmin = user?.role === "admin";
 
+  // ✅ 질문 읽음 처리 함수 추가
+  const markQuestionAsRead = async (questionId: string) => {
+    try {
+      const ref = doc(db, "questions", questionId);
+      await updateDoc(ref, { isRead: true });
+    } catch (error) {
+      console.error("질문 읽음 처리 실패:", error);
+    }
+  };
+
   // 질문 목록 + 각 질문에 대한 답변 불러오기
   const fetchQuestions = async () => {
     try {
@@ -60,6 +72,11 @@ export default function QA() {
         querySnapshot.docs.map(async (docSnap) => {
           const data = docSnap.data();
           const questionId = docSnap.id;
+
+          // ✅ 관리자이면서 읽지 않은 질문이면 isRead 처리
+          if (isAdmin && data.isRead === false) {
+            markQuestionAsRead(questionId);
+          }
 
           // 답변이 있는지 확인
           const answerSnapshot = await getDocs(
@@ -109,6 +126,7 @@ export default function QA() {
         userName: user.userName,
         uid: user.uid,
         createdAt: Timestamp.now(),
+        isRead: false,
       });
 
       setTitle("");

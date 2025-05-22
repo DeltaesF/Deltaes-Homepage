@@ -9,7 +9,6 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 import { useNotification } from "@/app/context/NotifyContext";
 
 export default function Header() {
-  // const [isMenuModal, setIsMenuModal] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isIndustryOpen, setIsIndustryOpen] = useState(false);
   const { imageSrc, error } = useFetchImages([
@@ -17,22 +16,12 @@ export default function Header() {
     "header-logo.avif",
   ]);
   const { user, logout } = useUser();
-  const { unreadCount, refreshNotifications } = useNotification();
-
-  console.log("user 상태:", user);
-  console.log("🔔 알림 수:", unreadCount);
+  const { unreadCount, unreadQnaCount, refreshNotifications } =
+    useNotification();
 
   if (error) {
     return <p>Error: {error}</p>;
   }
-
-  // const openModal = () => {
-  //   setIsMenuModal(true);
-  // };
-
-  // const closeModal = () => {
-  //   setIsMenuModal(false);
-  // };
 
   return (
     <header className={styles.header}>
@@ -88,7 +77,18 @@ export default function Header() {
                     <>
                       {unreadCount > 0 && (
                         <span className={styles.notificationBadge}>
-                          {unreadCount}
+                          문의: {unreadCount}
+                        </span>
+                      )}
+                      {unreadQnaCount > 0 && (
+                        <span
+                          className={styles.notificationBadge}
+                          style={{
+                            backgroundColor: "green",
+                            marginLeft: "8px",
+                          }}
+                        >
+                          Q&A: {unreadQnaCount}
                         </span>
                       )}
                       <button
@@ -373,113 +373,6 @@ export default function Header() {
               <li className={styles.li}>
                 <Link href="/main/pages/qa">Q&A</Link>
               </li>
-              {/* <li>
-                <button className={styles.menu} onClick={openModal}>
-                  MENU
-                </button>
-              </li> */}
-              {/* {isMenuModal && (
-                <div className={styles.overlay}>
-                  <div className={styles.modalContainer}>
-                    <div className={styles.modalHeader}>
-                      <nav>
-                        <h2>제품안내</h2>
-                        <h2>적용산업</h2>
-                        <h2>엔지니어링 컨설팅 서비스</h2>
-                        <h2>공지사항</h2>
-                        <h2>회사소개</h2>
-                      </nav>
-                    </div>
-                    <div className={styles.modalContent}>
-                      <div className={styles.software}>
-                        <div className={styles.softwareTitle}>
-                          <h3>Software</h3>
-                        </div>
-                        <div className={styles.softwareContent}>
-                          <div>
-                            <h2>Flotherm</h2>
-                            <h2>Flotherm XT</h2>
-                            <h2>STAR-CCM+</h2>
-                            <h2>FLOEFD</h2>
-                            <p>Flomaster</p>
-                            <p>Amesim</p>
-                            <p>Simcenter 3D</p>
-                            <p>HEEDS</p>
-                            <p>Battery Design Studio</p>
-                          </div>
-                          <div>
-                            <p>전자기기 및 반도체</p>
-                            <p>자동차 및 운송</p>
-                            <p>이동통신 및 미디어</p>
-                            <p>환경 및 산업용기계</p>
-                            <p>건설 / 토목</p>
-                            <p>발전 / 에너지 / 유틸리티</p>
-                            <p>의료기기 / 제약 / 헬스케어</p>
-                            <p>소비재</p>
-                            <p>항공 / 우주 / 방산</p>
-                            <p>조선 / 해양</p>
-                            <p>보험 및 금융</p>
-                            <p>소프트웨어 개발</p>
-                          </div>
-                          <div>
-                            <p>BMT / POC & 파일럿 테스트</p>
-                            <p>고객별 맞춤교육</p>
-                            <p>엔지니어링 컨설팅</p>
-                          </div>
-                          <div>
-                            <p>교육안내</p>
-                            <p>행사소식</p>
-                            <p>제품소식</p>
-                            <p>평가판 신청</p>
-                          </div>
-                          <div>
-                            <p>CEO 인사말</p>
-                            <p>홍보영상</p>
-                            <p>온라인 브로슈어</p>
-                            <p>채용공고</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className={styles.hardware}>
-                        <div className={styles.hardwareTitle}>
-                          <h3>Hardware</h3>
-                        </div>
-                        <div className={styles.hardwareContent}>
-                          <h2>Powertester</h2>
-                          <h2>T3STER SI</h2>
-                        </div>
-                      </div>
-                      <div className={styles.designSoftware}>
-                        <div className={styles.designSoftwareTitle}>
-                          <h3>Design Software</h3>
-                        </div>
-                        <div className={styles.designSoftwareContent}>
-                          <h2>TURBOdesign Suite</h2>
-                          <p>Solid Edge</p>
-                          <p>Simens NX</p>
-                        </div>
-                      </div>
-                    </div>
-                    <button className={styles.modalClose} onClick={closeModal}>
-                      <svg
-                        preserveAspectRatio="xMidYMid meet"
-                        data-bbox="29.6 26 148 148"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="29.6 26 148 148"
-                        role="presentation"
-                        aria-hidden="true"
-                        width="30"
-                        height="30"
-                        fill="white"
-                      >
-                        <g>
-                          <path d="M177.6 147.3L130.3 100l47.3-47.3L150.9 26l-47.3 47.3L56.3 26 29.6 52.7 76.9 100l-47.3 47.3L56.3 174l47.3-47.3 47.3 47.3 26.7-26.7z"></path>
-                        </g>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              )} */}
             </ul>
           </nav>
           <div>
