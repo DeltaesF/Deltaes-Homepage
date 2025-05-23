@@ -26,8 +26,6 @@ export default function Resources() {
     fetchPostsList();
   }, []);
 
-  console.log(postsList);
-
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (!user) {
       e.preventDefault();

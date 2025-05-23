@@ -141,7 +141,7 @@ export default function ChatRoom() {
         ))}
       </div>
 
-      <div className={styles.actions}>
+      <div>
         <button onClick={fetchMessages} className={styles.refreshButton}>
           🔄 새로고침
         </button>

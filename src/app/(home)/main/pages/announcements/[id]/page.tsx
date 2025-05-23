@@ -39,7 +39,6 @@ export default function DetailPosts() {
           category: data.category,
           images: data.images || [],
           created_at: data.created_at?.toDate?.() || new Date(),
-
           userName: data.userName,
           views: data.views || 0,
         });
@@ -50,8 +49,6 @@ export default function DetailPosts() {
 
     fetchPost();
   }, [id]);
-
-  console.log(post);
 
   if (!post) return <div>Loading...</div>;
 

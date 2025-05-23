@@ -92,40 +92,6 @@
   line-height: 1.4;
 }
 
-.editInput {
-  width: 750px;
-  font-size: 18px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-.editContent {
-  min-height: 300px;
-  border: 1px solid #ddd;
-  padding: 15px;
-  border-radius: 5px;
-  cursor: text;
-  font-size: 16px;
-  line-height: 1.5;
-  margin-top: 10px;
-}
-.editButton {
-  background: #007bff;
-  color: white;
-  padding: 10px 15px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.2s;
-  margin-top: 10px;
-  margin-right: 10px;
-}
-
-.editButton:hover {
-  background: #0056b3;
-}
-
 .errorContainer {
   position: fixed;
   top: 0;

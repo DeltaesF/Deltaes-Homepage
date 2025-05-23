@@ -49,8 +49,6 @@ export default function Announcements() {
   const indexOfLastPost = indexOfFirstPost + postsPerPage;
   const currentPosts = sortedPosts.slice(indexOfFirstPost, indexOfLastPost);
 
-  console.log(postsList);
-
   const convertGoogleDriveURL = (url: string) => {
     if (url.includes("drive.google.com")) {
       const match = url.match(/id=([^&]+)/);
