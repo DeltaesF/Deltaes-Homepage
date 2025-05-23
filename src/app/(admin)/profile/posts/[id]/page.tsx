@@ -21,17 +21,18 @@ export default function DetailPosts() {
   const { id } = useParams();
   const [post, setPost] = useState<Post | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     if (!id || typeof id !== "string") return;
 
+    // Firestore에서 게시글 데이터를 불러오는 함수
     const fetchPost = async () => {
       const docRef = doc(db, "posts", id);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
         const data = docSnap.data();
-        console.log(data);
         setPost({
           id: docSnap.id,
           title: data.title,
@@ -40,12 +41,11 @@ export default function DetailPosts() {
           category: data.category,
           images: data.images || [],
           created_at: data.created_at?.toDate?.() || new Date(),
-
           userName: data.userName,
           views: data.views || 0,
         });
       } else {
-        console.log("해당 게시글이 존재하지 않습니다.");
+        setErrorMessage("메시지를 불러오는 중 오류가 발생했습니다.");
       }
     };
 
@@ -85,6 +85,9 @@ export default function DetailPosts() {
           className={styles.postContent}
         ></div>
       </div>
+      {errorMessage && (
+        <div className={styles.errorContainer}>{errorMessage}</div>
+      )}
     </div>
   );
 }

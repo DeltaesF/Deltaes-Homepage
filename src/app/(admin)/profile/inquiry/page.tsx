@@ -24,8 +24,10 @@ interface Inquiry {
 
 export default function InquiryList() {
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
+    // 모든 문의 목록을 가져오고 각 문의에 가장 첫 번째 메시지를 미리보기로 추가하는 함수
     const fetchInquiriesWithPreview = async () => {
       try {
         const inquirySnapshot = await getDocs(collection(db, "inquiries"));
@@ -37,7 +39,6 @@ export default function InquiryList() {
               ...(inquiryDoc.data() as Omit<Inquiry, "id" | "previewMessage">),
             };
 
-            // 메시지 중 가장 오래된 하나 가져오기
             const messagesRef = collection(
               db,
               "inquiries",
@@ -58,8 +59,8 @@ export default function InquiryList() {
         );
 
         setInquiries(inquiryData);
-      } catch (error) {
-        console.error("문의 목록 불러오기 실패:", error);
+      } catch {
+        setErrorMessage("문의 목록을 불러오는 중 오류가 발생했습니다.");
       }
     };
 
@@ -105,6 +106,9 @@ export default function InquiryList() {
           </tbody>
         </table>
       </article>
+      {errorMessage && (
+        <div className={styles.errorContainer}>{errorMessage}</div>
+      )}
     </section>
   );
 }

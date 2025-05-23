@@ -3,11 +3,7 @@ import { useUser } from "@/app/context/UserContext";
 import styles from "./page.module.css";
 
 export default function Users() {
-  const { users, loading } = useUser(); // users와 loading 가져오기
-
-  if (loading) {
-    return <div>로딩 중...</div>; // 로딩 상태 표시
-  }
+  const { users, errorMessage } = useUser();
 
   return (
     <section>
@@ -43,6 +39,9 @@ export default function Users() {
           </tbody>
         </table>
       </article>
+      {errorMessage && (
+        <div className={styles.errorContainer}>{errorMessage}</div>
+      )}
     </section>
   );
 }

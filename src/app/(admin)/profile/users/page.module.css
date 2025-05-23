@@ -21,6 +21,21 @@
   background-color: #f9f9f9;
 }
 
+.errorContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #e0f2fe; /* 하늘색 배경 */
+  color: #0369a1; /* 푸른 계열 텍스트 */
+  border-bottom: 1px solid #90cdf4; /* 연한 파란색 테두리 */
+  text-align: center;
+  padding: 10px 0;
+  z-index: 9999;
+  font-size: 14px;
+  font-weight: 500;
+}
+
 @media screen and (max-width: 480px) {
   .table {
     width: 100%;

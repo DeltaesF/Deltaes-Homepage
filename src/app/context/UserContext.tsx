@@ -21,6 +21,7 @@ type UserContextType = {
   user: User | null;
   users: User[];
   loading: boolean;
+  errorMessage: string;
   logout: () => void;
   fetchUsers: () => void;
 };
@@ -29,6 +30,7 @@ const UserContext = createContext<UserContextType>({
   user: null,
   users: [],
   loading: true,
+  errorMessage: "",
   logout: () => {},
   fetchUsers: () => {},
 });
@@ -37,30 +39,37 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
 
   // 로그인 상태 감지 및 Firestore에서 사용자 정보 가져오기
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-      if (firebaseUser) {
-        const userDoc = await getDoc(doc(db, "users", firebaseUser.uid));
-        if (userDoc.exists()) {
-          const data = userDoc.data();
-          setUser({
-            uid: data.uid,
-            email: data.email,
-            userName: data.userName,
-            phoneNumber: data.phoneNumber || "",
-            isChecked: data.isChecked || false,
-            role: data.role || "user",
-            createdAt: data.createdAt?.toDate?.() ?? new Date(),
-            lastLogin: data.lastLogin?.toDate?.() ?? null,
-            isAnonymous: firebaseUser.isAnonymous,
-          });
+      setLoading(true);
+      try {
+        if (firebaseUser) {
+          const userDoc = await getDoc(doc(db, "users", firebaseUser.uid));
+          if (userDoc.exists()) {
+            const data = userDoc.data();
+            setUser({
+              uid: data.uid,
+              email: data.email,
+              userName: data.userName,
+              phoneNumber: data.phoneNumber || "",
+              isChecked: data.isChecked || false,
+              role: data.role || "user",
+              createdAt: data.createdAt?.toDate?.() ?? new Date(),
+              lastLogin: data.lastLogin?.toDate?.() ?? null,
+              isAnonymous: firebaseUser.isAnonymous,
+            });
+          } else {
+            setUser(null);
+            setErrorMessage("사용자 정보를 찾을 수 없습니다.");
+          }
         } else {
           setUser(null);
         }
-      } else {
-        setUser(null);
+      } catch {
+        setErrorMessage("사용자 정보를 불러오는 중 오류가 발생했습니다.");
       }
       setLoading(false);
     });
@@ -92,8 +101,9 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
         };
       });
       setUsers(usersList);
-    } catch (error) {
-      console.error("유저 목록을 가져오는 데 실패했습니다.", error);
+      setErrorMessage("");
+    } catch {
+      setErrorMessage("유저 목록을 가져오는 데 실패했습니다.");
     }
   };
 
@@ -104,13 +114,10 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, [user]);
 
-  useEffect(() => {
-    console.log("Loading:", loading);
-    console.log("Users:", users);
-  }, [loading, users]);
-
   return (
-    <UserContext.Provider value={{ user, users, loading, logout, fetchUsers }}>
+    <UserContext.Provider
+      value={{ user, users, loading, errorMessage, logout, fetchUsers }}
+    >
       {children}
     </UserContext.Provider>
   );

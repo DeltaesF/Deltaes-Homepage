@@ -33,8 +33,9 @@ export default function ChatRoom() {
   const [reply, setReply] = useState("");
   const [inquirerName, setInquirerName] = useState("");
   const { user } = useUser();
+  const [errorMessage, setErrorMessage] = useState("");
 
-  // ✅ 메시지 읽음 처리 함수
+  // 사용자 메시지 읽음 처리 함수
   const markMessagesAsRead = async () => {
     if (!inquiryId) return;
     try {
@@ -57,11 +58,12 @@ export default function ChatRoom() {
       });
 
       await Promise.all(updatePromises);
-    } catch (err) {
-      console.error("메시지 읽음 처리 실패:", err);
+    } catch {
+      setErrorMessage("사용자 메시지 읽음 처리에 오류가 발생했습니다.");
     }
   };
 
+  // 문의자의 이름을 불러오는 함수
   const fetchInquirerName = async () => {
     try {
       const docRef = doc(db, "inquiries", inquiryId as string);
@@ -70,19 +72,12 @@ export default function ChatRoom() {
         const data = docSnap.data();
         setInquirerName(data.userName || "알 수 없음");
       }
-    } catch (err) {
-      console.error("문의자 이름 불러오기 실패:", err);
+    } catch {
+      setErrorMessage("문의자 이름을 불러오는 중 오류가 발생했습니다.");
     }
   };
 
-  useEffect(() => {
-    if (inquiryId) {
-      fetchMessages();
-      fetchInquirerName();
-      markMessagesAsRead(); // ✅ 메시지 읽음 처리 실행
-    }
-  }, [inquiryId]);
-
+  // 메시지 목록을 가져오는 함수
   const fetchMessages = async () => {
     try {
       const q = query(
@@ -95,11 +90,12 @@ export default function ChatRoom() {
         ...doc.data(),
       })) as Message[];
       setMessages(msgs);
-    } catch (err) {
-      console.error("메시지 불러오기 실패:", err);
+    } catch {
+      setErrorMessage("메시지 목록을 불러오는 중 오류가 발생했습니다.");
     }
   };
 
+  // 관리자 답변을 전송하는 함수
   const handleSendReply = async () => {
     if (!reply.trim() || !user) return;
     try {
@@ -109,15 +105,24 @@ export default function ChatRoom() {
           content: reply,
           sender: "admin",
           createdAt: serverTimestamp(),
-          isRead: false, // ✅ 추가: 유저가 이 답장을 안 읽은 상태이므로 false
+          isRead: false,
         },
       );
       setReply("");
       fetchMessages();
-    } catch (error) {
-      console.error("답변 전송 실패:", error);
+    } catch {
+      setErrorMessage("관리자 답변 중에 오류가 발생했습니다.");
     }
   };
+
+  // 컴포넌트 로드 시 실행: 메시지, 이름 불러오기 + 읽음 처리
+  useEffect(() => {
+    if (inquiryId) {
+      fetchMessages();
+      fetchInquirerName();
+      markMessagesAsRead();
+    }
+  }, [inquiryId]);
 
   return (
     <div className={styles.wrapper}>
@@ -154,6 +159,9 @@ export default function ChatRoom() {
           전송
         </button>
       </div>
+      {errorMessage && (
+        <div className={styles.errorContainer}>{errorMessage}</div>
+      )}
     </div>
   );
 }
