@@ -42,12 +42,6 @@
   border-radius: 5px;
 }
 
-.created {
-  text-align: left;
-  padding-left: 10px;
-  font-size: 14px;
-}
-
 .loading {
   width: 100vw;
   height: 100vh;
@@ -133,40 +127,6 @@
   margin-top: 40px;
 }
 
-/* .gridContainer {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  margin-top: 20px;
-}
-
-.gridItem {
-  background-color: rgba(255, 255, 255, 0.2);
-  text-align: center;
-  font-size: 16px;
-  font-weight: bold;
-  width: 400px;
-  height: 200px;
-  margin: 0 auto;
-} */
-
-.moreBtn {
-  margin-top: 30px;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: bold;
-  background-color: #162481;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.moreBtn:hover {
-  background-color: #0a1c5a;
-}
-
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   /*최대 크기 1024px*/
   .gridContainer {
@@ -246,11 +206,6 @@
     font-size: 14px;
     padding: 12px 25px;
   }
-
-  /* 태블릿에서는 SolutionMail 표시 */
-  .solutionMail {
-    display: none;
-  }
 }
 @media screen and (max-width: 480px) {
   /*최대 크기 480px*/
@@ -326,15 +281,5 @@
 
   .subTitle {
     font-size: 24px;
-  }
-
-  .moreBtn {
-    width: 100%;
-    font-size: 12px;
-  }
-
-  /* SolutionMail 컴포넌트 숨기기 */
-  .solutionMail {
-    display: none;
   }
 }

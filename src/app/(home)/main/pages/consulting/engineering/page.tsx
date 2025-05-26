@@ -131,9 +131,7 @@ export default function Engineering() {
               ))}
             </div>
             <div className={styles.tabContent}>{renderPosts(activeTab)}</div>
-            <div className={styles.solutionMail}>
-              <SolutionMail />
-            </div>
+            <SolutionMail />
           </div>
         </div>
       )}
