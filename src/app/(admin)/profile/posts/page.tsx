@@ -75,7 +75,6 @@ export default function Posts() {
           </tbody>
         </table>
 
-        {/* 페이지네이션 컨트롤 */}
         <div className={styles.pagination}>
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}

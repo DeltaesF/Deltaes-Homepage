@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 import Link from "next/link";
 import SolutionMail from "@/app/components/solution/SolutionMail";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // Google Drive 주소 변환 함수
 const convertGoogleDriveURL = (url: string): string | null => {
@@ -17,6 +17,8 @@ const convertGoogleDriveURL = (url: string): string | null => {
 
 export default function Evnet() {
   const { postsList, fetchPostsList } = usePostsList();
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 12;
 
   const filteredPosts = postsList.filter(
     (post) => post.category === "행사소식",
@@ -26,6 +28,11 @@ export default function Evnet() {
     fetchPostsList();
   }, []);
 
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
+  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+
   return (
     <main className={styles.container}>
       <section className={styles.wrapper}>
@@ -33,7 +40,7 @@ export default function Evnet() {
           <h1>행사소식</h1>
         </header>
         <section className={styles.gridContainer}>
-          {filteredPosts.map((post) => {
+          {currentPosts.map((post) => {
             const images = Array.isArray(post.images)
               ? post.images
               : JSON.parse(post.images || "[]");
@@ -45,14 +52,11 @@ export default function Evnet() {
             return (
               <article key={post.id} className={styles.gridItem}>
                 <div className={styles.gridItemPost}>
-                  <Link
-                    href={`/main/pages/announcements/${post.id}`}
-                    className={styles.postLink}
-                  >
+                  <Link href={`/main/pages/announcements/${post.id}`}>
                     <h1>{post.title}</h1>
                   </Link>
                   {validSrc && (
-                    <div className={styles.imageWrapper}>
+                    <div>
                       <Image
                         src={validSrc}
                         alt="대표 이미지"
@@ -69,6 +73,27 @@ export default function Evnet() {
             );
           })}
         </section>
+        <div className={styles.pagination}>
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            className={styles.pageButton}
+          >
+            이전
+          </button>
+          <span className={styles.pageInfo}>
+            {currentPage} / {totalPages}
+          </span>
+          <button
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+            className={styles.pageButton}
+          >
+            다음
+          </button>
+        </div>
         <SolutionMail />
       </section>
     </main>

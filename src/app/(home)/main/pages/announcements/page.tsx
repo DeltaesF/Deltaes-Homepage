@@ -39,12 +39,12 @@ export default function Announcements() {
   );
 
   // 페이지네이션 설정
-  const postsPerPage = 12; // 한 페이지당 보여줄 게시글 수
-  const totalPages = Math.ceil(sortedPosts.length / postsPerPage); // 총 페이지 수
+  const postsPerPage = 12;
+  const totalPages = Math.ceil(sortedPosts.length / postsPerPage); // 총 페이지 수 계산
 
-  // 현재 페이지 상태 (1부터 시작)
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1); // 1부터 시작
 
+  // 현재 페이지의 게시글을 계산
   const indexOfFirstPost = (currentPage - 1) * postsPerPage;
   const indexOfLastPost = indexOfFirstPost + postsPerPage;
   const currentPosts = sortedPosts.slice(indexOfFirstPost, indexOfLastPost);
@@ -100,7 +100,6 @@ export default function Announcements() {
             );
           })}
         </section>
-        {/* 페이지네이션 컨트롤 */}
         <div className={styles.pagination}>
           <button
             className={styles.pageButton}
@@ -122,9 +121,7 @@ export default function Announcements() {
             다음
           </button>
         </div>
-        <div className={styles.solutionMail}>
-          <SolutionMail />
-        </div>
+        <SolutionMail />
       </section>
     </main>
   );

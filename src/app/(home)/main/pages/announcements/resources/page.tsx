@@ -55,12 +55,11 @@ export default function Resources() {
                   <Link
                     href={`/main/pages/announcements/${post.id}`}
                     onClick={handleLinkClick}
-                    className={styles.postLink}
                   >
                     <h1>{post.title}</h1>
                   </Link>
                   {validSrc && (
-                    <div className={styles.imageWrapper}>
+                    <div>
                       <Image
                         src={validSrc}
                         alt="대표 이미지"

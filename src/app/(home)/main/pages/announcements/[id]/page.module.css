@@ -20,30 +20,6 @@
   margin-right: 10px;
 }
 
-.divider {
-  width: 750px;
-  height: 1px;
-  background-color: #ccc;
-  margin: 40px auto;
-}
-
-.title {
-  font-size: 32px;
-  font-weight: 500;
-  margin: 10px 0;
-  line-height: 1.2;
-}
-
-.postContent {
-  line-height: 1.4;
-}
-
-.postContent img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
 .menuIcon {
   width: 24px;
   height: 24px;
@@ -91,6 +67,30 @@
 
 .dropdown ul li:hover {
   background-color: #f0f0f0;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 500;
+  margin: 10px 0;
+  line-height: 1.2;
+}
+
+.divider {
+  width: 750px;
+  height: 1px;
+  background-color: #ccc;
+  margin: 40px auto;
+}
+
+.postContent {
+  line-height: 1.4;
+}
+
+.postContent img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 @media screen and (max-width: 480px) {

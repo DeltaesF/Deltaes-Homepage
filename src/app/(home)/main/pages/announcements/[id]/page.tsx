@@ -43,7 +43,6 @@ export default function DetailPosts() {
           views: data.views || 0,
         });
       } else {
-        console.log("해당 게시글이 존재하지 않습니다.");
       }
     };
 

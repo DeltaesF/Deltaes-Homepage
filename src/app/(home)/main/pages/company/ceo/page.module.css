@@ -78,25 +78,6 @@
   font-weight: bold;
 }
 
-.conclusion p {
-  font-size: 13.2px;
-  color: white;
-  line-height: 1.6;
-  text-align: left;
-  margin: 60px 0;
-}
-.conclusion span {
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.conclusion h2 {
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
-  line-height: 1.6;
-}
-
 .cIntroduceSub {
   display: flex;
   flex-wrap: wrap;
@@ -121,6 +102,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.conclusion p {
+  font-size: 13.2px;
+  color: white;
+  line-height: 1.6;
+  text-align: left;
+  margin: 60px 0;
+}
+.conclusion span {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.conclusion h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  line-height: 1.6;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {

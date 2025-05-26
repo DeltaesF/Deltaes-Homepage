@@ -67,11 +67,6 @@
   height: 70px;
   border-radius: 5px;
 }
-.created {
-  text-align: left;
-  padding-left: 10px;
-  font-size: 14px;
-}
 
 .pagination {
   display: flex;
@@ -157,12 +152,6 @@
     border-radius: 8px;
   }
 
-  .created {
-    font-size: 14px;
-    text-align: right;
-    padding-right: 15px;
-  }
-
   .pagination {
     flex-direction: row; /* 태블릿에서는 가로 정렬 */
     justify-content: center;
@@ -234,19 +223,12 @@
     border-radius: 5px;
   }
 
-  .created {
-    font-size: 12px;
-    text-align: right;
-    padding-right: 10px;
-  }
-
   .pagination {
-    flex-direction: column;
     gap: 10px;
+    padding-bottom: 20px;
   }
 
   .pageButton {
-    width: 100%;
     padding: 12px;
   }
 

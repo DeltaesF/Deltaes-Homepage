@@ -16,7 +16,7 @@ export default function Direction() {
         <header className={styles.title}>
           <h1>오시는 길</h1>
         </header>
-        <figure className={styles.deltaesImg}>
+        <figure>
           {imageSrc[0] && (
             <Image
               src={imageSrc[0]}
