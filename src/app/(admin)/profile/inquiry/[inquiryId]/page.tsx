@@ -25,15 +25,19 @@ type Message = {
   sender: "user" | "admin";
   createdAt: Timestamp;
   isRead: boolean;
+  userId: string;
 };
 
 export default function ChatRoom() {
   const { inquiryId } = useParams();
+
+  console.log("inquiryId", inquiryId);
   const [messages, setMessages] = useState<Message[]>([]);
   const [reply, setReply] = useState("");
   const [inquirerName, setInquirerName] = useState("");
   const { user } = useUser();
   const [errorMessage, setErrorMessage] = useState("");
+  const [inquirerUserId, setInquirerUserId] = useState("");
 
   // 사용자 메시지 읽음 처리 함수
   const markMessagesAsRead = async () => {
@@ -45,6 +49,7 @@ export default function ChatRoom() {
         inquiryId as string,
         "messages",
       );
+
       const q = query(
         messagesRef,
         where("sender", "==", "user"),
@@ -54,6 +59,7 @@ export default function ChatRoom() {
 
       const updatePromises = snapshot.docs.map((docSnap) => {
         const messageRef = doc(messagesRef, docSnap.id);
+        console.log("🔥 messageRef 경로:", messageRef.path);
         return updateDoc(messageRef, { isRead: true });
       });
 
@@ -71,6 +77,7 @@ export default function ChatRoom() {
       if (docSnap.exists()) {
         const data = docSnap.data();
         setInquirerName(data.userName || "알 수 없음");
+        setInquirerUserId(data.userId || ""); // 여기서 userId도 저장
       }
     } catch {
       setErrorMessage("문의자 이름을 불러오는 중 오류가 발생했습니다.");
@@ -102,10 +109,10 @@ export default function ChatRoom() {
       await addDoc(
         collection(db, "inquiries", inquiryId as string, "messages"),
         {
+          userId: inquirerUserId,
           content: reply,
           sender: "admin",
           createdAt: serverTimestamp(),
-          isRead: false,
         },
       );
       setReply("");

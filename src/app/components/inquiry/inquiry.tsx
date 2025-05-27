@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./inquiry.module.css";
 import { useUser } from "@/app/context/UserContext";
 import {
@@ -11,11 +11,14 @@ import {
   addDoc,
   FieldValue,
   serverTimestamp,
+  query,
+  orderBy,
+  getDocs,
 } from "firebase/firestore";
 import { db } from "@/app/lib/firebase";
 
 type Message = {
-  id: number;
+  id: string;
   content: string;
   sender: "user" | "admin" | "guest";
   userId: string;
@@ -96,7 +99,7 @@ export default function Inquiry() {
       setMessages((prev) => [
         ...prev,
         {
-          id: Date.now(),
+          id: Date.now().toString(),
           email,
           userName,
           content: message,
@@ -114,6 +117,48 @@ export default function Inquiry() {
       console.error("메시지 전송 실패:", error);
     }
   };
+
+  // 페이지 새로고침 시 메시지 불러오기
+  useEffect(() => {
+    const fetchMessages = async () => {
+      try {
+        let userId: string;
+
+        if (user) {
+          userId = user.uid;
+        } else {
+          const guestId = localStorage.getItem("guestId");
+          if (!guestId) return; // guest ID 없으면 리턴
+          userId = guestId;
+        }
+
+        const messagesRef = collection(db, "inquiries", userId, "messages");
+        const q = query(messagesRef, orderBy("createdAt", "asc"));
+
+        const querySnapshot = await getDocs(q);
+        const loadedMessages: Message[] = querySnapshot.docs.map((doc) => {
+          const data = doc.data();
+          return {
+            id: doc.id,
+            content: data.content,
+            sender: data.sender,
+            userId: data.userId,
+            createdAt: data.createdAt,
+            email: data.email,
+            userName: data.userName,
+            isRead: data.isRead,
+          };
+        });
+
+        setMessages(loadedMessages); // 불러온 메시지 상태에 저장
+      } catch (error) {
+        console.error("메시지 불러오기 실패:", error);
+      }
+    };
+
+    fetchMessages();
+  }, [user]); // user 상태가 변경될 때마다 호출
+
   return (
     <>
       <div className={styles.inquiryContainer} onClick={toggleMessenger}>
@@ -165,7 +210,7 @@ export default function Inquiry() {
               <div
                 key={msg.id}
                 className={`${styles.messageBubble} ${
-                  msg.sender === "user"
+                  msg.sender === "admin"
                     ? styles.userMessage
                     : styles.adminMessage
                 }`}
