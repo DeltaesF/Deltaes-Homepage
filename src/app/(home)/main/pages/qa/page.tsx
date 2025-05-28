@@ -151,6 +151,12 @@ export default function QA() {
         adminUid: user?.uid,
       });
 
+      // 🔄 답변 등록 후 isRead를 true로 변경
+      const questionRef = doc(db, "questions", questionId);
+      await updateDoc(questionRef, {
+        isRead: true,
+      });
+
       setAnswerInputs((prev) => ({ ...prev, [questionId]: "" }));
       fetchQuestions();
       alert("답변이 등록되었습니다.");
