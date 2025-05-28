@@ -27,7 +27,7 @@ export default function InquiryList() {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    // 모든 문의 목록을 가져오고 각 문의에 가장 첫 번째 메시지를 미리보기로 추가하는 함수
+    // 모든 문의 목록을 가져오고 각 문의에 마지막 메시지를 미리보기로 추가하는 함수
     const fetchInquiriesWithPreview = async () => {
       try {
         const inquirySnapshot = await getDocs(collection(db, "inquiries"));
@@ -36,7 +36,10 @@ export default function InquiryList() {
           inquirySnapshot.docs.map(async (inquiryDoc) => {
             const inquiry = {
               id: inquiryDoc.id,
-              ...(inquiryDoc.data() as Omit<Inquiry, "id" | "previewMessage">),
+              ...(inquiryDoc.data() as Omit<
+                Inquiry,
+                "id" | "previewMessage" | "createdAt"
+              >),
             };
 
             const messagesRef = collection(
@@ -45,21 +48,38 @@ export default function InquiryList() {
               inquiryDoc.id,
               "messages",
             );
-            const messageQuery = query(
+
+            // 가장 마지막 메시지를 가져오는 쿼리
+            const latestMessageQuery = query(
               messagesRef,
-              orderBy("createdAt"),
+              orderBy("createdAt", "desc"),
               limit(1),
             );
-            const messageSnapshot = await getDocs(messageQuery);
+            const messageSnapshot = await getDocs(latestMessageQuery);
 
+            const lastMessage = messageSnapshot.docs[0];
             const previewMessage =
-              messageSnapshot.docs[0]?.data().content || "(메시지 없음)";
-            return { ...inquiry, previewMessage };
+              lastMessage?.data().content || "(메시지 없음)";
+            const latestCreatedAt =
+              lastMessage?.data().createdAt || inquiryDoc.data().createdAt;
+
+            return {
+              ...inquiry,
+              previewMessage,
+              createdAt: latestCreatedAt, // 🔁 여기서 마지막 메시지의 시간으로 등록일 대체
+            };
           }),
         );
 
+        // ✅ 최신 메시지 시간 기준 내림차순 정렬
+        inquiryData.sort(
+          (a, b) => b.createdAt.toMillis() - a.createdAt.toMillis(),
+        );
+
         setInquiries(inquiryData);
-      } catch {
+        setInquiries(inquiryData);
+      } catch (error) {
+        console.error("Error fetching inquiries:", error);
         setErrorMessage("문의 목록을 불러오는 중 오류가 발생했습니다.");
       }
     };
@@ -76,7 +96,7 @@ export default function InquiryList() {
               <th>이름</th>
               <th>이메일</th>
               <th>내용</th>
-              <th>등록일</th>
+              <th>최근대화</th>
             </tr>
           </thead>
           <tbody>
