@@ -75,17 +75,18 @@
 }
 
 .secondWrapper {
+  position: relative; /* 필수: Image fill 작동 위해 */
   width: 100vw;
   height: 330px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-size: cover; /* 배경 이미지가 영역을 덮도록 설정 */
-  background-position: center; /* 배경 이미지를 가운데 정렬 */
-  background-repeat: no-repeat; /* 배경 이미지가 반복되지 않도록 설정 */
+  overflow: hidden; /* 배경 이미지가 삐져나오지 않도록 */
 }
 
 .secondContent {
+  position: relative; /* 이미지 위에 보이게 */
+  z-index: 1; /* 배경보다 위로 */
   display: flex;
   flex-direction: column;
   width: 1000px;

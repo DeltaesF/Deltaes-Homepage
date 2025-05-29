@@ -20,11 +20,22 @@ export default function Tima5() {
     "tima5_9.avif",
     "tima5_10.avif",
     "timapulse2.avif",
+    "tima5brochure.pdf",
+    "tima5data.pdf",
   ]);
 
   if (error) {
     return <p>Error: {error}</p>;
   }
+
+  const pdfUrls = [
+    "https://drive.google.com/file/d/1n3xnm97VMHk9txdo2yO3iujuuG5Lp7Gm/view?usp=sharing",
+    "https://drive.google.com/file/d/1bgbPhcpSTMeD35su4gUHXw3UV9UFnYvG/view?usp=sharing",
+  ];
+
+  const openPdfInNewTab = (pdfUrl: string) => {
+    window.open(pdfUrl, "_blank");
+  };
 
   return (
     <div>
@@ -72,26 +83,41 @@ export default function Tima5() {
               </div>
             </div>
           </div>
-          {imageSrc[10] && (
-            <div
-              className={styles.secondWrapper}
-              style={{
-                backgroundImage: `url(${imageSrc[10]})`, // 동적으로 배경 이미지 설정
-              }}
-            >
-              <div className={styles.secondContent}>
-                <div className={styles.secondDes}>
-                  <div>
-                    <h2>TIMA 5 제품 영상</h2>
-                    <h3>TIMA 5 기능 · 강점 요약한 영상입니다.</h3>
-                    <button>브로슈어 Download </button>
-                    <button>TIMA pulse DATASHEET</button>
-                  </div>
-                  <div></div>
+          <div className={styles.secondWrapper}>
+            {imageSrc[10] && (
+              <Image
+                src={imageSrc[10]}
+                alt="TIMA 배경 이미지"
+                fill
+                sizes="100vw"
+                style={{ objectFit: "cover", zIndex: -1 }}
+                priority
+              />
+            )}
+            <div className={styles.secondContent}>
+              <div className={styles.secondDes}>
+                <div>
+                  <h2>TIMA 5 제품 영상</h2>
+                  <h3>TIMA 5 기능 · 강점 요약한 영상입니다.</h3>
+                  <button onClick={() => openPdfInNewTab(pdfUrls[0])}>
+                    브로슈어 Download
+                  </button>
+                  <button onClick={() => openPdfInNewTab(pdfUrls[1])}>
+                    TIMA pulse DATASHEET
+                  </button>
+                </div>
+                <div>
+                  <iframe
+                    src="https://drive.google.com/file/d/1HseRmhC9S2wYT-rncS6sOBwx3vLI7Sdx/preview"
+                    width="564"
+                    height="280"
+                    allow="autoplay"
+                    allowFullScreen
+                  ></iframe>
                 </div>
               </div>
             </div>
-          )}
+          </div>
           <div className={styles.thirdWrapper}>
             <div className={styles.thirdContent}>
               <h2>Technical Specification</h2>
