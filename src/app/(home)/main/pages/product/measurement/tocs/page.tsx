@@ -1,12 +1,12 @@
 "use client";
 
-import Image from "next/image";
-import styles from "./page.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Image from "next/image";
+import styles from "./page.module.css";
 import useFetchImages from "@/app/hooks/useFetchImages";
 
 export default function Tocs() {
@@ -19,12 +19,23 @@ export default function Tocs() {
     "tocs6.avif",
     "tocs7.avif",
     "timapulse2.avif",
+    "tocsbrochure.pdf",
+    "tocsdata.pdf",
   ]);
-  const filteredImages = imageSrc.slice(1, 4);
 
   if (error) {
     return <p>Error: {error}</p>;
   }
+
+  const pdfUrls = [
+    "https://drive.google.com/file/d/1ywqYBcCf6-5wZ_uHzOVxX-hgJhrU6Krm/view?usp=sharing",
+    "https://drive.google.com/file/d/1Cmin5YXDo37oxxbvPUClZpHdmfYbsLWF/view?usp=sharing",
+  ];
+
+  const openPdfInNewTab = (pdfUrl: string) => {
+    window.open(pdfUrl, "_blank");
+  };
+
   return (
     <div>
       {loading ? (
@@ -74,46 +85,58 @@ export default function Tocs() {
               </div>
             </div>
           </div>
-          {imageSrc[7] && (
-            <div
-              className={styles.secondWrapper}
-              style={{
-                backgroundImage: `url(${imageSrc[7]})`, // 동적으로 배경 이미지 설정
-              }}
-            >
-              <div className={styles.secondContent}>
-                <div className={styles.secondDes}>
-                  <div>
-                    <h2>TOCS 제품 이미지</h2>
-                    <h3>TOCS PRODUCT</h3>
-                    <button>브로슈어 Download </button>
-                    <button>TIMA pulse DATASHEET</button>
-                  </div>
-                  <div>
-                    <Swiper
-                      modules={[Navigation]}
-                      navigation
-                      spaceBetween={20}
-                      slidesPerView={1}
-                      style={{ width: "454px", height: "222px" }}
-                    >
-                      {filteredImages.map((src, index) => (
-                        <SwiperSlide key={index}>
-                          <Image
-                            src={src}
-                            alt={`slide-${index}`}
-                            width={454}
-                            height={222}
-                            style={{ objectFit: "cover" }}
-                          />
-                        </SwiperSlide>
-                      ))}
-                    </Swiper>
-                  </div>
+          <div className={styles.secondWrapper}>
+            {imageSrc[7] && (
+              <Image
+                src={imageSrc[7]}
+                alt="TIMA 배경 이미지"
+                fill
+                sizes="100vw"
+                style={{ objectFit: "cover", zIndex: -1 }}
+                priority
+              />
+            )}
+            <div className={styles.secondContent}>
+              <div className={styles.secondDes}>
+                <div className={styles.secondDes2}>
+                  <h2>TOCS 제품 이미지</h2>
+                  <h3>TOCS PRODUCT</h3>
+                  <button onClick={() => openPdfInNewTab(pdfUrls[0])}>
+                    브로슈어 Download
+                  </button>
+                  <button onClick={() => openPdfInNewTab(pdfUrls[1])}>
+                    TOCS DATASHEET
+                  </button>
+                </div>
+                <div>
+                  <Swiper
+                    modules={[Navigation, Pagination, Autoplay]}
+                    spaceBetween={20}
+                    slidesPerView={1}
+                    navigation
+                    pagination={{ clickable: true }}
+                    autoplay={{ delay: 3000 }}
+                    style={{ width: "454px", height: "222px" }}
+                  >
+                    {[imageSrc[1], imageSrc[2], imageSrc[3]].map(
+                      (src, index) =>
+                        src && (
+                          <SwiperSlide key={index}>
+                            <Image
+                              src={src}
+                              alt={`TOCS 이미지 ${index + 1}`}
+                              width={454}
+                              height={222}
+                              style={{ objectFit: "cover" }}
+                            />
+                          </SwiperSlide>
+                        ),
+                    )}
+                  </Swiper>
                 </div>
               </div>
             </div>
-          )}
+          </div>
           <div className={styles.thirdWrapper}>
             <div className={styles.thirdContent}>
               <h2>3-오메가 특성화 시스템</h2>

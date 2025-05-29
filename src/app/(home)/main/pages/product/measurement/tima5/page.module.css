@@ -125,6 +125,7 @@
   font-size: 15px;
   font-weight: bold;
   color: black;
+  margin-bottom: 20px;
 }
 
 .secondDes div button {
@@ -147,24 +148,6 @@
   margin: 0;
   line-height: 1.5;
   word-wrap: break-word;
-}
-
-.secondImg {
-  width: 450px;
-  height: 220px;
-  position: relative;
-  background-color: #ccc;
-}
-
-.swiper-container {
-  width: 100%;
-  height: 100%;
-}
-
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .thirdWrapper {
