@@ -76,7 +76,6 @@
   color: #666;
 }
 
-/* 관리자 답변 표시 */
 .qaAnswer {
   background-color: #f0f8ff;
   padding: 0.75rem;
@@ -85,7 +84,6 @@
   border-radius: 4px;
 }
 
-/* 관리자 답변 입력 폼 */
 .qaAnswerForm {
   margin-top: 1rem;
   display: flex;

@@ -50,20 +50,28 @@ export default function ChatRoom() {
         "messages",
       );
 
-      const q = query(
-        messagesRef,
-        where("sender", "==", "user"),
-        where("isRead", "==", false),
-      );
-      const snapshot = await getDocs(q);
+      const updateUnreadMessages = async (senderType: "user" | "guest") => {
+        const q = query(
+          messagesRef,
+          where("sender", "==", senderType),
+          where("isRead", "==", false),
+        );
+        const snapshot = await getDocs(q);
 
-      const updatePromises = snapshot.docs.map((docSnap) => {
-        const messageRef = doc(messagesRef, docSnap.id);
-        console.log("🔥 messageRef 경로:", messageRef.path);
-        return updateDoc(messageRef, { isRead: true });
-      });
+        const updatePromises = snapshot.docs.map((docSnap) => {
+          const messageRef = doc(messagesRef, docSnap.id);
+          console.log(`🔥 ${senderType} messageRef 경로:`, messageRef.path);
+          return updateDoc(messageRef, { isRead: true });
+        });
 
-      await Promise.all(updatePromises);
+        await Promise.all(updatePromises);
+      };
+
+      // user와 guest 모두 읽음 처리
+      await Promise.all([
+        updateUnreadMessages("user"),
+        updateUnreadMessages("guest"),
+      ]);
     } catch {
       setErrorMessage("사용자 메시지 읽음 처리에 오류가 발생했습니다.");
     }

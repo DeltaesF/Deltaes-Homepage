@@ -50,14 +50,23 @@ export const NotificationProvider: React.FC<NotificationProviderProps> = ({
     try {
       // ✅ 실시간 문의 메시지 (messages)
       // inquiries 컬렉션 아래 messages 서브컬렉션 전체에서 isRead가 false인 'user'가 보낸 메시지 개수 조회
-      const q = query(
+      // user 메시지
+      const userQuery = query(
         collectionGroup(db, "messages"),
         where("isRead", "==", false),
         where("sender", "==", "user"),
       );
+      const userSnapshot = await getDocs(userQuery);
 
-      const snapshot = await getDocs(q);
-      setUnreadCount(snapshot.size);
+      // guest 메시지
+      const guestQuery = query(
+        collectionGroup(db, "messages"),
+        where("isRead", "==", false),
+        where("sender", "==", "guest"),
+      );
+      const guestSnapshot = await getDocs(guestQuery);
+
+      setUnreadCount(userSnapshot.size + guestSnapshot.size);
 
       // ✅ Q&A 질문 (questions)
       const qnaQuery = query(

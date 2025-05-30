@@ -21,14 +21,14 @@ export default function Brochure() {
   }
 
   const pdfUrls = [
-    "https://drive.google.com/file/d/1sm_t9HJCcoXqbDhx-E84rv-l8r8UIQ3w/view?usp=sharing",
-    "https://drive.google.com/file/d/1iM8wSqatCJcL7M0GkiUv-iWjvxYDpvXK/view?usp=sharing",
-    "https://drive.google.com/file/d/1GV_UiwcLYnPw1h2NktMbsOvl75w-iyvG/view?usp=sharing",
-    "https://drive.google.com/file/d/11sMv08Xs7XqwIEXT1yulg-8Oua_n7OMA/view?usp=sharing",
-    "https://drive.google.com/file/d/1Ih44u_AacvmUWtY3VDn2mxBadFQ0UF_z/view?usp=sharing",
-    "https://drive.google.com/file/d/1OggnrQ4KZRw-PA0W9CIAWkIdI08Kh3fj/view?usp=sharing",
-    "https://drive.google.com/file/d/1Bed89OqabUwVT9zTuydK6Ie1oT-JEAgu/view?usp=sharing",
-    "https://drive.google.com/file/d/1G6cLH6_HcMx51F0pPnLKOBhBH_lfmrJo/view?usp=sharing",
+    "https://drive.google.com/file/d/1xKdsjH0f41YbFvA9Z89qGRoCCbg81O5X/view?usp=sharing",
+    "https://drive.google.com/file/d/1UM0nB_Ko3tr34B6PYSrdUsQRTgvX-iAI/view?usp=sharing",
+    "https://drive.google.com/file/d/1FwVu_vflkAJcLblvDXuTCiRR8UePn9gz/view?usp=sharing",
+    "https://drive.google.com/file/d/1nQdZXr992srZuzAHvn-JtgPF9eK_gp9J/view?usp=sharing",
+    "https://drive.google.com/file/d/1OAVuKabiN7xJ_JU7ai3Xv8WJWm5ytR5T/view?usp=sharing",
+    "https://drive.google.com/file/d/15vDWIiViF2ao4jKRqx2AdIv7MUKSiAOY/view?usp=sharing",
+    "https://drive.google.com/file/d/1CB53yPMRYx_UqXawvxQBvBdfZ2Z0HMlj/view?usp=sharing",
+    "https://drive.google.com/file/d/1okIOffnpocHNwtqqqLdmrOXCmCfqBhAT/view?usp=sharing",
   ];
 
   const openPdfInNewTab = (pdfUrl: string) => {
