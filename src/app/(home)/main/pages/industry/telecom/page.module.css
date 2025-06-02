@@ -90,14 +90,6 @@
   flex: 1;
   padding-right: 20px;
 }
-
-.secondImage {
-  width: 370px;
-  height: 210px;
-  position: relative;
-  align-self: flex-start;
-}
-
 .secondDes h2 {
   font-size: 32px;
   font-weight: bold;
@@ -122,6 +114,13 @@
   list-style-type: disc;
   line-height: 1.6;
   font-size: 14px;
+}
+
+.secondImage {
+  width: 370px;
+  height: 210px;
+  position: relative;
+  align-self: flex-start;
 }
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .container {

@@ -177,11 +177,6 @@
   gap: 50px;
   margin-top: 50px;
 }
-.siemensDes,
-.siemensDes2 {
-  flex: 1;
-  padding-right: 20px;
-}
 
 .siemensImage {
   width: 370px;
@@ -466,7 +461,6 @@
   }
 
   .siemensImage {
-    /* width: 100%; */
     display: none;
   }
 
@@ -640,7 +634,6 @@
   }
 
   .siemensImage {
-    /* width: 100%; */
     display: none;
   }
 

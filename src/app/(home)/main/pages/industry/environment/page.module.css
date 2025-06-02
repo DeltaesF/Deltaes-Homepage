@@ -107,11 +107,7 @@
   height: 240px;
   overflow: hidden;
 }
-.image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+
 .textOverlay {
   position: absolute;
   bottom: 0;
@@ -176,11 +172,6 @@
   height: 420px;
   gap: 50px;
   margin-top: 50px;
-}
-.siemensDes,
-.siemensDes2 {
-  flex: 1;
-  padding-right: 20px;
 }
 
 .siemensImage {
@@ -466,7 +457,6 @@
   }
 
   .siemensImage {
-    /* width: 100%; */
     display: none;
   }
 
@@ -640,7 +630,6 @@
   }
 
   .siemensImage {
-    /* width: 100%; */
     display: none;
   }
 

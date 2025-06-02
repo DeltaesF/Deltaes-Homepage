@@ -173,16 +173,10 @@
   align-items: center;
   justify-content: space-between;
   width: 1000px;
-  /* height: 420px; */
   height: auto;
   gap: 50px;
   margin-top: 50px;
   margin-bottom: 40px;
-}
-.siemensDes,
-.siemensDes2 {
-  flex: 1;
-  padding-right: 20px;
 }
 
 .siemensImage {
@@ -229,7 +223,6 @@
   flex-direction: row-reverse;
   align-items: center;
   width: 1000px;
-  /* height: 420px; */
   height: auto;
   gap: 50px;
   margin-top: 40px;
@@ -272,7 +265,6 @@
   align-items: center;
   justify-content: space-between;
   width: 1000px;
-  /* height: 420px; */
   height: auto;
   gap: 50px;
   margin-top: 40px;
@@ -332,7 +324,6 @@
   align-items: center;
   justify-content: space-between;
   width: 1000px;
-  /* height: 420px; */
   height: auto;
   gap: 50px;
   margin-top: 40px;
@@ -558,7 +549,6 @@
   }
 
   .siemensImage {
-    /* width: 100%; */
     display: none;
   }
 
@@ -793,7 +783,6 @@
   }
 
   .siemensImage {
-    /* width: 100%; */
     display: none;
   }
 

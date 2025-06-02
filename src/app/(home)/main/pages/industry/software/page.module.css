@@ -64,100 +64,6 @@
   font-size: 16px;
 }
 
-.second {
-  width: 100vw;
-  height: 600px;
-  background-color: #0f2a44;
-  display: flex;
-  justify-content: center;
-}
-.secondWrapper {
-  width: 1000px;
-  height: auto;
-  margin-top: 70px;
-}
-
-.secondWrapper h2 {
-  font-size: 30px;
-  color: white;
-  font-weight: bold;
-}
-
-.secondGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  justify-content: center;
-  margin-top: 40px;
-}
-
-.grid {
-  width: 330px;
-  height: 360px;
-  background-color: #f0f0f0;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: left;
-  position: relative;
-}
-
-.gridDes {
-  position: relative;
-  width: 100%;
-  height: 240px;
-  overflow: hidden;
-}
-.image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.textOverlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 120px;
-  background-color: white;
-  padding: 20px;
-  text-align: left;
-  overflow: hidden;
-  transition:
-    height 0.4s ease-in-out,
-    transform 0.4s ease-in-out;
-}
-
-.textOverlay h3 {
-  font-size: 23px;
-  font-weight: bold;
-  color: #138f8f;
-}
-
-.textOverlay p {
-  margin-top: 20px;
-  font-size: 12.5px;
-  color: #000;
-  line-height: 1.5;
-}
-
-.detailButton {
-  margin-top: 15px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #138f8f;
-  opacity: 0;
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease-in-out;
-}
-
-.grid:hover .textOverlay {
-  height: 150px;
-}
-
-.grid:hover .detailButton {
-  opacity: 1;
-}
-
 .third {
   width: 100vw;
   height: 100%;
@@ -174,13 +80,11 @@
   justify-content: space-between;
   width: 1000px;
   height: 420px;
-  gap: 50px;
+  gap: 70px;
   margin-top: 50px;
 }
-.siemensDes,
-.siemensDes2 {
+.siemensDes {
   flex: 1;
-  padding-right: 20px;
 }
 
 .siemensImage {
@@ -216,109 +120,6 @@
   list-style-type: disc;
   line-height: 1.4;
   font-size: 13px;
-}
-.siemensDes button {
-  width: 142px;
-  height: 40px;
-  background-color: #109c9c;
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-  margin-top: 30px;
-  border: none;
-  cursor: pointer;
-}
-
-.siemensDes button:hover {
-  background-color: white;
-  border: 1px solid black;
-  color: black;
-}
-
-.siemens2 {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row-reverse;
-  align-items: center;
-  width: 1000px;
-  height: 420px;
-  gap: 50px;
-}
-
-.siemensDes2 h3 {
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 15px;
-  text-align: right;
-}
-.siemensDes2 p {
-  font-size: 12.5px;
-  line-height: 1.8;
-  margin-top: 25px;
-  text-align: left;
-}
-.siemensDes2 button {
-  width: 142px;
-  height: 40px;
-  background-color: #109c9c;
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-  margin-top: 30px;
-  border: none;
-  cursor: pointer;
-}
-
-.siemensDes2 button:hover {
-  background-color: white;
-  border: 1px solid black;
-  color: black;
-}
-
-.siemens3 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 1000px;
-  height: 420px;
-  gap: 50px;
-}
-.siemensDes,
-.siemensDes2,
-.siemensDes3 {
-  flex: 1;
-}
-
-.siemensDes3 h2 {
-  font-size: 32px;
-  font-weight: bold;
-}
-.siemensDes3 h3 {
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 20px;
-}
-.siemensDes3 p {
-  font-size: 12.5px;
-  line-height: 1.8;
-  margin-top: 40px;
-}
-.siemensDes3 button {
-  width: 142px;
-  height: 40px;
-  background-color: #109c9c;
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-  margin-top: 30px;
-  border: none;
-  cursor: pointer;
-}
-
-.siemensDes3 button:hover {
-  background-color: white;
-  border: 1px solid black;
-  color: black;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -384,95 +185,34 @@
     line-height: 1.6;
   }
 
-  .second {
-    width: 100vw;
-    height: auto;
-    background-color: #0f2a44;
-    display: flex;
-    justify-content: center;
-    padding: 60px 0;
-  }
-
-  .secondWrapper {
-    width: 85%;
-    height: auto;
-    margin-top: 40px;
-  }
-
-  .secondWrapper h2 {
-    font-size: 28px;
-    text-align: center;
-    color: white;
-  }
-
-  .secondGrid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    justify-content: center;
-    margin-top: 40px;
-  }
-
-  .grid {
-    width: 100%;
-    height: auto;
-  }
-
-  .gridDes {
-    height: 250px;
-  }
-
-  .textOverlay {
-    height: auto;
-    padding: 20px;
-  }
-
-  .textOverlay h3 {
-    font-size: 20px;
-  }
-
-  .textOverlay p {
-    font-size: 14px;
-    margin-top: 10px;
-  }
-
   .third {
     width: 100%;
     padding: 20px;
   }
 
-  .siemens,
-  .siemens2,
-  .siemens3 {
+  .siemens {
     flex-direction: column;
     width: 100%;
     height: auto;
     margin-top: 50px;
   }
 
-  .siemensDes,
-  .siemensDes2,
-  .siemensDes3 {
+  .siemensDes {
     width: 100%;
     padding: 0;
     text-align: center;
   }
 
-  .siemensDes h2,
-  .siemensDes3 h2 {
+  .siemensDes h2 {
     font-size: 24px;
   }
 
-  .siemensDes h3,
-  .siemensDes2 h3,
-  .siemensDes3 h3 {
+  .siemensDes h3 {
     font-size: 18px;
     text-align: center;
   }
 
-  .siemensDes p,
-  .siemensDes2 p,
-  .siemensDes3 p {
+  .siemensDes p {
     font-size: 14px;
     line-height: 1.6;
     margin-top: 20px;
@@ -480,18 +220,7 @@
   }
 
   .siemensImage {
-    /* width: 100%; */
     display: none;
-  }
-
-  .siemensDes button,
-  .siemensDes2 button,
-  .siemensDes3 button {
-    width: 100%;
-    max-width: 200px;
-    height: 45px;
-    font-size: 14px;
-    margin-top: 20px;
   }
 }
 
@@ -558,95 +287,34 @@
     line-height: 1.6;
   }
 
-  .second {
-    width: 100vw;
-    height: auto;
-    background-color: #0f2a44;
-    display: flex;
-    justify-content: center;
-    padding: 40px 0;
-  }
-
-  .secondWrapper {
-    width: 90%;
-    height: auto;
-    margin-top: 30px;
-  }
-
-  .secondWrapper h2 {
-    font-size: 24px;
-    text-align: center;
-    color: white;
-  }
-
-  .secondGrid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
-    justify-content: center;
-    margin-top: 30px;
-  }
-
-  .grid {
-    width: 100%;
-    height: auto;
-  }
-
-  .gridDes {
-    height: 200px;
-  }
-
-  .textOverlay {
-    height: auto;
-    padding: 15px;
-  }
-
-  .textOverlay h3 {
-    font-size: 18px;
-  }
-
-  .textOverlay p {
-    font-size: 12px;
-    margin-top: 10px;
-  }
-
   .third {
     width: 100%;
     padding: 20px;
   }
 
-  .siemens,
-  .siemens2,
-  .siemens3 {
+  .siemens {
     flex-direction: column;
     width: 100%;
     height: auto;
     margin-top: 50px;
   }
 
-  .siemensDes,
-  .siemensDes2,
-  .siemensDes3 {
+  .siemensDes {
     width: 100%;
     padding: 0;
     text-align: center;
   }
 
-  .siemensDes h2,
-  .siemensDes3 h2 {
+  .siemensDes h2 {
     font-size: 24px;
   }
 
-  .siemensDes h3,
-  .siemensDes2 h3,
-  .siemensDes3 h3 {
+  .siemensDes h3 {
     font-size: 18px;
     text-align: center;
   }
 
-  .siemensDes p,
-  .siemensDes2 p,
-  .siemensDes3 p {
+  .siemensDes p {
     font-size: 14px;
     line-height: 1.6;
     margin-top: 20px;
@@ -654,17 +322,6 @@
   }
 
   .siemensImage {
-    /* width: 100%; */
     display: none;
-  }
-
-  .siemensDes button,
-  .siemensDes2 button,
-  .siemensDes3 button {
-    width: 100%;
-    max-width: 200px;
-    height: 45px;
-    font-size: 14px;
-    margin-top: 20px;
   }
 }
