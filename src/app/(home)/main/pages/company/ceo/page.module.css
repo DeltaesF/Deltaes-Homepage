@@ -124,8 +124,6 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-  /* 태블릿 크기 (768px ~ 1024px) */
-
   .container {
     width: 100vw;
     height: auto;
@@ -224,8 +222,6 @@
 }
 
 @media screen and (max-width: 480px) {
-  /* 최대 너비 480px 이하 (모바일) */
-
   .container {
     width: 100vw;
     height: auto;

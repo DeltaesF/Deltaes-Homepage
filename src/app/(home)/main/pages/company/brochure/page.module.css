@@ -48,11 +48,11 @@
 }
 
 .grid img {
-  transition: opacity 0.3s ease; /* 부드러운 전환 효과 */
+  transition: opacity 0.3s ease;
 }
 
 .grid img:hover {
-  opacity: 0.5; /* 호버 시 불투명도 적용 */
+  opacity: 0.5;
 }
 
 .brochureMovie {
