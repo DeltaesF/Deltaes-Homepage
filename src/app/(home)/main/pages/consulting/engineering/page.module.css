@@ -17,7 +17,7 @@
 
 .gridItemPost {
   display: flex;
-  justify-content: space-between; /* 글과 이미지를 좌우 배치 */
+  justify-content: space-between;
   width: 100%;
   padding: 10px;
   gap: 20px;
@@ -29,11 +29,11 @@
   text-align: left;
   line-height: 1.2;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* 최대 3줄까지 표시 */
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-height: calc(1.2em * 3); /* 줄 간격 * 3줄 */
+  max-height: calc(1.2em * 3);
 }
 
 .gridItemPost img {
@@ -128,9 +128,8 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-  /*최대 크기 1024px*/
   .gridContainer {
-    grid-template-columns: repeat(2, 1fr); /* 2열 배치 */
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     margin-top: 50px;
   }
@@ -142,21 +141,21 @@
   }
 
   .gridItemPost {
-    flex-direction: row; /* 가로 정렬 유지 */
+    flex-direction: row;
     align-items: center;
     gap: 15px;
   }
 
   .gridItemPost h1 {
     font-size: 16px;
-    -webkit-line-clamp: 2; /* 2줄까지만 표시 */
+    -webkit-line-clamp: 2;
     max-height: calc(1.2em * 2);
     font-weight: bold;
   }
 
   .gridItemPost img {
     width: 150px;
-    max-width: 250px; /* 최대 크기 제한 */
+    max-width: 250px;
   }
 
   .container {
@@ -168,18 +167,18 @@
 
   .wrapper {
     width: 100%;
-    max-width: 700px; /* 태블릿에서는 700px까지 확대 */
+    max-width: 700px;
     margin: 0 auto;
   }
 
   .title h1 {
-    font-size: 36px; /* 태블릿에서 조금 크게 */
+    font-size: 36px;
     text-align: center;
     margin-top: 50px;
   }
 
   .subTitle h2 {
-    font-size: 28px; /* 서브 제목 크기 증가 */
+    font-size: 28px;
   }
 
   .tabBtnWrapper {
@@ -208,29 +207,27 @@
   }
 }
 @media screen and (max-width: 480px) {
-  /*최대 크기 480px*/
-
   .gridContainer {
-    grid-template-columns: 1fr; /* 한 줄에 하나씩 */
+    grid-template-columns: 1fr;
     gap: 15px;
     margin-top: 40px;
   }
 
   .gridItem {
-    width: 100%; /* 부모 크기에 맞춤 */
+    width: 100%;
     height: auto;
     padding: 15px;
   }
 
   .gridItemPost {
-    flex-direction: column; /* 세로 정렬 */
+    flex-direction: column;
     align-items: flex-start;
     gap: 10px;
   }
 
   .gridItemPost h1 {
     font-size: 16px;
-    -webkit-line-clamp: 2; /* 2줄까지 표시 */
+    -webkit-line-clamp: 2;
     max-height: calc(1.2em * 2);
     font-weight: bold;
   }
@@ -238,7 +235,7 @@
   .gridItemPost img {
     width: 100%;
     height: auto;
-    max-width: 200px; /* 최대 크기 제한 */
+    max-width: 200px;
   }
 
   .container {
@@ -250,18 +247,18 @@
 
   .wrapper {
     width: 100%;
-    max-width: 400px; /* 모바일에서 너무 넓지 않도록 제한 */
+    max-width: 400px;
     margin: 0 auto;
   }
 
   .title h1 {
-    font-size: 28px; /* 제목 크기 축소 */
+    font-size: 28px;
     text-align: center;
     margin-top: 40px;
   }
 
   .subTitle h2 {
-    font-size: 20px; /* 서브 제목 크기 조정 */
+    font-size: 20px;
   }
 
   .tabBtnWrapper {
