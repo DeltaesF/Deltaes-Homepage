@@ -59,7 +59,6 @@
   padding: 24px;
 }
 
-/* 반응형: 480px 이하 화면 대응 */
 @media screen and (max-width: 480px) {
   .container {
     flex-direction: column;
