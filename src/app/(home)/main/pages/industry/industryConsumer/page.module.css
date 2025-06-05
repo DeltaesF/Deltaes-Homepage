@@ -90,9 +90,6 @@
   flex: 1;
 }
 
-.solution1 img {
-  flex-shrink: 0;
-}
 .solution1 h2 {
   font-size: 32px;
   font-weight: bold;
@@ -126,10 +123,6 @@
   flex: 1;
 }
 
-.solution2 img {
-  flex-shrink: 0;
-}
-
 .solution2 h3 {
   font-size: 20px;
   font-weight: bold;
@@ -144,8 +137,6 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-  /* 태블릿 (768px~1024px) */
-
   .container {
     display: flex;
     flex-direction: column;
@@ -302,7 +293,6 @@
   }
 
   .siemensImage {
-    /* width: 100%; */
     display: none;
   }
 
@@ -318,8 +308,6 @@
 }
 
 @media screen and (max-width: 480px) {
-  /* 모바일 (최대 480px) */
-
   .container {
     display: flex;
     flex-direction: column;
