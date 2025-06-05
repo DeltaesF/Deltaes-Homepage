@@ -152,10 +152,32 @@
 
 .thirdWrapper {
   width: 100vw;
-  height: 3600px;
+  height: 3900px;
   background-color: white;
   display: flex;
   justify-content: center;
+}
+
+.thirdPoint {
+  width: 1000px;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2개씩 가로로 */
+  gap: 2rem; /* 요소 간 간격 */
+  margin-bottom: 50px;
+}
+
+.thirdPoint ul h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.thirdPoint ul h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.thirdPoint ul li {
+  line-height: 1.6;
 }
 
 .thirdContent {
@@ -227,63 +249,122 @@
   flex-shrink: 0;
 }
 
-.thirdDes2 {
+.thirdPoint2 {
+  width: 1000px;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 2개씩 가로로 */
+  gap: 2rem; /* 요소 간 간격 */
+  margin-top: 20px;
+}
+
+.thirdPoint2 ul h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.thirdPoint2 ul h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.thirdPoint2 ul li {
+  line-height: 1.6;
+}
+
+.thirdPoint2_1 h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 50px;
+}
+.thirdPoint2_1 p {
+  line-height: 1.4;
+}
+
+.thirdPoint2Img1 {
+  position: relative;
+  width: 1000px;
+  height: 200px;
+  flex-shrink: 0;
+  margin-bottom: 30px;
+}
+
+.thirdPointDeC {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.thirdPointDe {
+  flex: 1;
+}
+.thirdPointDe h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.thirdPointDe p {
+  font-size: 15px;
+  margin-bottom: 30px;
+  line-height: 1.2;
+}
+.thirdPointDe ul li {
+  line-height: 1.6;
+}
+
+.thirdPointDeImg {
   flex: 1;
   display: flex;
   flex-direction: column;
-  line-height: 1.4;
-  text-align: left;
-  gap: 20px;
-}
-.thirdDes2 h2 {
-  font-size: 28px;
-  font-weight: bold;
-}
-.thirdDes2 h3 {
-  font-size: 20px;
-  font-weight: bold;
-}
-.thirdDes2 p {
-  font-size: 15px;
-  line-height: 2;
-}
-.thirdDes2 p > strong {
-  font-weight: bold;
-}
-.thirdDes2 ul {
-  padding-left: 20px;
-}
-.thirdDes2 li {
-  list-style-type: disc;
-  font-size: 14px;
+  gap: 1rem;
 }
 
-.thirdDes2_1 {
+.thirdPoint2Img1_2 {
+  position: relative;
+  width: 500px;
+  height: 300px;
+  flex-shrink: 0;
+}
+.thirdPointDeImg2 {
   display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
 }
-.thirdDes2_1 div h3 {
-  font-size: 15px;
-  font-weight: bolder;
-  margin-top: 30px;
+
+.thirdPoint2Img1_3 {
+  position: relative;
+  width: 700px;
+  height: 200px;
 }
-.thirdDes2_1 div ul {
-  padding-left: 20px;
+.thirdPoint2Img1_4 {
+  position: relative;
+  width: 300px;
+  height: 180px;
 }
-.thirdDes2_1 div ul li {
-  line-height: 2;
-  font-size: 14px;
+
+.thirdImg2_1,
+.thirdImg3_1 {
+  position: relative;
+  width: 50%;
+  height: 150px;
+}
+.thirdPointDeImg {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.thirdPointDeImgBottom {
+  display: flex;
+  gap: 1rem;
 }
 
 .thirdImg1_1 {
   width: 805px;
-  height: 440px;
+  height: 500px;
   position: relative;
 }
 .thirdImg1_2 {
   width: 760px;
-  height: 110px;
+  height: 380px;
   position: relative;
 }
 .thirdImg1_3 {
