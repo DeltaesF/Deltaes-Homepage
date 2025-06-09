@@ -6,34 +6,18 @@
   margin: 0 auto;
 }
 
-.container > div {
-  margin-bottom: 20px;
-}
-
 .titleWrapper {
-  display: flex; /* 가로 정렬 */
-  align-items: center; /* 같은 선상에 정렬 */
+  display: flex;
+  align-items: center;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.section {
-}
-
-/* 각 섹션 정렬 */
 .article {
   display: flex;
-  flex-direction: column; /* 제목과 컨텐츠를 세로 배치 */
+  flex-direction: column;
   margin-top: 40px;
   margin-bottom: 20px;
-}
-
-/* 정사각형과 삼각형 아이콘 스타일 */
-.square,
-.triangle {
-  display: inline-block;
-  margin-right: 10px;
-  flex-shrink: 0;
 }
 
 .square {
@@ -41,22 +25,9 @@
   height: 20px;
   background-color: #162481;
   border-radius: 5px;
-}
-
-.triangle {
-  width: 0;
-  height: 0;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  border-left: 15px solid #162481;
-  vertical-align: middle;
-}
-
-/* 제목 스타일 */
-.title,
-.titleSub {
-  margin: 0;
-  text-align: left;
+  display: inline-block;
+  margin-right: 10px;
+  flex-shrink: 0;
 }
 
 .title {
@@ -64,17 +35,11 @@
   font-weight: bold;
 }
 
-.titleSub {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-/* 컨텐츠 스타일 */
 .contant {
-  margin-left: 30px; /* 제목과 컨텐츠 간 간격 */
-  margin-top: 10px; /* 제목과 컨텐츠 사이 간격 */
+  margin-left: 30px;
+  margin-top: 10px;
   display: flex;
-  flex-direction: column; /* 수직으로 배치 */
+  flex-direction: column;
 }
 
 .contentTitle {
@@ -117,23 +82,19 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-  /*최대 크기 1024px*/
-  /* 태블릿 반응형 */
-
   .container {
-    width: 90%; /* 화면 크기의 90% */
+    width: 90%;
     margin: 0 auto;
   }
 
   .description {
     display: flex;
-    flex-direction: row; /* 태블릿에서는 가로 정렬 유지 */
-    gap: 20px; /* 요소 간 간격 추가 */
+    flex-direction: row;
+    gap: 20px;
     align-items: center;
   }
 }
 @media screen and (max-width: 480px) {
-  /*최대 크기 480px*/
   .container {
     width: 100%;
   }
