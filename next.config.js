@@ -16,6 +16,7 @@ const nextConfig = {
         hostname: "drive.usercontent.google.com", // 추가
       },
     ],
+    unoptimized: true,
   },
 };
 
