@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function History() {
-  const { imageSrc, error } = useFetchImages(["history.avif"]);
+  const { imageSrc1, error } = useFetchCloudinaryImages(["history_ti8kim"]);
 
   if (error) {
     return <p>Error: {error}</p>;
@@ -17,12 +17,13 @@ export default function History() {
           <h1>회사 연혁</h1>
         </header>
         <figure className={styles.historyImg}>
-          {imageSrc[0] && (
+          {imageSrc1[0] && (
             <Image
-              src={imageSrc[0]}
+              src={imageSrc1[0]}
               alt=""
               fill
               style={{ objectFit: "cover", borderRadius: "10px" }}
+              unoptimized
             />
           )}
         </figure>

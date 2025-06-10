@@ -2,15 +2,15 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Consumer() {
-  const { imageSrc, error } = useFetchImages([
-    "subpageConsumer1.avif",
-    "subpageConsumer2.avif",
-    "subpageConsumer3.avif",
-    "subpageConsumer4.avif",
-    "subpageConsumer5.gif",
+  const { imageSrc1, error } = useFetchCloudinaryImages([
+    "subpageConsumer1_u1a5vz",
+    "subpageConsumer2_r0sdm1",
+    "subpageConsumer3_zrk0cz",
+    "subpageConsumer4_hecpma",
+    "subpageConsumer5_tji9dk",
   ]);
 
   if (error) {
@@ -20,12 +20,13 @@ export default function Consumer() {
     <div className={styles.container}>
       <div className={styles.first}>
         <div className={styles.imageWrapper}>
-          {imageSrc[0] && (
+          {imageSrc1[0] && (
             <Image
-              src={imageSrc[0]}
+              src={imageSrc1[0]}
               alt="전자기기 및 반도체"
               fill
               style={{ objectFit: "cover" }}
+              unoptimized
             />
           )}
           <div className={styles.firstDes}>
@@ -78,12 +79,13 @@ export default function Consumer() {
               <div className={styles.aIsF}>
                 <div className={styles.aIsFdiv}>
                   <div className={styles.aIsFdivImage}>
-                    {imageSrc[1] && (
+                    {imageSrc1[1] && (
                       <Image
-                        src={imageSrc[1]}
+                        src={imageSrc1[1]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -93,12 +95,13 @@ export default function Consumer() {
                 </div>
                 <div className={styles.aIsFdiv}>
                   <div className={styles.aIsFdivImage}>
-                    {imageSrc[2] && (
+                    {imageSrc1[2] && (
                       <Image
-                        src={imageSrc[2]}
+                        src={imageSrc1[2]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -108,12 +111,13 @@ export default function Consumer() {
                 </div>
                 <div className={styles.aIsFdiv}>
                   <div className={styles.aIsFdivImage}>
-                    {imageSrc[3] && (
+                    {imageSrc1[3] && (
                       <Image
-                        src={imageSrc[3]}
+                        src={imageSrc1[3]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -123,12 +127,13 @@ export default function Consumer() {
                 </div>
                 <div className={styles.aIsFdiv}>
                   <div className={styles.aIsFdivImage}>
-                    {imageSrc[4] && (
+                    {imageSrc1[4] && (
                       <Image
-                        src={imageSrc[4]}
+                        src={imageSrc1[4]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>

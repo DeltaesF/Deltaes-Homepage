@@ -3,22 +3,22 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Aerospace() {
-  const { imageSrc, loading, error } = useFetchImages([
-    "aerospace1.avif",
-    "consumer10.avif",
-    "aerospace2.avif",
-    "aerospace3.avif",
-    "aerospace4.avif",
-    "aerospace5.avif",
-    "aerospace6.avif",
-    "aerospace7.avif",
-    "consumer9.avif",
-    "aerospace4.avif",
-    "aerospace8.avif",
-    "aerospace9.avif",
+  const { imageSrc1, loading, error } = useFetchCloudinaryImages([
+    "aerospace1_c74fej",
+    "consumer10_ahndrp",
+    "aerospace2_bmswxx",
+    "aerospace3_a0gflz",
+    "aerospace4_fedr4q",
+    "aerospace5_lskqx7",
+    "aerospace6_vlnqcs",
+    "aerospace7_axdcjf",
+    "consumer9_y3tm5l",
+    "aerospace4_fedr4q",
+    "aerospace8_tuz9qq",
+    "aerospace9_tmcgyy",
   ]);
 
   if (error) {
@@ -33,18 +33,20 @@ export default function Aerospace() {
             alt="Loading..."
             width={200}
             height={200}
+            unoptimized
           />
         </div>
       ) : (
         <div className={styles.container}>
           <div className={styles.first}>
             <div className={styles.imageWrapper}>
-              {imageSrc[0] && (
+              {imageSrc1[0] && (
                 <Image
-                  src={imageSrc[0]}
+                  src={imageSrc1[0]}
                   alt="전자기기 및 반도체"
                   fill
                   style={{ objectFit: "cover" }}
+                  unoptimized
                 />
               )}
               <div className={styles.firstDes}>
@@ -85,12 +87,13 @@ export default function Aerospace() {
                 </p>
               </div>
               <div className={styles.siemensImage}>
-                {imageSrc[1] && (
+                {imageSrc1[1] && (
                   <Image
-                    src={imageSrc[1]}
+                    src={imageSrc1[1]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>
@@ -102,12 +105,13 @@ export default function Aerospace() {
               <div className={styles.secondGrid}>
                 <div className={styles.grid}>
                   <div className={styles.gridDes}>
-                    {imageSrc[2] && (
+                    {imageSrc1[2] && (
                       <Image
-                        src={imageSrc[2]}
+                        src={imageSrc1[2]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -129,12 +133,13 @@ export default function Aerospace() {
                 </div>
                 <div className={styles.grid}>
                   <div className={styles.gridDes}>
-                    {imageSrc[3] && (
+                    {imageSrc1[3] && (
                       <Image
-                        src={imageSrc[3]}
+                        src={imageSrc1[3]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -156,12 +161,13 @@ export default function Aerospace() {
                 </div>
                 <div className={styles.grid}>
                   <div className={styles.gridDes}>
-                    {imageSrc[4] && (
+                    {imageSrc1[4] && (
                       <Image
-                        src={imageSrc[4]}
+                        src={imageSrc1[4]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -183,12 +189,13 @@ export default function Aerospace() {
                 </div>
                 <div className={styles.grid}>
                   <div className={styles.gridDes}>
-                    {imageSrc[5] && (
+                    {imageSrc1[5] && (
                       <Image
-                        src={imageSrc[5]}
+                        src={imageSrc1[5]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -207,12 +214,13 @@ export default function Aerospace() {
                 </div>
                 <div className={styles.grid}>
                   <div className={styles.gridDes}>
-                    {imageSrc[6] && (
+                    {imageSrc1[6] && (
                       <Image
-                        src={imageSrc[6]}
+                        src={imageSrc1[6]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -234,12 +242,13 @@ export default function Aerospace() {
                 </div>
                 <div className={styles.grid}>
                   <div className={styles.gridDes}>
-                    {imageSrc[7] && (
+                    {imageSrc1[7] && (
                       <Image
-                        src={imageSrc[7]}
+                        src={imageSrc1[7]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -267,12 +276,13 @@ export default function Aerospace() {
               <div className={styles.siemensImageWrapper}>
                 <h3>차세대 항공기 개발</h3>
                 <div className={styles.siemensImage}>
-                  {imageSrc[8] && (
+                  {imageSrc1[8] && (
                     <Image
-                      src={imageSrc[8]}
+                      src={imageSrc1[8]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -314,12 +324,13 @@ export default function Aerospace() {
                 </Link>
               </div>
               <div className={styles.siemensImage}>
-                {imageSrc[9] && (
+                {imageSrc1[9] && (
                   <Image
-                    src={imageSrc[9]}
+                    src={imageSrc1[9]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>
@@ -343,12 +354,13 @@ export default function Aerospace() {
                 </Link>
               </div>
               <div className={styles.siemensImage}>
-                {imageSrc[10] && (
+                {imageSrc1[10] && (
                   <Image
-                    src={imageSrc[10]}
+                    src={imageSrc1[10]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>
@@ -373,12 +385,13 @@ export default function Aerospace() {
                 </Link>
               </div>
               <div className={styles.siemensImage}>
-                {imageSrc[11] && (
+                {imageSrc1[11] && (
                   <Image
-                    src={imageSrc[11]}
+                    src={imageSrc1[11]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>

@@ -3,21 +3,21 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Construction() {
-  const { imageSrc, loading, error } = useFetchImages([
-    "construction1.avif",
-    "construction2.avif",
-    "construction3.avif",
-    "construction4.avif",
-    "construction5.gif",
-    "construction6.avif",
-    "construction7.avif",
-    "construction8.avif",
-    "construction9.avif",
-    "construction10.avif",
-    "construction11.avif",
+  const { imageSrc1, loading, error } = useFetchCloudinaryImages([
+    "construction1_jn0qib",
+    "construction2_w7u30b",
+    "construction3_k0e8en",
+    "construction4_g8czx2",
+    "construction5_ekdib1",
+    "construction6_sj9qhh",
+    "construction7_w1v0zc",
+    "construction8_i8yajk",
+    "construction9_yxlqeg",
+    "construction10_xnkcn3",
+    "construction11_y56hsl",
   ]);
 
   if (error) {
@@ -32,18 +32,20 @@ export default function Construction() {
             alt="Loading..."
             width={200}
             height={200}
+            unoptimized
           />
         </div>
       ) : (
         <div className={styles.container}>
           <div className={styles.first}>
             <div className={styles.imageWrapper}>
-              {imageSrc[0] && (
+              {imageSrc1[0] && (
                 <Image
-                  src={imageSrc[0]}
+                  src={imageSrc1[0]}
                   alt="전자기기 및 반도체"
                   fill
                   style={{ objectFit: "cover" }}
+                  unoptimized
                 />
               )}
               <div className={styles.firstDes}>
@@ -85,12 +87,13 @@ export default function Construction() {
               <div className={styles.secondGrid}>
                 <div className={styles.grid}>
                   <div className={styles.gridDes}>
-                    {imageSrc[1] && (
+                    {imageSrc1[1] && (
                       <Image
-                        src={imageSrc[1]}
+                        src={imageSrc1[1]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -104,12 +107,13 @@ export default function Construction() {
                 </div>
                 <div className={styles.grid}>
                   <div className={styles.gridDes}>
-                    {imageSrc[2] && (
+                    {imageSrc1[2] && (
                       <Image
-                        src={imageSrc[2]}
+                        src={imageSrc1[2]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -123,12 +127,13 @@ export default function Construction() {
                 </div>
                 <div className={styles.grid}>
                   <div className={styles.gridDes}>
-                    {imageSrc[3] && (
+                    {imageSrc1[3] && (
                       <Image
-                        src={imageSrc[3]}
+                        src={imageSrc1[3]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -142,12 +147,13 @@ export default function Construction() {
                 </div>
                 <div className={styles.grid}>
                   <div className={styles.gridDes}>
-                    {imageSrc[4] && (
+                    {imageSrc1[4] && (
                       <Image
-                        src={imageSrc[4]}
+                        src={imageSrc1[4]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -161,12 +167,13 @@ export default function Construction() {
                 </div>
                 <div className={styles.grid}>
                   <div className={styles.gridDes}>
-                    {imageSrc[5] && (
+                    {imageSrc1[5] && (
                       <Image
-                        src={imageSrc[5]}
+                        src={imageSrc1[5]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -180,12 +187,13 @@ export default function Construction() {
                 </div>
                 <div className={styles.grid}>
                   <div className={styles.gridDes}>
-                    {imageSrc[6] && (
+                    {imageSrc1[6] && (
                       <Image
-                        src={imageSrc[6]}
+                        src={imageSrc1[6]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -234,12 +242,13 @@ export default function Construction() {
                 </Link>
               </div>
               <div className={styles.siemensImage}>
-                {imageSrc[7] && (
+                {imageSrc1[7] && (
                   <Image
-                    src={imageSrc[7]}
+                    src={imageSrc1[7]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>
@@ -276,12 +285,13 @@ export default function Construction() {
                 </Link>
               </div>
               <div className={styles.siemensImage}>
-                {imageSrc[8] && (
+                {imageSrc1[8] && (
                   <Image
-                    src={imageSrc[8]}
+                    src={imageSrc1[8]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>
@@ -302,12 +312,13 @@ export default function Construction() {
                 </Link>
               </div>
               <div className={styles.siemensImage}>
-                {imageSrc[9] && (
+                {imageSrc1[9] && (
                   <Image
-                    src={imageSrc[9]}
+                    src={imageSrc1[9]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>
@@ -346,12 +357,13 @@ export default function Construction() {
                 </Link>
               </div>
               <div className={styles.siemensImage}>
-                {imageSrc[10] && (
+                {imageSrc1[10] && (
                   <Image
-                    src={imageSrc[10]}
+                    src={imageSrc1[10]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>
@@ -398,12 +410,13 @@ export default function Construction() {
                 </Link>
               </div>
               <div className={styles.siemensImage}>
-                {imageSrc[9] && (
+                {imageSrc1[9] && (
                   <Image
-                    src={imageSrc[9]}
+                    src={imageSrc1[9]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>

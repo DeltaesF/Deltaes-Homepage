@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Telecom() {
-  const { imageSrc, loading, error } = useFetchImages([
-    "telecom1.avif",
-    "telecom2.avif",
+  const { imageSrc1, loading, error } = useFetchCloudinaryImages([
+    "telecom1_v6ffsu",
+    "telecom2_cv8757",
   ]);
 
   if (error) {
@@ -22,18 +22,20 @@ export default function Telecom() {
             alt="Loading..."
             width={200}
             height={200}
+            unoptimized
           />
         </div>
       ) : (
         <div className={styles.container}>
           <div className={styles.first}>
             <div className={styles.imageWrapper}>
-              {imageSrc[0] && (
+              {imageSrc1[0] && (
                 <Image
-                  src={imageSrc[0]}
+                  src={imageSrc1[0]}
                   alt="가전제품 및 산업용 전자 기기"
                   fill
                   style={{ objectFit: "cover" }}
+                  unoptimized
                 />
               )}
               <div className={styles.firstDes}>
@@ -112,12 +114,13 @@ export default function Telecom() {
                 </p>
               </div>
               <div className={styles.secondImage}>
-                {imageSrc[1] && (
+                {imageSrc1[1] && (
                   <Image
-                    src={imageSrc[1]}
+                    src={imageSrc1[1]}
                     alt="가전제품 및 산업용 전자 기기"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>

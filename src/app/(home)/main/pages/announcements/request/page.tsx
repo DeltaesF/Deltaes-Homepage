@@ -1,13 +1,13 @@
 "use client";
 
-import useFetchImages from "@/app/hooks/useFetchImages";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import RequestMail from "@/app/components/request/RequestMail";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Request() {
-  const { imageSrc, error } = useFetchImages(["request.avif"]);
+  const { imageSrc1, error } = useFetchCloudinaryImages(["request_g9fu2y"]);
 
   if (error) {
     return <p>Error: {error}</p>;
@@ -16,12 +16,13 @@ export default function Request() {
     <section className={styles.container}>
       <article className={styles.first}>
         <figure className={styles.imageWrapper}>
-          {imageSrc[0] && (
+          {imageSrc1[0] && (
             <Image
-              src={imageSrc[0]}
+              src={imageSrc1[0]}
               alt="전자기기 및 반도체"
               fill
               style={{ objectFit: "cover" }}
+              unoptimized
             />
           )}
           <figcaption className={styles.title}>평가판 체험하기</figcaption>

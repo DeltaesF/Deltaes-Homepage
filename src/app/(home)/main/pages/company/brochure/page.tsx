@@ -2,18 +2,18 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Brochure() {
-  const { imageSrc, error } = useFetchImages([
-    "brochure1.avif",
-    "brochure2.avif",
-    "brochure3.avif",
-    "brochure4.avif",
-    "brochure5.avif",
-    "brochure6.avif",
-    "brochure7.avif",
-    "brochure8.avif",
+  const { imageSrc1, error } = useFetchCloudinaryImages([
+    "brochure1_lxifvr",
+    "brochure2_ctqifx",
+    "brochure3_b61kfs",
+    "brochure4_zqfasi",
+    "brochure5_jbp2sc",
+    "brochure6_c158nv",
+    "brochure7_htuzkl",
+    "brochure8_heq1fi",
   ]);
 
   if (error) {
@@ -45,13 +45,14 @@ export default function Brochure() {
             className={styles.grid}
             onClick={() => openPdfInNewTab(pdfUrls[0])}
           >
-            {imageSrc[0] && (
+            {imageSrc1[0] && (
               <Image
-                src={imageSrc[0]}
+                src={imageSrc1[0]}
                 alt=""
                 width="230"
                 height="315"
                 style={{ borderRadius: "10px" }}
+                unoptimized
               />
             )}
             <p>Delta ES 토털 엔지니어링 솔루션</p>
@@ -60,13 +61,14 @@ export default function Brochure() {
             className={styles.grid}
             onClick={() => openPdfInNewTab(pdfUrls[1])}
           >
-            {imageSrc[1] && (
+            {imageSrc1[1] && (
               <Image
-                src={imageSrc[1]}
+                src={imageSrc1[1]}
                 alt=""
                 width="230"
                 height="315"
                 style={{ borderRadius: "10px" }}
+                unoptimized
               />
             )}
             <p>지멘스 Simcenter CFD 솔루션 (SW)</p>
@@ -75,13 +77,14 @@ export default function Brochure() {
             className={styles.grid}
             onClick={() => openPdfInNewTab(pdfUrls[2])}
           >
-            {imageSrc[2] && (
+            {imageSrc1[2] && (
               <Image
-                src={imageSrc[2]}
+                src={imageSrc1[2]}
                 alt=""
                 width="230"
                 height="315"
                 style={{ borderRadius: "10px" }}
+                unoptimized
               />
             )}
             <p>지멘스 Simcenter Testing 솔루션 (HW)</p>
@@ -90,13 +93,14 @@ export default function Brochure() {
             className={styles.grid}
             onClick={() => openPdfInNewTab(pdfUrls[3])}
           >
-            {imageSrc[3] && (
+            {imageSrc1[3] && (
               <Image
-                src={imageSrc[3]}
+                src={imageSrc1[3]}
                 alt=""
                 width="230"
                 height="315"
                 style={{ borderRadius: "10px" }}
+                unoptimized
               />
             )}
             <p>Simcenter POWERTESTER 600A (Eng)</p>
@@ -105,13 +109,14 @@ export default function Brochure() {
             className={styles.grid}
             onClick={() => openPdfInNewTab(pdfUrls[4])}
           >
-            {imageSrc[4] && (
+            {imageSrc1[4] && (
               <Image
-                src={imageSrc[4]}
+                src={imageSrc1[4]}
                 alt=""
                 width="230"
                 height="315"
                 style={{ borderRadius: "10px" }}
+                unoptimized
               />
             )}
             <p>Simcenter POWERTESTER 1500A</p>
@@ -120,13 +125,14 @@ export default function Brochure() {
             className={styles.grid}
             onClick={() => openPdfInNewTab(pdfUrls[5])}
           >
-            {imageSrc[5] && (
+            {imageSrc1[5] && (
               <Image
-                src={imageSrc[5]}
+                src={imageSrc1[5]}
                 alt=""
                 width="230"
                 height="315"
                 style={{ borderRadius: "10px" }}
+                unoptimized
               />
             )}
             <p>Simcenter POWERTESTER 1800A</p>
@@ -135,13 +141,14 @@ export default function Brochure() {
             className={styles.grid}
             onClick={() => openPdfInNewTab(pdfUrls[6])}
           >
-            {imageSrc[6] && (
+            {imageSrc1[6] && (
               <Image
-                src={imageSrc[6]}
+                src={imageSrc1[6]}
                 alt=""
                 width="230"
                 height="315"
                 style={{ borderRadius: "10px" }}
+                unoptimized
               />
             )}
             <p>Simcenter POWERTESTER 2400A</p>
@@ -150,13 +157,14 @@ export default function Brochure() {
             className={styles.grid}
             onClick={() => openPdfInNewTab(pdfUrls[7])}
           >
-            {imageSrc[7] && (
+            {imageSrc1[7] && (
               <Image
-                src={imageSrc[7]}
+                src={imageSrc1[7]}
                 alt=""
                 width="230"
                 height="315"
                 style={{ borderRadius: "10px" }}
+                unoptimized
               />
             )}
             <p>Simcenter POWERTESTER 3600A</p>

@@ -1,11 +1,14 @@
 "use client";
 
-import useFetchImages from "@/app/hooks/useFetchImages";
 import styles from "./page.module.css";
 import Image from "next/image";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Training() {
-  const { imageSrc, error } = useFetchImages(["studyB1.avif", "studyB2.avif"]);
+  const { imageSrc1, error } = useFetchCloudinaryImages([
+    "studyB1_kgvpra",
+    "studyB2_ugthfu",
+  ]);
 
   if (error) {
     return <p>Error: {error}</p>;
@@ -15,23 +18,25 @@ export default function Training() {
     <section className={styles.container}>
       <article className={styles.first}>
         <figure className={styles.imageWrapper}>
-          {imageSrc[0] && (
+          {imageSrc1[0] && (
             <Image
-              src={imageSrc[0]}
+              src={imageSrc1[0]}
               alt="전자기기 및 반도체"
               fill
               style={{ objectFit: "cover" }}
+              unoptimized
             />
           )}
           <div className={styles.certifiedEducation}>
             <figure className={styles.certifiedEducation1}>
-              {imageSrc[1] && (
+              {imageSrc1[1] && (
                 <Image
-                  src={imageSrc[1]}
+                  src={imageSrc1[1]}
                   alt="전자기기 및 반도체"
                   width={457}
                   height={344}
                   style={{ objectFit: "cover" }}
+                  unoptimized
                 />
               )}
             </figure>

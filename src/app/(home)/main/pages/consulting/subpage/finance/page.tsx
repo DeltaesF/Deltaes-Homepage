@@ -2,10 +2,12 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Finance() {
-  const { imageSrc, error } = useFetchImages(["subpageFinance1.avif"]);
+  const { imageSrc1, error } = useFetchCloudinaryImages([
+    "subpageFinance1_adhbmi",
+  ]);
 
   if (error) {
     return <p>Error: {error}</p>;
@@ -14,12 +16,13 @@ export default function Finance() {
     <div className={styles.container}>
       <div className={styles.first}>
         <div className={styles.imageWrapper}>
-          {imageSrc[0] && (
+          {imageSrc1[0] && (
             <Image
-              src={imageSrc[0]}
+              src={imageSrc1[0]}
               alt="전자기기 및 반도체"
               fill
               style={{ objectFit: "cover" }}
+              unoptimized
             />
           )}
           <div className={styles.firstDes}>

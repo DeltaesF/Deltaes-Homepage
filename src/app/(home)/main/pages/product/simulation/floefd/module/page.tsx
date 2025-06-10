@@ -75,6 +75,7 @@ export default function Module() {
                   alt="전자기기 및 반도체"
                   fill
                   style={{ objectFit: "cover" }}
+                  unoptimized
                 />
               )}
             </div>
@@ -116,6 +117,7 @@ export default function Module() {
                   alt="전자기기 및 반도체"
                   fill
                   style={{ objectFit: "cover" }}
+                  unoptimized
                 />
               )}
             </div>
@@ -169,6 +171,7 @@ export default function Module() {
                   alt="전자기기 및 반도체"
                   fill
                   style={{ objectFit: "cover" }}
+                  unoptimized
                 />
               )}
             </div>
@@ -203,6 +206,7 @@ export default function Module() {
                   alt="전자기기 및 반도체"
                   fill
                   style={{ objectFit: "cover" }}
+                  unoptimized
                 />
               )}
             </div>
@@ -217,6 +221,7 @@ export default function Module() {
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>
@@ -250,6 +255,7 @@ export default function Module() {
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>
@@ -290,6 +296,7 @@ export default function Module() {
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>
@@ -326,6 +333,7 @@ export default function Module() {
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>
@@ -362,6 +370,7 @@ export default function Module() {
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>
@@ -405,6 +414,7 @@ export default function Module() {
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>
@@ -445,6 +455,7 @@ export default function Module() {
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>
@@ -487,6 +498,7 @@ export default function Module() {
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>
@@ -507,6 +519,7 @@ export default function Module() {
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>

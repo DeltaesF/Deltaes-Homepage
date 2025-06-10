@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Ceo() {
-  const { imageSrc, error } = useFetchImages(["ceo.avif"]);
+  const { imageSrc1, error } = useFetchCloudinaryImages(["ceo_kafkb5"]);
 
   if (error) {
     return <p>Error: {error}</p>;
@@ -21,12 +21,13 @@ export default function Ceo() {
           <p className={styles.titleSub2}>여러분을 진심으로 환영합니다.</p>
         </section>
         <figure className={styles.ceoImg}>
-          {imageSrc[0] && (
+          {imageSrc1[0] && (
             <Image
-              src={imageSrc[0]}
+              src={imageSrc1[0]}
               alt=""
               fill
               style={{ objectFit: "cover" }}
+              unoptimized
             />
           )}
         </figure>

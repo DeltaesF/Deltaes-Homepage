@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Software() {
-  const { imageSrc, loading, error } = useFetchImages([
-    "software1.avif",
-    "software2.avif",
+  const { imageSrc1, loading, error } = useFetchCloudinaryImages([
+    "software1_jm9epd",
+    "software2_njqtex",
   ]);
 
   if (error) {
@@ -22,18 +22,20 @@ export default function Software() {
             alt="Loading..."
             width={200}
             height={200}
+            unoptimized
           />
         </div>
       ) : (
         <div className={styles.container}>
           <div className={styles.first}>
             <div className={styles.imageWrapper}>
-              {imageSrc[0] && (
+              {imageSrc1[0] && (
                 <Image
-                  src={imageSrc[0]}
+                  src={imageSrc1[0]}
                   alt="전자기기 및 반도체"
                   fill
                   style={{ objectFit: "cover" }}
+                  unoptimized
                 />
               )}
               <div className={styles.firstDes}>
@@ -89,12 +91,13 @@ export default function Software() {
                 </div>
               </div>
               <div className={styles.siemensImage}>
-                {imageSrc[1] && (
+                {imageSrc1[1] && (
                   <Image
-                    src={imageSrc[1]}
+                    src={imageSrc1[1]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>

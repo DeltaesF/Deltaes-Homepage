@@ -20,7 +20,7 @@ export default function Header() {
     useNotification();
 
   if (error) {
-    return <p>Error: {error}</p>;
+    return <p>Error: {error} </p>;
   }
 
   return (

@@ -3,19 +3,19 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Marine() {
-  const { imageSrc, loading, error } = useFetchImages([
-    "marine1.avif",
-    "marine2.avif",
-    "marine3.avif",
-    "marine4.avif",
-    "marine5.avif",
-    "marine6.avif",
-    "marine7.avif",
-    "marine8.avif",
-    "marine9.avif",
+  const { imageSrc1, loading, error } = useFetchCloudinaryImages([
+    "marine1_ptrg9o",
+    "marine2_nqv8qy",
+    "marine3_sgculu",
+    "marine4_zj5g0j",
+    "marine5_xtelgc",
+    "marine6_s5foxg",
+    "marine7_ykd5l0",
+    "marine8_covrxz",
+    "marine9_jgfndw",
   ]);
 
   if (error) {
@@ -30,18 +30,20 @@ export default function Marine() {
             alt="Loading..."
             width={200}
             height={200}
+            unoptimized
           />
         </div>
       ) : (
         <div className={styles.container}>
           <div className={styles.first}>
             <div className={styles.imageWrapper}>
-              {imageSrc[0] && (
+              {imageSrc1[0] && (
                 <Image
-                  src={imageSrc[0]}
+                  src={imageSrc1[0]}
                   alt="전자기기 및 반도체"
                   fill
                   style={{ objectFit: "cover" }}
+                  unoptimized
                 />
               )}
               <div className={styles.firstDes}>
@@ -69,12 +71,13 @@ export default function Marine() {
               <div className={styles.secondGrid}>
                 <div className={styles.grid}>
                   <div className={styles.gridDes}>
-                    {imageSrc[1] && (
+                    {imageSrc1[1] && (
                       <Image
-                        src={imageSrc[1]}
+                        src={imageSrc1[1]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -93,12 +96,13 @@ export default function Marine() {
                 </div>
                 <div className={styles.grid}>
                   <div className={styles.gridDes}>
-                    {imageSrc[2] && (
+                    {imageSrc1[2] && (
                       <Image
-                        src={imageSrc[2]}
+                        src={imageSrc1[2]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -120,12 +124,13 @@ export default function Marine() {
                 </div>
                 <div className={styles.grid}>
                   <div className={styles.gridDes}>
-                    {imageSrc[3] && (
+                    {imageSrc1[3] && (
                       <Image
-                        src={imageSrc[3]}
+                        src={imageSrc1[3]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -168,12 +173,13 @@ export default function Marine() {
                 </Link>
               </div>
               <div className={styles.siemensImage}>
-                {imageSrc[4] && (
+                {imageSrc1[4] && (
                   <Image
-                    src={imageSrc[4]}
+                    src={imageSrc1[4]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>
@@ -196,12 +202,13 @@ export default function Marine() {
                 </Link>
               </div>
               <div className={styles.siemensImage}>
-                {imageSrc[5] && (
+                {imageSrc1[5] && (
                   <Image
-                    src={imageSrc[5]}
+                    src={imageSrc1[5]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>
@@ -224,12 +231,13 @@ export default function Marine() {
                 </Link>
               </div>
               <div className={styles.siemensImage}>
-                {imageSrc[6] && (
+                {imageSrc1[6] && (
                   <Image
-                    src={imageSrc[6]}
+                    src={imageSrc1[6]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>
@@ -255,12 +263,13 @@ export default function Marine() {
                 </Link>
               </div>
               <div className={styles.siemensImage}>
-                {imageSrc[7] && (
+                {imageSrc1[7] && (
                   <Image
-                    src={imageSrc[7]}
+                    src={imageSrc1[7]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>
@@ -283,12 +292,13 @@ export default function Marine() {
                 </Link>
               </div>
               <div className={styles.siemensImage}>
-                {imageSrc[8] && (
+                {imageSrc1[8] && (
                   <Image
-                    src={imageSrc[8]}
+                    src={imageSrc1[8]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>

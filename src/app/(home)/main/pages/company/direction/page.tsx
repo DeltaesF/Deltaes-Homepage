@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Direction() {
-  const { imageSrc, error } = useFetchImages(["deltaes.avif"]);
+  const { imageSrc1, error } = useFetchCloudinaryImages(["deltaes_iiuxs7"]);
 
   if (error) {
     return <p>Error: {error}</p>;
@@ -17,13 +17,14 @@ export default function Direction() {
           <h1>오시는 길</h1>
         </header>
         <figure>
-          {imageSrc[0] && (
+          {imageSrc1[0] && (
             <Image
-              src={imageSrc[0]}
+              src={imageSrc1[0]}
               alt=""
               width="600"
               height="600"
               style={{ margin: "0 auto" }}
+              unoptimized
             />
           )}
         </figure>

@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Finance() {
-  const { imageSrc, loading, error } = useFetchImages([
-    "finance1.avif",
-    "finance2.avif",
+  const { imageSrc1, loading, error } = useFetchCloudinaryImages([
+    "finance1_esexzy",
+    "finance2_xk4g1c",
   ]);
 
   if (error) {
@@ -28,12 +28,13 @@ export default function Finance() {
         <div className={styles.container}>
           <div className={styles.first}>
             <div className={styles.imageWrapper}>
-              {imageSrc[0] && (
+              {imageSrc1[0] && (
                 <Image
-                  src={imageSrc[0]}
+                  src={imageSrc1[0]}
                   alt="전자기기 및 반도체"
                   fill
                   style={{ objectFit: "cover" }}
+                  unoptimized
                 />
               )}
               <div className={styles.firstDes}>
@@ -76,12 +77,13 @@ export default function Finance() {
                 </p>
               </div>
               <div className={styles.siemensImage}>
-                {imageSrc[1] && (
+                {imageSrc1[1] && (
                   <Image
-                    src={imageSrc[1]}
+                    src={imageSrc1[1]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
+                    unoptimized
                   />
                 )}
               </div>

@@ -39,6 +39,7 @@ export default function Flotherm() {
             alt="Loading..."
             width={200}
             height={200}
+            unoptimized
           />
         </div>
       ) : (
@@ -55,6 +56,7 @@ export default function Flotherm() {
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -134,6 +136,7 @@ export default function Flotherm() {
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -172,6 +175,7 @@ export default function Flotherm() {
                           alt="전자기기 및 반도체"
                           fill
                           style={{ objectFit: "cover" }}
+                          unoptimized
                         />
                       )}
                     </div>
@@ -216,6 +220,7 @@ export default function Flotherm() {
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -241,6 +246,7 @@ export default function Flotherm() {
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -270,6 +276,7 @@ export default function Flotherm() {
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -289,6 +296,7 @@ export default function Flotherm() {
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -308,6 +316,7 @@ export default function Flotherm() {
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -337,6 +346,7 @@ export default function Flotherm() {
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -363,6 +373,7 @@ export default function Flotherm() {
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -382,6 +393,7 @@ export default function Flotherm() {
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -407,6 +419,7 @@ export default function Flotherm() {
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -430,6 +443,7 @@ export default function Flotherm() {
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -446,6 +460,7 @@ export default function Flotherm() {
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -462,6 +477,7 @@ export default function Flotherm() {
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -478,6 +494,7 @@ export default function Flotherm() {
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -494,6 +511,7 @@ export default function Flotherm() {
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -510,6 +528,7 @@ export default function Flotherm() {
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
