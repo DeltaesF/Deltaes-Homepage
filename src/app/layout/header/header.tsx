@@ -5,22 +5,22 @@ import styles from "./header.module.css";
 import Image from "next/image";
 import { useState } from "react";
 import { useUser } from "@/app/context/UserContext";
-import useFetchImages from "@/app/hooks/useFetchImages";
 import { useNotification } from "@/app/context/NotifyContext";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isIndustryOpen, setIsIndustryOpen] = useState(false);
-  const { imageSrc, error } = useFetchImages([
-    "partner.png",
-    "header-logo.avif",
+  const { imageSrc1, error } = useFetchCloudinaryImages([
+    "partner_pmwjie",
+    "header-logo_slqge6",
   ]);
   const { user, logout } = useUser();
   const { unreadCount, unreadQnaCount, refreshNotifications } =
     useNotification();
 
-  console.log("imageSrc[0]", imageSrc[0]);
-  console.log("imageSrc[1]", imageSrc[1]);
+  console.log("imageSrc1[0]", imageSrc1[0]);
+  console.log("imageSrc1[1]", imageSrc1[1]);
 
   if (error) {
     return <p>Error: {error}</p>;
@@ -110,9 +110,9 @@ export default function Header() {
               )}
             </div>
             <div className={styles.partner}>
-              {imageSrc[0] && (
+              {imageSrc1[0] && (
                 <Image
-                  src={imageSrc[0]}
+                  src={imageSrc1[0]}
                   alt="partner"
                   width={117}
                   height={57}
@@ -125,8 +125,8 @@ export default function Header() {
         <div className={styles.menuContainer}>
           <div className={styles.logo}>
             <Link href="/main">
-              {imageSrc[1] && (
-                <Image src={imageSrc[1]} alt="logo" width="176" height="52" />
+              {imageSrc1[1] && (
+                <Image src={imageSrc1[1]} alt="logo" width="176" height="52" />
               )}
             </Link>
           </div>
