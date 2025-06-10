@@ -7,17 +7,17 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
 import styles from "./page.module.css";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Tifas() {
-  const { imageSrc, loading, error } = useFetchImages([
-    "tifas1.avif",
-    "tifas2.avif",
-    "tifas3.avif",
-    "tifas4.avif",
-    "tifas5.avif",
-    "tifas6.avif",
-    "timapulse2.avif",
+  const { imageSrc1, loading, error } = useFetchCloudinaryImages([
+    "tifas1_thjx7b",
+    "tifas2_om5mwe",
+    "tifas3_cecjhn",
+    "tifas4_xbizuw",
+    "tifas5_qhtb9y",
+    "tifas5_qhtb9y",
+    "timapulse2_wulzeo",
     "tifasbrochure.pdf",
     "tifasdata.pdf",
   ]);
@@ -44,6 +44,7 @@ export default function Tifas() {
             alt="Loading..."
             width={200}
             height={200}
+            unoptimized
           />
         </div>
       ) : (
@@ -54,12 +55,13 @@ export default function Tifas() {
               <h1>TIFAS</h1>
               <div className={styles.firstImgP}>
                 <div className={styles.firstImg}>
-                  {imageSrc[0] && (
+                  {imageSrc1[0] && (
                     <Image
-                      src={imageSrc[0]}
+                      src={imageSrc1[0]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -80,14 +82,15 @@ export default function Tifas() {
             </div>
           </div>
           <div className={styles.secondWrapper}>
-            {imageSrc[6] && (
+            {imageSrc1[6] && (
               <Image
-                src={imageSrc[6]}
+                src={imageSrc1[6]}
                 alt="TIMA 배경 이미지"
                 fill
                 sizes="100vw"
                 style={{ objectFit: "cover", zIndex: -1 }}
                 priority
+                unoptimized
               />
             )}
             <div className={styles.secondContent}>
@@ -112,7 +115,7 @@ export default function Tifas() {
                     autoplay={{ delay: 3000 }}
                     style={{ width: "454px", height: "222px" }}
                   >
-                    {[imageSrc[1], imageSrc[2], imageSrc[3]].map(
+                    {[imageSrc1[1], imageSrc1[2], imageSrc1[3]].map(
                       (src, index) =>
                         src && (
                           <SwiperSlide key={index}>
@@ -122,6 +125,7 @@ export default function Tifas() {
                               width={454}
                               height={222}
                               style={{ objectFit: "cover" }}
+                              unoptimized
                             />
                           </SwiperSlide>
                         ),
@@ -137,12 +141,13 @@ export default function Tifas() {
               <div className={styles.thirdImgP}>
                 <div>
                   <div className={styles.thirdImg}>
-                    {imageSrc[5] && (
+                    {imageSrc1[5] && (
                       <Image
-                        src={imageSrc[5]}
+                        src={imageSrc1[5]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -169,12 +174,13 @@ export default function Tifas() {
                 </div>
                 <div>
                   <div className={styles.thirdImg}>
-                    {imageSrc[6] && (
+                    {imageSrc1[6] && (
                       <Image
-                        src={imageSrc[6]}
+                        src={imageSrc1[6]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>

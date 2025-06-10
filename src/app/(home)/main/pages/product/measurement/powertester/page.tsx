@@ -2,25 +2,25 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Powertester() {
-  const { imageSrc, loading, error } = useFetchImages([
-    "powertester1.avif",
-    "powertester2.avif",
-    "powertester3.avif",
-    "powertester4.avif",
-    "powertester5.avif",
-    "powertester6.avif",
-    "powertester7.avif",
-    "powertester8.avif",
-    "powertester9.avif",
-    "powertester10.avif",
-    "powertester11.avif",
-    "powertester12.avif",
-    "powertester13.avif",
-    "powertester14.avif",
-    "powertester15.avif",
+  const { imageSrc1, loading, error } = useFetchCloudinaryImages([
+    "powertester1_skulng",
+    "powertester2_i7bnnh",
+    "powertester3_ouvhyh",
+    "powertester4_axq0pv",
+    "powertester5_xpottq",
+    "powertester6_geewds",
+    "powertester7_d6qfni",
+    "powertester8_r5dbsh",
+    "powertester9_on5aes",
+    "powertester10_pdxxri",
+    "powertester11_cwjzta",
+    "powertester12_dvdmqp",
+    "powertester13_gt2quw",
+    "powertester14_l12erq",
+    "powertester15_twir7j",
   ]);
 
   if (error) {
@@ -35,6 +35,7 @@ export default function Powertester() {
             alt="Loading..."
             width={200}
             height={200}
+            unoptimized
           />
         </div>
       ) : (
@@ -45,12 +46,13 @@ export default function Powertester() {
               <h1>Powertester</h1>
               <div className={styles.firstImgP}>
                 <div className={styles.firstImg}>
-                  {imageSrc[0] && (
+                  {imageSrc1[0] && (
                     <Image
-                      src={imageSrc[0]}
+                      src={imageSrc1[0]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -156,24 +158,26 @@ export default function Powertester() {
                     </p>
                   </div>
                   <div className={styles.thirdImg}>
-                    {imageSrc[1] && (
+                    {imageSrc1[1] && (
                       <Image
-                        src={imageSrc[1]}
+                        src={imageSrc1[1]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
                 </div>
                 <div className={styles.thirdImgP3}>
                   <div className={styles.thirdImg3}>
-                    {imageSrc[2] && (
+                    {imageSrc1[2] && (
                       <Image
-                        src={imageSrc[2]}
+                        src={imageSrc1[2]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -212,22 +216,24 @@ export default function Powertester() {
                 <div className={styles.thirdImgP4}>
                   <h3>Simcenter POWERTESTER comparison table</h3>
                   <div className={styles.thirdImg4}>
-                    {imageSrc[3] && (
+                    {imageSrc1[3] && (
                       <Image
-                        src={imageSrc[3]}
+                        src={imageSrc1[3]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
                   <div className={styles.thirdImg5}>
-                    {imageSrc[4] && (
+                    {imageSrc1[4] && (
                       <Image
-                        src={imageSrc[4]}
+                        src={imageSrc1[4]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -262,12 +268,13 @@ export default function Powertester() {
                         requirements of the power modules to be tested.
                       </p>
                       <div className={styles.fourNewImgDesImg}>
-                        {imageSrc[5] && (
+                        {imageSrc1[5] && (
                           <Image
-                            src={imageSrc[5]}
+                            src={imageSrc1[5]}
                             alt="전자기기 및 반도체"
                             fill
                             style={{ objectFit: "cover" }}
+                            unoptimized
                           />
                         )}
                       </div>
@@ -284,12 +291,13 @@ export default function Powertester() {
                         to guide our users through the most important settings.
                       </p>
                       <div className={styles.fourNewImgDesImg}>
-                        {imageSrc[7] && (
+                        {imageSrc1[7] && (
                           <Image
-                            src={imageSrc[7]}
+                            src={imageSrc1[7]}
                             alt="전자기기 및 반도체"
                             fill
                             style={{ objectFit: "cover" }}
+                            unoptimized
                           />
                         )}
                       </div>
@@ -308,12 +316,13 @@ export default function Powertester() {
                         strategies are supported.
                       </p>
                       <div className={styles.fourNewImgDesImg}>
-                        {imageSrc[9] && (
+                        {imageSrc1[9] && (
                           <Image
-                            src={imageSrc[9]}
+                            src={imageSrc1[9]}
                             alt="전자기기 및 반도체"
                             fill
                             style={{ objectFit: "cover" }}
+                            unoptimized
                           />
                         )}
                       </div>
@@ -331,12 +340,13 @@ export default function Powertester() {
                         of the test progress with ease.
                       </p>
                       <div className={styles.fourNewImgDesImg}>
-                        {imageSrc[11] && (
+                        {imageSrc1[11] && (
                           <Image
-                            src={imageSrc[11]}
+                            src={imageSrc1[11]}
                             alt="전자기기 및 반도체"
                             fill
                             style={{ objectFit: "cover" }}
+                            unoptimized
                           />
                         )}
                       </div>
@@ -364,12 +374,13 @@ export default function Powertester() {
                         way, making sure no data loss will happen.
                       </p>
                       <div className={styles.fourNewImgDesImg}>
-                        {imageSrc[13] && (
+                        {imageSrc1[13] && (
                           <Image
-                            src={imageSrc[13]}
+                            src={imageSrc1[13]}
                             alt="전자기기 및 반도체"
                             fill
                             style={{ objectFit: "cover" }}
+                            unoptimized
                           />
                         )}
                       </div>
@@ -388,12 +399,13 @@ export default function Powertester() {
                         as well.
                       </p>
                       <div className={styles.fourNewImgDesImg}>
-                        {imageSrc[6] && (
+                        {imageSrc1[6] && (
                           <Image
-                            src={imageSrc[6]}
+                            src={imageSrc1[6]}
                             alt="전자기기 및 반도체"
                             fill
                             style={{ objectFit: "cover" }}
+                            unoptimized
                           />
                         )}
                       </div>
@@ -415,12 +427,13 @@ export default function Powertester() {
                         test requirements.
                       </p>
                       <div className={styles.fourNewImgDesImg}>
-                        {imageSrc[8] && (
+                        {imageSrc1[8] && (
                           <Image
-                            src={imageSrc[8]}
+                            src={imageSrc1[8]}
                             alt="전자기기 및 반도체"
                             fill
                             style={{ objectFit: "cover" }}
+                            unoptimized
                           />
                         )}
                       </div>
@@ -448,12 +461,13 @@ export default function Powertester() {
                         software.
                       </p>
                       <div className={styles.fourNewImgDesImg}>
-                        {imageSrc[10] && (
+                        {imageSrc1[10] && (
                           <Image
-                            src={imageSrc[10]}
+                            src={imageSrc1[10]}
                             alt="전자기기 및 반도체"
                             fill
                             style={{ objectFit: "cover" }}
+                            unoptimized
                           />
                         )}
                       </div>
@@ -471,12 +485,13 @@ export default function Powertester() {
                         features of the systems in a day.
                       </p>
                       <div className={styles.fourNewImgDesImg}>
-                        {imageSrc[12] && (
+                        {imageSrc1[12] && (
                           <Image
-                            src={imageSrc[12]}
+                            src={imageSrc1[12]}
                             alt="전자기기 및 반도체"
                             fill
                             style={{ objectFit: "cover" }}
+                            unoptimized
                           />
                         )}
                       </div>
@@ -502,12 +517,13 @@ export default function Powertester() {
                       </p>
 
                       <div className={styles.fourNewImgDesImg}>
-                        {imageSrc[14] && (
+                        {imageSrc1[14] && (
                           <Image
-                            src={imageSrc[14]}
+                            src={imageSrc1[14]}
                             alt="전자기기 및 반도체"
                             fill
                             style={{ objectFit: "cover" }}
+                            unoptimized
                           />
                         )}
                       </div>

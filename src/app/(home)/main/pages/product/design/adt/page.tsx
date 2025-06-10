@@ -2,16 +2,16 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Adt() {
-  const { imageSrc, loading, error } = useFetchImages([
-    "adt1.avif",
-    "adt2.avif",
-    "adt3.avif",
-    "flothermxt4.avif",
-    "adt5.avif",
-    "adt6.avif",
+  const { imageSrc1, loading, error } = useFetchCloudinaryImages([
+    "adt1_qixtlr",
+    "adt2_p90qes",
+    "adt3_li2e0o",
+    "flothermxt4_qso20x",
+    "adt5_lp4zih",
+    "adt6_pircg6",
   ]);
 
   if (error) {
@@ -27,6 +27,7 @@ export default function Adt() {
             alt="Loading..."
             width={200}
             height={200}
+            unoptimized
           />
         </div>
       ) : (
@@ -37,12 +38,13 @@ export default function Adt() {
               <h1>TURBOdesign Suite</h1>
               <div className={styles.firstImgP}>
                 <div className={styles.firstImg}>
-                  {imageSrc[0] && (
+                  {imageSrc1[0] && (
                     <Image
-                      src={imageSrc[0]}
+                      src={imageSrc1[0]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -137,12 +139,13 @@ export default function Adt() {
                     </p>
                   </div>
                   <div className={styles.thirdImg}>
-                    {imageSrc[1] && (
+                    {imageSrc1[1] && (
                       <Image
-                        src={imageSrc[1]}
+                        src={imageSrc1[1]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -164,12 +167,13 @@ export default function Adt() {
                   </p>
                 </div>
                 <div className={styles.fourImg1}>
-                  {imageSrc[2] && (
+                  {imageSrc1[2] && (
                     <Image
-                      src={imageSrc[2]}
+                      src={imageSrc1[2]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -185,12 +189,13 @@ export default function Adt() {
                   </p>
                 </div>
                 <div className={styles.fourImg2}>
-                  {imageSrc[3] && (
+                  {imageSrc1[3] && (
                     <Image
-                      src={imageSrc[3]}
+                      src={imageSrc1[3]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -205,12 +210,13 @@ export default function Adt() {
                   </p>
                 </div>
                 <div className={styles.fourImg1}>
-                  {imageSrc[4] && (
+                  {imageSrc1[4] && (
                     <Image
-                      src={imageSrc[4]}
+                      src={imageSrc1[4]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -227,12 +233,13 @@ export default function Adt() {
                   </p>
                 </div>
                 <div className={styles.fourImg2}>
-                  {imageSrc[5] && (
+                  {imageSrc1[5] && (
                     <Image
-                      src={imageSrc[5]}
+                      src={imageSrc1[5]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>

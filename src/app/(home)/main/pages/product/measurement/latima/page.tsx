@@ -7,16 +7,16 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
 import styles from "./page.module.css";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Latima() {
-  const { imageSrc, loading, error } = useFetchImages([
-    "latima1.avif",
-    "latima2.avif",
-    "latima3.avif",
-    "latima4.avif",
-    "latima5.avif",
-    "timapulse2.avif",
+  const { imageSrc1, loading, error } = useFetchCloudinaryImages([
+    "latima1_ozmwnz",
+    "latima2_u5st8w",
+    "latima3_sw5gtg",
+    "latima4_a9ylee",
+    "latima5_mbtz7a",
+    "timapulse2_wulzeo",
     "latimabrochure.pdf",
     "latimadata.pdf",
   ]);
@@ -43,6 +43,7 @@ export default function Latima() {
             alt="Loading..."
             width={200}
             height={200}
+            unoptimized
           />
         </div>
       ) : (
@@ -53,12 +54,13 @@ export default function Latima() {
               <h1>LaTIMA</h1>
               <div className={styles.firstImgP}>
                 <div className={styles.firstImg}>
-                  {imageSrc[0] && (
+                  {imageSrc1[0] && (
                     <Image
-                      src={imageSrc[0]}
+                      src={imageSrc1[0]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -82,13 +84,14 @@ export default function Latima() {
           </div>
 
           <div className={styles.secondWrapper}>
-            {imageSrc[5] && (
+            {imageSrc1[5] && (
               <Image
-                src={imageSrc[5]}
+                src={imageSrc1[5]}
                 alt="TIMA 배경 이미지"
                 fill
                 sizes="100vw"
                 style={{ objectFit: "cover", zIndex: -1 }}
+                unoptimized
                 priority
               />
             )}
@@ -114,7 +117,7 @@ export default function Latima() {
                     autoplay={{ delay: 3000 }}
                     style={{ width: "454px", height: "222px" }}
                   >
-                    {[imageSrc[1], imageSrc[2], imageSrc[3]].map(
+                    {[imageSrc1[1], imageSrc1[2], imageSrc1[3]].map(
                       (src, index) =>
                         src && (
                           <SwiperSlide key={index}>
@@ -124,6 +127,7 @@ export default function Latima() {
                               width={454}
                               height={222}
                               style={{ objectFit: "cover" }}
+                              unoptimized
                             />
                           </SwiperSlide>
                         ),
@@ -138,12 +142,13 @@ export default function Latima() {
               <h2>테스트해 보세요</h2>
               <div className={styles.thirdImgP}>
                 <div className={styles.thirdImg}>
-                  {imageSrc[4] && (
+                  {imageSrc1[4] && (
                     <Image
-                      src={imageSrc[4]}
+                      src={imageSrc1[4]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -174,12 +179,13 @@ export default function Latima() {
                   </p>
                 </div>
                 <div className={styles.thirdImg2}>
-                  {imageSrc[4] && (
+                  {imageSrc1[4] && (
                     <Image
-                      src={imageSrc[4]}
+                      src={imageSrc1[4]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>

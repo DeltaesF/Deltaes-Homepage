@@ -3,16 +3,17 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Solidedge() {
-  const { imageSrc, loading, error } = useFetchImages([
-    "solidedge1.avif",
-    "solidedge2.avif",
-    "solidedge3.avif",
-    "solidedge4.avif",
-    "solidedge5.avif",
-    "solidedge6.avif",
-    "solidedge7.avif",
+  const { imageSrc1, loading, error } = useFetchCloudinaryImages([
+    "solidedge1_ld5cky",
+    "solidedge2_wssj5i",
+    "solidedge3_r2vn3f",
+    "solidedge4_svcxhp",
+    "solidedge5_xhylx5",
+    "solidedge6_uj24je",
+    "solidedge7_zoii8k",
   ]);
 
   if (error) {
@@ -27,6 +28,7 @@ export default function Solidedge() {
             alt="Loading..."
             width={200}
             height={200}
+            unoptimized
           />
         </div>
       ) : (
@@ -37,12 +39,13 @@ export default function Solidedge() {
               <h1>Solid Edge</h1>
               <div className={styles.firstImgP}>
                 <div className={styles.firstImg}>
-                  {imageSrc[0] && (
+                  {imageSrc1[0] && (
                     <Image
-                      src={imageSrc[0]}
+                      src={imageSrc1[0]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -156,12 +159,13 @@ export default function Solidedge() {
                   </p>
                 </div>
                 <div className={styles.imageD}>
-                  {imageSrc[1] && (
+                  {imageSrc1[1] && (
                     <Image
-                      src={imageSrc[1]}
+                      src={imageSrc1[1]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -193,12 +197,13 @@ export default function Solidedge() {
                   </p>
                 </div>
                 <div className={styles.imageD1}>
-                  {imageSrc[2] && (
+                  {imageSrc1[2] && (
                     <Image
-                      src={imageSrc[2]}
+                      src={imageSrc1[2]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -221,12 +226,13 @@ export default function Solidedge() {
                   </p>
                 </div>
                 <div className={styles.fourImg1}>
-                  {imageSrc[3] && (
+                  {imageSrc1[3] && (
                     <Image
-                      src={imageSrc[3]}
+                      src={imageSrc1[3]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -252,12 +258,13 @@ export default function Solidedge() {
                   </p>
                 </div>
                 <div className={styles.imageD2}>
-                  {imageSrc[4] && (
+                  {imageSrc1[4] && (
                     <Image
-                      src={imageSrc[4]}
+                      src={imageSrc1[4]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -280,12 +287,13 @@ export default function Solidedge() {
                   </p>
                 </div>
                 <div className={styles.fourImg1}>
-                  {imageSrc[5] && (
+                  {imageSrc1[5] && (
                     <Image
-                      src={imageSrc[5]}
+                      src={imageSrc1[5]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -311,12 +319,13 @@ export default function Solidedge() {
                   </p>
                 </div>
                 <div className={styles.imageD3}>
-                  {imageSrc[6] && (
+                  {imageSrc1[6] && (
                     <Image
-                      src={imageSrc[6]}
+                      src={imageSrc1[6]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>

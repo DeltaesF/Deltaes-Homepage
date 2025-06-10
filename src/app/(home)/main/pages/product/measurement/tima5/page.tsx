@@ -5,24 +5,24 @@ import styles from "./page.module.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Tima5() {
-  const { imageSrc, loading, error } = useFetchImages([
-    "tima5_1.avif",
-    "tima5_2.png",
-    "tima5_3.png",
-    "tima5_5.avif",
-    "tima5_6.avif",
-    "tima5_7.avif",
-    "tima5_8.avif",
-    "tima5_9.avif",
-    "tima5_10.avif",
-    "timapulse2.avif",
-    "tima5_11.jpg",
-    "tima5_12.png",
-    "tima5_13.jpg",
-    "tima5_14.jpg",
+  const { imageSrc1, loading, error } = useFetchCloudinaryImages([
+    "tima5_1_vm3xa3",
+    "tima5_2_t2ixvi",
+    "tima5_3_ksnjyx",
+    "tima5_5_u4v7mr",
+    "tima5_6_md1ofr",
+    "tima5_7_mtsz84",
+    "tima5_8_e0xzo4",
+    "tima5_9_eygtg7",
+    "tima5_10_f6qdv6",
+    "timapulse2_wulzeo",
+    "tima5_11_cls6eg",
+    "tima5_11_cls6eg",
+    "tima5_13_rblw5j",
+    "tima5_14_gs7ard",
   ]);
 
   if (error) {
@@ -47,6 +47,7 @@ export default function Tima5() {
             alt="Loading..."
             width={200}
             height={200}
+            unoptimized
           />
         </div>
       ) : (
@@ -57,12 +58,13 @@ export default function Tima5() {
               <h1>TIMA 5</h1>
               <div className={styles.firstImgP}>
                 <div className={styles.firstImg}>
-                  {imageSrc[0] && (
+                  {imageSrc1[0] && (
                     <Image
-                      src={imageSrc[0]}
+                      src={imageSrc1[0]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -82,14 +84,15 @@ export default function Tima5() {
             </div>
           </div>
           <div className={styles.secondWrapper}>
-            {imageSrc[9] && (
+            {imageSrc1[9] && (
               <Image
-                src={imageSrc[9]}
+                src={imageSrc1[9]}
                 alt="TIMA 배경 이미지"
                 fill
                 sizes="100vw"
                 style={{ objectFit: "cover", zIndex: -1 }}
                 priority
+                unoptimized
               />
             )}
             <div className={styles.secondContent}>
@@ -160,12 +163,13 @@ export default function Tima5() {
               <h2>Technical Specification</h2>
               <div className={styles.thirdImgP}>
                 <div className={styles.thirdImg1_1}>
-                  {imageSrc[1] && (
+                  {imageSrc1[1] && (
                     <Image
-                      src={imageSrc[1]}
+                      src={imageSrc1[1]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -173,12 +177,13 @@ export default function Tima5() {
               <h2>Sample properties & Measurement conditions</h2>
               <div className={styles.thirdImgP}>
                 <div className={styles.thirdImg1_2}>
-                  {imageSrc[2] && (
+                  {imageSrc1[2] && (
                     <Image
-                      src={imageSrc[2]}
+                      src={imageSrc1[2]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -186,12 +191,13 @@ export default function Tima5() {
               <h2>Measurement accuracy</h2>
               <div className={styles.thirdImgP}>
                 <div className={styles.thirdImg1_4}>
-                  {imageSrc[3] && (
+                  {imageSrc1[3] && (
                     <Image
-                      src={imageSrc[3]}
+                      src={imageSrc1[3]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -199,12 +205,13 @@ export default function Tima5() {
               <h2>Software screenshots</h2>
               <div className={styles.thirdImgP}>
                 <div className={styles.thirdImg1_5}>
-                  {imageSrc[4] && (
+                  {imageSrc1[4] && (
                     <Image
-                      src={imageSrc[4]}
+                      src={imageSrc1[4]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -241,12 +248,13 @@ export default function Tima5() {
                 </ul>
               </div>
               <div className={styles.thirdPoint2Img1}>
-                {imageSrc[10] && (
+                {imageSrc1[10] && (
                   <Image
-                    src={imageSrc[10]}
+                    src={imageSrc1[10]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "contain" }}
+                    unoptimized
                   />
                 )}
               </div>
@@ -272,34 +280,37 @@ export default function Tima5() {
                 </div>
                 <div className={styles.thirdPointDeImg}>
                   <div className={styles.thirdPoint2Img1_2}>
-                    {imageSrc[11] && (
+                    {imageSrc1[11] && (
                       <Image
-                        src={imageSrc[11]}
+                        src={imageSrc1[11]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "contain" }}
+                        unoptimized
                       />
                     )}
                   </div>
 
                   <div className={styles.thirdPointDeImgBottom}>
                     <div className={styles.thirdImg2_1}>
-                      {imageSrc[6] && (
+                      {imageSrc1[6] && (
                         <Image
-                          src={imageSrc[6]}
+                          src={imageSrc1[6]}
                           alt="전자기기 및 반도체"
                           fill
                           style={{ objectFit: "cover" }}
+                          unoptimized
                         />
                       )}
                     </div>
                     <div className={styles.thirdImg3_1}>
-                      {imageSrc[7] && (
+                      {imageSrc1[7] && (
                         <Image
-                          src={imageSrc[7]}
+                          src={imageSrc1[7]}
                           alt="전자기기 및 반도체"
                           fill
                           style={{ objectFit: "cover" }}
+                          unoptimized
                         />
                       )}
                     </div>
@@ -317,22 +328,24 @@ export default function Tima5() {
               </div>
               <div className={styles.thirdPointDeImg2}>
                 <div className={styles.thirdPoint2Img1_3}>
-                  {imageSrc[12] && (
+                  {imageSrc1[12] && (
                     <Image
-                      src={imageSrc[12]}
+                      src={imageSrc1[12]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "contain" }}
+                      unoptimized
                     />
                   )}
                 </div>
                 <div className={styles.thirdPoint2Img1_4}>
-                  {imageSrc[13] && (
+                  {imageSrc1[13] && (
                     <Image
-                      src={imageSrc[13]}
+                      src={imageSrc1[13]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "contain" }}
+                      unoptimized
                     />
                   )}
                 </div>

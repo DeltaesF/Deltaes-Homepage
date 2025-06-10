@@ -2,21 +2,21 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function T3ster() {
-  const { imageSrc, loading, error } = useFetchImages([
-    "t3ster1.avif",
-    "t3ster2.avif",
-    "t3ster3.avif",
-    "t3ster4.avif",
-    "t3ster5.avif",
-    "t3ster6.avif",
-    "t3ster7.avif",
-    "t3ster8.avif",
-    "t3ster9.avif",
-    "t3ster10.avif",
-    "t3ster11.avif",
+  const { imageSrc1, loading, error } = useFetchCloudinaryImages([
+    "t3ster1_dhmqcu",
+    "t3ster2_zyg97y",
+    "t3ster3_l0q3im",
+    "t3ster4_y1mrce",
+    "t3ster5_zjuyxk",
+    "t3ster6_uky5ft",
+    "t3ster7_zcdcgo",
+    "t3ster8_caidse",
+    "t3ster9_mqzvvn",
+    "t3ster10_xqt4jv",
+    "t3ster11_ixabdg",
   ]);
 
   if (error) {
@@ -32,6 +32,7 @@ export default function T3ster() {
             alt="Loading..."
             width={200}
             height={200}
+            unoptimized
           />
         </div>
       ) : (
@@ -42,12 +43,13 @@ export default function T3ster() {
               <h1>T3STER SI</h1>
               <div className={styles.firstImgP}>
                 <div className={styles.firstImg}>
-                  {imageSrc[0] && (
+                  {imageSrc1[0] && (
                     <Image
-                      src={imageSrc[0]}
+                      src={imageSrc1[0]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -200,12 +202,13 @@ export default function T3ster() {
                     </p>
                   </div>
                   <div className={styles.thirdImg}>
-                    {imageSrc[1] && (
+                    {imageSrc1[1] && (
                       <Image
-                        src={imageSrc[1]}
+                        src={imageSrc1[1]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -233,12 +236,13 @@ export default function T3ster() {
                         make the system more easy to learn and use.
                       </p>
                       <div className={styles.fourNewImgDesImg}>
-                        {imageSrc[2] && (
+                        {imageSrc1[2] && (
                           <Image
-                            src={imageSrc[2]}
+                            src={imageSrc1[2]}
                             alt="전자기기 및 반도체"
                             fill
                             style={{ objectFit: "cover" }}
+                            unoptimized
                           />
                         )}
                       </div>
@@ -255,12 +259,13 @@ export default function T3ster() {
                         necessary.
                       </p>
                       <div className={styles.fourNewImgDesImg}>
-                        {imageSrc[4] && (
+                        {imageSrc1[4] && (
                           <Image
-                            src={imageSrc[4]}
+                            src={imageSrc1[4]}
                             alt="전자기기 및 반도체"
                             fill
                             style={{ objectFit: "cover" }}
+                            unoptimized
                           />
                         )}
                       </div>
@@ -281,12 +286,13 @@ export default function T3ster() {
                         possible.
                       </p>
                       <div className={styles.fourNewImgDesImg}>
-                        {imageSrc[6] && (
+                        {imageSrc1[6] && (
                           <Image
-                            src={imageSrc[6]}
+                            src={imageSrc1[6]}
                             alt="전자기기 및 반도체"
                             fill
                             style={{ objectFit: "cover" }}
+                            unoptimized
                           />
                         )}
                       </div>
@@ -307,12 +313,13 @@ export default function T3ster() {
                         slightest extent.
                       </p>
                       <div className={styles.fourNewImgDesImg}>
-                        {imageSrc[8] && (
+                        {imageSrc1[8] && (
                           <Image
-                            src={imageSrc[8]}
+                            src={imageSrc1[8]}
                             alt="전자기기 및 반도체"
                             fill
                             style={{ objectFit: "cover" }}
+                            unoptimized
                           />
                         )}
                       </div>
@@ -339,12 +346,13 @@ export default function T3ster() {
                         even complex transient simulations highly accurate.
                       </p>
                       <div className={styles.fourNewImgDesImg}>
-                        {imageSrc[10] && (
+                        {imageSrc1[10] && (
                           <Image
-                            src={imageSrc[10]}
+                            src={imageSrc1[10]}
                             alt="전자기기 및 반도체"
                             fill
                             style={{ objectFit: "cover" }}
+                            unoptimized
                           />
                         )}
                       </div>
@@ -374,12 +382,13 @@ export default function T3ster() {
                         performance.
                       </p>
                       <div className={styles.fourNewImgDesImg}>
-                        {imageSrc[3] && (
+                        {imageSrc1[3] && (
                           <Image
-                            src={imageSrc[3]}
+                            src={imageSrc1[3]}
                             alt="전자기기 및 반도체"
                             fill
                             style={{ objectFit: "cover" }}
+                            unoptimized
                           />
                         )}
                       </div>
@@ -403,12 +412,13 @@ export default function T3ster() {
                         semiconductor package and its thermal environment.
                       </p>
                       <div className={styles.fourNewImgDesImg}>
-                        {imageSrc[5] && (
+                        {imageSrc1[5] && (
                           <Image
-                            src={imageSrc[5]}
+                            src={imageSrc1[5]}
                             alt="전자기기 및 반도체"
                             fill
                             style={{ objectFit: "cover" }}
+                            unoptimized
                           />
                         )}
                       </div>
@@ -426,12 +436,13 @@ export default function T3ster() {
                         on their thermal performance.
                       </p>
                       <div className={styles.fourNewImgDesImg}>
-                        {imageSrc[7] && (
+                        {imageSrc1[7] && (
                           <Image
-                            src={imageSrc[7]}
+                            src={imageSrc1[7]}
                             alt="전자기기 및 반도체"
                             fill
                             style={{ objectFit: "cover" }}
+                            unoptimized
                           />
                         )}
                       </div>
@@ -453,12 +464,13 @@ export default function T3ster() {
                         TO-220, TO-247 or common LED packages.
                       </p>
                       <div className={styles.fourNewImgDesImg}>
-                        {imageSrc[9] && (
+                        {imageSrc1[9] && (
                           <Image
-                            src={imageSrc[9]}
+                            src={imageSrc1[9]}
                             alt="전자기기 및 반도체"
                             fill
                             style={{ objectFit: "cover" }}
+                            unoptimized
                           />
                         )}
                       </div>

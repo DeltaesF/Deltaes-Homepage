@@ -3,14 +3,14 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Simensnx() {
-  const { imageSrc, loading, error } = useFetchImages([
-    "simensnx1.avif",
-    "simensnx2.avif",
-    "simensnx3.avif",
-    "simensnx4.avif",
+  const { imageSrc1, loading, error } = useFetchCloudinaryImages([
+    "simensnx1_iudijt",
+    "simensnx2_i3tdhl",
+    "simensnx3_x6a9sq",
+    "simensnx4_itcjkx",
   ]);
 
   if (error) {
@@ -25,6 +25,7 @@ export default function Simensnx() {
             alt="Loading..."
             width={200}
             height={200}
+            unoptimized
           />
         </div>
       ) : (
@@ -35,12 +36,13 @@ export default function Simensnx() {
               <h1>NX</h1>
               <div className={styles.firstImgP}>
                 <div className={styles.firstImg}>
-                  {imageSrc[0] && (
+                  {imageSrc1[0] && (
                     <Image
-                      src={imageSrc[0]}
+                      src={imageSrc1[0]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -123,12 +125,13 @@ export default function Simensnx() {
                     </ul>
                   </div>
                   <div className={styles.thirdImg}>
-                    {imageSrc[1] && (
+                    {imageSrc1[1] && (
                       <Image
-                        src={imageSrc[1]}
+                        src={imageSrc1[1]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
+                        unoptimized
                       />
                     )}
                   </div>
@@ -155,12 +158,13 @@ export default function Simensnx() {
                   </Link>
                 </div>
                 <div className={styles.fourImg1}>
-                  {imageSrc[2] && (
+                  {imageSrc1[2] && (
                     <Image
-                      src={imageSrc[2]}
+                      src={imageSrc1[2]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
@@ -181,12 +185,13 @@ export default function Simensnx() {
                   </Link>
                 </div>
                 <div className={styles.fourImg2}>
-                  {imageSrc[3] && (
+                  {imageSrc1[3] && (
                     <Image
-                      src={imageSrc[3]}
+                      src={imageSrc1[3]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   )}
                 </div>
