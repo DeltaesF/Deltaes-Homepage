@@ -19,6 +19,9 @@ export default function Header() {
   const { unreadCount, unreadQnaCount, refreshNotifications } =
     useNotification();
 
+  console.log("imageSrc[0]", imageSrc[0]);
+  console.log("imageSrc[1]", imageSrc[1]);
+
   if (error) {
     return <p>Error: {error}</p>;
   }
@@ -111,8 +114,8 @@ export default function Header() {
                 <Image
                   src={imageSrc[0]}
                   alt="partner"
-                  width="117"
-                  height="57"
+                  width={117}
+                  height={57}
                 />
               )}
             </div>

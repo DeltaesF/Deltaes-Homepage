@@ -105,7 +105,7 @@ const imgSlice: ImgSlice[] = [
     id: 11,
     img: "https://drive.google.com/uc?export=view&id=1yBvO3u7cpGAhmcG7MVcWcjyZ9mMNJbQh",
     title: "NANOTEST \n TIMA 5",
-    description: "ASTM D-5470 규정에 따른 TIM 재료열물성치 측정장치",
+    description: "ASTM D-5470 규정에 따른 TIM 재열물성치 측정장치",
     link: "/main/pages/product/measurement/tima5",
   },
 ];
