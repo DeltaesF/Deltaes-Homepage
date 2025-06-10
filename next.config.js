@@ -9,14 +9,22 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "lh3.googleusercontent.com", // 추가
+        hostname: "lh3.googleusercontent.com",
       },
       {
         protocol: "https",
-        hostname: "drive.usercontent.google.com", // 추가
+        hostname: "drive.usercontent.google.com",
       },
     ],
-    unoptimized: true,
+  },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/main",
+        permanent: true, // 301 영구 리디렉션
+      },
+    ];
   },
 };
 
