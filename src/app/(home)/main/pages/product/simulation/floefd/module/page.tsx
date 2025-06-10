@@ -2,23 +2,23 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Module() {
-  const { imageSrc, error } = useFetchImages([
-    "floefd7.avif",
-    "floefd8.avif",
-    "floefd9.avif",
-    "floefd10.avif",
-    "floefd11.avif",
-    "floefd12.avif",
-    "floefd13.avif",
-    "floefd14.avif",
-    "floefd15.avif",
-    "floefd16.avif",
-    "floefd17.avif",
-    "floefd18.avif",
-    "floefd19.avif",
+  const { imageSrc1, error } = useFetchCloudinaryImages([
+    "floefd7_yj4o5q",
+    "floefd8_eaa4cm",
+    "floefd9_seid1k",
+    "floefd10_li79io",
+    "floefd11_m6yzav",
+    "floefd12_rwxcrd",
+    "floefd13_a73qkd",
+    "floefd14_o8o5e3",
+    "floefd15_qdnwya",
+    "floefd16_fy6p7n",
+    "floefd17_lnlmsr",
+    "floefd18_kwrtsm",
+    "floefd19_yqm9es",
   ]);
 
   if (error) {
@@ -69,9 +69,9 @@ export default function Module() {
               </ul>
             </div>
             <div className={styles.img1}>
-              {imageSrc[0] && (
+              {imageSrc1[0] && (
                 <Image
-                  src={imageSrc[0]}
+                  src={imageSrc1[0]}
                   alt="전자기기 및 반도체"
                   fill
                   style={{ objectFit: "cover" }}
@@ -110,9 +110,9 @@ export default function Module() {
               </ul>
             </div>
             <div className={styles.img2}>
-              {imageSrc[1] && (
+              {imageSrc1[1] && (
                 <Image
-                  src={imageSrc[1]}
+                  src={imageSrc1[1]}
                   alt="전자기기 및 반도체"
                   fill
                   style={{ objectFit: "cover" }}
@@ -163,9 +163,9 @@ export default function Module() {
               </ul>
             </div>
             <div className={styles.img1}>
-              {imageSrc[2] && (
+              {imageSrc1[2] && (
                 <Image
-                  src={imageSrc[2]}
+                  src={imageSrc1[2]}
                   alt="전자기기 및 반도체"
                   fill
                   style={{ objectFit: "cover" }}
@@ -197,9 +197,9 @@ export default function Module() {
               </ul>
             </div>
             <div className={styles.img2}>
-              {imageSrc[3] && (
+              {imageSrc1[3] && (
                 <Image
-                  src={imageSrc[3]}
+                  src={imageSrc1[3]}
                   alt="전자기기 및 반도체"
                   fill
                   style={{ objectFit: "cover" }}
@@ -211,9 +211,9 @@ export default function Module() {
             <div className={styles.gridImgP}>
               <h3>HVAC</h3>
               <div className={styles.gridImg}>
-                {imageSrc[4] && (
+                {imageSrc1[4] && (
                   <Image
-                    src={imageSrc[4]}
+                    src={imageSrc1[4]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
@@ -244,9 +244,9 @@ export default function Module() {
             <div className={styles.gridImgP}>
               <h3>Advanced</h3>
               <div className={styles.gridImg}>
-                {imageSrc[5] && (
+                {imageSrc1[5] && (
                   <Image
-                    src={imageSrc[5]}
+                    src={imageSrc1[5]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
@@ -284,9 +284,9 @@ export default function Module() {
             <div className={styles.gridImgP}>
               <h3>Power Electrification</h3>
               <div className={styles.gridImg}>
-                {imageSrc[6] && (
+                {imageSrc1[6] && (
                   <Image
-                    src={imageSrc[6]}
+                    src={imageSrc1[6]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
@@ -320,9 +320,9 @@ export default function Module() {
             <div className={styles.gridImgP}>
               <h3>Ext. Design Exploration</h3>
               <div className={styles.gridImg}>
-                {imageSrc[7] && (
+                {imageSrc1[7] && (
                   <Image
-                    src={imageSrc[7]}
+                    src={imageSrc1[7]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
@@ -356,9 +356,9 @@ export default function Module() {
             <div className={styles.gridImgP}>
               <h3>Structural</h3>
               <div className={styles.gridImg}>
-                {imageSrc[8] && (
+                {imageSrc1[8] && (
                   <Image
-                    src={imageSrc[8]}
+                    src={imageSrc1[8]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
@@ -399,9 +399,9 @@ export default function Module() {
             <div className={styles.gridImgP}>
               <h3>Electromagnetics(EMAG)</h3>
               <div className={styles.gridImg}>
-                {imageSrc[9] && (
+                {imageSrc1[9] && (
                   <Image
-                    src={imageSrc[9]}
+                    src={imageSrc1[9]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
@@ -439,9 +439,9 @@ export default function Module() {
             <div className={styles.gridImgP}>
               <h3>BCI-ROM + Package Creator</h3>
               <div className={styles.gridImg}>
-                {imageSrc[10] && (
+                {imageSrc1[10] && (
                   <Image
-                    src={imageSrc[10]}
+                    src={imageSrc1[10]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
@@ -481,9 +481,9 @@ export default function Module() {
             <div className={styles.gridImgP}>
               <h3>Ultra Package</h3>
               <div className={styles.gridImg}>
-                {imageSrc[11] && (
+                {imageSrc1[11] && (
                   <Image
-                    src={imageSrc[11]}
+                    src={imageSrc1[11]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}
@@ -501,9 +501,9 @@ export default function Module() {
             <div className={styles.gridImgP}>
               <h3>EV Package</h3>
               <div className={styles.gridImg}>
-                {imageSrc[12] && (
+                {imageSrc1[12] && (
                   <Image
-                    src={imageSrc[12]}
+                    src={imageSrc1[12]}
                     alt="전자기기 및 반도체"
                     fill
                     style={{ objectFit: "cover" }}

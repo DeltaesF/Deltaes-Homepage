@@ -3,20 +3,20 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Floefd() {
-  const { imageSrc, loading, error } = useFetchImages([
-    "floefd1.avif",
-    "floefd2.avif",
-    "floefd3.avif",
-    "floefd4.avif",
-    "floefd5.avif",
-    "floefd6.avif",
-    "floefd7.avif",
-    "floefd8.avif",
-    "floefd9.avif",
-    "floefd10.avif",
+  const { imageSrc1, loading, error } = useFetchCloudinaryImages([
+    "floefd1_kpt5mp",
+    "floefd2_iqhxid",
+    "floefd3_ghar8e",
+    "floefd4_xaps5n",
+    "floefd5_a66nyx",
+    "floefd6_wewqqb",
+    "floefd7_yj4o5q",
+    "floefd8_eaa4cm",
+    "floefd9_seid1k",
+    "floefd10_li79io",
   ]);
 
   if (error) {
@@ -41,9 +41,9 @@ export default function Floefd() {
               <h1>FLOEFD</h1>
               <div className={styles.firstImgP}>
                 <div className={styles.firstImg}>
-                  {imageSrc[0] && (
+                  {imageSrc1[0] && (
                     <Image
-                      src={imageSrc[0]}
+                      src={imageSrc1[0]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -249,9 +249,9 @@ export default function Floefd() {
                   </p>
                 </div>
                 <div className={styles.fourImg1}>
-                  {imageSrc[1] && (
+                  {imageSrc1[1] && (
                     <Image
-                      src={imageSrc[1]}
+                      src={imageSrc1[1]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -296,9 +296,9 @@ export default function Floefd() {
                   </p>
                 </div>
                 <div className={styles.fourImg2}>
-                  {imageSrc[2] && (
+                  {imageSrc1[2] && (
                     <Image
-                      src={imageSrc[2]}
+                      src={imageSrc1[2]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -342,9 +342,9 @@ export default function Floefd() {
                   </p>
                 </div>
                 <div className={styles.fourImg1}>
-                  {imageSrc[3] && (
+                  {imageSrc1[3] && (
                     <Image
-                      src={imageSrc[3]}
+                      src={imageSrc1[3]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -385,9 +385,9 @@ export default function Floefd() {
                   </p>
                 </div>
                 <div className={styles.fourImg2}>
-                  {imageSrc[4] && (
+                  {imageSrc1[4] && (
                     <Image
-                      src={imageSrc[4]}
+                      src={imageSrc1[4]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -424,9 +424,9 @@ export default function Floefd() {
                   </p>
                 </div>
                 <div className={styles.fourImg1}>
-                  {imageSrc[5] && (
+                  {imageSrc1[5] && (
                     <Image
-                      src={imageSrc[5]}
+                      src={imageSrc1[5]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -447,9 +447,9 @@ export default function Floefd() {
               <div className={styles.fiveImgGrid}>
                 <div className={styles.fiveImgP}>
                   <div className={styles.fiveImg1}>
-                    {imageSrc[6] && (
+                    {imageSrc1[6] && (
                       <Image
-                        src={imageSrc[6]}
+                        src={imageSrc1[6]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
@@ -463,9 +463,9 @@ export default function Floefd() {
                 </div>
                 <div className={styles.fiveImgP}>
                   <div className={styles.fiveImg1}>
-                    {imageSrc[7] && (
+                    {imageSrc1[7] && (
                       <Image
-                        src={imageSrc[7]}
+                        src={imageSrc1[7]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
@@ -479,9 +479,9 @@ export default function Floefd() {
                 </div>
                 <div className={styles.fiveImgP}>
                   <div className={styles.fiveImg1}>
-                    {imageSrc[8] && (
+                    {imageSrc1[8] && (
                       <Image
-                        src={imageSrc[8]}
+                        src={imageSrc1[8]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
@@ -495,9 +495,9 @@ export default function Floefd() {
                 </div>
                 <div className={styles.fiveImgP}>
                   <div className={styles.fiveImg1}>
-                    {imageSrc[9] && (
+                    {imageSrc1[9] && (
                       <Image
-                        src={imageSrc[9]}
+                        src={imageSrc1[9]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}

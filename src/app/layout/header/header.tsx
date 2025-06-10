@@ -113,6 +113,7 @@ export default function Header() {
                   alt="partner"
                   width={117}
                   height={57}
+                  unoptimized
                 />
               )}
             </div>
@@ -123,7 +124,13 @@ export default function Header() {
           <div className={styles.logo}>
             <Link href="/main">
               {imageSrc1[1] && (
-                <Image src={imageSrc1[1]} alt="logo" width="176" height="52" />
+                <Image
+                  src={imageSrc1[1]}
+                  alt="logo"
+                  width="176"
+                  height="52"
+                  unoptimized
+                />
               )}
             </Link>
           </div>

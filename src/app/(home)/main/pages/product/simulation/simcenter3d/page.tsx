@@ -2,16 +2,16 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Simcenter3d() {
-  const { imageSrc, loading, error } = useFetchImages([
-    "simcenter3d1.avif",
-    "simcenter3d2.avif",
-    "simcenter3d3.avif",
-    "simcenter3d4.avif",
-    "simcenter3d5.avif",
-    "simcenter3d6.avif",
+  const { imageSrc1, loading, error } = useFetchCloudinaryImages([
+    "simcenter3d1_khakxi",
+    "simcenter3d2_u6r0ug",
+    "simcenter3d3_whp4y0",
+    "simcenter3d4_u3ayfq",
+    "simcenter3d5_z0ome5",
+    "simcenter3d6_bdk5az",
   ]);
 
   if (error) {
@@ -36,9 +36,9 @@ export default function Simcenter3d() {
               <h1>3D</h1>
               <div className={styles.firstImgP}>
                 <div className={styles.firstImg}>
-                  {imageSrc[0] && (
+                  {imageSrc1[0] && (
                     <Image
-                      src={imageSrc[0]}
+                      src={imageSrc1[0]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -231,9 +231,9 @@ export default function Simcenter3d() {
                     <div className={styles.thirdImgP2Wrapper}>
                       <h3>2D 모델 결과를 결합, 3D 시각화</h3>
                       <div className={styles.thirdImg2}>
-                        {imageSrc[1] && (
+                        {imageSrc1[1] && (
                           <Image
-                            src={imageSrc[1]}
+                            src={imageSrc1[1]}
                             alt="전자기기 및 반도체"
                             fill
                             style={{ objectFit: "cover" }}
@@ -244,9 +244,9 @@ export default function Simcenter3d() {
                     <div className={styles.thirdImgP2Wrapper}>
                       <h3>Ray Acoustics 주차 센서 시뮬레이션</h3>
                       <div className={styles.thirdImg2}>
-                        {imageSrc[2] && (
+                        {imageSrc1[2] && (
                           <Image
-                            src={imageSrc[2]}
+                            src={imageSrc1[2]}
                             alt="전자기기 및 반도체"
                             fill
                             style={{ objectFit: "cover" }}
@@ -257,9 +257,9 @@ export default function Simcenter3d() {
                   </div>
                   <div className={styles.thirdImgP3}>
                     <div className={styles.thirdImg3}>
-                      {imageSrc[3] && (
+                      {imageSrc1[3] && (
                         <Image
-                          src={imageSrc[3]}
+                          src={imageSrc1[3]}
                           alt="전자기기 및 반도체"
                           fill
                           style={{ objectFit: "cover" }}
@@ -300,9 +300,9 @@ export default function Simcenter3d() {
                   </p>
                 </div>
                 <div className={styles.fourImg1}>
-                  {imageSrc[4] && (
+                  {imageSrc1[4] && (
                     <Image
-                      src={imageSrc[4]}
+                      src={imageSrc1[4]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -334,9 +334,9 @@ export default function Simcenter3d() {
                   </p>
                 </div>
                 <div className={styles.fourImg2}>
-                  {imageSrc[5] && (
+                  {imageSrc1[5] && (
                     <Image
-                      src={imageSrc[5]}
+                      src={imageSrc1[5]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}

@@ -26,7 +26,13 @@ export default function Footer() {
         <div className={styles.company}>
           <div className={styles.logo}>
             {imageSrc1[0] && (
-              <Image src={imageSrc1[0]} alt="logo" width="176" height="52" />
+              <Image
+                src={imageSrc1[0]}
+                alt="logo"
+                width="176"
+                height="52"
+                unoptimized
+              />
             )}
           </div>
           <div className={styles.locationPartner}>
@@ -60,6 +66,7 @@ export default function Footer() {
                   alt="partner"
                   width="117"
                   height="57"
+                  unoptimized
                 />
               )}
             </div>

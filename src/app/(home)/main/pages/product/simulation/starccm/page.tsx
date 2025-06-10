@@ -2,15 +2,15 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Starccm() {
-  const { imageSrc, loading, error } = useFetchImages([
-    "starccm1.avif",
-    "starccm2.avif",
-    "starccm3.avif",
-    "starccm4.avif",
-    "starccm5.avif",
+  const { imageSrc1, error, loading } = useFetchCloudinaryImages([
+    "starccm1_cvh5ey",
+    "starccm2_ngt8f7",
+    "starccm3_ra1sew",
+    "starccm4_mwiwfq",
+    "starccm5_uskdyb",
   ]);
 
   if (error) {
@@ -35,9 +35,9 @@ export default function Starccm() {
               <h1>STAR-CCM+</h1>
               <div className={styles.firstImgP}>
                 <div className={styles.firstImg}>
-                  {imageSrc[0] && (
+                  {imageSrc1[0] && (
                     <Image
-                      src={imageSrc[0]}
+                      src={imageSrc1[0]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -194,9 +194,9 @@ export default function Starccm() {
                     <h3>반도체, 디스플레이, 공정분석(PECVD, 에칭 등) 등</h3>
                   </div>
                   <div className={styles.fiveImg1}>
-                    {imageSrc[1] && (
+                    {imageSrc1[1] && (
                       <Image
-                        src={imageSrc[1]}
+                        src={imageSrc1[1]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
@@ -209,9 +209,9 @@ export default function Starccm() {
                     <h3>조선해양, 선박거동 LNG/수소 탱크 평가 등</h3>
                   </div>
                   <div className={styles.fiveImg1}>
-                    {imageSrc[2] && (
+                    {imageSrc1[2] && (
                       <Image
-                        src={imageSrc[2]}
+                        src={imageSrc1[2]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
@@ -226,9 +226,9 @@ export default function Starccm() {
                     </h3>
                   </div>
                   <div className={styles.fiveImg1}>
-                    {imageSrc[3] && (
+                    {imageSrc1[3] && (
                       <Image
-                        src={imageSrc[3]}
+                        src={imageSrc1[3]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
@@ -241,9 +241,9 @@ export default function Starccm() {
                     <h3>배터리, 전극/셀/팩/시스템 설계 평가 등</h3>
                   </div>
                   <div className={styles.fiveImg1}>
-                    {imageSrc[4] && (
+                    {imageSrc1[4] && (
                       <Image
-                        src={imageSrc[4]}
+                        src={imageSrc1[4]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}

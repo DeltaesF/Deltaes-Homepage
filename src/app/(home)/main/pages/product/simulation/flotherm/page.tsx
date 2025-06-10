@@ -3,28 +3,28 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Flotherm() {
-  const { imageSrc, loading, error } = useFetchImages([
-    "flotherm1.avif",
-    "flotherm2.avif",
-    "flotherm3.avif",
-    "flotherm4.avif",
-    "flotherm5.avif",
-    "flotherm6.avif",
-    "flotherm7.avif",
-    "flothermxt8.avif",
-    "flotherm8.avif",
-    "flothermxt7.avif",
-    "flotherm9.avif",
-    "flotherm10.avif",
-    "flothermxt11.avif",
-    "flothermxt12.avif",
-    "flothermxt13.avif",
-    "flothermxt14.avif",
-    "flothermxt15.avif",
-    "flothermxt16.avif",
+  const { imageSrc1, loading, error } = useFetchCloudinaryImages([
+    "flotherm1_mjjawu",
+    "flotherm2_kwcjax",
+    "flotherm3_brok1x",
+    "flotherm4_tkqgah",
+    "flotherm5_w1fdfq",
+    "flotherm6_k7x0ud",
+    "flotherm7_mc5lmo",
+    "flothermxt8_tngnq2",
+    "flotherm8_wth13p",
+    "flothermxt7_ud3nqk",
+    "flotherm9_qsnhm8",
+    "flotherm10_ikfbyr",
+    "flothermxt11_lpb6vn",
+    "flothermxt12_smbbma",
+    "flothermxt13_vcrjxb",
+    "flothermxt14_t5bb4w",
+    "flothermxt15_gce9yn",
+    "flothermxt16_kld7ch",
   ]);
 
   if (error) {
@@ -49,9 +49,9 @@ export default function Flotherm() {
               <h1>Flotherm</h1>
               <div className={styles.firstImgP}>
                 <div className={styles.firstImg}>
-                  {imageSrc[0] && (
+                  {imageSrc1[0] && (
                     <Image
-                      src={imageSrc[0]}
+                      src={imageSrc1[0]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -128,9 +128,9 @@ export default function Flotherm() {
               <h2>왜 Simcenter Flotherm을 사용해야 할까요?</h2>
               <div className={styles.thirdSubContent}>
                 <div className={styles.thirdImg}>
-                  {imageSrc[1] && (
+                  {imageSrc1[1] && (
                     <Image
-                      src={imageSrc[1]}
+                      src={imageSrc1[1]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -166,9 +166,9 @@ export default function Flotherm() {
                   </div>
                   <div className={styles.thirdImgP}>
                     <div className={styles.thirdImg2}>
-                      {imageSrc[2] && (
+                      {imageSrc1[2] && (
                         <Image
-                          src={imageSrc[2]}
+                          src={imageSrc1[2]}
                           alt="전자기기 및 반도체"
                           fill
                           style={{ objectFit: "cover" }}
@@ -210,9 +210,9 @@ export default function Flotherm() {
                   </ul>
                 </div>
                 <div className={styles.fourImgD}>
-                  {imageSrc[3] && (
+                  {imageSrc1[3] && (
                     <Image
-                      src={imageSrc[3]}
+                      src={imageSrc1[3]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -235,9 +235,9 @@ export default function Flotherm() {
                   </ul>
                 </div>
                 <div className={styles.fourImgD2}>
-                  {imageSrc[4] && (
+                  {imageSrc1[4] && (
                     <Image
-                      src={imageSrc[4]}
+                      src={imageSrc1[4]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -264,9 +264,9 @@ export default function Flotherm() {
                   </ul>
                 </div>
                 <div className={styles.fourImgD3}>
-                  {imageSrc[5] && (
+                  {imageSrc1[5] && (
                     <Image
-                      src={imageSrc[5]}
+                      src={imageSrc1[5]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -283,9 +283,9 @@ export default function Flotherm() {
                   </p>
                 </div>
                 <div className={styles.fourImg2}>
-                  {imageSrc[6] && (
+                  {imageSrc1[6] && (
                     <Image
-                      src={imageSrc[6]}
+                      src={imageSrc1[6]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -302,9 +302,9 @@ export default function Flotherm() {
                   </p>
                 </div>
                 <div className={styles.fourImg1}>
-                  {imageSrc[7] && (
+                  {imageSrc1[7] && (
                     <Image
-                      src={imageSrc[7]}
+                      src={imageSrc1[7]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -331,9 +331,9 @@ export default function Flotherm() {
                   </ul>
                 </div>
                 <div className={styles.fourImg2}>
-                  {imageSrc[8] && (
+                  {imageSrc1[8] && (
                     <Image
-                      src={imageSrc[8]}
+                      src={imageSrc1[8]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -357,9 +357,9 @@ export default function Flotherm() {
                   </p>
                 </div>
                 <div className={styles.fourImg1}>
-                  {imageSrc[9] && (
+                  {imageSrc1[9] && (
                     <Image
-                      src={imageSrc[9]}
+                      src={imageSrc1[9]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -376,9 +376,9 @@ export default function Flotherm() {
                   </p>
                 </div>
                 <div className={styles.fourImgD4}>
-                  {imageSrc[10] && (
+                  {imageSrc1[10] && (
                     <Image
-                      src={imageSrc[10]}
+                      src={imageSrc1[10]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -401,9 +401,9 @@ export default function Flotherm() {
                   </ul>
                 </div>
                 <div className={styles.fourImgD5}>
-                  {imageSrc[11] && (
+                  {imageSrc1[11] && (
                     <Image
-                      src={imageSrc[11]}
+                      src={imageSrc1[11]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -424,9 +424,9 @@ export default function Flotherm() {
               <div className={styles.fiveImgGrid}>
                 <div className={styles.fiveImgP}>
                   <div className={styles.fiveImg1}>
-                    {imageSrc[12] && (
+                    {imageSrc1[12] && (
                       <Image
-                        src={imageSrc[12]}
+                        src={imageSrc1[12]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
@@ -440,9 +440,9 @@ export default function Flotherm() {
                 </div>
                 <div className={styles.fiveImgP}>
                   <div className={styles.fiveImg1}>
-                    {imageSrc[13] && (
+                    {imageSrc1[13] && (
                       <Image
-                        src={imageSrc[13]}
+                        src={imageSrc1[13]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
@@ -456,9 +456,9 @@ export default function Flotherm() {
                 </div>
                 <div className={styles.fiveImgP}>
                   <div className={styles.fiveImg1}>
-                    {imageSrc[14] && (
+                    {imageSrc1[14] && (
                       <Image
-                        src={imageSrc[14]}
+                        src={imageSrc1[14]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
@@ -472,9 +472,9 @@ export default function Flotherm() {
                 </div>
                 <div className={styles.fiveImgP}>
                   <div className={styles.fiveImg1}>
-                    {imageSrc[15] && (
+                    {imageSrc1[15] && (
                       <Image
-                        src={imageSrc[15]}
+                        src={imageSrc1[15]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
@@ -488,9 +488,9 @@ export default function Flotherm() {
                 </div>
                 <div className={styles.fiveImgP}>
                   <div className={styles.fiveImg1}>
-                    {imageSrc[16] && (
+                    {imageSrc1[16] && (
                       <Image
-                        src={imageSrc[16]}
+                        src={imageSrc1[16]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
@@ -504,9 +504,9 @@ export default function Flotherm() {
                 </div>
                 <div className={styles.fiveImgP}>
                   <div className={styles.fiveImg1}>
-                    {imageSrc[17] && (
+                    {imageSrc1[17] && (
                       <Image
-                        src={imageSrc[17]}
+                        src={imageSrc1[17]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}

@@ -2,15 +2,15 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Module() {
-  const { imageSrc, loading, error } = useFetchImages([
-    "flothermxt11.avif",
-    "flothermxt12.avif",
-    "flothermxt14.avif",
-    "flothermxt15.avif",
-    "flothermxt16.avif",
+  const { imageSrc1, loading, error } = useFetchCloudinaryImages([
+    "flothermxt11_lpb6vn",
+    "flothermxt12_smbbma",
+    "flothermxt14_t5bb4w",
+    "flothermxt15_gce9yn",
+    "flothermxt16_kld7ch",
   ]);
 
   if (error) {
@@ -55,9 +55,9 @@ export default function Module() {
                   </p>
                 </div>
                 <div className={styles.img1}>
-                  {imageSrc[0] && (
+                  {imageSrc1[0] && (
                     <Image
-                      src={imageSrc[0]}
+                      src={imageSrc1[0]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -75,9 +75,9 @@ export default function Module() {
                   </p>
                 </div>
                 <div className={styles.img2}>
-                  {imageSrc[1] && (
+                  {imageSrc1[1] && (
                     <Image
-                      src={imageSrc[1]}
+                      src={imageSrc1[1]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -99,9 +99,9 @@ export default function Module() {
                   </p>
                 </div>
                 <div className={styles.img1}>
-                  {imageSrc[0] && (
+                  {imageSrc1[0] && (
                     <Image
-                      src={imageSrc[0]}
+                      src={imageSrc1[0]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -128,9 +128,9 @@ export default function Module() {
                   </p>
                 </div>
                 <div className={styles.img2}>
-                  {imageSrc[2] && (
+                  {imageSrc1[2] && (
                     <Image
-                      src={imageSrc[2]}
+                      src={imageSrc1[2]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -172,9 +172,9 @@ export default function Module() {
                   </ul>
                 </div>
                 <div className={styles.img1}>
-                  {imageSrc[3] && (
+                  {imageSrc1[3] && (
                     <Image
-                      src={imageSrc[3]}
+                      src={imageSrc1[3]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -219,9 +219,9 @@ export default function Module() {
                   </ul>
                 </div>
                 <div className={styles.img2}>
-                  {imageSrc[4] && (
+                  {imageSrc1[4] && (
                     <Image
-                      src={imageSrc[4]}
+                      src={imageSrc1[4]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}

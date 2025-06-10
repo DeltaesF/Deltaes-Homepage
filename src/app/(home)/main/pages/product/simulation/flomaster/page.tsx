@@ -3,19 +3,19 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Flomaster() {
-  const { imageSrc, loading, error } = useFetchImages([
-    "flomaster1.avif",
-    "flomaster2.avif",
-    "flomaster3.avif",
-    "flomaster4.avif",
-    "flomaster5.avif",
-    "flomaster6.avif",
-    "flomaster7.avif",
-    "flomaster8.avif",
-    "flomaster9.avif",
+  const { imageSrc1, loading, error } = useFetchCloudinaryImages([
+    "flomaster1_y7zuno",
+    "flomaster2_xgi3km",
+    "flomaster3_l9efdo",
+    "flomaster4_wwioao",
+    "flomaster5_qztq5r",
+    "flomaster6_yhnj9j",
+    "flomaster7_dh8bkv",
+    "flomaster8_duc5g4",
+    "flomaster9_ybnlxf",
   ]);
 
   if (error) {
@@ -40,9 +40,9 @@ export default function Flomaster() {
               <h1>Flomaster</h1>
               <div className={styles.firstImgP}>
                 <div className={styles.firstImg}>
-                  {imageSrc[0] && (
+                  {imageSrc1[0] && (
                     <Image
-                      src={imageSrc[0]}
+                      src={imageSrc1[0]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -125,9 +125,9 @@ export default function Flomaster() {
               <h2>Simcenter Flomaster의 주요 기능</h2>
               <div className={styles.thirdSubContent}>
                 <div className={styles.thirdImg}>
-                  {imageSrc[1] && (
+                  {imageSrc1[1] && (
                     <Image
-                      src={imageSrc[1]}
+                      src={imageSrc1[1]}
                       alt="전자기기 및 반도체"
                       fill
                       style={{ objectFit: "cover" }}
@@ -184,9 +184,9 @@ export default function Flomaster() {
               <div className={styles.fourGrid}>
                 <div className={styles.grid}>
                   <div className={styles.gridDes}>
-                    {imageSrc[2] && (
+                    {imageSrc1[2] && (
                       <Image
-                        src={imageSrc[2]}
+                        src={imageSrc1[2]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
@@ -211,9 +211,9 @@ export default function Flomaster() {
                 </div>
                 <div className={styles.grid}>
                   <div className={styles.gridDes}>
-                    {imageSrc[3] && (
+                    {imageSrc1[3] && (
                       <Image
-                        src={imageSrc[3]}
+                        src={imageSrc1[3]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
@@ -235,9 +235,9 @@ export default function Flomaster() {
                 </div>
                 <div className={styles.grid}>
                   <div className={styles.gridDes}>
-                    {imageSrc[4] && (
+                    {imageSrc1[4] && (
                       <Image
-                        src={imageSrc[4]}
+                        src={imageSrc1[4]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
@@ -262,9 +262,9 @@ export default function Flomaster() {
                 </div>
                 <div className={styles.grid}>
                   <div className={styles.gridDes}>
-                    {imageSrc[5] && (
+                    {imageSrc1[5] && (
                       <Image
-                        src={imageSrc[5]}
+                        src={imageSrc1[5]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
@@ -289,9 +289,9 @@ export default function Flomaster() {
                 </div>
                 <div className={styles.grid}>
                   <div className={styles.gridDes}>
-                    {imageSrc[6] && (
+                    {imageSrc1[6] && (
                       <Image
-                        src={imageSrc[6]}
+                        src={imageSrc1[6]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
@@ -316,9 +316,9 @@ export default function Flomaster() {
                 </div>
                 <div className={styles.grid}>
                   <div className={styles.gridDes}>
-                    {imageSrc[7] && (
+                    {imageSrc1[7] && (
                       <Image
-                        src={imageSrc[7]}
+                        src={imageSrc1[7]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}
@@ -343,9 +343,9 @@ export default function Flomaster() {
                 </div>
                 <div className={styles.grid}>
                   <div className={styles.gridDes}>
-                    {imageSrc[8] && (
+                    {imageSrc1[8] && (
                       <Image
-                        src={imageSrc[8]}
+                        src={imageSrc1[8]}
                         alt="전자기기 및 반도체"
                         fill
                         style={{ objectFit: "cover" }}

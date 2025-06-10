@@ -318,6 +318,7 @@ export default function MainPage() {
                   alt="product img"
                   fill
                   style={{ objectFit: "cover" }}
+                  unoptimized
                 />
                 <div
                   className={styles.imgIntroduce}
@@ -384,6 +385,7 @@ export default function MainPage() {
                         style={{
                           objectFit: "cover",
                         }}
+                        unoptimized
                       />
                     </div>
                   )}
@@ -613,6 +615,7 @@ export default function MainPage() {
                       width={93}
                       height={45}
                       style={{ objectFit: "cover" }}
+                      unoptimized
                     />
                   </div>
                 ))}
