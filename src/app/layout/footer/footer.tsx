@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import styles from "./footer.module.css";
-import useFetchImages from "@/app/hooks/useFetchImages";
+import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Footer() {
-  const { imageSrc, error } = useFetchImages([
-    "footer-logo.avif",
-    "partner.png",
+  const { imageSrc1, error } = useFetchCloudinaryImages([
+    "footer-logo_mnjlth",
+    "partner_pmwjie",
   ]);
 
   if (error) {
@@ -25,8 +25,8 @@ export default function Footer() {
         </div>
         <div className={styles.company}>
           <div className={styles.logo}>
-            {imageSrc[0] && (
-              <Image src={imageSrc[0]} alt="logo" width="176" height="52" />
+            {imageSrc1[0] && (
+              <Image src={imageSrc1[0]} alt="logo" width="176" height="52" />
             )}
           </div>
           <div className={styles.locationPartner}>
@@ -54,9 +54,9 @@ export default function Footer() {
               <p>DELTA ES CO., LTD. COPYRIGHT@2020 CORP. ALL RIGHTS RESERVED</p>
             </div>
             <div className={styles.partner}>
-              {imageSrc[1] && (
+              {imageSrc1[1] && (
                 <Image
-                  src={imageSrc[1]}
+                  src={imageSrc1[1]}
                   alt="partner"
                   width="117"
                   height="57"
