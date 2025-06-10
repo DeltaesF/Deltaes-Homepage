@@ -20,6 +20,7 @@ const nextConfig = {
         hostname: "drive.usercontent.google.com",
       },
     ],
+    unoptimized: true,
   },
   async redirects() {
     return [

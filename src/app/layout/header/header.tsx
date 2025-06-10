@@ -19,9 +19,6 @@ export default function Header() {
   const { unreadCount, unreadQnaCount, refreshNotifications } =
     useNotification();
 
-  console.log("imageSrc1[0]", imageSrc1[0]);
-  console.log("imageSrc1[1]", imageSrc1[1]);
-
   if (error) {
     return <p>Error: {error}</p>;
   }
