@@ -351,7 +351,7 @@
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .firstWrapper {
     height: auto;
-    padding: 30px 15px; 
+    padding: 30px 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -364,7 +364,7 @@
   }
 
   .firstContent h2 {
-    font-size: 28px; 
+    font-size: 28px;
   }
 
   .firstContent h1 {
@@ -388,7 +388,7 @@
   .firstDes {
     width: 100%;
     text-align: center;
-    font-size: 16px; 
+    font-size: 16px;
   }
 
   .firstDes p {
@@ -405,7 +405,7 @@
 
   .secondWrapper {
     height: auto;
-    padding: 30px 15px; 
+    padding: 30px 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -415,15 +415,15 @@
   .secondContent {
     width: 100%;
     text-align: center;
-    gap: 40px; 
+    gap: 40px;
   }
 
   .secondContent h2 {
-    font-size: 28px; 
+    font-size: 28px;
   }
 
   .secondDes {
-    gap: 30px; 
+    gap: 30px;
   }
 
   .secondDes > div {
@@ -434,14 +434,14 @@
   }
 
   .secondDes h3 {
-    font-size: 28px; 
+    font-size: 28px;
   }
 
   .secondDes div p {
-    font-size: 16px; 
+    font-size: 16px;
     line-height: 1.4;
   }
-  
+
   .thirdWrapper {
     height: auto;
     padding: 30px 15px;
@@ -593,7 +593,7 @@
   .fiveImg1 {
     width: 100%;
     height: auto;
-    aspect-ratio: 4 / 3; /
+    aspect-ratio: 4 / 3;
   }
 
   .fiveDes1 h3 {
@@ -604,7 +604,7 @@
 @media screen and (max-width: 480px) {
   .firstWrapper {
     height: auto;
-    padding: 30px 15px; 
+    padding: 30px 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -617,31 +617,31 @@
   }
 
   .firstContent h2 {
-    font-size: 24px; 
+    font-size: 24px;
   }
 
   .firstContent h1 {
-    font-size: 28px; 
+    font-size: 28px;
     margin-top: 5px;
   }
 
   .firstImgP {
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
     margin-top: 20px;
   }
 
   .firstImg {
     width: 100%;
-    height: 250px; 
+    height: 250px;
     margin-right: 0;
   }
 
   .firstDes {
     width: 100%;
     text-align: center;
-    font-size: 12px; 
+    font-size: 12px;
   }
 
   .firstDes p {
@@ -658,7 +658,7 @@
 
   .secondWrapper {
     height: auto;
-    padding: 30px 15px; 
+    padding: 30px 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -668,26 +668,26 @@
   .secondContent {
     width: 100%;
     text-align: center;
-    gap: 40px; 
+    gap: 40px;
   }
 
   .secondContent h2 {
-    font-size: 24px; 
+    font-size: 24px;
   }
 
   .secondDes {
-    gap: 30px; 
+    gap: 30px;
   }
 
   .secondDes > div {
-    flex-direction: column; 
-    align-items: center; 
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     gap: 10px;
   }
 
   .secondDes h3 {
-    font-size: 28px; 
+    font-size: 28px;
   }
 
   .secondDes div p {
@@ -847,7 +847,7 @@
   .fiveImg1 {
     width: 100%;
     height: auto;
-    aspect-ratio: 4 / 3; 
+    aspect-ratio: 4 / 3;
   }
 
   .fiveDes1 h3 {
