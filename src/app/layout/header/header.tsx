@@ -140,7 +140,7 @@ export default function Header() {
                 <Link href="/main/pages/product">제품안내</Link>
                 <ul className={styles.dropdownMenu}>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="">시뮬레이션 소프트웨어</Link>
+                    시뮬레이션 소프트웨어
                     <ul className={styles.subMenu}>
                       <li>
                         <Link href="/main/pages/product/simulation/flothermxt">
@@ -190,7 +190,7 @@ export default function Header() {
                     </ul>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item2">측정장비</Link>
+                    측정장비
                     <ul className={styles.subMenu}>
                       <li>
                         <Link href="/main/pages/product/measurement/powertester">
@@ -225,7 +225,7 @@ export default function Header() {
                     </ul>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/pages/product/item3">설계 소프트웨어</Link>
+                    설계 소프트웨어
                     <ul className={styles.subMenu}>
                       <li>
                         <Link href="/main/pages/product/design/adt">

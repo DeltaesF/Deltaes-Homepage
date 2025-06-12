@@ -173,11 +173,6 @@
   font-size: 20px;
   font-weight: bold;
 }
-.thirdDes2 p {
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 1.5;
-}
 
 .thirdDes2 div {
   width: 900px;
@@ -185,18 +180,13 @@
   color: black;
   margin: 0 auto;
 }
-.thirdDes2 div ul {
-}
+
 .thirdDes2 div li {
   list-style-type: disc;
   line-height: 1.6;
 }
 .thirdDes2 div li > strong {
   font-weight: bold;
-}
-.thirdDes2 div p {
-  margin: 10px 0;
-  font-weight: 500;
 }
 
 .thirdImgP2 {
@@ -270,12 +260,6 @@
   font-size: 18px;
   font-weight: bold;
 }
-.fourDes1 ul {
-  padding-left: 20px;
-}
-.fourDes1 li {
-  list-style-type: disc;
-}
 
 .fourImg1 {
   position: relative;
@@ -305,13 +289,6 @@
   font-weight: bold;
   text-align: right;
 }
-.fourDes2 ul {
-  padding-left: 20px;
-}
-.fourDes2 li {
-  list-style-type: disc;
-}
-
 .fourImg2 {
   position: relative;
   width: 370px;
@@ -319,90 +296,10 @@
   margin-right: 30px;
 }
 
-.fiveWrapper {
-  width: 100vw;
-  height: 1000px;
-  background-color: #00305b;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fiveContent {
-  width: 1000px;
-  height: auto;
-}
-
-.fiveHeader {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.fiveHeader h2 {
-  font-size: 28px;
-  font-weight: bold;
-  color: white;
-  margin-right: 50px;
-}
-
-.fiveHeader button {
-  width: 120px;
-  height: 30px;
-  background-color: #191919;
-  color: white;
-  border: 1px solid white;
-  font-size: 13px;
-  font-weight: bold;
-}
-.fiveHeader button:hover {
-  background-color: white;
-  color: black;
-}
-
-.fiveImgGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  width: 900px;
-  margin: 0 auto;
-  margin-top: 50px;
-  height: auto;
-}
-.fiveImgP {
-  margin-top: 50px;
-}
-
-.fiveImg1 {
-  width: 390px;
-  height: 300px;
-  position: relative;
-}
-
-.fiveDes1 {
-  display: flex;
-  margin-top: 10px;
-  align-items: center;
-}
-.fiveDes1 h3 {
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-}
-.contantSquare {
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  background-color: #fff;
-  margin-right: 10px;
-  border-radius: 5px;
-}
-
 @media screen and (max-width: 480px) {
-  /*최대 크기 480px*/
   .firstWrapper {
     height: auto;
-    padding: 30px 15px; /* 좌우 여백 추가 */
+    padding: 30px 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -415,31 +312,31 @@
   }
 
   .firstContent h2 {
-    font-size: 24px; /* 폰트 크기 줄이기 */
+    font-size: 24px;
   }
 
   .firstContent h1 {
-    font-size: 28px; /* 폰트 크기 줄이기 */
+    font-size: 28px;
     margin-top: 5px;
   }
 
   .firstImgP {
     display: flex;
     flex-direction: column;
-    align-items: center; /* 중앙 정렬 */
+    align-items: center;
     margin-top: 20px;
   }
 
   .firstImg {
     width: 100%;
-    height: 250px; /* 이미지 크기 조절 */
+    height: 250px;
     margin-right: 0;
   }
 
   .firstDes {
     width: 100%;
     text-align: center;
-    font-size: 12px; /* 폰트 크기 줄이기 */
+    font-size: 12px;
   }
 
   .firstDes p {
@@ -456,7 +353,7 @@
 
   .secondWrapper {
     height: auto;
-    padding: 30px 15px; /* 좌우 여백 추가 */
+    padding: 30px 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -466,33 +363,33 @@
   .secondContent {
     width: 100%;
     text-align: center;
-    gap: 40px; /* 간격 조정 */
+    gap: 40px;
   }
 
   .secondContent h2 {
-    font-size: 24px; /* 제목 크기 조절 */
+    font-size: 24px;
   }
 
   .secondDes {
-    gap: 30px; /* 항목 간격 줄이기 */
+    gap: 30px;
   }
 
   .secondDes > div {
-    flex-direction: column; /* 수직 정렬 */
-    align-items: center; /* 중앙 정렬 */
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     gap: 10px;
   }
 
   .secondDes h3 {
-    font-size: 28px; /* 숫자 크기 조절 */
+    font-size: 28px;
   }
 
   .secondDes div p {
-    font-size: 13px; /* 글자 크기 줄이기 */
+    font-size: 13px;
     line-height: 1.4;
   }
-  /* 최대 크기 480px */
+
   .thirdWrapper {
     height: auto;
     padding: 30px 15px;
@@ -509,19 +406,6 @@
   .thirdContent h2 {
     font-size: 22px;
     text-align: center;
-  }
-
-  .thirdSubContent {
-    width: 100%;
-  }
-
-  .thirdImg {
-    width: 100%;
-    height: 250px;
-  }
-
-  .thirdImgDes p {
-    font-size: 12px;
   }
 
   .thirdDes {
@@ -556,13 +440,6 @@
     font-weight: bold;
     text-align: center;
   }
-
-  .thirdDes2 p {
-    font-weight: bold;
-    font-size: 13px;
-    line-height: 1.5;
-  }
-
   .thirdDes2 div {
     width: 100%;
     height: auto;
@@ -578,28 +455,6 @@
     font-size: 12px;
     margin-bottom: 5px;
   }
-
-  .thirdDes2 div p {
-    margin: 10px 0;
-    font-weight: 500;
-    font-size: 13px;
-  }
-
-  /* .thirdDes2 {
-    text-align: center;
-    font-size: 12px;
-    margin-top: 15px;
-  }
-
-  .thirdDes2 ul {
-    padding-left: 0;
-  }
-
-  .thirdDes2 li {
-    list-style-type: none;
-    font-size: 12px;
-    line-height: 1.5;
-  } */
 
   .thirdImg3 {
     width: 100%;
@@ -643,61 +498,9 @@
     text-align: center;
   }
   .fourImg1,
-  .fourImg2,
-  .fourImgD,
-  .fourImgD2,
-  .fourImgD3,
-  .fourImgD4,
-  .fourImgD5 {
+  .fourImg2 {
     width: 100%;
     height: 200px;
     margin: 10px 0;
-  }
-
-  .fiveWrapper {
-    height: auto;
-    padding: 50px 0;
-  }
-
-  .fiveContent {
-    width: 90%;
-  }
-
-  .fiveHeader {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .fiveHeader h2 {
-    font-size: 24px;
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-
-  .fiveHeader button {
-    width: 120px;
-    height: 40px;
-    font-size: 14px;
-  }
-
-  .fiveImgGrid {
-    grid-template-columns: 1fr;
-    width: 100%;
-    gap: 15px;
-    margin-top: 30px;
-  }
-
-  .fiveImgP {
-    margin-top: 30px;
-  }
-
-  .fiveImg1 {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 4 / 3; /* 가로 4: 세로 3 비율 유지 */
-  }
-
-  .fiveDes1 h3 {
-    font-size: 18px;
   }
 }
