@@ -14,7 +14,6 @@ const config = {
         disallow: ["/profile", "/profile/", "/profile/*", "/api/", "/api/*"],
       },
     ],
-    additionalSitemaps: ["https://www.deltaes.co.kr/sitemap.xml"],
   },
 };
 
