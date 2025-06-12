@@ -1,5 +1,9 @@
 # *
 User-agent: *
+Disallow: /profile/
+Disallow: /profile/users
+Disallow: /profile/posts
+Disallow: /profile/inquiry
 Allow: /
 
 # Host
