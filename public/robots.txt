@@ -1,10 +1,11 @@
 # *
 User-agent: *
-Disallow: /profile/
-Disallow: /profile/users
-Disallow: /profile/posts
-Disallow: /profile/inquiry
 Allow: /
+Disallow: /profile
+Disallow: /profile/
+Disallow: /profile/*
+Disallow: /api/
+Disallow: /api/*
 
 # Host
 Host: https://www.deltaes.co.kr

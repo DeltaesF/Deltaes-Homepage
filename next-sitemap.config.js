@@ -5,6 +5,17 @@ const config = {
   sitemapSize: 7000,
   changefreq: "daily",
   priority: 0.7,
+  exclude: ["/profile", "/profile/*", "/api/*"],
+  robotsTxtOptions: {
+    policies: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/profile", "/profile/", "/profile/*", "/api/", "/api/*"],
+      },
+    ],
+    additionalSitemaps: ["https://www.deltaes.co.kr/sitemap.xml"],
+  },
 };
 
 module.exports = config;
