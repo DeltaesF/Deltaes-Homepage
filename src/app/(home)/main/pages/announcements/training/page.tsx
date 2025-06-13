@@ -3,6 +3,7 @@
 import styles from "./page.module.css";
 import Image from "next/image";
 import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
+import Link from "next/link";
 
 export default function Training() {
   const { imageSrc1, error } = useFetchCloudinaryImages([
@@ -72,7 +73,11 @@ export default function Training() {
             기술영업부 이설 영업대표 010-7749-6241{" "}
             <a href="mailto:slee@deltaes.co.kr">slee@deltaes.co.kr</a>
           </p>
-          <button>2025 Delta ES 교육 일정표</button>
+          <button>
+            <Link href={`/main/pages/announcements/N40maLt1R2KBQeX3EcNb`}>
+              2025 Delta ES 교육 일정표
+            </Link>
+          </button>
         </footer>
       </article>
     </section>
