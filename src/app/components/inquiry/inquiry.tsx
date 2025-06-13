@@ -113,6 +113,19 @@ export default function Inquiry() {
       setMessage("");
       setSuccess(true);
       setTimeout(() => setSuccess(false), 3000);
+
+      // 이메일 알림 발송 기능
+      await fetch("/api/sendInquiry", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: userName,
+          email,
+          message,
+        }),
+      });
     } catch (error) {
       console.error("메시지 전송 실패:", error);
     }
