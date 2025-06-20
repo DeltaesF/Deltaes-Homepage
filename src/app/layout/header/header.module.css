@@ -149,6 +149,13 @@
 .subDropdown {
   position: relative;
 }
+.subDropdown:hover > a {
+  color: #4ceed0;
+}
+
+.subDropdown:hover .subMenu {
+  display: block;
+}
 
 .subMenu {
   display: none;
@@ -162,10 +169,6 @@
   z-index: 1000;
   width: auto;
   max-width: 300px;
-}
-
-.subDropdown:hover .subMenu {
-  display: block;
 }
 
 .menu {
