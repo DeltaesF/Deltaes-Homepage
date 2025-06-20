@@ -25,6 +25,8 @@ interface Inquiry {
 export default function InquiryList() {
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
   const [errorMessage, setErrorMessage] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const inquiriPerPage = 15;
 
   useEffect(() => {
     // 모든 문의 목록을 가져오고 각 문의에 마지막 메시지를 미리보기로 추가하는 함수
@@ -87,6 +89,14 @@ export default function InquiryList() {
     fetchInquiriesWithPreview();
   }, []);
 
+  // ✅ 페이지네이션 관련 처리
+  const totalPages = Math.ceil(inquiries.length / inquiriPerPage);
+  const startIndex = (currentPage - 1) * inquiriPerPage;
+  const currentInquiries = inquiries.slice(
+    startIndex,
+    startIndex + inquiriPerPage,
+  );
+
   return (
     <section>
       <article>
@@ -100,7 +110,7 @@ export default function InquiryList() {
             </tr>
           </thead>
           <tbody>
-            {inquiries.map((inquiry) => (
+            {currentInquiries.map((inquiry) => (
               <tr key={inquiry.id}>
                 <td>{inquiry.userName}</td>
                 <td>{inquiry.email}</td>
@@ -126,6 +136,29 @@ export default function InquiryList() {
           </tbody>
         </table>
       </article>
+
+      <div className={styles.pagination}>
+        <button
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+          className={styles.pageButton}
+        >
+          이전
+        </button>
+        <span className={styles.pageInfo}>
+          {currentPage} / {totalPages}
+        </span>
+        <button
+          onClick={() =>
+            setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+          }
+          disabled={currentPage === totalPages}
+          className={styles.pageButton}
+        >
+          다음
+        </button>
+      </div>
+
       {errorMessage && (
         <div className={styles.errorContainer}>{errorMessage}</div>
       )}
