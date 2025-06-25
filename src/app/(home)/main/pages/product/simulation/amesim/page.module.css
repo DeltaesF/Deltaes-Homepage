@@ -325,10 +325,9 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-  /*최대 크기 480px*/
   .firstWrapper {
     height: auto;
-    padding: 30px 15px; /* 좌우 여백 추가 */
+    padding: 30px 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -341,31 +340,31 @@
   }
 
   .firstContent h2 {
-    font-size: 24px; /* 폰트 크기 줄이기 */
+    font-size: 24px;
   }
 
   .firstContent h1 {
-    font-size: 28px; /* 폰트 크기 줄이기 */
+    font-size: 28px;
     margin-top: 5px;
   }
 
   .firstImgP {
     display: flex;
     flex-direction: column;
-    align-items: center; /* 중앙 정렬 */
+    align-items: center;
     margin-top: 20px;
   }
 
   .firstImg {
     width: 100%;
-    height: 250px; /* 이미지 크기 조절 */
+    height: 250px;
     margin-right: 0;
   }
 
   .firstDes {
     width: 100%;
     text-align: center;
-    font-size: 12px; /* 폰트 크기 줄이기 */
+    font-size: 12px;
   }
 
   .firstDes p {
@@ -382,7 +381,7 @@
 
   .secondWrapper {
     height: auto;
-    padding: 30px 15px; /* 좌우 여백 추가 */
+    padding: 30px 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -392,33 +391,33 @@
   .secondContent {
     width: 100%;
     text-align: center;
-    gap: 40px; /* 간격 조정 */
+    gap: 40px;
   }
 
   .secondContent h2 {
-    font-size: 24px; /* 제목 크기 조절 */
+    font-size: 24px;
   }
 
   .secondDes {
-    gap: 30px; /* 항목 간격 줄이기 */
+    gap: 30px;
   }
 
   .secondDes > div {
-    flex-direction: column; /* 수직 정렬 */
-    align-items: center; /* 중앙 정렬 */
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     gap: 10px;
   }
 
   .secondDes h3 {
-    font-size: 28px; /* 숫자 크기 조절 */
+    font-size: 28px;
   }
 
   .secondDes div p {
-    font-size: 13px; /* 글자 크기 줄이기 */
+    font-size: 13px;
     line-height: 1.4;
   }
-  /* 최대 크기 480px */
+
   .thirdWrapper {
     height: auto;
     padding: 30px 15px;
@@ -499,22 +498,22 @@
   }
 
   .fourGrid {
-    grid-template-columns: repeat(2, 1fr); /* 2열로 변경 */
+    grid-template-columns: repeat(2, 1fr);
     gap: 8px;
     margin-top: 20px;
   }
 
   .grid {
-    width: 100%; /* 가로 너비 100% */
-    height: auto; /* 높이 자동 */
+    width: 100%;
+    height: auto;
   }
 
   .gridDes {
-    height: 180px; /* 이미지 높이 줄이기 */
+    height: 180px;
   }
 
   .textOverlay {
-    position: relative; /* 호버 효과 제거 */
+    position: relative;
     height: auto;
     padding: 15px;
   }
@@ -529,7 +528,7 @@
   }
 
   .detailButton {
-    opacity: 1; /* 항상 보이도록 설정 */
+    opacity: 1;
     margin-top: 10px;
     text-align: center;
   }
@@ -541,10 +540,9 @@
 }
 
 @media screen and (max-width: 480px) {
-  /*최대 크기 480px*/
   .firstWrapper {
     height: auto;
-    padding: 30px 15px; /* 좌우 여백 추가 */
+    padding: 30px 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -557,31 +555,31 @@
   }
 
   .firstContent h2 {
-    font-size: 24px; /* 폰트 크기 줄이기 */
+    font-size: 24px;
   }
 
   .firstContent h1 {
-    font-size: 28px; /* 폰트 크기 줄이기 */
+    font-size: 28px;
     margin-top: 5px;
   }
 
   .firstImgP {
     display: flex;
     flex-direction: column;
-    align-items: center; /* 중앙 정렬 */
+    align-items: center;
     margin-top: 20px;
   }
 
   .firstImg {
     width: 100%;
-    height: 250px; /* 이미지 크기 조절 */
+    height: 250px;
     margin-right: 0;
   }
 
   .firstDes {
     width: 100%;
     text-align: center;
-    font-size: 12px; /* 폰트 크기 줄이기 */
+    font-size: 12px;
   }
 
   .firstDes p {
@@ -598,7 +596,7 @@
 
   .secondWrapper {
     height: auto;
-    padding: 30px 15px; /* 좌우 여백 추가 */
+    padding: 30px 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -608,33 +606,33 @@
   .secondContent {
     width: 100%;
     text-align: center;
-    gap: 40px; /* 간격 조정 */
+    gap: 40px;
   }
 
   .secondContent h2 {
-    font-size: 24px; /* 제목 크기 조절 */
+    font-size: 24px;
   }
 
   .secondDes {
-    gap: 30px; /* 항목 간격 줄이기 */
+    gap: 30px;
   }
 
   .secondDes > div {
-    flex-direction: column; /* 수직 정렬 */
-    align-items: center; /* 중앙 정렬 */
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     gap: 10px;
   }
 
   .secondDes h3 {
-    font-size: 28px; /* 숫자 크기 조절 */
+    font-size: 28px;
   }
 
   .secondDes div p {
-    font-size: 13px; /* 글자 크기 줄이기 */
+    font-size: 13px;
     line-height: 1.4;
   }
-  /* 최대 크기 480px */
+
   .thirdWrapper {
     height: auto;
     padding: 30px 15px;
@@ -715,22 +713,22 @@
   }
 
   .fourGrid {
-    grid-template-columns: repeat(2, 1fr); /* 2열로 변경 */
+    grid-template-columns: repeat(2, 1fr);
     gap: 8px;
     margin-top: 20px;
   }
 
   .grid {
-    width: 100%; /* 가로 너비 100% */
-    height: auto; /* 높이 자동 */
+    width: 100%;
+    height: auto;
   }
 
   .gridDes {
-    height: 180px; /* 이미지 높이 줄이기 */
+    height: 180px;
   }
 
   .textOverlay {
-    position: relative; /* 호버 효과 제거 */
+    position: relative;
     height: auto;
     padding: 15px;
   }
@@ -745,7 +743,7 @@
   }
 
   .detailButton {
-    opacity: 1; /* 항상 보이도록 설정 */
+    opacity: 1;
     margin-top: 10px;
     text-align: center;
   }

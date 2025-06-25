@@ -306,236 +306,7 @@
 
   .firstImg {
     width: 100%;
-    height: 350px;
-    margin-right: 0;
-  }
-
-  .firstDes {
-    width: 100%;
-    text-align: center;
-    font-size: 16px;
-  }
-
-  .firstDes p {
-    margin-top: 10px;
-  }
-
-  .firstDes button {
-    width: 100%;
-    max-width: 180px;
-    height: 40px;
-    align-self: center;
-    margin-top: 20px;
-  }
-
-  .secondWrapper {
-    height: auto;
-    padding: 30px 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .secondContent {
-    width: 100%;
-    text-align: center;
-    gap: 40px;
-  }
-
-  .secondContent h2 {
-    font-size: 28px;
-  }
-
-  .secondDes {
-    gap: 30px;
-  }
-
-  .secondDes > div {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-  }
-
-  .secondDes h3 {
-    font-size: 28px;
-  }
-
-  .secondDes div p {
-    font-size: 16px;
-    line-height: 1.4;
-  }
-
-  .thirdWrapper {
-    height: auto;
-    padding: 30px 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .thirdContent {
-    width: 100%;
-  }
-
-  .thirdContent h2 {
-    font-size: 24px;
-    text-align: center;
-  }
-
-  .thirdDes {
-    font-size: 14px;
-    text-align: left;
-    padding: 0 15px;
-  }
-
-  .thirdImgP {
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-  }
-
-  .thirdDes2 {
-    text-align: center;
-    margin-top: 15px;
-  }
-
-  .thirdDes2 ul {
-    padding-left: 0;
-  }
-
-  .thirdDes2 li {
-    list-style-type: none;
-    font-size: 14px;
-    line-height: 1.5;
-  }
-  .fourWrapper {
-    height: auto;
-    padding: 30px 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .fourContent {
-    width: 100%;
-  }
-  .fourContent h2 {
-    font-size: 32px;
-    text-align: center;
-  }
-  .fourImgP1,
-  .fourImgP2 {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 30px;
-    gap: 30px;
-    margin-top: 70px;
-  }
-  .fourDes1,
-  .fourDes2 {
-    width: 100%;
-    font-size: 14px;
-    padding: 0 10px;
-    margin: 0;
-  }
-  .fourDes1 h3,
-  .fourDes2 h3 {
-    font-size: 20px;
-    text-align: center;
-  }
-  .fourImg1,
-  .fourImg2 {
-    width: 100%;
-    height: 200px;
-    margin: 10px 0;
-  }
-
-  .fiveWrapper {
-    height: auto;
-    padding: 50px 0;
-  }
-
-  .fiveContent {
-    width: 90%;
-  }
-
-  .fiveHeader {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .fiveHeader h2 {
-    font-size: 24px;
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-
-  .fiveHeader button {
-    width: 120px;
-    height: 40px;
-    font-size: 14px;
-  }
-
-  .fiveImgGrid {
-    grid-template-columns: 1fr;
-    width: 100%;
-    gap: 15px;
-    margin-top: 30px;
-  }
-
-  .fiveImgP {
-    margin-top: 30px;
-  }
-
-  .fiveImg1 {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 4 / 3;
-  }
-
-  .fiveDes1 h3 {
-    font-size: 18px;
-  }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-  .firstWrapper {
-    height: auto;
-    padding: 30px 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .firstContent {
-    width: 100%;
-    text-align: center;
-  }
-
-  .firstContent h2 {
-    font-size: 28px;
-  }
-
-  .firstContent h1 {
-    font-size: 32px;
-    margin-top: 5px;
-  }
-
-  .firstImgP {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-  }
-
-  .firstImg {
-    width: 100%;
-    height: 350px;
+    height: 600px;
     margin-right: 0;
   }
 
@@ -687,6 +458,7 @@
     font-weight: 500;
     font-size: 13px;
   }
+
   .fourWrapper {
     height: auto;
     padding: 30px 15px;
@@ -695,13 +467,16 @@
     align-items: center;
     text-align: center;
   }
+
   .fourContent {
     width: 100%;
   }
+
   .fourContent h2 {
     font-size: 32px;
     text-align: center;
   }
+
   .fourImgP1,
   .fourImgP2 {
     flex-direction: column;
@@ -711,6 +486,7 @@
     gap: 30px;
     margin-top: 70px;
   }
+
   .fourDes1,
   .fourDes2 {
     width: 100%;
@@ -718,11 +494,13 @@
     padding: 0 10px;
     margin: 0;
   }
+
   .fourDes1 h3,
   .fourDes2 h3 {
     font-size: 20px;
     text-align: center;
   }
+
   .fourImg1,
   .fourImg2,
   .fourImgD,
@@ -782,6 +560,7 @@
     font-size: 18px;
   }
 }
+
 @media screen and (max-width: 480px) {
   .firstWrapper {
     height: auto;

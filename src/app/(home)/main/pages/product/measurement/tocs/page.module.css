@@ -198,6 +198,171 @@
   margin-top: 30px;
 }
 
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .loading {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .firstWrapper {
+    height: auto;
+    padding: 40px 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .firstContent {
+    width: 100%;
+    text-align: center;
+  }
+
+  .firstContent h2 {
+    font-size: 28px;
+  }
+
+  .firstContent h1 {
+    font-size: 36px;
+    margin-top: 8px;
+  }
+
+  .firstImgP {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .firstImg {
+    width: 100%;
+    height: 600px;
+    margin: 0 auto 20px auto;
+  }
+
+  .firstDes {
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .firstDes button {
+    margin-top: 20px;
+    width: 160px;
+    height: 40px;
+    align-self: center;
+  }
+
+  .secondWrapper {
+    height: auto;
+    padding: 40px 20px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .secondContent {
+    width: 100%;
+    gap: 30px;
+  }
+
+  .secondDes {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .secondDes2 {
+    margin-right: 0;
+    align-items: center;
+  }
+
+  .secondDes2 h2 {
+    font-size: 30px;
+  }
+
+  .secondDes2 h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .secondDes2 button {
+    width: 180px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .thirdWrapper {
+    height: auto;
+    padding: 40px 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .thirdContent {
+    width: 100%;
+    gap: 30px;
+  }
+
+  .thirdContent h2 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .thirdImgP {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  .thirdImg {
+    width: 200px;
+    height: 280px;
+    margin: 0;
+  }
+
+  .thirdImg2 {
+    width: 230px;
+    height: 230px;
+    margin: 0;
+  }
+
+  .thirdImg3 {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    margin: 0;
+  }
+
+  .thirdDes2 {
+    text-align: center;
+    font-size: 13px;
+    gap: 15px;
+  }
+
+  .thirdDes2 p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .thirdDes2 li {
+    font-size: 13px;
+  }
+
+  .thirdImgP3 {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .firstWrapper {
     height: auto;
@@ -321,21 +486,10 @@
     text-align: center;
   }
 
-  .thirdImg {
-    width: 100%;
-    height: 250px;
-  }
-
   .thirdImgP {
     flex-direction: column;
     width: 100%;
     align-items: center;
-  }
-
-  .thirdImg2 {
-    width: 100%;
-    height: 200px;
-    margin: 0 auto;
   }
 
   .thirdDes2 {

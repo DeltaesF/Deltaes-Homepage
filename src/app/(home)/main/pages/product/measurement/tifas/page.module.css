@@ -188,6 +188,155 @@
   font-weight: bold;
 }
 
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .firstWrapper {
+    height: auto;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .firstContent {
+    width: 100%;
+    text-align: center;
+  }
+
+  .firstContent h2 {
+    font-size: 28px;
+  }
+
+  .firstContent h1 {
+    font-size: 34px;
+    margin-top: 10px;
+  }
+
+  .firstImgP {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .firstImg {
+    width: 100%;
+    max-width: 700px;
+    height: 600px;
+    margin-right: 0;
+  }
+
+  .firstDes {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .firstDes p {
+    margin-top: 15px;
+  }
+
+  .firstDes button {
+    width: 100%;
+    max-width: 200px;
+    height: 44px;
+    align-self: center;
+    margin-top: 20px;
+  }
+
+  .secondWrapper {
+    height: auto;
+    padding: 30px 0;
+  }
+
+  .secondContent {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .secondDes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .secondDes2 {
+    margin-right: 0;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .secondDes2 h2 {
+    font-size: 28px;
+  }
+
+  .secondDes2 h3 {
+    font-size: 16px;
+  }
+
+  .secondDes2 button {
+    width: 100%;
+    max-width: 240px;
+    height: 44px;
+    font-size: 15px;
+  }
+
+  .thirdWrapper {
+    height: auto;
+    padding: 40px 0;
+  }
+
+  .thirdContent {
+    width: 90%;
+    margin-top: 40px;
+  }
+
+  .thirdContent h2 {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .thirdImgP {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .thirdImgP > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .thirdImg {
+    width: 100%;
+    max-width: 700px;
+    height: 300px;
+    margin-right: 0;
+  }
+
+  .thirdDes2 {
+    width: 100%;
+    text-align: left;
+    padding: 0 20px;
+  }
+
+  .thirdDes2 p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .swiper {
+    width: 100% !important;
+    height: auto !important;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .firstWrapper {
     height: auto;
@@ -245,34 +394,51 @@
 
   .secondWrapper {
     height: auto;
-    padding: 30px 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    padding: 20px 0;
   }
 
   .secondContent {
-    width: 100%;
-    text-align: center;
-    gap: 40px;
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
   }
 
   .secondDes {
-    gap: 30px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .secondDes2 {
+    margin-right: 0;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .secondDes2 h2 {
+    font-size: 24px;
+  }
+
+  .secondDes2 h3 {
+    font-size: 14px;
+  }
+
+  .secondDes2 button {
+    width: 100%;
+    max-width: 240px;
+    height: 40px;
+    font-size: 14px;
   }
 
   .thirdWrapper {
     height: auto;
-    padding: 30px 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    padding: 30px 0;
   }
 
   .thirdContent {
-    width: 100%;
+    width: 90%;
+    margin-top: 30px;
   }
 
   .thirdContent h2 {
@@ -280,35 +446,37 @@
     text-align: center;
   }
 
-  .thirdImg {
-    width: 100%;
-    height: 250px;
-  }
-
   .thirdImgP {
     flex-direction: column;
-    width: 100%;
+    gap: 40px;
+  }
+
+  .thirdImgP > div {
+    flex-direction: column;
     align-items: center;
+    gap: 20px;
+  }
+
+  .thirdImg {
+    width: 100%;
+    max-width: 100%;
+    height: 200px;
+    margin-right: 0;
   }
 
   .thirdDes2 {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.4;
+    width: 100%;
     text-align: left;
-    font-size: 12px;
-    gap: 15px;
+    padding: 0 10px;
   }
 
   .thirdDes2 p {
-    font-weight: bold;
-    font-size: 13px;
-    line-height: 1.5;
+    font-size: 14px;
+    line-height: 1.6;
   }
 
-  .thirdDes2 div {
-    width: 100%;
-    height: auto;
-    margin: 0 auto;
+  .swiper {
+    width: 100% !important;
+    height: auto !important;
   }
 }

@@ -184,6 +184,155 @@
   line-height: 2;
 }
 
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .firstWrapper {
+    height: auto;
+    padding: 50px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .firstContent {
+    width: 100%;
+    text-align: center;
+  }
+
+  .firstContent h2 {
+    font-size: 28px;
+  }
+
+  .firstContent h1 {
+    font-size: 36px;
+    margin-top: 10px;
+  }
+
+  .firstImgP {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .firstImg {
+    width: 100%;
+    height: 600px;
+    margin-right: 0;
+  }
+
+  .firstDes {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .firstDes p {
+    margin-top: 15px;
+  }
+
+  .firstDes button {
+    width: 100%;
+    max-width: 200px;
+    height: 44px;
+    font-size: 14px;
+    align-self: center;
+    margin-top: 25px;
+  }
+
+  .secondWrapper {
+    height: auto;
+    flex-direction: column;
+    padding: 30px 30px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+
+  .secondContent {
+    width: 100% !important;
+    padding: 0;
+  }
+
+  .secondDes {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .secondDes2 {
+    margin: 0;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .secondDes2 h2 {
+    font-size: 28px;
+  }
+
+  .secondDes2 h3 {
+    font-size: 16px;
+  }
+
+  .secondDes2 button {
+    width: 100%;
+    max-width: 220px;
+    height: 44px;
+    font-size: 15px;
+    margin: 0 auto;
+  }
+
+  .swiper {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 2 / 1;
+  }
+
+  .swiper img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover;
+  }
+
+  .thirdWrapper {
+    height: auto;
+    padding: 50px 30px;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+  }
+
+  .thirdContent {
+    width: 100%;
+  }
+
+  .thirdContent h2 {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .thirdImgP {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .thirdImg,
+  .thirdImg2 {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    margin: 0;
+  }
+
+  .thirdDes2 {
+    padding: 0 20px;
+    text-align: left;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .firstWrapper {
     height: auto;
@@ -241,45 +390,59 @@
 
   .secondWrapper {
     height: auto;
-    padding: 30px 15px;
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    padding: 20px 15px;
   }
 
   .secondContent {
-    width: 100%;
-    text-align: center;
-    gap: 40px;
+    width: 100% !important;
+    padding: 0;
   }
 
   .secondDes {
+    flex-direction: column;
+    align-items: center;
     gap: 30px;
   }
 
-  .secondDes > div {
-    flex-direction: column;
-    align-items: center;
+  .secondDes2 {
+    margin: 0;
+    gap: 15px;
     text-align: center;
-    gap: 10px;
   }
 
-  .secondDes h3 {
-    font-size: 28px;
+  .secondDes2 h2 {
+    font-size: 24px;
   }
 
-  .secondDes div p {
-    font-size: 13px;
-    line-height: 1.4;
+  .secondDes2 h3 {
+    font-size: 14px;
   }
+
+  .secondDes2 button {
+    width: 100%;
+    max-width: 200px;
+    height: 40px;
+    font-size: 14px;
+    margin: 0 auto;
+  }
+
+  .swiper {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 2 / 1;
+  }
+
+  .swiper img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover;
+  }
+
   .thirdWrapper {
     height: auto;
-    padding: 30px 15px;
-    display: flex;
+    padding: 40px 15px;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
   }
 
   .thirdContent {
@@ -291,35 +454,24 @@
     text-align: center;
   }
 
-  .thirdImg {
-    width: 100%;
-    height: 250px;
-  }
-
   .thirdImgP {
     flex-direction: column;
-    width: 100%;
     align-items: center;
+    gap: 20px;
   }
 
+  .thirdImg,
   .thirdImg2 {
     width: 100%;
-    height: 200px;
-    margin: 0 auto;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    margin: 0;
   }
 
   .thirdDes2 {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.4;
+    padding: 0 10px;
     text-align: left;
-    font-size: 12px;
-    gap: 15px;
-  }
-
-  .thirdDes2 p {
-    font-weight: bold;
-    font-size: 13px;
-    line-height: 1.5;
+    font-size: 14px;
+    line-height: 1.6;
   }
 }

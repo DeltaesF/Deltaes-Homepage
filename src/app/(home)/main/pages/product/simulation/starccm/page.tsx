@@ -303,9 +303,8 @@ export default function Starccm() {
                 <h2>개선된 배터리 안전 시뮬레이션</h2>
                 <div>
                   <iframe
+                    className={styles.iframe}
                     src="https://drive.google.com/file/d/1o6OcUgozK9roDKxhVeUaeIy2mPaM398F/preview"
-                    width="910"
-                    height="510"
                     allow="autoplay"
                     allowFullScreen
                     style={{ marginTop: "20px" }}
@@ -351,9 +350,8 @@ export default function Starccm() {
                 <h2>비뉴턴 유체의 정확한 모델링</h2>
                 <div>
                   <iframe
+                    className={styles.iframe}
                     src="https://drive.google.com/file/d/1quFIMdFa_QHHepc9p6iE_7JazxSmshCA/preview"
-                    width="910"
-                    height="680"
                     allow="autoplay"
                     allowFullScreen
                     style={{ marginTop: "20px" }}
@@ -373,9 +371,8 @@ export default function Starccm() {
                 <h2>균일한 스프레이를 위한 노즐 인젝터 모델</h2>
                 <div>
                   <iframe
+                    className={styles.iframe}
                     src="https://drive.google.com/file/d/1zV1yE477rPv608PRjkKoR2-A3slsmnr3/preview"
-                    width="910"
-                    height="510"
                     allow="autoplay"
                     allowFullScreen
                     style={{ marginTop: "20px" }}
@@ -400,9 +397,8 @@ export default function Starccm() {
                 <h2>더 빠른 보조 기반 최적화</h2>
                 <div>
                   <iframe
+                    className={styles.iframe}
                     src="https://drive.google.com/file/d/1I-4qosAOi-XhNTb48Sg_T8kiDQ-vqLbE/preview"
-                    width="910"
-                    height="510"
                     allow="autoplay"
                     allowFullScreen
                     style={{ marginTop: "20px" }}
@@ -420,9 +416,8 @@ export default function Starccm() {
                 <h2>더 빠르게 움직이는 물체의 빠르고 확장 가능한 시뮬레이션</h2>
                 <div>
                   <iframe
+                    className={styles.iframe}
                     src="https://drive.google.com/file/d/16zLNx635Rk5p3I6iJZYqGJE4dVa1lZjB/preview"
-                    width="910"
-                    height="510"
                     allow="autoplay"
                     allowFullScreen
                     style={{ marginTop: "20px" }}
@@ -441,9 +436,8 @@ export default function Starccm() {
                 <h2>GPU 및 CPU에서 더 빠른 슬라이딩 메시 시뮬레이션</h2>
                 <div>
                   <iframe
+                    className={styles.iframe}
                     src="https://drive.google.com/file/d/1Y4qtH_viBBTEeAnmXhd_HTyD0yA7RaMM/preview"
-                    width="910"
-                    height="510"
                     allow="autoplay"
                     allowFullScreen
                     style={{ marginTop: "20px" }}
@@ -476,17 +470,13 @@ export default function Starccm() {
                 <h2>GPU에서 차량 열 관리 시뮬레이션 가속화</h2>
                 <div>
                   <Swiper
+                    className={styles.swiper}
                     modules={[Navigation, Pagination, Autoplay]}
                     spaceBetween={20}
                     slidesPerView={1}
                     navigation
                     pagination={{ clickable: true }}
                     autoplay={{ delay: 3000 }}
-                    style={{
-                      width: "910px",
-                      height: "610px",
-                      marginTop: "20px",
-                    }}
                   >
                     {[imageSrc1[7], imageSrc1[8], imageSrc1[9]].map(
                       (src, index) =>
@@ -520,9 +510,8 @@ export default function Starccm() {
                 <h2>고급 공력 및 터보기계 워크플로우의 자동화 기능 내장화</h2>
                 <div>
                   <iframe
+                    className={styles.iframe}
                     src="https://drive.google.com/file/d/1YBB-xWVr2D3pcMzTmidFUI1HKO3isV0w/preview"
-                    width="910"
-                    height="510"
                     allow="autoplay"
                     allowFullScreen
                     style={{ marginTop: "20px" }}
@@ -546,9 +535,8 @@ export default function Starccm() {
                 </h2>
                 <div>
                   <iframe
+                    className={styles.iframe}
                     src="https://drive.google.com/file/d/14S_vsea4HIBd2T14xuPjKJEXPLvYt_hF/preview"
-                    width="910"
-                    height="510"
                     allow="autoplay"
                     allowFullScreen
                     style={{ marginTop: "20px" }}
@@ -565,9 +553,8 @@ export default function Starccm() {
                 <h2>클라우드에서 즉시 실행되는 Simcenter X HPC</h2>
                 <div>
                   <iframe
+                    className={styles.iframe}
                     src="https://drive.google.com/file/d/1RTH4JNo0nDBGuOu0NXG57TvSIUSu_EWo/preview"
-                    width="910"
-                    height="510"
                     allow="autoplay"
                     allowFullScreen
                     style={{ marginTop: "20px" }}

@@ -86,21 +86,6 @@ export default function Measurement() {
           <div className={styles.contant}>
             <div className={styles.contentTitle}>
               <span className={styles.contantSquare}></span>
-              <h3>TIMA pulse</h3>
-            </div>
-            <div className={styles.description}>
-              <p className={styles.descriptionText}>
-                경량 과도 열 테스트(Lightweight transient thermal testing) 열전
-                시스템
-              </p>
-              <Link href="/main/pages/product/measurement/timapulse">
-                <button className={styles.moreButton}>더보기+</button>
-              </Link>
-            </div>
-          </div>
-          <div className={styles.contant}>
-            <div className={styles.contentTitle}>
-              <span className={styles.contantSquare}></span>
               <h3>TIFAS</h3>
             </div>
             <div className={styles.description}>

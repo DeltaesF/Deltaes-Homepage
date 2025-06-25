@@ -398,6 +398,32 @@
     display: none;
     background: none;
     box-shadow: none;
+
+    /* 스크롤 적용 */
+    max-height: 300px; /* 또는 원하는 높이 */
+    overflow-y: auto;
+
+    /* 스크롤바 스타일(optional) */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #888 #f1f1f1; /* Firefox */
+  }
+
+  .dropdownMenu::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .dropdownMenu::-webkit-scrollbar-thumb {
+    background-color: #999;
+    border-radius: 3px;
+  }
+
+  .dropdownMenu::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  .dropdownMenu li {
+    margin: 0;
+    padding: 4px 0; /* 위아래 간격 줄임 */
+    line-height: 1.4;
   }
 
   .show {

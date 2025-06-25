@@ -23,6 +23,11 @@ export default function Header() {
     return <p>Error: {error}</p>;
   }
 
+  const handleLinkClick = () => {
+    setIsOpen(false);
+    setIsIndustryOpen(false);
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
@@ -420,91 +425,140 @@ export default function Header() {
                 </svg>
               )}
             </div>
-            {/* 네비게이션 메뉴 */}
             <div className={`${styles.navMenu} ${isOpen ? styles.open : ""}`}>
               <ul>
                 <li>
-                  <Link href="/main/pages/product">제품안내</Link>
+                  <Link href="/main/pages/product" onClick={handleLinkClick}>
+                    제품안내
+                  </Link>
                 </li>
-                {/* 적용산업 메뉴 */}
                 <li
                   className={styles.dropdown}
                   onClick={() => setIsIndustryOpen(!isIndustryOpen)}
                 >
                   적용산업
                 </li>
-
-                {/* 서브 메뉴 */}
+                {/* 서브 메뉴는 반드시 li 안에 있어야 함 */}
                 <ul
-                  className={`${styles.dropdownMenu} ${
-                    isIndustryOpen ? styles.show : ""
-                  }`}
+                  className={`${styles.dropdownMenu} ${isIndustryOpen ? styles.show : ""}`}
                 >
                   <li>
-                    <Link href="/main/pages/industry">전자기기 및 반도체</Link>
+                    <Link href="/main/pages/industry" onClick={handleLinkClick}>
+                      전자기기 및 반도체
+                    </Link>
                   </li>
                   <li>
-                    <Link href="/main/pages/industry/automotive">
+                    <Link
+                      href="/main/pages/industry/automotive"
+                      onClick={handleLinkClick}
+                    >
                       자동차 및 운송
                     </Link>
                   </li>
                   <li>
-                    <Link href="/main/pages/industry/telecom">
+                    <Link
+                      href="/main/pages/industry/telecom"
+                      onClick={handleLinkClick}
+                    >
                       이동통신 및 미디어
                     </Link>
                   </li>
                   <li>
-                    <Link href="/main/pages/industry/environment">
+                    <Link
+                      href="/main/pages/industry/environment"
+                      onClick={handleLinkClick}
+                    >
                       환경 및 산업용기계
                     </Link>
                   </li>
                   <li>
-                    <Link href="/main/pages/industry/construction">
+                    <Link
+                      href="/main/pages/industry/construction"
+                      onClick={handleLinkClick}
+                    >
                       건설 / 토목
                     </Link>
                   </li>
                   <li>
-                    <Link href="/main/pages/industry/energy">
+                    <Link
+                      href="/main/pages/industry/energy"
+                      onClick={handleLinkClick}
+                    >
                       발전 / 에너지 / 유틸리티
                     </Link>
                   </li>
                   <li>
-                    <Link href="/main/pages/industry/medical">
+                    <Link
+                      href="/main/pages/industry/medical"
+                      onClick={handleLinkClick}
+                    >
                       의료기기 / 제약 / 헬스케어
                     </Link>
                   </li>
                   <li>
-                    <Link href="/main/pages/industry/consumer">소비재</Link>
+                    <Link
+                      href="/main/pages/industry/consumer"
+                      onClick={handleLinkClick}
+                    >
+                      소비재
+                    </Link>
                   </li>
                   <li>
-                    <Link href="/main/pages/industry/aerospace">
+                    <Link
+                      href="/main/pages/industry/aerospace"
+                      onClick={handleLinkClick}
+                    >
                       항공 / 우주 / 방산
                     </Link>
                   </li>
                   <li>
-                    <Link href="/main/pages/industry/marine">조선 / 해양</Link>
+                    <Link
+                      href="/main/pages/industry/marine"
+                      onClick={handleLinkClick}
+                    >
+                      조선 / 해양
+                    </Link>
                   </li>
                   <li>
-                    <Link href="/main/pages/industry/finance">
+                    <Link
+                      href="/main/pages/industry/finance"
+                      onClick={handleLinkClick}
+                    >
                       보험 및 금융
                     </Link>
                   </li>
                   <li>
-                    <Link href="/main/pages/industry/software">
+                    <Link
+                      href="/main/pages/industry/software"
+                      onClick={handleLinkClick}
+                    >
                       소프트웨어 개발
                     </Link>
                   </li>
                 </ul>
                 <li>
-                  <Link href="/main/pages/consulting/engineering">
+                  <Link
+                    href="/main/pages/consulting/engineering"
+                    onClick={handleLinkClick}
+                  >
                     컨설팅서비스
                   </Link>
                 </li>
                 <li>
-                  <Link href="/main/pages/announcements">공지사항</Link>
+                  <Link
+                    href="/main/pages/announcements"
+                    onClick={handleLinkClick}
+                  >
+                    공지사항
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/main/pages/company/ceo">회사소개</Link>
+                  <Link
+                    href="/main/pages/company/ceo"
+                    onClick={handleLinkClick}
+                  >
+                    회사소개
+                  </Link>
                 </li>
               </ul>
             </div>
