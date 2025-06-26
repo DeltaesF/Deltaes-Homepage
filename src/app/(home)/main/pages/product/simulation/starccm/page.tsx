@@ -477,6 +477,7 @@ export default function Starccm() {
                     navigation
                     pagination={{ clickable: true }}
                     autoplay={{ delay: 3000 }}
+                    style={{ marginTop: "20px" }}
                   >
                     {[imageSrc1[7], imageSrc1[8], imageSrc1[9]].map(
                       (src, index) =>
