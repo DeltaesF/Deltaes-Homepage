@@ -1,6 +1,9 @@
 import { google } from "googleapis";
 import { NextResponse } from "next/server";
 
+// 이 라인을 추가하여 캐싱을 비활성화합니다.
+export const dynamic = "force-dynamic";
+
 // 구글 API와 관련된 타입 정의
 interface CalendarEvent {
   summary: string;
