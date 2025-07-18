@@ -125,31 +125,45 @@
 }
 .sContainer {
   width: 320px;
-  height: 220px;
+  height: 240px;
   background-color: #909eaa;
   border-radius: 0 0 10px 10px;
-  padding-top: 15px;
+  /* Flexbox로 변경 */
+  display: flex;
+  flex-direction: column; /* 아이템을 세로로 배치 */
+  justify-content: space-between; /* 아이템 사이에 공간을 균등하게 분배 */
+  padding: 15px; /* 패딩을 sContainer로 이동 */
 }
 .sContainer2 {
   width: 320px;
-  height: 220px;
+  height: 240px;
   background-color: white;
   border-radius: 0 0 10px 10px;
   padding-top: 15px;
 }
 .sContent {
   width: 280px;
-  height: 150px;
+  height: 160px;
   margin: 0 auto;
 }
+.sContent1 {
+  /* 고정 높이 제거, flex-grow로 남은 공간 차지 */
+  flex-grow: 1;
+  overflow-y: auto; /* 스크롤을 이 컨테이너에 직접 적용 */
+  margin: 0;
+  width: 100%;
+}
+
 .sContentSub {
-  width: 280px;
-  height: 140px;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow-y: auto; /* 세로 스크롤 추가 */
+  /* 고정 높이 및 불필요한 스타일 제거 */
+  width: 100%;
+  height: auto;
+}
+
+.sFooter {
+  /* sFooter는 버튼 크기에 맞게 자동으로 높이가 조절됩니다. */
+  text-align: center; /* 버튼을 가운데 정렬 */
+  padding-top: 10px; /* 내용과의 간격 */
 }
 .sButton {
   width: 200px;

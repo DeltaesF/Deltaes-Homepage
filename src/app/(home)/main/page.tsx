@@ -458,7 +458,7 @@ export default function MainPage() {
               <h3>교육 일정표</h3>
             </div>
             <div className={styles.sContainer}>
-              <div className={styles.sContent}>
+              <div className={styles.sContent1}>
                 <div className={styles.sContentSub}>
                   {events.length > 0 ? (
                     <ul style={{ listStyle: "none", padding: 0 }}>
