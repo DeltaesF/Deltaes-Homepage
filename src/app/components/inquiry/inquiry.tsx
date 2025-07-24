@@ -36,6 +36,8 @@ export default function Inquiry() {
   const { user } = useUser();
   const [guestName, setGuestName] = useState("");
   const [guestEmail, setGuestEmail] = useState("");
+  const [company, setCompany] = useState("");
+  const [phone, setPhone] = useState("");
 
   const toggleMessenger = () => {
     // 로그인 여부에 상관없이 메시지 창을 열 수 있게 함
@@ -74,6 +76,11 @@ export default function Inquiry() {
         userName = user.userName;
       }
 
+      if (!company.trim() || !phone.trim()) {
+        alert("회사명/직책과 핸드폰 번호를 입력해주세요.");
+        return;
+      }
+
       const roomRef = doc(db, "inquiries", userId);
       const roomSnap = await getDoc(roomRef);
 
@@ -84,6 +91,8 @@ export default function Inquiry() {
           email,
           createdAt: serverTimestamp(),
           isRead: false,
+          company,
+          phone,
         });
       }
 
@@ -124,6 +133,8 @@ export default function Inquiry() {
           name: userName,
           email,
           message,
+          company,
+          phone,
         }),
       });
     } catch (error) {
@@ -210,10 +221,39 @@ export default function Inquiry() {
                 placeholder="이름을 입력하세요"
               />
               <input
+                type="text"
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+                placeholder="회사명 / 직책을 입력하세요"
+              />
+              <input
                 type="email"
                 value={guestEmail}
                 onChange={(e) => setGuestEmail(e.target.value)}
                 placeholder="이메일을 입력하세요"
+              />
+              <input
+                type="text"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="핸드폰 번호를 입력하세요"
+              />
+            </div>
+          )}
+
+          {user && (
+            <div className={styles.guestInfoBox}>
+              <input
+                type="text"
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+                placeholder="회사명 / 직책을 입력하세요"
+              />
+              <input
+                type="text"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="핸드폰 번호를 입력하세요"
               />
             </div>
           )}

@@ -3,7 +3,7 @@ import nodemailer from "nodemailer";
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, message } = await req.json();
+    const { name, email, message, company, phone } = await req.json();
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -16,12 +16,16 @@ export async function POST(req: NextRequest) {
     await transporter.sendMail({
       from: process.env.GMAIL_USER,
       to: process.env.ALERT_EMAIL,
-      subject: `${name}님의 문의 메일이 도착했습니다.`,
+      subject: `${company} ${name}님의 문의 메일이 도착했습니다.`,
       text: `
         🔔 문의 알림
+        회사명/직책: ${company}
         이름: ${name}
         이메일: ${email}
-        내용: ${message}
+        핸드폰 번호: ${phone}
+
+        문의 내용: 
+        ${message}
       `,
     });
 
