@@ -38,6 +38,7 @@ export default function Inquiry() {
   const [guestEmail, setGuestEmail] = useState("");
   const [company, setCompany] = useState("");
   const [phone, setPhone] = useState("");
+  const [userInfoComplete, setUserInfoComplete] = useState(false);
 
   const toggleMessenger = () => {
     // 로그인 여부에 상관없이 메시지 창을 열 수 있게 함
@@ -55,7 +56,7 @@ export default function Inquiry() {
       let userName: string;
 
       if (isGuest) {
-        if (!guestName || !guestEmail) {
+        if (!guestName || !guestEmail || !company || !phone) {
           alert("이름과 이메일을 모두 입력해주세요.");
           return;
         }
@@ -89,13 +90,13 @@ export default function Inquiry() {
           userId,
           userName,
           email,
-          createdAt: serverTimestamp(),
-          isRead: false,
           company,
           phone,
+          createdAt: serverTimestamp(),
+          isRead: false,
+          infoSubmitted: true,
         });
       }
-
       const messagesRef = collection(db, "inquiries", userId, "messages");
       await addDoc(messagesRef, {
         content: message,
@@ -121,6 +122,7 @@ export default function Inquiry() {
 
       setMessage("");
       setSuccess(true);
+      setUserInfoComplete(true);
       setTimeout(() => setSuccess(false), 3000);
 
       // 이메일 알림 발송 기능
@@ -175,6 +177,14 @@ export default function Inquiry() {
         });
 
         setMessages(loadedMessages); // 불러온 메시지 상태에 저장
+        const roomRef = doc(db, "inquiries", userId);
+        const roomSnap = await getDoc(roomRef);
+        if (roomSnap.exists()) {
+          const roomData = roomSnap.data();
+          if (roomData.infoSubmitted) {
+            setUserInfoComplete(true); // ✅ 입력창 숨기기
+          }
+        }
       } catch (error) {
         console.error("메시지 불러오기 실패:", error);
       }
@@ -207,12 +217,13 @@ export default function Inquiry() {
       {showMessenger && (
         <div className={styles.messengerBox}>
           <div className={styles.messengerHeader}>문의하기</div>
-          {!user && (
+          {!user && !userInfoComplete && (
             <div className={styles.guestInfoBox}>
               <p className={styles.guestNotice}>
                 비로그인 사용자입니다. <br />
-                <strong>이름</strong>과 <strong>이메일</strong>을 남겨주시면
-                빠른 시일 내에 안내드리겠습니다.
+                <strong>이름</strong>, <strong>이메일</strong>,{" "}
+                <strong>회사명/직책</strong>, <strong>핸드폰 번호</strong>를
+                입력해주세요.
               </p>
               <input
                 type="text"
@@ -241,7 +252,7 @@ export default function Inquiry() {
             </div>
           )}
 
-          {user && (
+          {user && !userInfoComplete && (
             <div className={styles.guestInfoBox}>
               <input
                 type="text"
