@@ -8,7 +8,7 @@ export default function Brochure() {
   const { imageSrc1, error } = useFetchCloudinaryImages([
     "brochure1_lxifvr",
     "brochure2_ctqifx",
-    "brochure3_b61kfs",
+    "brochure3I_rixeor",
     "brochure4_zqfasi",
     "brochure5_jbp2sc",
     "brochure6_c158nv",
@@ -65,7 +65,7 @@ export default function Brochure() {
               <Image
                 src={imageSrc1[1]}
                 alt=""
-                width="230"
+                width="245"
                 height="315"
                 style={{ borderRadius: "10px" }}
                 unoptimized
