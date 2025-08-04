@@ -1,9 +1,9 @@
 "use client";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import { db } from "@/app/lib/firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { deleteDoc, doc, getDoc } from "firebase/firestore";
 
 interface Post {
   id: string;
@@ -22,6 +22,8 @@ export default function DetailPosts() {
   const [post, setPost] = useState<Post | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  const router = useRouter();
 
   useEffect(() => {
     if (!id || typeof id !== "string") return;
@@ -52,6 +54,27 @@ export default function DetailPosts() {
     fetchPost();
   }, [id]);
 
+  const handleEdit = () => {
+    if (!post) return;
+    router.push(`/profile/posts/edit/${post.id}`);
+  };
+
+  const handleDelete = async () => {
+    if (!post) return;
+
+    const ok = confirm("정말 삭제하시겠습니까?");
+    if (!ok) return;
+
+    try {
+      await deleteDoc(doc(db, "posts", post.id));
+      alert("삭제되었습니다.");
+      router.push("/profile"); // 게시글 목록으로 이동
+    } catch (error) {
+      console.error("삭제 오류:", error);
+      alert("삭제 중 오류가 발생했습니다.");
+    }
+  };
+
   if (!post) return <div>Loading...</div>;
 
   return (
@@ -71,8 +94,8 @@ export default function DetailPosts() {
                 className={`${styles.dropdown} ${menuOpen ? styles.active : ""}`}
               >
                 <ul>
-                  <li>수정하기</li>
-                  <li>삭제하기</li>
+                  <li onClick={handleEdit}>수정하기</li>
+                  <li onClick={handleDelete}>삭제하기</li>
                 </ul>
               </div>
             </div>
