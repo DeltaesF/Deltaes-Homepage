@@ -29,7 +29,7 @@ interface ImgSlice {
 const imgSlice: ImgSlice[] = [
   {
     id: 1,
-    img: "https://res.cloudinary.com/dvqn2grb6/image/upload/image-slide1_o2ty7d",
+    img: "https://res.cloudinary.com/dvqn2grb6/image/upload/v1754642401/image1_ukihl5.jpg",
     title: "Digital Physics & Physical Testing",
     description: "Solution Provider",
     logo: "https://res.cloudinary.com/dvqn2grb6/image/upload/footer-logo_mnjlth",
@@ -37,28 +37,28 @@ const imgSlice: ImgSlice[] = [
   },
   {
     id: 2,
-    img: "https://res.cloudinary.com/dvqn2grb6/image/upload/image-slide2_k93cws",
+    img: "https://res.cloudinary.com/dvqn2grb6/image/upload/v1754642400/image2_yi2zuw.jpg",
     title: "Simcenter \n Powertester",
     description: "전력 반도체 신뢰성 평가 측정장비",
     link: "/main/pages/product/measurement/powertester",
   },
   {
     id: 3,
-    img: "https://res.cloudinary.com/dvqn2grb6/image/upload/image-slide3_ugxxi9",
+    img: "https://res.cloudinary.com/dvqn2grb6/image/upload/v1754642400/image3_y4p4ic.jpg",
     title: "Simcenter \n T3STER SI",
     description: "반도체 열저항 정션 온도측정 장비",
     link: "/main/pages/product/measurement/t3ster",
   },
   {
     id: 4,
-    img: "https://res.cloudinary.com/dvqn2grb6/image/upload/image-slide4_ixp8if",
+    img: "https://res.cloudinary.com/dvqn2grb6/image/upload/v1754642401/image4_ieeatb.jpg",
     title: "Simcenter \n Flotherm",
     description: "산업계 표준 전기 / 전자 부품 열관리 소프트웨어",
     link: "/main/pages/product/simulation/flotherm",
   },
   {
     id: 5,
-    img: "https://res.cloudinary.com/dvqn2grb6/image/upload/image-slide5_ivhrq6",
+    img: "https://res.cloudinary.com/dvqn2grb6/image/upload/v1754642400/image5_nekpwh.jpg",
     title: "Simcenter \n FLOEFD",
     description:
       "실무 사용자를 위한 차세대 \n Multi-Physics CFD 해석 소프트 웨어",
@@ -66,21 +66,21 @@ const imgSlice: ImgSlice[] = [
   },
   {
     id: 6,
-    img: "https://res.cloudinary.com/dvqn2grb6/image/upload/image-slide6_a3tcz0",
+    img: "https://res.cloudinary.com/dvqn2grb6/image/upload/v1754642401/image6_dnzzds.jpg",
     title: "Simcenter \n STAR-CCM+",
     description: "CFD 엔지니어를 위한 통합 다중 물리 솔루션",
     link: "/main/pages/product/simulation/starccm",
   },
   {
     id: 7,
-    img: "https://res.cloudinary.com/dvqn2grb6/image/upload/image-slide7_jpnve2",
+    img: "https://res.cloudinary.com/dvqn2grb6/image/upload/v1754642401/image7_sngf2d.jpg",
     title: "Simcenter \n Amesim & Flomaster",
     description: "시스템 시뮬레이션 및 설계 소프트웨어",
     link: "/main/pages/product/simulation/flomaster",
   },
   {
     id: 8,
-    img: "https://res.cloudinary.com/dvqn2grb6/image/upload/image-slide8_jt8zkb",
+    img: "https://res.cloudinary.com/dvqn2grb6/image/upload/v1754642401/image8_qxkyvg.jpg",
     title: "Simcenter \n HEEDS",
     description:
       "CAD 및 CAE와 연계되는 강력한 \n ​설계 공간 탐색 및 최적화 소프트웨어",
@@ -88,7 +88,7 @@ const imgSlice: ImgSlice[] = [
   },
   {
     id: 9,
-    img: "https://res.cloudinary.com/dvqn2grb6/image/upload/image-slide9_hbglfu",
+    img: "https://res.cloudinary.com/dvqn2grb6/image/upload/v1754642401/image9_cgxph0.jpg",
     title: "Simcenter 3D",
     description:
       "구조, 진동 , 음향, 열유동, 동역학, 최적화 및 전자기 등의 문제를 \n ​빠르게 해결하는 전문적 엔지니어링 소프트웨어",
@@ -96,14 +96,14 @@ const imgSlice: ImgSlice[] = [
   },
   {
     id: 10,
-    img: "https://res.cloudinary.com/dvqn2grb6/image/upload/image-slide10_nvuyjk",
+    img: "https://res.cloudinary.com/dvqn2grb6/image/upload/v1754642400/image10_iexzmf.jpg",
     title: "Simcenter \n TURBOdesign Suite",
     description: "역설계 기법에 의한 유체기계설계 소프트웨어",
     link: "/main/pages/product/simulation/battery",
   },
   {
     id: 11,
-    img: "https://res.cloudinary.com/dvqn2grb6/image/upload/image-slide11_o1tnkw",
+    img: "https://res.cloudinary.com/dvqn2grb6/image/upload/v1754642400/image11_dvc38n.jpg",
     title: "NANOTEST \n TIMA 5",
     description: "ASTM D-5470 규정에 따른 TIM 재열물성치 측정장치",
     link: "/main/pages/product/measurement/tima5",
