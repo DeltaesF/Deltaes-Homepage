@@ -119,6 +119,7 @@ export default function Write({ setSelectMenu }: WriteProps) {
           <option value="" disabled>
             카테고리 선택
           </option>
+          <option value="뉴스">뉴스</option>
           <optgroup label="공지사항">
             <option value="공지사항">공지사항</option>
             <option value="행사소식">행사소식</option>

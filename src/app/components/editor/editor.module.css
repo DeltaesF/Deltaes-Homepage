@@ -58,3 +58,27 @@
     height: auto;
   }
 }
+
+/* Quill Editor 텍스트 정렬 문제를 해결하기 위한 명시적 스타일 */
+.editorContainer :global(.ql-editor .ql-align-center) {
+  text-align: center;
+}
+
+.editorContainer :global(.ql-editor .ql-align-right) {
+  text-align: right;
+}
+
+.editorContainer :global(.ql-editor .ql-align-justify) {
+  text-align: justify;
+}
+
+/* 이미지 정렬을 위한 추가 스타일 (더 안정적인 방법) */
+.editorContainer :global(.ql-editor p.ql-align-center > img) {
+  display: block;
+  margin: 10px auto;
+}
+
+.editorContainer :global(.ql-editor p.ql-align-right > img) {
+  display: block;
+  margin: 10px 0 10px auto;
+}

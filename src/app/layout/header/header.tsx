@@ -385,6 +385,9 @@ export default function Header() {
               <li className={styles.li}>
                 <Link href="/main/pages/qa">Q&A</Link>
               </li>
+              <li className={styles.li}>
+                <Link href="/main/pages/news">NEWS</Link>
+              </li>
             </ul>
           </nav>
           <div>
