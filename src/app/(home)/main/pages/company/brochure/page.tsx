@@ -7,7 +7,7 @@ import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 export default function Brochure() {
   const { imageSrc1, error } = useFetchCloudinaryImages([
     "brochure1_lxifvr",
-    "brochure2_ctqifx",
+    "brochure2I_enrc2g",
     "brochure3I_rixeor",
     "brochure4_zqfasi",
     "brochure5_jbp2sc",
@@ -22,7 +22,7 @@ export default function Brochure() {
 
   const pdfUrls = [
     "https://drive.google.com/file/d/1xKdsjH0f41YbFvA9Z89qGRoCCbg81O5X/view?usp=sharing",
-    "https://drive.google.com/file/d/1UM0nB_Ko3tr34B6PYSrdUsQRTgvX-iAI/view?usp=sharing",
+    "https://drive.google.com/file/d/1BwVB-SWNHfCGZZjlNB0CIjdHMc70xZ5b/view?usp=sharing",
     "https://drive.google.com/file/d/1FwVu_vflkAJcLblvDXuTCiRR8UePn9gz/view?usp=sharing",
     "https://drive.google.com/file/d/1nQdZXr992srZuzAHvn-JtgPF9eK_gp9J/view?usp=sharing",
     "https://drive.google.com/file/d/1OAVuKabiN7xJ_JU7ai3Xv8WJWm5ytR5T/view?usp=sharing",
@@ -65,7 +65,7 @@ export default function Brochure() {
               <Image
                 src={imageSrc1[1]}
                 alt=""
-                width="245"
+                width="230"
                 height="315"
                 style={{ borderRadius: "10px" }}
                 unoptimized
