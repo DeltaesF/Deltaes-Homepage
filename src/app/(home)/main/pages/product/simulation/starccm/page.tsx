@@ -81,7 +81,7 @@ export default function Starccm() {
                     프로세스를 효율적으로 만들며, 궁극적으로 고객의 기대치를
                     뛰어넘는 더욱 혁신적인 제품으로 이어집니다.
                   </p>
-                  <p>STAR-CCM+ 2502 최신 업데이트 내용 추가했습니다.</p>
+                  <p>STAR-CCM+ 2502 업데이트 내용이 추가되었습니다.</p>
                   <button>구매 문의</button>
                 </div>
               </div>
