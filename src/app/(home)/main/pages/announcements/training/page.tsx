@@ -62,7 +62,7 @@ export default function Training() {
         <h2>교육 일정</h2>
         <div className={styles.calender}>
           <iframe
-            src={`https://calendar.google.com/calendar/embed?src=${process.env.GOOGLE_CALENDARID}&ctz=Asia%2FSeoul`}
+            src={`https://calendar.google.com/calendar/embed?src=${process.env.NEXT_PUBLIC_GOOGLE_CALENDARID}&ctz=Asia%2FSeoul`}
             width="800"
             height="600"
           ></iframe>

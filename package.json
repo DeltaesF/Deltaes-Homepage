@@ -29,6 +29,7 @@
     "next-images": "^1.8.5",
     "next-sitemap": "^4.2.3",
     "nodemailer": "^7.0.3",
+    "openai": "^5.12.2",
     "react-quill": "^2.0.0",
     "streamifier": "^0.1.1",
     "swiper": "^11.1.15"

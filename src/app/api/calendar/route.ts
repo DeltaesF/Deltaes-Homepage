@@ -14,7 +14,7 @@ interface CalendarEvent {
 export async function GET() {
   try {
     // 공개 캘린더 ID와 API 키
-    const calendarId = process.env.GOOGLE_CALENDARID; // 예시 캘린더 ID
+    const calendarId = process.env.NEXT_PUBLIC_GOOGLE_CALENDARID; // 예시 캘린더 ID
     const apiKey = process.env.GOOGLE_API_KEY; // 구글 API 키 환경 변수에서 가져오기
 
     if (!apiKey) {

@@ -277,11 +277,17 @@ export default function MainPage() {
             summary: string;
             start: { date: string };
             end: { date: string };
-          }) => ({
-            title: event.summary,
-            start: event.start.date,
-            end: event.end.date,
-          }),
+          }) => {
+            // 종료일 하루 빼기
+            const endDate = new Date(event.end.date);
+            endDate.setDate(endDate.getDate() - 1);
+
+            return {
+              title: event.summary,
+              start: event.start.date,
+              end: endDate.toISOString().split("T")[0], // YYYY-MM-DD 형식
+            };
+          },
         );
 
         setEvents(filteredEvents); // 상태에 저장

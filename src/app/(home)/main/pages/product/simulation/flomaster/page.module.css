@@ -129,7 +129,7 @@
 
 .thirdWrapper {
   width: 100vw;
-  height: 6400px;
+  height: 6300px;
   background-color: #d1d1d1;
   display: flex;
   justify-content: center;
@@ -299,13 +299,11 @@
 }
 .newImg10 {
   position: relative;
-  margin-top: 20px;
   width: 528px;
   height: 300px;
 }
 .newImg11 {
   position: relative;
-  margin-top: 20px;
   width: 545px;
   height: 200px;
 }
