@@ -17,6 +17,25 @@ export default function Floefd() {
     "floefd8_eaa4cm",
     "floefd9_seid1k",
     "floefd10_li79io",
+    "nfloefd1_zpt8uc",
+    "nfloefd2_yizql9",
+    "nfloefd3_xfgdwu",
+    "nfloefd4_pxb4va",
+    "nfloefd5_odnd3r",
+    "nfloefd6_ril1do",
+    "nfloefd7_sx5ndy",
+    "nfloefd8_v0hsss",
+    "nfloefd9_agvldz",
+    "nfloefd10_fghlni",
+    "nfloefd11_skwsok",
+    "nfloefd12_g3fot5",
+    "nfloefd13_g8jqcp",
+    "nfloefd14_lefpck",
+    "nfloefd15_b8d9qm",
+    "nfloefd16_ikssbt",
+    "nfloefd17_ytiolr",
+    "nfloefd18_gqgtao",
+    "nfloefd19_hlwj6m",
   ]);
 
   if (error) {
@@ -66,6 +85,7 @@ export default function Floefd() {
                     설계로부터 성능을평가하고 재설계하는 반복 시간을 크게 단축
                     시켜줍니다.
                   </p>
+                  <p>FLOEFD 2506 업데이트 내용이 추가되었습니다.</p>
                   <button>구매 문의</button>
                 </div>
               </div>
@@ -519,6 +539,367 @@ export default function Floefd() {
                     <span className={styles.contantSquare}></span>
                     <h3>AutoCalibration</h3>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className={styles.newWrapper}>
+            <div className={styles.newContent}>
+              <h2>Simcenter FLOEFD 2506</h2>
+              <div className={styles.newDescription}>
+                <h3>1. Project Parameters from Components</h3>
+                <div className={styles.newImg}>
+                  {imageSrc1[10] && (
+                    <Image
+                      src={imageSrc1[10]}
+                      alt="전자기기 및 반도체"
+                      fill
+                      style={{ objectFit: "contain" }}
+                      unoptimized
+                    />
+                  )}
+                </div>
+                <p>
+                  하위 모델에서 정의한 프로젝트 파라미터를 상위 프로젝트로 전달
+                  가능해졌습니다. 이는 부품 라이브러리를 기반으로 설계하는
+                  환경에서 매우 유용하며, 전력 모듈처럼 반복적인 구조를 가진
+                  컴포넌트를 설정할 때, 설정값을 한 번만 정의하면 여러 상위
+                  모델에 자동 적용할 수 있습니다. <br />
+                  <br /> 예시: 파워 모듈 내부 칩에서 정의한 열 발생률이나 재료
+                  정보를 상위 모듈에서 재사용 → 모델링 생산성 향상
+                </p>
+              </div>
+              <div className={styles.newDescription}>
+                <h3>2. Smart PCB 기반 BCI-ROM 생성 지원</h3>
+                <div className={styles.newImg}>
+                  {imageSrc1[11] && (
+                    <Image
+                      src={imageSrc1[11]}
+                      alt="전자기기 및 반도체"
+                      fill
+                      style={{ objectFit: "contain" }}
+                      unoptimized
+                    />
+                  )}
+                </div>
+                <p>
+                  다층 구조의 PCB에서 Smart PCB 기반으로 저차원 Reduced Order
+                  Model인 BCI-ROM을 생성 가능하며, 구성된 모델은 다양한 포맷으로
+                  출력 가능합니다:
+                </p>
+                <ul>
+                  <li>
+                    FMU (Functional Mock-up Unit) – 시스템 수준 시뮬레이션에
+                    활용
+                  </li>
+                  <li>VHDL-AMS – 회로 시뮬레이션에 적합</li>
+                  <li>
+                    행렬 형식 – 내부 계산용 유틸리티 호환 적용 사례: EV 파워
+                    시스템에서 제어기 PCB를 ROM으로 모델링하여 전체 냉각
+                    시스템에 통합 → 다물리 최적화 용이
+                  </li>
+                </ul>
+              </div>
+              <div className={styles.newDescription}>
+                <h3>3. BCI-ROM 내 평균/최대 온도 자동 계산</h3>
+                <div className={styles.newImg}>
+                  {imageSrc1[12] && (
+                    <Image
+                      src={imageSrc1[12]}
+                      alt="전자기기 및 반도체"
+                      fill
+                      style={{ objectFit: "contain" }}
+                      unoptimized
+                    />
+                  )}
+                </div>
+                <p>
+                  복잡한 형상이나 다수의 바디로 구성된 부품(Busbar 등)에 대해,
+                  평균 및 최대 온도를 자동으로 계산하는 기능이 도입되었습니다.
+                  이전에는 각각의 온도 위치를 수동으로 지정하고 결과를 비교해야
+                  했지만, 이제는 BCI-ROM 생성 시 자동 설정 가능하여 설계자는
+                  목표 온도 관리나 과열 지점 식별을 빠르게 수행할 수 있습니다. →
+                  초기 설계 검증과 시스템 수준 열 평가에 강력한 도구 제공
+                </p>
+              </div>
+              <div className={styles.newDescription}>
+                <h3>4. FMU as a Feature – 라이브러리 기반 FMU 관리 기능</h3>
+                <div className={styles.newImg}>
+                  {imageSrc1[13] && (
+                    <Image
+                      src={imageSrc1[13]}
+                      alt="전자기기 및 반도체"
+                      fill
+                      style={{ objectFit: "contain" }}
+                      unoptimized
+                    />
+                  )}
+                </div>
+                <p>
+                  FMU 컴포넌트를 부품처럼 정의하고, 이를 라이브러리에 저장하거나
+                  프로젝트 내에서 반복 사용 가능해졌습니다. 복잡한 시스템에서
+                  다수의 FMU를 사용할 때, 각 FMU의 입력 및 출력 파라미터를
+                  하나의 인터페이스에서 직관적으로 제어할 수 있어 사용자 경험이
+                  개선되었습니다. → 예시: 전원, 냉각, 제어 장치 등 개별
+                  컴포넌트를 FMU로 구성하고, 시스템 통합 설계에 활용
+                </p>
+              </div>
+              <div className={styles.newDescription}>
+                <h3>
+                  5. Structural Transient Analysis – CFD-열-구조 연성 과도 해석
+                </h3>
+                <div className={styles.newImg}>
+                  {imageSrc1[14] && (
+                    <Image
+                      src={imageSrc1[14]}
+                      alt="전자기기 및 반도체"
+                      fill
+                      style={{ objectFit: "contain" }}
+                      unoptimized
+                    />
+                  )}
+                </div>
+                <p>
+                  Simcenter FLOEFD의 열·유체 해석 결과를 Simcenter NASTRAN 401
+                  솔버에 전달하여 비선형 구조 해석을 동시에 수행할 수 있습니다.
+                  이로써 시간에 따라 변화하는 온도 및 압력장이 구조적 응답에
+                  어떻게 영향을 주는지를 하나의 프로젝트 내에서 분석
+                  가능해졌습니다. 결과는 Transient Explorer를 통해 시각적으로
+                  검토 가능하며, 반복 해석에 유용한 응력/변위 데이터도 함께
+                  제공합니다. → 냉각 장치, 커넥터, 고전력 반도체 등 설계 시
+                  열-기계 응답을 통합적으로 고려해야 하는 상황에 유용
+                </p>
+              </div>
+              <div className={styles.newDescription}>
+                <h3>6. Component Explorer – 상태 및 온도 컬럼 추가</h3>
+                <div className={styles.newImg}>
+                  {imageSrc1[15] && (
+                    <Image
+                      src={imageSrc1[15]}
+                      alt="전자기기 및 반도체"
+                      fill
+                      style={{ objectFit: "contain" }}
+                      unoptimized
+                    />
+                  )}
+                </div>
+                <div className={styles.newImg}>
+                  {imageSrc1[16] && (
+                    <Image
+                      src={imageSrc1[16]}
+                      alt="전자기기 및 반도체"
+                      fill
+                      style={{ objectFit: "contain" }}
+                      unoptimized
+                    />
+                  )}
+                </div>
+                <p>
+                  모든 부품에 대해 CFD/전자기/구조 해석 상태를 통합적으로 제어할
+                  수 있으며, 각 부품별 평균 온도를 테이블로 확인할 수 있습니다.
+                  특히 Excel로 직접 내보내기 기능이 지원되어 보고서 작성, 품질
+                  검토, 설계 비교 등의 생산성이 크게 향상됩니다. → 예시: 200개
+                  이상의 칩 부품에 대해 온도 기준으로 정렬하고 고온 부품을 자동
+                  마킹
+                </p>
+              </div>
+              <div className={styles.newDescription}>
+                <h3>7. EFDAPI 자동화 기능 통합</h3>
+                <p className={styles.newDescriptionP}>
+                  1. Face Selection by Normal: 부품 표면을 색상이나 이름이
+                  아니라 법선 벡터 방향으로 선택 가능 → 대규모 2R 모델 구성 시
+                  효율 향상
+                </p>
+                <div className={styles.newImg}>
+                  {imageSrc1[17] && (
+                    <Image
+                      src={imageSrc1[17]}
+                      alt="전자기기 및 반도체"
+                      fill
+                      style={{ objectFit: "contain" }}
+                      unoptimized
+                    />
+                  )}
+                </div>
+                <p className={styles.newDescriptionP}>
+                  2. Access to Geometry Parameters: CAD 내 기하학적 변수(치수,
+                  위치, 수식 등)에 대해 API를 통해 직접 접근 가능 → 최적화
+                  도구와 연동한 자동 반복 시뮬레이션 가능 → 예시: 히트싱크 핀
+                  간격을 외부 파라미터로 제어하며 최대 열 전달률을 찾는 알고리즘
+                  자동화
+                </p>
+                <div className={styles.newImg}>
+                  {imageSrc1[18] && (
+                    <Image
+                      src={imageSrc1[18]}
+                      alt="전자기기 및 반도체"
+                      fill
+                      style={{ objectFit: "contain" }}
+                      unoptimized
+                    />
+                  )}
+                </div>
+              </div>
+              <div className={styles.newDescription}>
+                <h3>8. Smart PCB Import 속도 개선 (최대 40배)</h3>
+                <div className={styles.newImg}>
+                  {imageSrc1[19] && (
+                    <Image
+                      src={imageSrc1[19]}
+                      alt="전자기기 및 반도체"
+                      fill
+                      style={{ objectFit: "contain" }}
+                      unoptimized
+                    />
+                  )}
+                </div>
+                <div className={styles.newImg}>
+                  {imageSrc1[20] && (
+                    <Image
+                      src={imageSrc1[20]}
+                      alt="전자기기 및 반도체"
+                      fill
+                      style={{ objectFit: "contain" }}
+                      unoptimized
+                    />
+                  )}
+                </div>
+                <p>
+                  EDA Bridge를 통한 Smart PCB 모델의 가져오기 시간이 최대
+                  40배까지 빨라졌습니다. 실제 테스트에서 수백만 노드가 포함된
+                  대형 PCB도 수분 내에 불러오기 가능하며, 초기에 PCB 변경이 잦은
+                  설계 환경에서 큰 이점을 제공합니다. → 설계 초기 반복
+                  시뮬레이션에서 대기 시간 단축, 생산성 증대
+                </p>
+              </div>
+              <div className={styles.newDescription}>
+                <h3>9. EDA Bridge: Place Library Component</h3>
+                <div className={styles.newImg}>
+                  {imageSrc1[21] && (
+                    <Image
+                      src={imageSrc1[21]}
+                      alt="전자기기 및 반도체"
+                      fill
+                      style={{ objectFit: "contain" }}
+                      unoptimized
+                    />
+                  )}
+                </div>
+                <p>
+                  EDA Bridge 유틸리티 내에서 라이브러리 부품을 그래픽 영역에
+                  드래그 앤 드롭으로 직접 배치 가능하며, 원점 자동 배치 후 수동
+                  이동 및 스크립트 기반 배치도 지원됩니다. → 설계자의 워크플로우
+                  중심으로 빠르고 직관적인 구성 가능
+                </p>
+              </div>
+              <div className={styles.newDescription}>
+                <h3>10. XTXML Export 및 편집 기능 지원</h3>
+                <div className={styles.newImg}>
+                  {imageSrc1[22] && (
+                    <Image
+                      src={imageSrc1[22]}
+                      alt="전자기기 및 반도체"
+                      fill
+                      style={{ objectFit: "contain" }}
+                      unoptimized
+                    />
+                  )}
+                </div>
+                <p>
+                  FLOEFD 프로젝트 또는 Package Creator에서 구성한 부품 모델을
+                  XTXML 형식으로 저장하고 수정 가능합니다. 기하학 정보, 재료
+                  설정, 열원 정의 등 상세한 변경이 가능하며, 이후 라이브러리에
+                  재등록 가능 → 부품 재사용 및 템플릿화, 외부 부품 제작기와의
+                  연계 강화
+                </p>
+              </div>
+              <div className={styles.newDescription}>
+                <h3>11. CATIA 연동 기능 통합</h3>
+                <p>
+                  Simcenter FLOEFD for CATIA 환경에서 아래 기능들이 포함된
+                  연계성이 강화되었습니다:
+                </p>
+                <li>CAD 내 부품 자동 교체 (Component Replacement)</li>
+                <div className={styles.newImg}>
+                  {imageSrc1[23] && (
+                    <Image
+                      src={imageSrc1[23]}
+                      alt="전자기기 및 반도체"
+                      fill
+                      style={{ objectFit: "contain" }}
+                      unoptimized
+                    />
+                  )}
+                </div>
+                <li>Body 또는 Part 형식으로 선택적 모델 불러오기</li>
+                <div className={styles.newImg}>
+                  {imageSrc1[24] && (
+                    <Image
+                      src={imageSrc1[24]}
+                      alt="전자기기 및 반도체"
+                      fill
+                      style={{ objectFit: "contain" }}
+                      unoptimized
+                    />
+                  )}
+                </div>
+                <li>
+                  Flotherm XT 모델을 XTXML로 변환하여 FLOEFD에서 사용 가능 →
+                  CATIA 사용자의 제품 설계 흐름을 CFD 분석과 직접 연계하는 통합
+                  시뮬레이션 가능
+                </li>
+                <div className={styles.newImg}>
+                  {imageSrc1[25] && (
+                    <Image
+                      src={imageSrc1[25]}
+                      alt="전자기기 및 반도체"
+                      fill
+                      style={{ objectFit: "contain" }}
+                      unoptimized
+                    />
+                  )}
+                </div>
+              </div>
+              <div className={styles.newDescription}>
+                <h3>Simcenter FLOEFD 2506 – 기능 요약</h3>
+                <div className={styles.newImgtable1}>
+                  {imageSrc1[26] && (
+                    <Image
+                      src={imageSrc1[26]}
+                      alt="전자기기 및 반도체"
+                      fill
+                      style={{ objectFit: "contain" }}
+                      unoptimized
+                    />
+                  )}
+                </div>
+              </div>
+              <div className={styles.newDescription}>
+                <h3>FLOEFD API (EFDAPI) 기능</h3>
+                <div className={styles.newImgtable2}>
+                  {imageSrc1[27] && (
+                    <Image
+                      src={imageSrc1[27]}
+                      alt="전자기기 및 반도체"
+                      fill
+                      style={{ objectFit: "contain" }}
+                      unoptimized
+                    />
+                  )}
+                </div>
+              </div>
+              <div className={styles.newDescription}>
+                <h3>EDA / CAD 연계 기능</h3>
+                <div className={styles.newImgtable3}>
+                  {imageSrc1[28] && (
+                    <Image
+                      src={imageSrc1[28]}
+                      alt="전자기기 및 반도체"
+                      fill
+                      style={{ objectFit: "contain" }}
+                      unoptimized
+                    />
+                  )}
                 </div>
               </div>
             </div>

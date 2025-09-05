@@ -82,7 +82,9 @@ export default function Flomaster() {
                     모델이 완성됩니다.
                   </p>
                   <p>
-                    Simcenter Flomaster 2504 업데이트 내용이 추가되었습니다.
+                    <a href="#flomaster-2504">
+                      Simcenter Flomaster 2504 업데이트 내용이 추가되었습니다.
+                    </a>
                   </p>
                   <button>구매 문의</button>
                 </div>
@@ -194,7 +196,11 @@ export default function Flomaster() {
                   </div>
                 </div>
               </div>
-              <div className={styles.newContent}>
+              <div
+                className={styles.newContent}
+                id="flomaster-2504"
+                style={{ scrollMarginTop: "270px" }}
+              >
                 <h2>Simcenter Flomaster 2504</h2>
                 <div className={styles.newDescription}>
                   <h3>🔹 Wobbe Index 계산 개선</h3>

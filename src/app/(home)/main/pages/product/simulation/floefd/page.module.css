@@ -60,6 +60,11 @@
 .firstDes p:nth-of-type(n + 2) {
   margin-top: 15px;
 }
+.firstDes p:nth-of-type(3) {
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 30px;
+}
 
 .firstDes button {
   margin-top: auto;
@@ -199,7 +204,7 @@
 
 .fourWrapper {
   width: 100vw;
-  height: 2450px;
+  height: 2350px;
   background-color: #d1e0ee;
   display: flex;
   justify-content: center;
@@ -212,6 +217,7 @@
 .fourContent h2 {
   font-size: 32px;
   font-weight: bold;
+  margin-bottom: 20px;
 }
 .fourImgP1 {
   display: flex;
@@ -358,6 +364,75 @@
   background-color: #fff;
   margin-right: 10px;
   border-radius: 5px;
+}
+
+.newWrapper {
+  width: 100vw;
+  height: auto;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.newContent {
+  width: 1000px;
+  height: auto;
+  margin: 50px 0;
+}
+.newContent h2 {
+  font-size: 28px;
+  font-weight: bold;
+}
+.newDescription {
+  margin-top: 50px;
+}
+
+.newDescription h3 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.newDescription p {
+  margin: 20px 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.newDescriptionP {
+  padding-left: 30px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.newDescription ul {
+  margin-top: 10px;
+}
+.newDescription li {
+  list-style-type: disc;
+  line-height: 1.4;
+  margin: 20px 0;
+  margin-left: 30px;
+}
+
+.newImg {
+  position: relative;
+  width: 700px;
+  height: 400px;
+}
+.newImgtable1 {
+  position: relative;
+  width: 510px;
+  height: 200px;
+}
+.newImgtable2 {
+  position: relative;
+  width: 500px;
+  height: 60px;
+}
+.newImgtable3 {
+  position: relative;
+  width: 500px;
+  height: 150px;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -642,6 +717,76 @@
   .fiveDes1 h3 {
     font-size: 18px;
   }
+
+  .newWrapper {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .newContent {
+    width: 90%;
+    margin: 30px auto;
+  }
+
+  .newContent h2 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .newDescription {
+    margin-top: 40px;
+  }
+
+  .newDescription h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .newDescription p,
+  .newDescriptionP {
+    font-size: 15px;
+    line-height: 1.5;
+    padding-left: 20px;
+  }
+
+  .newDescription ul {
+    margin-left: 20px;
+  }
+
+  .newDescription li {
+    font-size: 15px;
+    margin: 15px 0;
+    margin-left: 25px;
+  }
+
+  /* 이미지 컨테이너들: 태블릿에서는 약간 줄임 */
+  .newImg {
+    width: 100% !important;
+    height: 350px !important;
+  }
+
+  .newImgtable1 {
+    width: 100% !important;
+    height: 180px !important;
+  }
+
+  .newImgtable2 {
+    width: 100% !important;
+    height: 70px !important;
+  }
+
+  .newImgtable3 {
+    width: 100% !important;
+    height: 140px !important;
+  }
+
+  /* 이미지 비율 유지 */
+  .newImg img,
+  .newImgtable1 img,
+  .newImgtable2 img,
+  .newImgtable3 img {
+    object-fit: contain;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -925,5 +1070,78 @@
 
   .fiveDes1 h3 {
     font-size: 18px;
+  }
+
+  .newWrapper {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .newContent {
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  .newContent h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .newDescription {
+    margin-top: 30px;
+  }
+
+  .newDescription h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .newDescription p,
+  .newDescriptionP {
+    font-size: 14px;
+    line-height: 1.4;
+    padding-left: 15px;
+  }
+
+  .newDescription ul {
+    margin-left: 15px;
+  }
+
+  .newDescription li {
+    font-size: 14px;
+    margin: 10px 0;
+    margin-left: 20px;
+  }
+
+  /* 이미지 컨테이너들 폭 100%로 조정 */
+  .newImg,
+  .newImgtable1,
+  .newImgtable2,
+  .newImgtable3 {
+    width: 100% !important;
+  }
+
+  .newImg {
+    max-height: 250px; /* 세로 길이 제한 */
+  }
+
+  .newImgtable1 {
+    max-height: 150px;
+  }
+
+  .newImgtable2 {
+    max-height: 60px;
+  }
+
+  .newImgtable3 {
+    max-height: 120px;
+  }
+
+  /* 이미지 object-fit 유지 */
+  .newImg img,
+  .newImgtable1 img,
+  .newImgtable2 img,
+  .newImgtable3 img {
+    object-fit: contain;
   }
 }
