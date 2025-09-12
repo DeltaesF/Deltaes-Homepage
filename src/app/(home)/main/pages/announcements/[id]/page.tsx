@@ -38,7 +38,7 @@ export default function DetailPosts() {
           user_id: data.user_id,
           category: data.category,
           images: data.images || [],
-          created_at: data.created_at?.toDate?.() || new Date(),
+          created_at: data.createdAt?.toDate?.() || new Date(),
           userName: data.userName,
           views: data.views || 0,
         });
@@ -59,6 +59,15 @@ export default function DetailPosts() {
             <span>작성자: {post.userName}</span>
             <span>조회수: {post.views}</span>
             <span>카테고리: {post.category}</span>
+            <span>
+              {post.created_at
+                ? new Date(post.created_at).toLocaleDateString("ko-KR", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })
+                : "날짜 없음"}
+            </span>
             <div
               className={styles.menuIcon}
               onClick={() => setMenuOpen(!menuOpen)}

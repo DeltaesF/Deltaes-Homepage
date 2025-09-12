@@ -29,16 +29,31 @@
 .gridItem {
   width: 320px;
   height: 130px;
-  background-color: white;
-  color: black;
+  background-color: transparent;
+  color: white;
+  border: 1px solid #7c7c7c;
 }
 
 .gridItemPost {
   display: flex;
+  flex-direction: column; /* 세로 배치 */
   justify-content: space-between;
   width: 100%;
   padding: 10px;
+  gap: 10px;
+}
+
+.gridItemTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   gap: 20px;
+}
+
+.gridItemPost span {
+  font-size: 14px;
+  color: #ccc;
+  text-align: left; /* 왼쪽 정렬 */
 }
 
 .gridItemPost h1 {

@@ -8,6 +8,7 @@ import Inquiry from "./inquiry/page";
 import Write from "@/app/components/write/Write";
 import { useUser } from "@/app/context/UserContext";
 import Users from "./users/page";
+import Analytics from "./analytics/page";
 
 export default function AdminPage() {
   const [selectMenu, setSelectMenu] = useState("게시물 관리");
@@ -22,6 +23,8 @@ export default function AdminPage() {
       return <Write setSelectMenu={setSelectMenu} />;
     } else if (selectMenu === "문의 사항") {
       return <Inquiry />;
+    } else if (selectMenu === "접속자 확인") {
+      return <Analytics />;
     }
   };
   return (
@@ -64,6 +67,14 @@ export default function AdminPage() {
               onClick={() => setSelectMenu("문의 사항")}
             >
               문의 사항
+            </button>
+          </li>
+          <li>
+            <button
+              className={styles.menuButton}
+              onClick={() => setSelectMenu("접속자 확인")}
+            >
+              접속자 확인
             </button>
           </li>
         </ul>

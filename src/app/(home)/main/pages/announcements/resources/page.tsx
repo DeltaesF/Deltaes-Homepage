@@ -52,25 +52,36 @@ export default function Resources() {
             return (
               <article key={post.id} className={styles.gridItem}>
                 <div className={styles.gridItemPost}>
-                  <Link
-                    href={`/main/pages/announcements/${post.id}`}
-                    onClick={handleLinkClick}
-                  >
-                    <h1>{post.title}</h1>
-                  </Link>
-                  {validSrc && (
-                    <div>
-                      <Image
-                        src={validSrc}
-                        alt="대표 이미지"
-                        width={70}
-                        height={70}
-                        onError={(e) =>
-                          console.error("이미지 로드 실패:", validSrc, e)
-                        }
-                      />
-                    </div>
-                  )}
+                  <div className={styles.gridItemTop}>
+                    <Link
+                      href={`/main/pages/announcements/${post.id}`}
+                      onClick={handleLinkClick}
+                    >
+                      <h1>{post.title}</h1>
+                    </Link>
+                    {validSrc && (
+                      <div>
+                        <Image
+                          src={validSrc}
+                          alt="대표 이미지"
+                          width={70}
+                          height={70}
+                          onError={(e) =>
+                            console.error("이미지 로드 실패:", validSrc, e)
+                          }
+                        />
+                      </div>
+                    )}
+                  </div>
+                  <span>
+                    {post.created_at
+                      ? new Date(post.created_at).toLocaleDateString("ko-KR", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })
+                      : "날짜 없음"}
+                  </span>
                 </div>
               </article>
             );
