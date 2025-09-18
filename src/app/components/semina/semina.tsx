@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import styles from "./Semina.module.css";
+import styles from "./semina.module.css";
 import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 import Image from "next/image";
 import Link from "next/link";
