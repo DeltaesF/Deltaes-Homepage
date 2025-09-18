@@ -20,8 +20,10 @@ export default function Evnet() {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 12;
 
-  const filteredPosts = postsList.filter(
-    (post) => post.category === "행사소식",
+  const allowedCategories = ["행사소식", "뉴스"];
+
+  const filteredPosts = postsList.filter((post) =>
+    allowedCategories.includes(post.category),
   );
 
   useEffect(() => {
@@ -37,7 +39,7 @@ export default function Evnet() {
     <main className={styles.container}>
       <section className={styles.wrapper}>
         <header className={styles.title}>
-          <h1>행사소식</h1>
+          <h1>NEWS</h1>
         </header>
         <section className={styles.gridContainer}>
           {currentPosts.map((post) => {

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import { db } from "@/app/lib/firebase";
 import { doc, getDoc } from "firebase/firestore";
+import DOMPurify from "isomorphic-dompurify";
 
 interface Post {
   id: string;
@@ -49,6 +50,13 @@ export default function DetailPosts() {
     fetchPost();
   }, [id]);
 
+  // 1. DOMPurify를 사용해 HTML을 안전하게 처리합니다.
+  const cleanContent = DOMPurify.sanitize(post?.content || "", {
+    // 2. style 속성을 허용하도록 설정합니다.
+    ADD_TAGS: ["iframe"], // iframe 같은 태그도 허용하려면 추가
+    ADD_ATTR: ["target", "style"], // target, style 속성 허용
+  });
+
   if (!post) return <div>Loading...</div>;
 
   return (
@@ -87,7 +95,7 @@ export default function DetailPosts() {
         </header>
         <div className={styles.divider}></div>
         <div
-          dangerouslySetInnerHTML={{ __html: post?.content || "" }}
+          dangerouslySetInnerHTML={{ __html: cleanContent }}
           className={styles.postContent}
         ></div>
       </div>

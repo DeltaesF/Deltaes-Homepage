@@ -341,7 +341,7 @@ export default function Header() {
                     </Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
-                    <Link href="/main/pages/announcements/event">행사소식</Link>
+                    <Link href="/main/pages/announcements/event">NEWS</Link>
                   </li>
                   <li className={`${styles.li} ${styles.subDropdown}`}>
                     <Link href="/main/pages/announcements/productnews">
@@ -385,9 +385,9 @@ export default function Header() {
               <li className={styles.li}>
                 <Link href="/main/pages/qa">Q&A</Link>
               </li>
-              <li className={styles.li}>
+              {/* <li className={styles.li}>
                 <Link href="/main/pages/news">NEWS</Link>
-              </li>
+              </li> */}
             </ul>
           </nav>
           <div>

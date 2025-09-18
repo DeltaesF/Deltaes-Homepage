@@ -504,7 +504,7 @@ export default function MainPage() {
           </div>
           <div className={styles.s}>
             <div className={styles.sHeader}>
-              <h3>행사소식</h3>
+              <h3>NEWS</h3>
             </div>
             <div className={styles.sContainer2}>
               <div className={styles.sContent}>
