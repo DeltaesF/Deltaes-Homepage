@@ -192,6 +192,7 @@
 }
 .sHeader2Sub:hover {
   background-color: rgb(19, 26, 74);
+  cursor: pointer;
 }
 .sContentSub3 {
   width: 280px;
