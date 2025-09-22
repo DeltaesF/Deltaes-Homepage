@@ -11,7 +11,7 @@ export default function Semina() {
 
   const { imageSrc1, loading, error } = useFetchCloudinaryImages([
     "banner1_ksbtad",
-    "ADT_workshop_Invitation_0919_qdid3z",
+    "ADT_workshop_Invitation_0922_page-0001_kbzmmc",
   ]);
 
   if (loading) return <p>로딩 중...</p>;
