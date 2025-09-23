@@ -129,7 +129,7 @@
 
 .thirdWrapper {
   width: 100vw;
-  height: 6300px;
+  height: 1100px;
   background-color: #d1d1d1;
   display: flex;
   justify-content: center;
@@ -227,85 +227,6 @@
 .thirdDes2 li {
   list-style-type: disc;
   line-height: 2;
-}
-
-.newContent {
-  margin-top: 70px;
-}
-.newDescription {
-  margin-top: 50px;
-}
-
-.newDescription h3 {
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.newDescription p {
-  margin: 20px 0;
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-.newImg {
-  position: relative;
-  width: 520px;
-  height: 200px;
-}
-.newImg1 {
-  position: relative;
-  width: 600px;
-  height: 450px;
-}
-.newImg2 {
-  position: relative;
-  width: 600px;
-  height: 280px;
-}
-.newImg3 {
-  position: relative;
-  width: 520px;
-  height: 300px;
-}
-.newImg4 {
-  position: relative;
-  width: 540px;
-  height: 200px;
-}
-.newImg5 {
-  position: relative;
-  width: 300px;
-  height: 300px;
-}
-.newImg6 {
-  position: relative;
-  width: 520px;
-  height: 200px;
-}
-.newImg7 {
-  position: relative;
-  width: 520px;
-  height: 300px;
-}
-.newImg8 {
-  position: relative;
-  width: 520px;
-  height: 300px;
-}
-.newImg9 {
-  position: relative;
-  width: 600px;
-  height: 380px;
-}
-.newImg10 {
-  position: relative;
-  width: 528px;
-  height: 300px;
-}
-.newImg11 {
-  position: relative;
-  width: 545px;
-  height: 200px;
 }
 
 .four {
@@ -561,81 +482,6 @@
     line-height: 1.5;
   }
 
-  .newContent {
-    margin-top: 50px;
-    padding: 0 15px;
-  }
-
-  .newDescription {
-    margin-top: 40px;
-  }
-
-  .newDescription h3 {
-    font-size: 20px;
-  }
-
-  .newDescription p {
-    font-size: 14px;
-  }
-
-  /* 이미지 크기 축소 */
-  .newImg,
-  .newImg4,
-  .newImg6 {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 520 / 200;
-  }
-
-  .newImg1 {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 700 / 450;
-  }
-
-  .newImg2 {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 600 / 280;
-  }
-
-  .newImg3 {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 850 / 470;
-  }
-
-  .newImg5 {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 520 / 390;
-  }
-
-  .newImg7,
-  .newImg8 {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 520 / 380;
-  }
-
-  .newImg9 {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 600 / 380;
-  }
-
-  .newImg10 {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 528 / 300;
-  }
-
-  .newImg11 {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 545 / 200;
-  }
-
   .four {
     height: auto;
     padding: 20px 0;
@@ -850,86 +696,6 @@
     list-style-type: none;
     font-size: 12px;
     line-height: 1.5;
-  }
-
-  .newContent {
-    margin-top: 40px;
-    padding: 0 10px;
-  }
-
-  .newDescription {
-    margin-top: 30px;
-  }
-
-  .newDescription h3 {
-    font-size: 18px;
-  }
-
-  .newDescription p {
-    font-size: 13px;
-    line-height: 1.4;
-  }
-
-  /* fill 이미지가 보이도록 비율 유지 */
-  .newImg {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 520 / 200;
-  }
-  .newImg1 {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 700 / 450;
-  }
-  .newImg2 {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 600 / 280;
-  }
-  .newImg3 {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 850 / 470;
-  }
-  .newImg4 {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 540 / 200;
-  }
-  .newImg5 {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 520 / 390;
-  }
-  .newImg6 {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 520 / 200;
-  }
-  .newImg7 {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 520 / 380;
-  }
-  .newImg8 {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 520 / 380;
-  }
-  .newImg9 {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 600 / 380;
-  }
-  .newImg10 {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 528 / 300;
-  }
-  .newImg11 {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 545 / 200;
   }
 
   .four {

@@ -92,6 +92,50 @@ export default function Editor({ value, onChange }: EditorProps) {
     });
   };
 
+  // 🖥️ 비디오 업로드 핸들러
+  const videoHandler = () => {
+    const input = document.createElement("input");
+    input.setAttribute("type", "file");
+    input.setAttribute("accept", "video/mp4");
+    input.click();
+
+    input.addEventListener("change", async () => {
+      const file = input.files?.[0];
+      if (!file) return;
+
+      const formData = new FormData();
+      formData.append("file", file);
+
+      try {
+        const res = await fetch("/api/driveupload", {
+          method: "POST",
+          body: formData,
+        });
+        const data = await res.json();
+        const fileId = data.fileId;
+        const previewUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+
+        const editor = quillRef.current?.getEditor();
+        const range = editor?.getSelection();
+
+        if (editor && range) {
+          // ✅ iframe으로 embed
+          editor.clipboard.dangerouslyPasteHTML(
+            range.index,
+            `<iframe src="${previewUrl}" 
+                   width="800" 
+                   height="480" 
+                   allow="autoplay" 
+                   allowfullscreen></iframe>`,
+          );
+          editor.setSelection(range.index + 1, 0);
+        }
+      } catch (err) {
+        console.error("비디오 업로드 실패:", err);
+      }
+    });
+  };
+
   // 🧩 hr 핸들러 추가
   const insertHr = () => {
     const editor = quillRef.current?.getEditor();
@@ -131,6 +175,7 @@ export default function Editor({ value, onChange }: EditorProps) {
             });
           },
           hr: insertHr,
+          video: videoHandler,
         },
       },
     }),
@@ -161,8 +206,10 @@ export default function Editor({ value, onChange }: EditorProps) {
       <ReactQuill
         ref={quillRef}
         theme="snow"
-        value={value}
-        onChange={onChange}
+        value={value || ""} // ✅ null 방지
+        onChange={(content, delta, source, editor) => {
+          onChange(editor.getHTML()); // ✅ HTML을 직접 넘겨야 스타일 유지됨
+        }}
         modules={modules}
         formats={formats}
       />

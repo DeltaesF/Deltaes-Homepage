@@ -28,7 +28,6 @@ export async function POST(req: Request) {
     const folderId = process.env.GOOGLE_DRIVE_UPLOADFOLDER_ID;
     const fileName = file.name || "untitled";
     const mimeType = file.type || "application/octet-stream";
-    const isImage = mimeType.startsWith("image/");
 
     console.log("파일 이름:", fileName);
     console.log("MIME 타입:", mimeType);
@@ -63,13 +62,23 @@ export async function POST(req: Request) {
       },
     });
 
-    const fileUrl = isImage
-      ? `https://lh3.googleusercontent.com/d/${fileId}`
-      : `https://drive.google.com/uc?export=download&id=${fileId}`;
+    // ✅ URL 분기 처리
+    let fileUrl = "";
+    let previewUrl = "";
 
-    console.log("fileUrl: ", fileUrl);
+    if (mimeType.startsWith("image/")) {
+      // 이미지 → CDN URL (빠르게 표시됨)
+      fileUrl = `https://lh3.googleusercontent.com/d/${fileId}`;
+    } else {
+      // 일반 파일/동영상 → 다운로드 & 미리보기 URL
+      fileUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+      previewUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+    }
 
-    return NextResponse.json({ fileUrl }, { status: 201 });
+    console.log("fileUrl:", fileUrl);
+    console.log("previewUrl:", previewUrl);
+
+    return NextResponse.json({ fileId, fileUrl, previewUrl }, { status: 201 });
   } catch (error) {
     console.error("🔥 오류 발생:", error);
     return NextResponse.json({ error: "업로드 실패" }, { status: 500 });
