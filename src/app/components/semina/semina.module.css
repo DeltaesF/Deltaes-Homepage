@@ -102,9 +102,9 @@
 @media screen and (max-width: 480px) {
   .bannerPopup,
   .invitationPopup {
-    width: 90%;
+    width: 100%;
+    height: auto;
     border-radius: 8px;
-    margin-right: 20px;
   }
   .bannerPopup {
     height: 420px;
