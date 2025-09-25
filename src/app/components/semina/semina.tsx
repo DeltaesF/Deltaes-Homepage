@@ -1,24 +1,43 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./semina.module.css";
 import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 import Image from "next/image";
+import ReactDOM from "react-dom";
 
 export default function Semina() {
   const [isOpen, setIsOpen] = useState(true);
   const [showInvitation, setShowInvitation] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   const { imageSrc1, loading, error } = useFetchCloudinaryImages([
     "banner1_ksbtad",
     "ADT_workshop_Invitation_0922_page-0001_kbzmmc",
   ]);
 
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return null;
+  }
+
   if (loading) return <p>로딩 중...</p>;
   if (error) return <p>에러 발생!</p>;
   if (!isOpen || !imageSrc1[0]) return null;
 
-  return (
+  // 👈 1. portal-root 요소를 변수에 저장
+  const portalRoot = document.getElementById("portal-root");
+
+  // 👈 2. portalRoot가 존재하는지 반드시 확인!
+  if (!portalRoot) {
+    // 만약 portal-root div가 없다면 에러를 방지하기 위해 null을 반환
+    return null;
+  }
+
+  return ReactDOM.createPortal(
     <>
       {/* 1️⃣ 첫 번째 배너 팝업 */}
       {!showInvitation && (
@@ -79,6 +98,7 @@ export default function Semina() {
           </div>
         </div>
       )}
-    </>
+    </>,
+    portalRoot,
   );
 }

@@ -12,6 +12,7 @@ export default function MainLayout({
     <div>
       <Header />
       {children}
+      <div id="portal-root"></div>
       <Inquiry />
       <Footer />
     </div>
