@@ -298,7 +298,9 @@ export default function MainPage() {
     fetchEvents();
   }, []);
 
-  const eventPosts = postsList.filter((post) => post.category === "행사소식");
+  const eventPosts = postsList.filter(
+    (post) => post.category === "행사소식" || post.category === "뉴스",
+  );
 
   const latestPost = eventPosts.length > 0 ? eventPosts[0] : null;
 
