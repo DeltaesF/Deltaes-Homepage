@@ -14,7 +14,7 @@
 
 /* 1차 배너 팝업 */
 .bannerPopup {
-  width: 600px;
+  width: 700px;
   height: 600px;
   background: #fff;
   border-radius: 12px;
@@ -100,13 +100,37 @@
 }
 
 @media screen and (max-width: 480px) {
-  .bannerPopup,
+  .bannerPopup {
+    width: 100%;
+    height: auto; /* 세로 크기 자동 */
+    border-radius: 0; /* 모바일에서는 모서리 둥근 부분 제거(선택사항) */
+    box-shadow: none; /* 그림자 제거로 모바일 화면 깔끔하게 (선택사항) */
+  }
+
+  .linkWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 750 / 600; /* 원본 이미지 비율 유지 (매우 중요!) */
+    /* 만약 aspect-ratio 지원 안 하는 브라우저 고려 시, 아래 fallback 추가 가능 */
+  }
+
+  .linkWrapper img {
+    object-fit: contain; /* 전체가 보이게 조정 */
+    background-color: #f4f4f4; /* 흰 여백 대신 자연스러운 배경 */
+  }
+
   .invitationPopup {
     width: 100%;
     height: auto;
     border-radius: 8px;
+    padding: 10px;
   }
-  .bannerPopup {
-    height: 420px;
+
+  .closeBtn {
+    top: 5px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
   }
 }

@@ -12,8 +12,8 @@ export default function Semina() {
   const [isClient, setIsClient] = useState(false);
 
   const { imageSrc1, loading, error } = useFetchCloudinaryImages([
-    "banner1_ksbtad",
-    "ADT_workshop_Invitation_0922_page-0001_kbzmmc",
+    "11banner1_w3jxik",
+    "26delta_seminar_invitation_1103_1_page-0001_srgsyd",
   ]);
 
   useEffect(() => {
@@ -79,7 +79,7 @@ export default function Semina() {
             {/* 초대장 이미지 전체 표시 */}
             <div className={styles.invitationContent}>
               <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSe8pGnXHMG6nnz9stqp5ZYr2mKfuAyhiiDTTmGWFM-NaKIydQ/viewform"
+                href="https://docs.google.com/forms/d/e/1FAIpQLScEt7IO9eH0aFG2Fy7nwglxnNckhkQd2riXWcCWgUk8X2FAow/viewform"
                 target="_blank"
                 rel="noopener noreferrer"
               >

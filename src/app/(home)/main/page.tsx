@@ -11,6 +11,7 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import React, { useEffect, useState } from "react";
 import { usePostsList } from "@/app/context/PostsListContext";
 import { useRouter } from "next/navigation";
+import Semina from "@/app/components/semina/semina";
 
 interface Event {
   title: string;
@@ -30,7 +31,8 @@ const imgSlice: ImgSlice[] = [
   {
     id: 1,
     img: "https://res.cloudinary.com/dvqn2grb6/image/upload/v1754642401/image1_ukihl5.jpg",
-    title: "Digital Physics & Physical Testing",
+    title:
+      "AI-Driven Digital Physics & Physical Testing for Digital Twin Solutions provider",
     description: "Solution Provider",
     logo: "https://res.cloudinary.com/dvqn2grb6/image/upload/footer-logo_mnjlth",
     link: "",
@@ -213,6 +215,7 @@ export default function MainPage() {
 
     return (
       <div className={styles.gridContainer}>
+        <Semina />
         <article key={post.id} className={styles.gridItem}>
           <div className={styles.gridItemPost}>
             <Link
