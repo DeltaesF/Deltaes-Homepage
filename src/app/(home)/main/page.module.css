@@ -285,6 +285,9 @@
     position: relative;
     width: 100%;
   }
+  .imgIntroduceTitle span {
+    font-size: 28px !important; /* 예시 */
+  }
   .imgIntroduceTitle {
     font-size: 14px; /* 글씨 크기 줄이기 */
     font-weight: bold;
@@ -377,6 +380,10 @@
     position: relative;
     width: 100%;
   }
+  .imgIntroduceTitle span {
+    font-size: 20px !important; /* 예시 */
+  }
+
   .imgIntroduceTitle {
     font-size: 14px; /* 글씨 크기 줄이기 */
     font-weight: bold;
@@ -387,6 +394,11 @@
     text-align: center;
     color: white;
     cursor: pointer;
+  }
+
+  .imgIntroduceDec span {
+    display: inline-block !important;
+    font-size: 16px !important; /* 예시 */
   }
 
   .imgIntroduceDec {

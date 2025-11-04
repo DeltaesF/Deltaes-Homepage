@@ -32,7 +32,7 @@ const imgSlice: ImgSlice[] = [
     id: 1,
     img: "https://res.cloudinary.com/dvqn2grb6/image/upload/v1754642401/image1_ukihl5.jpg",
     title:
-      "AI-Driven Digital Physics & Physical Testing for Digital Twin Solutions provider",
+      "AI-Driven Digital Physics & Physical Testing \n for Digital Twin Solutions provider",
     description: "Solution Provider",
     logo: "https://res.cloudinary.com/dvqn2grb6/image/upload/footer-logo_mnjlth",
     link: "",
@@ -337,7 +337,8 @@ export default function MainPage() {
                     position: "absolute",
                     display: "flex",
                     flexDirection: "column",
-                    width: "1000px",
+                    maxWidth: "1000px",
+                    width: "90%",
                     textAlign: list.id === 1 ? "center" : "right", // 조건부 스타일
                     top: list.id === 1 ? "22%" : "35%",
                     left: "50%",
@@ -353,9 +354,10 @@ export default function MainPage() {
                         key={id}
                         style={{
                           fontSize:
-                            list.id === 1 ? "35px" : id === 0 ? "30px" : "35px",
+                            list.id === 1 ? "28px" : id === 0 ? "30px" : "35px",
                           display: "block",
                           fontWeight: "bold",
+                          wordBreak: "break-word",
                         }}
                         className={styles.TitleSpan}
                       >
@@ -369,9 +371,9 @@ export default function MainPage() {
                         key={id}
                         style={{
                           display: "block",
-                          fontSize: list.id === 1 ? "24px" : "18px",
+                          fontSize: list.id === 1 ? "22px" : "18px",
                           fontWeight: list.id === 1 ? "600" : "500",
-                          marginTop: list.id === 1 ? "-30px" : "0px",
+                          marginTop: list.id === 1 ? "-20px" : "0px",
                           lineHeight: "1.4",
                         }}
                       >
