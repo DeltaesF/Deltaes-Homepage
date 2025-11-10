@@ -61,7 +61,7 @@ export default function DetailPosts() {
   const cleanContent = DOMPurify.sanitize(post?.content || "", {
     // 2. style 속성을 허용하도록 설정합니다.
     ADD_TAGS: ["iframe"], // iframe 같은 태그도 허용하려면 추가
-    ADD_ATTR: ["target", "style"], // target, style 속성 허용
+    ADD_ATTR: ["target", "style", "class"], // target, style 속성 허용
   });
 
   const handleEdit = () => {

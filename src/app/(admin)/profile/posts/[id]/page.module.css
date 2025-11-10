@@ -287,6 +287,17 @@
   font-weight: bold;
   margin: 1.33em 0;
 }
+.postContent :global(h5) {
+  font-size: 0.83em;
+  font-weight: bold;
+  margin: 1.67em 0;
+}
+.postContent :global(h6) {
+  font-size: 0.67em;
+  font-weight: bold;
+  margin: 2.33em 0;
+}
+
 .postContent :global(p) {
   margin: 1em 0;
 }
@@ -308,14 +319,16 @@
 .postContent :global(ul) {
   padding-left: 1.5em;
 }
-.postContent :global(li.ql-indent-1) {
-  margin-left: 1.5em;
+.postContent :global(ul) {
+  list-style-type: disc; /* 채워진 원 (•) */
+  padding-left: 1.5em;
+  margin: 1em 0; /* 위아래 여백 추가 */
 }
-.postContent :global(li.ql-indent-2) {
-  margin-left: 3em;
-}
-.postContent :global(li.ql-indent-3) {
-  margin-left: 4.5em;
+
+.postContent :global(ol) {
+  list-style-type: decimal; /* 숫자 (1.) */
+  padding-left: 1.5em;
+  margin: 1em 0; /* 위아래 여백 추가 */
 }
 
 /* 정렬 */
@@ -362,6 +375,21 @@
   border: none;
   border-top: 1px solid #ccc;
   margin: 2em 0;
+}
+/* 이미지 정렬 */
+.postContent :global(p.ql-align-center > img) {
+  display: block;
+  margin: 10px auto;
+}
+
+.postContent :global(p.ql-align-right > img) {
+  display: block;
+  margin: 10px 0 10px auto;
+}
+
+.postContent :global(p.ql-align-left > img) {
+  display: block;
+  margin: 10px auto 10px 0;
 }
 
 /* 비디오 */

@@ -5,6 +5,7 @@ import styles from "./semina.module.css";
 import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 import Image from "next/image";
 import ReactDOM from "react-dom";
+import Link from "next/link";
 
 export default function Semina() {
   const [isOpen, setIsOpen] = useState(true);
@@ -78,11 +79,7 @@ export default function Semina() {
 
             {/* 초대장 이미지 전체 표시 */}
             <div className={styles.invitationContent}>
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLScEt7IO9eH0aFG2Fy7nwglxnNckhkQd2riXWcCWgUk8X2FAow/viewform"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href="/semina">
                 {imageSrc1[1] && (
                   <Image
                     src={imageSrc1[1]}
@@ -93,7 +90,7 @@ export default function Semina() {
                     unoptimized
                   />
                 )}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
