@@ -133,11 +133,8 @@ export default function Forms() {
       const collectionRef = collection(db, "seminar_11th_registrations");
       await addDoc(collectionRef, dataToSubmitFirestore);
 
-      // 3. (추가!) Google Sheets 확장 프로그램 URL로 데이터 전송
-      // 확장 프로그램에서 제공한 고유 URL
-      const extensionUrl = `https://asia-northeast3-homepage-30170.cloudfunctions.net/ext-http-export-sheets-saveRecord`;
-
-      // JSON으로 보내는 데이터에는 serverTimestamp 대신 클라이언트 시간을 ISO 문자열로 보냅니다.
+      // 3. (수정!) Google Sheets에 보낼 데이터 준비
+      // (serverTimestamp는 JSON으로 보낼 수 없으므로 클라이언트 시간으로 대체)
       const dataForSheet = {
         ...formData,
         previousEventName:
@@ -145,8 +142,9 @@ export default function Forms() {
         submittedAt: new Date().toISOString(),
       };
 
-      // HTTP POST 요청
-      const response = await fetch(extensionUrl, {
+      // 4. (수정!) 내 서버의 API Route('/api/submit-form')로 데이터 전송
+      // (절대 경로가 아닌 상대 경로로 호출해야 합니다!)
+      const response = await fetch("/api/submit-form", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -154,17 +152,15 @@ export default function Forms() {
         body: JSON.stringify(dataForSheet),
       });
 
-      // HTTP 요청이 실패한 경우 오류 처리
+      // API Route에서 보낸 응답이 실패한 경우
       if (!response.ok) {
-        // 응답 본문을 텍스트로 읽어 오류 메시지에 포함
-        const errorBody = await response.text();
-        console.error("HTTP Extension Error Body:", errorBody);
+        const errorData = await response.json();
         throw new Error(
-          `HTTP error! status: ${response.status}. Body: ${errorBody}`,
+          errorData.message || "API route에서 오류가 발생했습니다.",
         );
       }
 
-      // 4. 성공 처리
+      // 5. 성공 처리
       console.log(
         "Form Data Submitted to Firestore and Google Sheets:",
         dataForSheet,
