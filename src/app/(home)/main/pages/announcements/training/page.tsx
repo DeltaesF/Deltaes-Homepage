@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 import Image from "next/image";
 import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 import Link from "next/link";
+import TrainingCalendar from "@/app/components/trainingCalendar/TrainingCalendar";
 
 export default function Training() {
   const { imageSrc1, error } = useFetchCloudinaryImages([
@@ -59,13 +60,8 @@ export default function Training() {
         </figure>
       </article>
       <article className={styles.second}>
-        <h2>교육 일정</h2>
-        <div className={styles.calender}>
-          <iframe
-            src={`https://calendar.google.com/calendar/embed?src=${process.env.NEXT_PUBLIC_GOOGLE_CALENDARID}&ctz=Asia%2FSeoul`}
-            width="800"
-            height="600"
-          ></iframe>
+        <div>
+          <TrainingCalendar />
         </div>
         <footer className={styles.calenderC}>
           <h3>교육신청 및 문의</h3>

@@ -14,7 +14,7 @@ export default function Semina() {
 
   const { imageSrc1, loading, error } = useFetchCloudinaryImages([
     "11banner1_w3jxik",
-    "26delta_seminar_invitation_1103_1_page-0001_srgsyd",
+    "26delta_seminar_invitation_1103_1_page-0002_e59pz9",
   ]);
 
   useEffect(() => {
