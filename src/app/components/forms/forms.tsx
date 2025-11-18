@@ -301,6 +301,18 @@ export default function Forms() {
             // 🔥 사전등록 마감 안내문
             <div className={styles.closedBox}>
               <p className={styles.closedMessage}>사전등록이 마감되었습니다.</p>
+              <br />
+              <p className={styles.pStyle}>
+                많은 분들이 관심을 주셔서 사전등록을 마감하게 되었습니다.
+              </p>
+              <p className={styles.pStyle}>
+                다시 한 번 관심과 성원에 감사드리며,
+                <br />
+                앞으로도 Delta ES에 지속적인 관심 부탁드립니다.
+              </p>
+              <br />
+
+              <p className={styles.signStyle}>Delta ES 세미나 사무국 드림</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className={styles.form}>

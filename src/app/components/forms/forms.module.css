@@ -58,6 +58,18 @@
   line-height: 1.6;
 }
 
+.pStyle {
+  font-size: "1.125rem";
+  margin-bottom: "1rem";
+  max-width: "600px";
+  margin: "0 auto 1.5rem auto";
+}
+.signStyle {
+  font-size: "1.125rem";
+  margin-top: "2.5rem";
+  font-weight: "bold";
+  opacity: 0.9;
+}
 /* 모바일 대응 */
 @media (max-width: 480px) {
   .closedBox {
