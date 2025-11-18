@@ -43,6 +43,8 @@ const initialFormData: FormData = {
 };
 
 export default function Forms() {
+  const isClosed = true;
+
   // --- 상태 관리 ---
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -295,215 +297,226 @@ export default function Forms() {
         <div className={styles.card}>
           <h2 className={styles.sectionTitle}>사전등록</h2>
 
-          <form onSubmit={handleSubmit} className={styles.form}>
-            {/* --- 필수 입력 사항 --- */}
-            <div className={styles.formGrid}>
-              <div className={styles.formGroup}>
-                <label htmlFor="name" className={styles.label}>
-                  성함 <span className={styles.requiredStar}>*</span>
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className={styles.input}
-                />
-              </div>
-
-              <div className={styles.formGroup}>
-                <label htmlFor="company" className={styles.label}>
-                  소속 (회사명/기관명){" "}
-                  <span className={styles.requiredStar}>*</span>
-                </label>
-                <input
-                  type="text"
-                  name="company"
-                  id="company"
-                  value={formData.company}
-                  onChange={handleChange}
-                  className={styles.input}
-                />
-              </div>
-
-              <div className={styles.formGroup}>
-                <label htmlFor="department" className={styles.label}>
-                  부서명 <span className={styles.requiredStar}>*</span>
-                </label>
-                <input
-                  type="text"
-                  name="department"
-                  id="department"
-                  value={formData.department}
-                  onChange={handleChange}
-                  className={styles.input}
-                />
-              </div>
-
-              <div className={styles.formGroup}>
-                <label htmlFor="title" className={styles.label}>
-                  직함 <span className={styles.requiredStar}>*</span>
-                </label>
-                <input
-                  type="text"
-                  name="title"
-                  id="title"
-                  value={formData.title}
-                  onChange={handleChange}
-                  className={styles.input}
-                />
-              </div>
-
-              <div className={styles.formGroup}>
-                <label htmlFor="workPhone" className={styles.label}>
-                  회사연락처 <span className={styles.requiredStar}>*</span>
-                </label>
-                <input
-                  type="tel"
-                  name="workPhone"
-                  id="workPhone"
-                  value={formData.workPhone}
-                  onChange={handleChange}
-                  className={styles.input}
-                  placeholder="예: 02-123-4567"
-                />
-              </div>
-
-              <div className={styles.formGroup}>
-                <label htmlFor="email" className={styles.label}>
-                  이메일주소 <span className={styles.requiredStar}>*</span>
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className={styles.input}
-                  placeholder="example@company.com"
-                />
-              </div>
-
-              <div className={`${styles.formGroup} ${styles.formGroupFull}`}>
-                <label htmlFor="mobilePhone" className={styles.label}>
-                  휴대전화 (개인연락처){" "}
-                  <span className={styles.optionalText}>(선택)</span>
-                </label>
-                <input
-                  type="tel"
-                  name="mobilePhone"
-                  id="mobilePhone"
-                  value={formData.mobilePhone}
-                  onChange={handleChange}
-                  className={styles.input2}
-                  placeholder="예: 010-1234-5678"
-                />
-              </div>
+          {isClosed ? (
+            // 🔥 사전등록 마감 안내문
+            <div className={styles.closedBox}>
+              <p className={styles.closedMessage}>사전등록이 마감되었습니다.</p>
             </div>
-
-            {/* --- 설문 항목 --- */}
-            <div className={styles.surveySection}>
-              <fieldset className={styles.fieldset}>
-                <legend className={styles.legend}>
-                  이전에 Delta ES 에서 주최하는 행사에 참여하신적이 있으십니까?
-                </legend>
-                <div className={styles.radioGroup}>
-                  <label className={styles.radioLabel}>
-                    <input
-                      type="radio"
-                      name="attendedBefore"
-                      value="yes"
-                      checked={formData.attendedBefore === "yes"}
-                      onChange={handleChange}
-                      className={styles.radioInput}
-                    />
-                    <span>예</span>
-                  </label>
-                  <label className={styles.radioLabel}>
-                    <input
-                      type="radio"
-                      name="attendedBefore"
-                      value="no"
-                      checked={formData.attendedBefore === "no"}
-                      onChange={handleChange}
-                      className={styles.radioInput}
-                    />
-                    <span>아니오</span>
-                  </label>
-                </div>
-              </fieldset>
-
-              {/* 이전 참여 행사명 (조건부 표시) */}
-              {formData.attendedBefore === "yes" && (
+          ) : (
+            <form onSubmit={handleSubmit} className={styles.form}>
+              {/* --- 필수 입력 사항 --- */}
+              <div className={styles.formGrid}>
                 <div className={styles.formGroup}>
-                  <label htmlFor="previousEventName" className={styles.label}>
-                    이전에 참여하신 행사의 이름을 적어주시기 바랍니다.
+                  <label htmlFor="name" className={styles.label}>
+                    성함 <span className={styles.requiredStar}>*</span>
                   </label>
                   <input
                     type="text"
-                    name="previousEventName"
-                    id="previousEventName"
-                    value={formData.previousEventName}
+                    name="name"
+                    id="name"
+                    value={formData.name}
                     onChange={handleChange}
                     className={styles.input}
                   />
                 </div>
-              )}
 
-              <fieldset className={styles.fieldset}>
-                <legend className={styles.legend}>
-                  향후 Delta ES 의 영업 및 기술 자료를 받아보시기를 원하십니까?
-                </legend>
-                <div className={styles.radioGroup}>
-                  <label className={styles.radioLabel}>
-                    <input
-                      type="radio"
-                      name="marketingConsent"
-                      value="yes"
-                      checked={formData.marketingConsent === "yes"}
-                      onChange={handleChange}
-                      className={styles.radioInput}
-                    />
-                    <span>예</span>
+                <div className={styles.formGroup}>
+                  <label htmlFor="company" className={styles.label}>
+                    소속 (회사명/기관명){" "}
+                    <span className={styles.requiredStar}>*</span>
                   </label>
-                  <label className={styles.radioLabel}>
-                    <input
-                      type="radio"
-                      name="marketingConsent"
-                      value="no"
-                      checked={formData.marketingConsent === "no"}
-                      onChange={handleChange}
-                      className={styles.radioInput}
-                    />
-                    <span>아니오</span>
-                  </label>
+                  <input
+                    type="text"
+                    name="company"
+                    id="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    className={styles.input}
+                  />
                 </div>
-              </fieldset>
-            </div>
 
-            {/* --- 제출 버튼 및 상태 메시지 --- */}
-            <div className={styles.formActions}>
-              {validationError && (
-                <p className={styles.errorMessage}>{validationError}</p>
-              )}
+                <div className={styles.formGroup}>
+                  <label htmlFor="department" className={styles.label}>
+                    부서명 <span className={styles.requiredStar}>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="department"
+                    id="department"
+                    value={formData.department}
+                    onChange={handleChange}
+                    className={styles.input}
+                  />
+                </div>
 
-              {submitStatus.status === "success" && (
-                <p className={styles.successMessage}>{submitStatus.message}</p>
-              )}
-              {submitStatus.status === "error" && (
-                <p className={styles.errorMessage}>{submitStatus.message}</p>
-              )}
+                <div className={styles.formGroup}>
+                  <label htmlFor="title" className={styles.label}>
+                    직함 <span className={styles.requiredStar}>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="title"
+                    id="title"
+                    value={formData.title}
+                    onChange={handleChange}
+                    className={styles.input}
+                  />
+                </div>
 
-              <button
-                type="submit"
-                disabled={isLoading}
-                className={styles.submitButton}
-              >
-                {isLoading ? "제출 중..." : "제출하기"}
-              </button>
-            </div>
-          </form>
+                <div className={styles.formGroup}>
+                  <label htmlFor="workPhone" className={styles.label}>
+                    회사연락처 <span className={styles.requiredStar}>*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    name="workPhone"
+                    id="workPhone"
+                    value={formData.workPhone}
+                    onChange={handleChange}
+                    className={styles.input}
+                    placeholder="예: 02-123-4567"
+                  />
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label htmlFor="email" className={styles.label}>
+                    이메일주소 <span className={styles.requiredStar}>*</span>
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className={styles.input}
+                    placeholder="example@company.com"
+                  />
+                </div>
+
+                <div className={`${styles.formGroup} ${styles.formGroupFull}`}>
+                  <label htmlFor="mobilePhone" className={styles.label}>
+                    휴대전화 (개인연락처){" "}
+                    <span className={styles.optionalText}>(선택)</span>
+                  </label>
+                  <input
+                    type="tel"
+                    name="mobilePhone"
+                    id="mobilePhone"
+                    value={formData.mobilePhone}
+                    onChange={handleChange}
+                    className={styles.input2}
+                    placeholder="예: 010-1234-5678"
+                  />
+                </div>
+              </div>
+
+              {/* --- 설문 항목 --- */}
+              <div className={styles.surveySection}>
+                <fieldset className={styles.fieldset}>
+                  <legend className={styles.legend}>
+                    이전에 Delta ES 에서 주최하는 행사에 참여하신적이
+                    있으십니까?
+                  </legend>
+                  <div className={styles.radioGroup}>
+                    <label className={styles.radioLabel}>
+                      <input
+                        type="radio"
+                        name="attendedBefore"
+                        value="yes"
+                        checked={formData.attendedBefore === "yes"}
+                        onChange={handleChange}
+                        className={styles.radioInput}
+                      />
+                      <span>예</span>
+                    </label>
+                    <label className={styles.radioLabel}>
+                      <input
+                        type="radio"
+                        name="attendedBefore"
+                        value="no"
+                        checked={formData.attendedBefore === "no"}
+                        onChange={handleChange}
+                        className={styles.radioInput}
+                      />
+                      <span>아니오</span>
+                    </label>
+                  </div>
+                </fieldset>
+
+                {/* 이전 참여 행사명 (조건부 표시) */}
+                {formData.attendedBefore === "yes" && (
+                  <div className={styles.formGroup}>
+                    <label htmlFor="previousEventName" className={styles.label}>
+                      이전에 참여하신 행사의 이름을 적어주시기 바랍니다.
+                    </label>
+                    <input
+                      type="text"
+                      name="previousEventName"
+                      id="previousEventName"
+                      value={formData.previousEventName}
+                      onChange={handleChange}
+                      className={styles.input}
+                    />
+                  </div>
+                )}
+
+                <fieldset className={styles.fieldset}>
+                  <legend className={styles.legend}>
+                    향후 Delta ES 의 영업 및 기술 자료를 받아보시기를
+                    원하십니까?
+                  </legend>
+                  <div className={styles.radioGroup}>
+                    <label className={styles.radioLabel}>
+                      <input
+                        type="radio"
+                        name="marketingConsent"
+                        value="yes"
+                        checked={formData.marketingConsent === "yes"}
+                        onChange={handleChange}
+                        className={styles.radioInput}
+                      />
+                      <span>예</span>
+                    </label>
+                    <label className={styles.radioLabel}>
+                      <input
+                        type="radio"
+                        name="marketingConsent"
+                        value="no"
+                        checked={formData.marketingConsent === "no"}
+                        onChange={handleChange}
+                        className={styles.radioInput}
+                      />
+                      <span>아니오</span>
+                    </label>
+                  </div>
+                </fieldset>
+              </div>
+
+              {/* --- 제출 버튼 및 상태 메시지 --- */}
+              <div className={styles.formActions}>
+                {validationError && (
+                  <p className={styles.errorMessage}>{validationError}</p>
+                )}
+
+                {submitStatus.status === "success" && (
+                  <p className={styles.successMessage}>
+                    {submitStatus.message}
+                  </p>
+                )}
+                {submitStatus.status === "error" && (
+                  <p className={styles.errorMessage}>{submitStatus.message}</p>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className={styles.submitButton}
+                >
+                  {isLoading ? "제출 중..." : "제출하기"}
+                </button>
+              </div>
+            </form>
+          )}
         </div>
       </div>
     </div>
