@@ -65,3 +65,77 @@
 .wayBus p {
   line-height: 1.6;
 }
+
+/* 태블릿 (768px ~ 1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .wrapper {
+    width: 90%; /* 1000px 해제 -> 화면 90% 사용 */
+  }
+
+  .title {
+    font-size: 32px;
+    margin-top: 60px;
+    margin-bottom: 40px;
+  }
+
+  /* 내부 컨텐츠 박스들의 너비를 유동적으로 변경 */
+  .location,
+  .wayContainer {
+    width: 80%; /* 550px 해제 */
+  }
+
+  .line {
+    width: 85%; /* 600px 해제 */
+  }
+}
+
+/* 모바일 (480px 이하) */
+@media screen and (max-width: 480px) {
+  .wrapper {
+    width: 95%; /* 모바일에서는 여백을 최소화 */
+  }
+
+  .title {
+    font-size: 24px; /* 타이틀 크기 축소 */
+    margin-top: 40px;
+    margin-bottom: 30px;
+    padding-bottom: 8px;
+    border-bottom-width: 3px;
+  }
+
+  /* 너비가 550px, 600px로 고정된 요소들을 모바일 화면(약 360~400px) 안으로 넣기 */
+  .location {
+    width: 90%; /* 화면 너비의 90% */
+    margin-top: 30px;
+    /* margin: 0 auto가 기존 클래스에 있지만, 확실하게 상단 여백과 함께 재선언 */
+    margin: 30px auto 0 auto;
+  }
+
+  .locationTitle {
+    font-size: 14px; /* 글씨가 너무 작으면 안보이므로 약간 키움 */
+    margin-bottom: 15px;
+  }
+
+  .line {
+    width: 90%; /* 화면 뚫고 나가지 않게 조절 */
+    margin-top: 30px;
+  }
+
+  .wayContainer {
+    width: 90%; /* 550px 해제 */
+    height: auto; /* 고정 높이 250px 해제 (내용물에 따라 늘어나게) */
+    min-height: 200px; /* 지도가 들어간다면 최소 높이 보장 */
+    margin-top: 30px;
+    padding-bottom: 25px;
+  }
+
+  .wayBus {
+    width: 90%;
+    margin: 20px auto 0 auto; /* 가운데 정렬 */
+    font-size: 13px; /* 가독성 확보 */
+  }
+
+  .wayBus p {
+    word-break: keep-all; /* 단어 단위 줄바꿈 (한글 가독성) */
+  }
+}

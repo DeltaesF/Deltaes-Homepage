@@ -29,8 +29,10 @@ export default function Career() {
     <div className={styles.container}>
       <h1>Delta ES</h1>
       <p>
-        대한민국 CFD 업계를 선도하는 Delta ES 에서 <br />
-        열정과 도전으로 미래를 만들어갈 <br /> 최고의 인재를 찾습니다
+        AI 기반의 digital physics 와 physical testing 솔루션을 공급하는 Delta
+        ES에서 <br />
+        열정과 도전정신으로 미래 성장을 함께 이끌고 나갈 성실하고, 유능한 인재를
+        찾고 있습니다
       </p>
       <span>양식별 이력서 다운로드 ↓</span>
       <div className={styles.resume}>

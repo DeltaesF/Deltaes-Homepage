@@ -30,6 +30,131 @@ export default function History() {
         <div className={styles.line}></div>
         <section className={styles.service}>
           <article className={styles.serviceHistory}>
+            <h2>2025</h2>
+            <div>
+              <div>
+                <span>▶</span>
+                <p>
+                  EV 향 양면방열 SiC 전력모듈 국산화 기반 250kW급 EV 인버터
+                  수요연계 기술개발 과제선정 (산업부)
+                </p>
+              </div>
+              <div>
+                <span>▶</span>
+                <p>TIM 열물성 측정장비 TIMA 5 도입 및 설치</p>
+              </div>
+              <div>
+                <span>▶</span>
+                <p>Delta ES 기술연구소 건물 리모델링 완료</p>
+              </div>
+              <div>
+                <span>▶</span>
+                <p>전력반도체 수명가속시험장비 PWT 2400A 도입 및 설치</p>
+              </div>
+              <div>
+                <span>▶</span>
+                <p>
+                  제 11회 전력반도체 신뢰성 평가 및 열관리 기술세미나 개최
+                  (한양대 백남학술정보관)
+                </p>
+              </div>
+            </div>
+          </article>
+          <article className={styles.serviceHistory}>
+            <h2>2024</h2>
+            <div>
+              <div>
+                <span>▶</span>
+                <p>제 10회 전력반도체 신뢰성 평가 및 열관리 기술세미나 개최</p>
+              </div>
+              <div>
+                <span>▶</span>
+                <p>CFD 해석 자동화 프로젝트 기술용역 수행 (현대모비스)</p>
+              </div>
+            </div>
+          </article>
+          <article className={styles.serviceHistory}>
+            <h2>2023</h2>
+            <div>
+              <div>
+                <span>▶</span>
+                <p>제 9 회 전력반도체 신뢰성 평가 및 열관리 기술세미나 개최</p>
+              </div>
+              <div>
+                <span>▶</span>
+                <p>
+                  전고체 배터리 소재 에어로졸 열/물질전달 시뮬레이션 수행
+                  (ENFLOW)
+                </p>
+              </div>
+              <div>
+                <span>▶</span>
+                <p>
+                  충남 대호호 수상태양광 발전설비 파손원인분석 용역수행
+                  (현대화재해상보험)
+                </p>
+              </div>
+            </div>
+          </article>
+          <article className={styles.serviceHistory}>
+            <h2>2022</h2>
+            <div>
+              <div>
+                <span>▶</span>
+                <p>
+                  Siemens DISW Tier 1 Gold Partner 사 승격 제 8 회 전력반도체
+                  신뢰성 평가 및 열관리 기술세미나 개최
+                </p>
+              </div>
+              <div>
+                <span>▶</span>
+                <p>
+                  함정용 레이더 안테나 및 외부구조물 CAE 해석을 통한 설계최적화
+                  용역 수행 (한화시스템)
+                </p>
+              </div>
+            </div>
+          </article>
+          <article className={styles.serviceHistory}>
+            <h2>2021</h2>
+            <div>
+              <div>
+                <span>▶</span>
+                <p>SL 협력업체 등록</p>
+              </div>
+              <div>
+                <span>▶</span>
+                <p>제철소 배수종말처리장 정밀기술진단용역 수행 (현대제철)</p>
+              </div>
+            </div>
+          </article>
+          <article className={styles.serviceHistory}>
+            <h2>2020</h2>
+            <div>
+              <div>
+                <span>▶</span>
+                <p>SK 하이닉스 협력업체 등록</p>
+              </div>
+              <div>
+                <span>▶</span>
+                <p>
+                  국회의사당 앞 수소차량 충전소 설계 최적화 과제 수행
+                  (효성중공업)
+                </p>
+              </div>
+            </div>
+          </article>
+          <article className={styles.serviceHistory}>
+            <h2>2019</h2>
+            <div>
+              <span>▶</span>
+              <p>
+                UAE 바라카 원자력발전소 냉각장치 CTCS 유동해석 기술자문 계약체결
+                (한국전력기술)
+              </p>
+            </div>
+          </article>
+          <article className={styles.serviceHistory}>
             <h2>2018</h2>
             <div>
               <span>▶</span>
