@@ -11,7 +11,7 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import React, { useEffect, useState } from "react";
 import { usePostsList } from "@/app/context/PostsListContext";
 import { useRouter } from "next/navigation";
-import Semina from "@/app/components/semina/semina";
+// import Semina from "@/app/components/semina/semina";
 // import eventsJson from "@/app/data/calendar.json";
 
 interface Event {
@@ -227,7 +227,7 @@ export default function MainPage() {
 
     return (
       <div className={styles.gridContainer}>
-        <Semina />
+        {/* <Semina /> */}
         <article key={post.id} className={styles.gridItem}>
           <div className={styles.gridItemPost}>
             <Link
