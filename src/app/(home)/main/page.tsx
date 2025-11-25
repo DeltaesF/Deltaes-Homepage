@@ -12,13 +12,13 @@ import React, { useEffect, useState } from "react";
 import { usePostsList } from "@/app/context/PostsListContext";
 import { useRouter } from "next/navigation";
 // import Semina from "@/app/components/semina/semina";
-// import eventsJson from "@/app/data/calendar.json";
+import eventsJson from "@/app/data/calendar.json";
 
-interface Event {
-  title: string;
-  start: string;
-  end: string;
-}
+// interface Event {
+//   title: string;
+//   start: string;
+//   end: string;
+// }
 interface ImgSlice {
   id: number;
   img: string;
@@ -28,14 +28,14 @@ interface ImgSlice {
   link: string;
 }
 
-// interface CalendarItem {
-//   id: number;
-//   summary: string;
-//   description?: string;
-//   location?: string;
-//   start: { date: string };
-//   end: { date: string };
-// }
+interface CalendarItem {
+  id: number;
+  summary: string;
+  description?: string;
+  location?: string;
+  start: { date: string };
+  end: { date: string };
+}
 
 const imgSlice: ImgSlice[] = [
   {
@@ -191,7 +191,13 @@ const convertGoogleDriveURL = (url: string): string | null => {
     : null;
 };
 
-export default function MainPage() {
+export default function MainPage({
+  year,
+  month,
+}: {
+  year: number;
+  month: number;
+}) {
   const { postsList, fetchPostsList } = usePostsList();
   const [isPaused] = useState(false);
   const [activeTab, setActiveTab] = useState<TabName>("공지사항");
@@ -276,55 +282,55 @@ export default function MainPage() {
     }
   };
 
-  const [events, setEvents] = useState<Event[]>([]);
-
-  useEffect(() => {
-    async function fetchEvents() {
-      try {
-        const res = await fetch("/api/calendar");
-        const data = await res.json();
-
-        console.log(data);
-
-        // 필요한 데이터만 필터링하여 상태에 저장
-        const filteredEvents = data.items.map(
-          (event: {
-            summary: string;
-            start: { date: string };
-            end: { date: string };
-          }) => {
-            // 종료일 하루 빼기
-            const endDate = new Date(event.end.date);
-            endDate.setDate(endDate.getDate() - 1);
-
-            return {
-              title: event.summary,
-              start: event.start.date,
-              end: endDate.toISOString().split("T")[0], // YYYY-MM-DD 형식
-            };
-          },
-        );
-
-        setEvents(filteredEvents); // 상태에 저장
-      } catch (error) {
-        console.error("Error fetching calendar events:", error);
-      }
-    }
-    fetchEvents();
-  }, []);
-
-  // const [filteredEvents, setFilteredEvents] = useState<CalendarItem[]>([]);
+  // const [events, setEvents] = useState<Event[]>([]);
 
   // useEffect(() => {
-  //   // month는 1~12, JS Date에서 getMonth()는 0~11
-  //   const events = eventsJson.items.filter((event: CalendarItem) => {
-  //     const startDate = new Date(event.start.date);
-  //     return (
-  //       startDate.getFullYear() === year && startDate.getMonth() + 1 === month
-  //     );
-  //   });
-  //   setFilteredEvents(events);
-  // }, [year, month]);
+  //   async function fetchEvents() {
+  //     try {
+  //       const res = await fetch("/api/calendar");
+  //       const data = await res.json();
+
+  //       console.log(data);
+
+  //       // 필요한 데이터만 필터링하여 상태에 저장
+  //       const filteredEvents = data.items.map(
+  //         (event: {
+  //           summary: string;
+  //           start: { date: string };
+  //           end: { date: string };
+  //         }) => {
+  //           // 종료일 하루 빼기
+  //           const endDate = new Date(event.end.date);
+  //           endDate.setDate(endDate.getDate() - 1);
+
+  //           return {
+  //             title: event.summary,
+  //             start: event.start.date,
+  //             end: endDate.toISOString().split("T")[0], // YYYY-MM-DD 형식
+  //           };
+  //         },
+  //       );
+
+  //       setEvents(filteredEvents); // 상태에 저장
+  //     } catch (error) {
+  //       console.error("Error fetching calendar events:", error);
+  //     }
+  //   }
+  //   fetchEvents();
+  // }, []);
+
+  const [filteredEvents, setFilteredEvents] = useState<CalendarItem[]>([]);
+
+  useEffect(() => {
+    // month는 1~12, JS Date에서 getMonth()는 0~11
+    const events = eventsJson.items.filter((event: CalendarItem) => {
+      const startDate = new Date(event.start.date);
+      return (
+        startDate.getFullYear() === year && startDate.getMonth() + 1 === month
+      );
+    });
+    setFilteredEvents(events);
+  }, [year, month]);
 
   const eventPosts = postsList.filter(
     (post) => post.category === "행사소식" || post.category === "뉴스",
@@ -498,20 +504,22 @@ export default function MainPage() {
             <div className={styles.sContainer}>
               <div className={styles.sContent1}>
                 <div className={styles.sContentSub}>
-                  {events.length > 0 ? (
+                  {filteredEvents.length > 0 ? (
                     <ul style={{ listStyle: "none", padding: 0 }}>
-                      {events.map((event, index) => (
+                      {filteredEvents.map((event) => (
                         <li
-                          key={index}
+                          key={event.id}
                           style={{
                             marginBottom: "10px",
                             borderRadius: "5px",
                             lineHeight: 1.2,
                           }}
                         >
-                          <strong>{event.title}</strong> <br />
-                          🗓️ {new Date(event.start).toLocaleDateString()} ~{" "}
-                          {new Date(event.end).toLocaleDateString()}
+                          <strong>{event.summary}</strong> <br />
+                          🗓️ {new Date(
+                            event.start.date,
+                          ).toLocaleDateString()} ~{" "}
+                          {new Date(event.end.date).toLocaleDateString()}
                         </li>
                       ))}
                     </ul>

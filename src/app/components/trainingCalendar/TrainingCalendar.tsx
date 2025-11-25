@@ -66,9 +66,9 @@ export default function TrainingCalendar() {
         events={formattedEvents}
         eventClick={handleEventClick}
         headerToolbar={{
-          left: "prev,next today",
-          center: "title",
-          right: "dayGridMonth",
+          left: "prev,next today title",
+          center: "",
+          right: "",
         }}
       />
       {/* 🔥 모달창 */}
@@ -89,6 +89,7 @@ export default function TrainingCalendar() {
               {new Date(selectedEvent.start.date).toLocaleDateString()} ~{" "}
               {new Date(selectedEvent.end.date).toLocaleDateString()}
             </p>
+            <br />
 
             {/* description은 HTML 문자열 → dangerouslySetInnerHTML 필요 */}
             <div
