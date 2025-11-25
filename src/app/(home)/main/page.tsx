@@ -191,13 +191,7 @@ const convertGoogleDriveURL = (url: string): string | null => {
     : null;
 };
 
-export default function MainPage({
-  year,
-  month,
-}: {
-  year: number;
-  month: number;
-}) {
+export default function MainPage() {
   const { postsList, fetchPostsList } = usePostsList();
   const [isPaused] = useState(false);
   const [activeTab, setActiveTab] = useState<TabName>("공지사항");
@@ -320,6 +314,11 @@ export default function MainPage({
   // }, []);
 
   const [filteredEvents, setFilteredEvents] = useState<CalendarItem[]>([]);
+
+  // 오늘 기준으로 연도와 월 가져오기
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth() + 1; // JS getMonth()는 0~11
 
   useEffect(() => {
     // month는 1~12, JS Date에서 getMonth()는 0~11
