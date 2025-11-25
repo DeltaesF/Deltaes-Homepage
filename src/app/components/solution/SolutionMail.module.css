@@ -50,8 +50,79 @@
   color: white;
 }
 
+/* 태블릿 (768px ~ 1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .solutionMail {
+    width: 90%; /* 980px 고정 해제 -> 90% */
+    height: auto; /* 고정 높이 해제 (내용만큼 늘어나게) */
+    padding-bottom: 30px; /* 하단 여백 추가 */
+  }
+
+  .wrapper {
+    width: 100%;
+  }
+
+  /* 입력창들을 감싸는 div (이름, 이메일 등) */
+  .wrapper div {
+    width: 100%;
+    justify-content: space-between; /* 양끝 정렬 */
+  }
+
+  .input {
+    /* 280px 고정 해제 -> flex로 공간 균등 분배 */
+    flex: 1;
+    width: auto;
+    box-sizing: border-box; /* 패딩 포함 너비 계산 */
+  }
+
+  .content {
+    width: 100%; /* 940px 고정 해제 -> 부모 꽉 차게 */
+    box-sizing: border-box; /* 패딩 포함 너비 계산 */
+  }
+}
+
+/* 모바일 (480px 이하) */
 @media screen and (max-width: 480px) {
   .solutionMail {
-    display: none;
+    width: 95%; /* 화면에 거의 꽉 차게 */
+    height: auto; /* 높이 자동 (필수) */
+    margin-top: 30px;
+    padding: 20px 15px; /* 좌우 패딩 약간 축소 */
+    box-sizing: border-box;
+  }
+
+  .wrapper {
+    width: 100%;
+  }
+
+  .wrapper h2 {
+    font-size: 24px; /* 타이틀 크기 축소 */
+    text-align: center; /* 모바일에서는 가운데 정렬이 깔끔할 수 있음 (선택사항) */
+    width: 100%;
+  }
+
+  /* 입력창들을 감싸는 div */
+  .wrapper div {
+    width: 100%;
+    flex-direction: column; /* 가로 배치 -> 세로 배치 */
+    gap: 10px; /* 간격 축소 */
+    margin-top: 10px;
+  }
+
+  .input {
+    width: 100%; /* 한 줄에 하나씩 꽉 차게 */
+    box-sizing: border-box; /* 패딩 때문에 튀어나감 방지 */
+  }
+
+  .content {
+    width: 100%; /* 부모 너비에 맞춤 */
+    box-sizing: border-box;
+    margin-top: 10px;
+  }
+
+  .btn {
+    width: 100%; /* 버튼을 누르기 쉽게 가로로 꽉 채움 */
+    align-self: center; /* 가운데 정렬 */
+    margin-top: 20px;
   }
 }

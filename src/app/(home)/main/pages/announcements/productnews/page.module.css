@@ -108,3 +108,102 @@
   font-size: 16px;
   margin: 0 10px;
 }
+
+/* 태블릿 (768px ~ 1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  /* 전체 래퍼 너비 유동적으로 변경 */
+  .wrapper {
+    width: 90%; /* 1000px 고정 해제 -> 90% */
+  }
+
+  .title {
+    font-size: 34px;
+    margin-top: 60px;
+  }
+
+  /* 그리드 레이아웃: 3열 -> 2열 */
+  .gridContainer {
+    /* 320px 고정 3개 대신, 화면을 2등분하는 유동적 컬럼 */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; /* 간격 조금 더 확보 */
+    margin-top: 60px;
+  }
+
+  /* 개별 카드 스타일 */
+  .gridItem {
+    width: 100%; /* 320px 고정 해제 -> 그리드 칸에 맞춤 */
+    height: auto; /* 고정 높이 130px 해제 -> 내용에 따라 늘어나도록 */
+    min-height: 130px; /* 최소 높이는 유지 */
+  }
+}
+
+/* 모바일 (480px 이하) */
+@media screen and (max-width: 480px) {
+  /* 전체 래퍼 */
+  .wrapper {
+    width: 95%; /* 좌우 여백 최소화 */
+  }
+
+  /* 타이틀 */
+  .title {
+    font-size: 26px; /* 모바일에서 너무 크지 않게 */
+    margin-top: 40px;
+    padding-bottom: 8px;
+    border-bottom-width: 3px;
+  }
+
+  /* 그리드 레이아웃: 1열 (세로로 쭉 나열) */
+  .gridContainer {
+    grid-template-columns: 1fr; /* 1열 */
+    gap: 15px;
+    margin-top: 40px;
+  }
+
+  /* 개별 카드 */
+  .gridItem {
+    width: 100%; /* 320px 해제 */
+    height: auto; /* 내용이 넘치지 않게 자동 높이 */
+    min-height: 120px;
+  }
+
+  /* 카드 내부 레이아웃 미세 조정 */
+  .gridItemPost {
+    gap: 5px; /* 내부 요소 간격 축소 */
+    padding: 15px; /* 터치 영역 확보를 위해 패딩 살짝 증가 */
+    box-sizing: border-box; /* 패딩이 너비에 포함되도록 */
+  }
+
+  .gridItemTop {
+    gap: 15px; /* 텍스트와 이미지 사이 간격 조절 */
+  }
+
+  .gridItemPost h1 {
+    font-size: 16px; /* 제목 폰트 살짝 줄임 */
+    /* 모바일에서는 3줄이 너무 많으면 2줄로 줄일 수도 있음 (선택사항) */
+    /* -webkit-line-clamp: 2; */
+  }
+
+  /* 썸네일 이미지 */
+  .gridItemPost img {
+    width: 60px; /* 이미지 크기 살짝 축소 */
+    height: 60px;
+    flex-shrink: 0; /* 텍스트가 길어져도 이미지 찌그러짐 방지 */
+  }
+
+  /* 페이지네이션 */
+  .pagination {
+    margin-top: 30px;
+    margin-bottom: 50px; /* 하단 여백 확보 */
+    gap: 5px; /* 버튼 사이 간격 */
+    flex-wrap: wrap; /* 버튼이 많으면 줄바꿈 */
+  }
+
+  .pageButton {
+    padding: 8px 12px; /* 버튼 크기 터치하기 좋게 */
+    font-size: 14px;
+  }
+
+  .pageInfo {
+    font-size: 14px;
+  }
+}

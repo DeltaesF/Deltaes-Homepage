@@ -55,3 +55,82 @@
   align-self: flex-end;
   color: white;
 }
+
+/* 태블릿 (768px ~ 1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .solutionMail {
+    width: 90%; /* 980px -> 90% */
+    height: auto; /* 고정 높이 600px 해제 -> 내용만큼 늘어나게 */
+    padding-bottom: 30px; /* 하단 여백 확보 */
+  }
+
+  .wrapper {
+    width: 100%;
+  }
+
+  /* 입력창들을 감싸는 div (flex container) */
+  .wrapper div {
+    width: 100%;
+    /* 태블릿까지는 가로 배치를 유지하되, 꽉 차게 */
+    justify-content: space-between;
+  }
+
+  .input {
+    /* 462px 고정 해제 -> 남은 공간을 균등하게 차지 */
+    flex: 1;
+    width: auto;
+    box-sizing: border-box; /* 패딩 포함 너비 계산 (필수) */
+  }
+
+  .input2,
+  .content {
+    width: 100%; /* 940px 고정 해제 -> 부모 꽉 차게 */
+    box-sizing: border-box; /* 패딩 포함 너비 계산 (필수) */
+  }
+}
+
+/* 모바일 (480px 이하) */
+@media screen and (max-width: 480px) {
+  .solutionMail {
+    width: 95%; /* 화면 너비에 맞게 */
+    height: auto; /* 고정 높이 해제 (필수) */
+    margin-top: 30px;
+    padding: 20px 15px; /* 좌우 패딩 약간 축소 */
+    box-sizing: border-box;
+  }
+
+  .wrapper {
+    width: 100%;
+  }
+
+  .wrapper h2 {
+    font-size: 24px; /* 타이틀 크기 축소 */
+    margin-bottom: 20px; /* 여백 축소 */
+    text-align: center; /* 모바일에서는 가운데 정렬 권장 */
+    width: 100%;
+  }
+
+  /* 가로로 배치된 입력창(.input)을 감싸는 div */
+  .wrapper div {
+    width: 100%;
+    flex-direction: column; /* 가로 -> 세로 배치 변경 */
+    gap: 10px; /* 간격 조절 */
+    margin-top: 10px;
+  }
+
+  /* 모든 입력 필드 공통 적용 */
+  .input,
+  .input2,
+  .content {
+    width: 100%; /* 고정 px 해제하고 꽉 차게 */
+    box-sizing: border-box; /* 패딩 포함 크기 계산 */
+    font-size: 14px; /* 모바일 폰트 사이즈 조정 */
+  }
+
+  /* 버튼 스타일 */
+  .btn {
+    width: 100%; /* 버튼을 누르기 쉽게 가로로 꽉 채움 */
+    margin-top: 20px;
+    align-self: center; /* 가운데 정렬 */
+  }
+}
