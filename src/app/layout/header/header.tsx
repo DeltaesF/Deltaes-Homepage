@@ -10,7 +10,7 @@ import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isIndustryOpen, setIsIndustryOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const { imageSrc1, error } = useFetchCloudinaryImages([
     "partner_pmwjie",
     "header-logo_slqge6",
@@ -25,7 +25,11 @@ export default function Header() {
 
   const handleLinkClick = () => {
     setIsOpen(false);
-    setIsIndustryOpen(false);
+    setActiveMenu(null);
+  };
+
+  const toggleMenu = (menuName: string) => {
+    setActiveMenu((prev) => (prev === menuName ? null : menuName));
   };
 
   return (
@@ -437,13 +441,14 @@ export default function Header() {
                 </li>
                 <li
                   className={styles.dropdown}
-                  onClick={() => setIsIndustryOpen(!isIndustryOpen)}
+                  onClick={() => toggleMenu("industry")}
                 >
                   적용산업
                 </li>
-                {/* 서브 메뉴는 반드시 li 안에 있어야 함 */}
                 <ul
-                  className={`${styles.dropdownMenu} ${isIndustryOpen ? styles.show : ""}`}
+                  className={`${styles.dropdownMenu} ${
+                    activeMenu === "industry" ? styles.show : ""
+                  }`}
                 >
                   <li>
                     <Link href="/main/pages/industry" onClick={handleLinkClick}>
@@ -547,22 +552,126 @@ export default function Header() {
                     컨설팅서비스
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href="/main/pages/announcements"
-                    onClick={handleLinkClick}
-                  >
-                    공지사항
-                  </Link>
+                <li
+                  className={styles.dropdown}
+                  onClick={() => toggleMenu("notice")}
+                >
+                  공지사항
                 </li>
-                <li>
-                  <Link
-                    href="/main/pages/company/ceo"
-                    onClick={handleLinkClick}
-                  >
-                    회사소개
-                  </Link>
+                <ul
+                  className={`${styles.dropdownMenu} ${
+                    activeMenu === "notice" ? styles.show : ""
+                  }`}
+                >
+                  <li>
+                    <Link
+                      href="/main/pages/announcements"
+                      onClick={handleLinkClick}
+                    >
+                      공지사항
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/main/pages/announcements/training"
+                      onClick={handleLinkClick}
+                    >
+                      교육 안내
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/main/pages/announcements/event"
+                      onClick={handleLinkClick}
+                    >
+                      NEWS
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/main/pages/announcements/productnews"
+                      onClick={handleLinkClick}
+                    >
+                      제품소식
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/main/pages/announcements/resources"
+                      onClick={handleLinkClick}
+                    >
+                      자료실
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/main/pages/announcements/request"
+                      onClick={handleLinkClick}
+                    >
+                      평가판 신청
+                    </Link>
+                  </li>
+                </ul>
+                <li
+                  className={styles.dropdown}
+                  onClick={() => toggleMenu("company")}
+                >
+                  회사소개
                 </li>
+                <ul
+                  className={`${styles.dropdownMenu} ${
+                    activeMenu === "company" ? styles.show : ""
+                  }`}
+                >
+                  <li>
+                    <Link
+                      href="/main/pages/company/ceo"
+                      onClick={handleLinkClick}
+                    >
+                      회사소개
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/main/pages/company/ceo"
+                      onClick={handleLinkClick}
+                    >
+                      CEO 인사말
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/main/pages/company/history"
+                      onClick={handleLinkClick}
+                    >
+                      회사연혁
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/main/pages/company/brochure"
+                      onClick={handleLinkClick}
+                    >
+                      온라인 브로슈어
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/main/pages/company/direction"
+                      onClick={handleLinkClick}
+                    >
+                      오시는 길
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/main/pages/company/career"
+                      onClick={handleLinkClick}
+                    >
+                      채용 공고
+                    </Link>
+                  </li>
+                </ul>
               </ul>
             </div>
           </div>
