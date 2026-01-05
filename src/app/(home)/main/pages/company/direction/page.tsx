@@ -5,7 +5,9 @@ import styles from "./page.module.css";
 import useFetchCloudinaryImages from "@/app/hooks/useFetchCloudinaryImages";
 
 export default function Direction() {
-  const { imageSrc1, error } = useFetchCloudinaryImages(["deltaes_iiuxs7"]);
+  const { imageSrc1, error } = useFetchCloudinaryImages([
+    "델타이에스-수정약도_smsuvn",
+  ]);
 
   if (error) {
     return <p>Error: {error}</p>;
@@ -65,8 +67,8 @@ export default function Direction() {
           <article className={styles.wayBus}>
             <p>- 지하철 이용시</p>
             <p>
-              기술 연구소 및 교육장 : 1호선 2번 출구, 7호선 5번 출구에서 도보로
-              400m 7분 소요
+              기술 연구소 및 교육장 : 1호선 2번 출구, 7호선 6번 출구에서 도보로
+              435m 6분 소요
             </p>
           </article>
           <article className={styles.wayBus}>
