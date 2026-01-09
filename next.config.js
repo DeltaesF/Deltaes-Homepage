@@ -21,6 +21,20 @@ const nextConfig = {
       },
     ],
   },
+  // firebase 도메인에서 구글 로그인 중 오류 해결을 위한 코드 추가
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Cross-Origin-Opener-Policy",
+            value: "same-origin-allow-popups",
+          },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
       {
