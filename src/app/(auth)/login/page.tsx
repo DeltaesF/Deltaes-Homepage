@@ -2,11 +2,15 @@
 
 import Link from "next/link";
 import styles from "./page.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithRedirect,
+} from "firebase/auth";
 import { auth } from "@/app/lib/firebase";
-import FBGoogleLogin from "@/app/lib/fbgooglelogin";
+import FBGoogleLogin, { GoogleRedirectResult } from "@/app/lib/fbgooglelogin";
 
 export default function Login() {
   const [showLoginForm, setShowLoginForm] = useState(false);
@@ -15,6 +19,20 @@ export default function Login() {
   const [error, setError] = useState<Record<string, string>>({});
   const [successMessage, setSuccessMessage] = useState("");
   const router = useRouter();
+
+  // 👇 1. useEffect 추가: 모바일 로그인 후 돌아왔을 때 처리
+  useEffect(() => {
+    const checkRedirect = async () => {
+      const result = await GoogleRedirectResult();
+      if (result && result.success) {
+        setSuccessMessage("로그인에 성공했습니다.");
+        router.push("/main");
+      } else if (result && !result.success) {
+        setError({ general: result.error || "로그인 실패" });
+      }
+    };
+    checkRedirect();
+  }, [router]);
 
   const toggleLoginForm = () => {
     setShowLoginForm((prev) => !prev);
@@ -43,12 +61,24 @@ export default function Login() {
     }
   };
 
+  // 👇 2. 구글 로그인 버튼 핸들러 수정
   const handleGoogleClick = async () => {
-    const result = await FBGoogleLogin();
-    if (result.success) {
-      router.push("/main");
+    // 모바일 환경인지 체크
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      // 📱 모바일이면: 리디렉션(페이지 이동) 방식 사용
+      const provider = new GoogleAuthProvider();
+      await signInWithRedirect(auth, provider);
+      // (페이지가 이동되므로 이후 코드는 실행 안 됨)
     } else {
-      setError({ general: result.error || "구글 로그인에 실패했습니다." });
+      // 💻 PC면: 기존 팝업 방식 사용
+      const result = await FBGoogleLogin();
+      if (result.success) {
+        router.push("/main");
+      } else {
+        setError({ general: result.error || "구글 로그인에 실패했습니다." });
+      }
     }
   };
 

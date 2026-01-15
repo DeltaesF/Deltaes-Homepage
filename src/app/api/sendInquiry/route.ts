@@ -16,6 +16,7 @@ export async function POST(req: NextRequest) {
     await transporter.sendMail({
       from: process.env.GMAIL_USER,
       to: process.env.ALERT_EMAIL,
+      replyTo: email,
       subject: `${company} ${name}님의 문의 메일이 도착했습니다.`,
       text: `
         🔔 문의 알림
