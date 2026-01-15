@@ -8,11 +8,11 @@ import {
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithRedirect,
-  onAuthStateChanged,
+  onAuthStateChanged, // 👈 추가: 로그인 상태 감지 함수
   User,
 } from "firebase/auth";
 import { auth } from "@/app/lib/firebase";
-import FBGoogleLogin from "@/app/lib/fbgooglelogin";
+import FBGoogleLogin, { GoogleRedirectResult } from "@/app/lib/fbgooglelogin";
 import { registerUser } from "@/app/lib/registerUser";
 
 export default function Login() {
@@ -20,36 +20,54 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<Record<string, string>>({});
-  const [successMessage, setSuccessMessage] = useState("");
+  const [successMessage, setSuccessMessage] =
+    useState("로그인 정보를 확인 중입니다...");
   const router = useRouter();
 
-  // 👇 1. useEffect 추가: 모바일 로그인 후 돌아왔을 때 처리
+  // 👇 1. [핵심 수정] 로그인 상태 감지 (모바일 리디렉션 문제 해결)
   useEffect(() => {
+    // 이 함수는 페이지가 로드되자마자 실행되어, 로그인 여부를 계속 감시합니다.
     const unsubscribe = onAuthStateChanged(auth, async (user: User | null) => {
       if (user) {
-        // 1. 로그인 된 유저가 감지되면
+        // ✅ 로그인이 감지된 경우 (모바일 리디렉션 성공 포함)
+        setSuccessMessage("로그인 성공! 메인 페이지로 이동합니다...");
+
         try {
-          // 2. DB에 유저 정보 저장 (이미 있으면 패스됨)
+          // DB에 유저 정보 저장/확인 (registerUser 활용)
           await registerUser({
             uid: user.uid,
             email: user.email || "",
             userName: user.displayName || "이름없음",
             phoneNumber: user.phoneNumber || "",
             isChecked: true,
-            role: "user",
+            role: "user", // 기본 권한
             lastLogin: new Date(),
           });
 
-          // 3. 메인 페이지로 이동
-          setSuccessMessage("로그인되었습니다. 이동 중...");
-          router.push("/main");
+          // 0.5초 딜레이 후 이동 (너무 빠르면 이동이 씹히는 경우 방지)
+          setTimeout(() => {
+            router.replace("/main"); // replace를 써야 뒤로가기 시 로그인 페이지로 안 옴
+          }, 500);
         } catch (err) {
-          console.error("로그인 후처리 실패:", err);
+          console.error("DB 저장 실패:", err);
+          router.replace("/main"); // 에러 나도 일단 메인으로 이동
         }
+      } else {
+        // ❌ 로그인이 안 된 상태
+        setSuccessMessage(""); // "확인 중..." 메시지 제거
+
+        // 혹시 에러가 있어서 로그인이 실패했는지 확인 (선택 사항)
+        const checkError = async () => {
+          const result = await GoogleRedirectResult();
+          if (result && !result.success) {
+            setError({ general: result.error || "로그인에 실패했습니다." });
+          }
+        };
+        checkError();
       }
     });
 
-    // 페이지 나갈 때 감지기 끄기 (메모리 누수 방지)
+    // 컴포넌트가 사라질 때 감지 중단 (메모리 누수 방지)
     return () => unsubscribe();
   }, [router]);
 
@@ -71,27 +89,24 @@ export default function Login() {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      setSuccessMessage("로그인에 성공했습니다.");
-      router.push("/main");
+      // 로그인 성공 시 위의 useEffect(onAuthStateChanged)가 감지해서 자동으로 이동시킴
     } catch (error) {
-      // 👇 에러 타입을 지정해야 타입스크립트가 오류 안 냄
       const err = error as Error;
       setError({ general: err.message });
     }
   };
 
-  // 👇 2. 구글 로그인 버튼 핸들러 수정
   const handleGoogleClick = async () => {
-    // 모바일 환경인지 체크
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     if (isMobile) {
-      // 📱 모바일이면: 리디렉션(페이지 이동) 방식 사용
+      // 📱 모바일: 리디렉션 방식
+      setSuccessMessage("구글 인증 페이지로 이동합니다...");
       const provider = new GoogleAuthProvider();
       await signInWithRedirect(auth, provider);
-      // (페이지가 이동되므로 이후 코드는 실행 안 됨)
+      // 이후 페이지가 이동되고, 돌아오면 useEffect가 처리함
     } else {
-      // 💻 PC면: 기존 팝업 방식 사용
+      // 💻 PC: 팝업 방식
       const result = await FBGoogleLogin();
       if (result.success) {
         router.push("/main");
@@ -111,6 +126,17 @@ export default function Login() {
             가입하기
           </Link>
         </p>
+
+        {/* 상태 메시지가 있으면 표시 (볼드체로 강조) */}
+        {successMessage && (
+          <p
+            className={styles.success}
+            style={{ fontWeight: "bold", margin: "10px 0" }}
+          >
+            {successMessage}
+          </p>
+        )}
+
         {!showLoginForm ? (
           <nav className={styles.loginButtonWrapper}>
             <button className={styles.googleButton} onClick={handleGoogleClick}>
