@@ -8,9 +8,12 @@ import {
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithRedirect,
+  onAuthStateChanged,
+  User,
 } from "firebase/auth";
 import { auth } from "@/app/lib/firebase";
-import FBGoogleLogin, { GoogleRedirectResult } from "@/app/lib/fbgooglelogin";
+import FBGoogleLogin from "@/app/lib/fbgooglelogin";
+import { registerUser } from "@/app/lib/registerUser";
 
 export default function Login() {
   const [showLoginForm, setShowLoginForm] = useState(false);
@@ -22,16 +25,32 @@ export default function Login() {
 
   // 👇 1. useEffect 추가: 모바일 로그인 후 돌아왔을 때 처리
   useEffect(() => {
-    const checkRedirect = async () => {
-      const result = await GoogleRedirectResult();
-      if (result && result.success) {
-        setSuccessMessage("로그인에 성공했습니다.");
-        router.push("/main");
-      } else if (result && !result.success) {
-        setError({ general: result.error || "로그인 실패" });
+    const unsubscribe = onAuthStateChanged(auth, async (user: User | null) => {
+      if (user) {
+        // 1. 로그인 된 유저가 감지되면
+        try {
+          // 2. DB에 유저 정보 저장 (이미 있으면 패스됨)
+          await registerUser({
+            uid: user.uid,
+            email: user.email || "",
+            userName: user.displayName || "이름없음",
+            phoneNumber: user.phoneNumber || "",
+            isChecked: true,
+            role: "user",
+            lastLogin: new Date(),
+          });
+
+          // 3. 메인 페이지로 이동
+          setSuccessMessage("로그인되었습니다. 이동 중...");
+          router.push("/main");
+        } catch (err) {
+          console.error("로그인 후처리 실패:", err);
+        }
       }
-    };
-    checkRedirect();
+    });
+
+    // 페이지 나갈 때 감지기 끄기 (메모리 누수 방지)
+    return () => unsubscribe();
   }, [router]);
 
   const toggleLoginForm = () => {
