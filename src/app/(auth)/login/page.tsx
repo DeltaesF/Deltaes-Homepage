@@ -4,12 +4,12 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { signInWithEmailAndPassword, getRedirectResult } from "firebase/auth";
-import { auth, db } from "@/app/lib/firebase";
-import { doc, getDoc } from "firebase/firestore";
-import { registerUser } from "@/app/lib/registerUser";
-
-import FBGoogleLogin from "@/app/lib/fbgooglelogin";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/app/lib/firebase";
+import {
+  checkGoogleLoginResult,
+  startGoogleLogin,
+} from "@/app/lib/fbgooglelogin";
 
 export default function Login() {
   const [showLoginForm, setShowLoginForm] = useState(false);
@@ -19,31 +19,22 @@ export default function Login() {
   const [successMessage, setSuccessMessage] = useState("");
   const router = useRouter();
 
+  // 👇 [추가됨] 컴포넌트 마운트 시 리다이렉트 결과 확인
   useEffect(() => {
-    getRedirectResult(auth)
-      .then(async (result) => {
-        if (!result?.user) return;
+    const checkLogin = async () => {
+      // 구글 로그인 후 돌아왔을 때 실행되는 로직
+      const result = await checkGoogleLoginResult();
 
-        const user = result.user;
-
-        const userDoc = await getDoc(doc(db, "users", user.uid));
-        if (!userDoc.exists()) {
-          await registerUser({
-            uid: user.uid,
-            email: user.email || "",
-            userName: user.displayName || "이름없음",
-            phoneNumber: user.phoneNumber || "",
-            isChecked: true,
-            role: "user",
-            lastLogin: new Date(),
-          });
+      if (result) {
+        if (result.success) {
+          setSuccessMessage("구글 로그인에 성공했습니다.");
+          router.push("/main");
+        } else {
+          setError({ general: result.error || "구글 로그인 실패" });
         }
-
-        router.push("/main");
-      })
-      .catch((error) => {
-        setError({ general: error.message });
-      });
+      }
+    };
+    checkLogin();
   }, [router]);
 
   const toggleLoginForm = () => {
@@ -73,8 +64,13 @@ export default function Login() {
     }
   };
 
-  const handleGoogleClick = () => {
-    FBGoogleLogin();
+  const handleGoogleClick = async () => {
+    try {
+      await startGoogleLogin();
+    } catch (err) {
+      const error = err as Error;
+      setError({ general: error.message || "구글 로그인 요청 실패" });
+    }
   };
 
   return (
