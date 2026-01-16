@@ -6,35 +6,68 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import {
   signInWithEmailAndPassword,
+  signInWithRedirect,
+  GoogleAuthProvider,
   onAuthStateChanged,
+  getRedirectResult,
   setPersistence,
-  browserLocalPersistence,
+  browserLocalPersistence, // 👈 핵심: 로컬 저장소 강제 사용
   User,
 } from "firebase/auth";
 import { auth } from "@/app/lib/firebase";
-import FBGoogleLogin from "@/app/lib/fbgooglelogin"; // 팝업 방식 사용
-import { registerUser } from "@/app/lib/registerUser";
+import FBGoogleLogin from "@/app/lib/fbgooglelogin"; // PC용 팝업
+import { registerUser } from "@/app/lib/registerUser"; // 유저 DB 저장용
 
 export default function Login() {
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<Record<string, string>>({});
-  const [successMessage, setSuccessMessage] = useState("");
-  const [isProcessing, setIsProcessing] = useState(false); // 중복 클릭 방지
+
+  // 진행 상황 메시지
+  const [successMessage, setSuccessMessage] =
+    useState("로그인 정보를 확인 중입니다...");
+  const [isMobileProcessing, setIsMobileProcessing] = useState(true); // 초기 로드 시 체크 시작
+
   const router = useRouter();
 
-  // ✅ 로그인 상태 감지 (이메일 로그인 및 자동 로그인 처리용)
+  // ✅ 1. 페이지가 로드되자마자 리디렉션 결과 & 로그인 상태 동시 체크
   useEffect(() => {
-    // 1. 지속성 강제 설정
-    setPersistence(auth, browserLocalPersistence).catch(console.error);
+    const initAuth = async () => {
+      try {
+        // (1) 로그인 상태 유지 설정 (구글 갔다 와도 기억하도록)
+        await setPersistence(auth, browserLocalPersistence);
 
-    // 2. 로그인 감지
+        // (2) 혹시 구글 로그인하고 돌아온 직후인가? (리디렉션 결과 확인)
+        const redirectResult = await getRedirectResult(auth);
+        if (redirectResult && redirectResult.user) {
+          setSuccessMessage("인증 성공! 로그인 처리를 진행합니다...");
+          // 여기서 유저가 확인되면 아래 onAuthStateChanged가 곧 실행됩니다.
+        } else {
+          // 리디렉션 결과가 없으면 모바일 처리 중 상태 해제
+          setIsMobileProcessing(false);
+        }
+      } catch (e) {
+        console.error("Auth Init Error:", e);
+        const err = e as Error;
+        setError({ general: "로그인 확인 중 오류: " + err.message });
+        setIsMobileProcessing(false);
+        setSuccessMessage("");
+      }
+    };
+
+    initAuth();
+  }, []);
+
+  // ✅ 2. Firebase 인증 상태 감지기 (실질적인 로그인 처리)
+  useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user: User | null) => {
       if (user) {
-        setSuccessMessage("로그인 성공! 메인으로 이동합니다...");
+        // 🔥 로그인 성공!
+        setSuccessMessage("로그인되었습니다. 메인으로 이동합니다.");
+
         try {
-          // DB 저장
+          // DB에 유저 정보 등록 (이미 있으면 내부에서 무시됨)
           await registerUser({
             uid: user.uid,
             email: user.email || "",
@@ -45,18 +78,24 @@ export default function Login() {
             lastLogin: new Date(),
           });
 
+          // 이동
           setTimeout(() => {
             router.replace("/main");
-          }, 500);
-        } catch (e) {
-          const err = e as Error;
-          setError({ general: "오류 발생: " + err.message });
-          router.replace("/main");
+          }, 100); // 딜레이 최소화
+        } catch (err) {
+          console.error("DB Save Error:", err);
+          router.replace("/main"); // 에러 나도 이동은 시킴
+        }
+      } else {
+        // ❌ 로그인이 안 된 상태
+        if (!isMobileProcessing) {
+          setSuccessMessage(""); // 체크가 끝났으면 메시지 삭제
         }
       }
     });
+
     return () => unsubscribe();
-  }, [router]);
+  }, [router, isMobileProcessing]);
 
   const toggleLoginForm = () => {
     setShowLoginForm((prev) => !prev);
@@ -64,8 +103,6 @@ export default function Login() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isProcessing) return; // 중복 방지
-
     const errors: Record<string, string> = {};
     if (!email) errors.email = "이메일을 입력해주세요.";
     if (!password) errors.password = "비밀번호를 입력해주세요.";
@@ -76,43 +113,52 @@ export default function Login() {
     }
 
     try {
-      setIsProcessing(true);
       setSuccessMessage("로그인 시도 중...");
+      await setPersistence(auth, browserLocalPersistence);
       await signInWithEmailAndPassword(auth, email, password);
-      // 성공 시 useEffect가 처리함
     } catch (error) {
       const err = error as Error;
       setError({ general: err.message });
       setSuccessMessage("");
-      setIsProcessing(false);
     }
   };
 
-  // ✅ 구글 로그인 (모바일/PC 모두 팝업 사용)
+  // ✅ 구글 로그인 버튼 핸들러
   const handleGoogleClick = async () => {
-    if (isProcessing) return; // 중복 클릭 방지
+    // 에러 초기화
     setError({});
-    setIsProcessing(true);
-    setSuccessMessage("구글 인증 창을 띄우는 중입니다...");
+
+    // 모바일 감지
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     try {
-      // 🚀 모바일이어도 팝업 방식(FBGoogleLogin)을 강제로 사용합니다.
-      // 페이지가 이동되지 않고, 새 창이 떴다가 닫히면서 로그인이 완료됩니다.
-      const result = await FBGoogleLogin();
+      // 🚀 핵심: 로그인 시도 전 Persistence 강제 설정
+      await setPersistence(auth, browserLocalPersistence);
 
-      if (result.success) {
-        setSuccessMessage("인증 성공! 이동 중...");
-        router.replace("/main");
+      if (isMobile) {
+        // 📱 모바일: 리디렉션 사용
+        setSuccessMessage("구글 인증 페이지로 이동합니다...");
+        setIsMobileProcessing(true); // 폼 숨김
+
+        const provider = new GoogleAuthProvider();
+        await signInWithRedirect(auth, provider);
+        // 페이지 이동됨 -> 돌아오면 useEffect가 처리함
       } else {
-        setError({ general: result.error || "구글 로그인에 실패했습니다." });
-        setSuccessMessage("");
-        setIsProcessing(false);
+        // 💻 PC: 팝업 사용
+        setSuccessMessage("구글 인증 창을 띄웁니다...");
+        const result = await FBGoogleLogin(); // 기존 팝업 로직 활용
+        if (result.success) {
+          router.replace("/main");
+        } else {
+          setError({ general: result.error || "구글 로그인 실패" });
+          setSuccessMessage("");
+        }
       }
     } catch (e) {
       const err = e as Error;
-      setError({ general: "오류 발생: " + err.message });
+      setError({ general: "로그인 설정 오류: " + err.message });
       setSuccessMessage("");
-      setIsProcessing(false);
+      setIsMobileProcessing(false);
     }
   };
 
@@ -127,7 +173,7 @@ export default function Login() {
           </Link>
         </p>
 
-        {/* 상태 메시지 */}
+        {/* 👇 상태 메시지 표시 */}
         {successMessage && (
           <div
             style={{
@@ -141,18 +187,15 @@ export default function Login() {
           </div>
         )}
 
-        {/* 로딩 중이면 폼 숨김 (깔끔하게) */}
-        {isProcessing && !error.general ? (
-          <div style={{ textAlign: "center", padding: "20px", color: "#666" }}>
+        {/* 👇 처리 중일 때는 폼을 숨겨서 깜빡임 방지 */}
+        {isMobileProcessing || (successMessage && !error.general) ? (
+          <div style={{ textAlign: "center", padding: "40px", color: "#888" }}>
             잠시만 기다려주세요...
           </div>
         ) : !showLoginForm ? (
           <nav className={styles.loginButtonWrapper}>
-            <button
-              className={styles.googleButton}
-              onClick={handleGoogleClick}
-              disabled={isProcessing}
-            >
+            <button className={styles.googleButton} onClick={handleGoogleClick}>
+              {/* SVG 아이콘 생략 (기존 것 사용) */}
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
                 <path
                   style={{ fill: "#4285f4" }}
@@ -179,7 +222,6 @@ export default function Login() {
             <button
               onClick={toggleLoginForm}
               className={styles.loginFormButton}
-              disabled={isProcessing}
             >
               이메일로 로그인
             </button>
@@ -197,7 +239,6 @@ export default function Login() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className={styles.loginInput}
-                disabled={isProcessing}
               />
             </fieldset>
             {error.email && <span className={styles.error}>{error.email}</span>}
@@ -213,7 +254,6 @@ export default function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className={styles.loginInput}
-                disabled={isProcessing}
               />
             </fieldset>
             {error.password && (
@@ -224,11 +264,7 @@ export default function Login() {
             )}
 
             <p>비밀번호 찾기</p>
-            <button
-              type="submit"
-              className={styles.loginButton}
-              disabled={isProcessing}
-            >
+            <button type="submit" className={styles.loginButton}>
               로그인
             </button>
           </form>
