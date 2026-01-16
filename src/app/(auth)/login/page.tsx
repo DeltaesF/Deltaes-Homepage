@@ -2,37 +2,37 @@
 
 import Link from "next/link";
 import styles from "./page.module.css";
-import { useState, useEffect } from "react"; // 👈 useEffect 추가
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import {
   signInWithEmailAndPassword,
-  signInWithRedirect, // 👈 추가: 모바일용 로그인 함수
+  signInWithRedirect,
   GoogleAuthProvider,
-  onAuthStateChanged, // 👈 추가: 로그인 상태 감지
+  onAuthStateChanged, // 👈 핵심: 로그인 감지기
   User,
 } from "firebase/auth";
 import { auth } from "@/app/lib/firebase";
-import FBGoogleLogin, { GoogleRedirectResult } from "@/app/lib/fbgooglelogin"; // 👈 수정된 함수 import
-import { registerUser } from "@/app/lib/registerUser"; // 👈 유저 저장 함수 import
+import FBGoogleLogin, { GoogleRedirectResult } from "@/app/lib/fbgooglelogin";
+import { registerUser } from "@/app/lib/registerUser"; // 👈 유저 저장 함수 필요
 
 export default function Login() {
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<Record<string, string>>({});
-  const [successMessage, setSuccessMessage] = useState(""); // 상태 메시지
+  const [successMessage, setSuccessMessage] = useState("");
   const router = useRouter();
 
-  // 👇 1. [핵심] 로그인 감지기 설치
-  // 모바일에서 구글 인증 후 돌아왔을 때, 이 감지기가 로그인을 마무리하고 페이지를 이동시킵니다.
+  // 👇 [모바일 해결 핵심] 로그인 상태 감지 및 자동 이동
   useEffect(() => {
+    // 페이지가 로드되면 Firebase가 로그인 상태를 복구할 때까지 기다렸다가 알려줌
     const unsubscribe = onAuthStateChanged(auth, async (user: User | null) => {
       if (user) {
-        // 이미 로그인 되었거나, 모바일 인증 후 돌아온 경우
-        setSuccessMessage("로그인 성공! 이동 중입니다...");
+        // 1. 로그인이 감지됨 (모바일에서 돌아온 직후 포함)
+        setSuccessMessage("로그인 성공! 메인으로 이동합니다...");
 
         try {
-          // DB에 유저 정보 저장 (이미 있으면 registerUser 내부에서 알아서 무시함)
+          // 2. DB에 유저 정보 저장 (혹시 누락되었을 경우 대비)
           await registerUser({
             uid: user.uid,
             email: user.email || "",
@@ -43,13 +43,14 @@ export default function Login() {
             lastLogin: new Date(),
           });
 
-          // 메인으로 이동
+          // 3. 메인으로 확실하게 이동
           router.replace("/main");
         } catch (err) {
-          console.error("로그인 후처리 중 에러:", err);
+          console.error(err);
+          router.replace("/main"); // 에러 나도 일단 이동
         }
       } else {
-        // 로그인이 안 된 상태라면 리디렉션 에러가 있었는지 확인
+        // 로그인이 안 된 상태라면? 리디렉션 에러가 있었는지 체크
         const checkError = async () => {
           const result = await GoogleRedirectResult();
           if (result && !result.success) {
@@ -60,7 +61,7 @@ export default function Login() {
       }
     });
 
-    return () => unsubscribe(); // 페이지 나갈 때 감지기 끄기
+    return () => unsubscribe();
   }, [router]);
 
   const toggleLoginForm = () => {
@@ -80,26 +81,24 @@ export default function Login() {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      // 성공 시 위의 useEffect(onAuthStateChanged)가 감지해서 자동으로 이동시킴
+      // 성공하면 위의 useEffect가 감지해서 이동시킴
     } catch (error) {
       const err = error as Error;
       setError({ general: err.message });
     }
   };
 
-  // 👇 2. 구글 버튼 클릭 핸들러 수정
   const handleGoogleClick = async () => {
-    // 모바일 기기인지 정규식으로 확인
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     if (isMobile) {
-      // 📱 모바일이면: 리디렉션(페이지 이동) 방식 사용
+      // 📱 모바일: 리디렉션
       setSuccessMessage("구글 인증 페이지로 이동합니다...");
       const provider = new GoogleAuthProvider();
       await signInWithRedirect(auth, provider);
-      // (페이지가 이동되므로 이후 코드는 여기서 멈춤 -> 돌아오면 useEffect가 실행됨)
+      // (페이지 이동됨 -> 돌아오면 useEffect가 처리함)
     } else {
-      // 💻 PC면: 기존 팝업 방식 사용
+      // 💻 PC: 팝업
       const result = await FBGoogleLogin();
       if (result.success) {
         router.push("/main");
@@ -120,7 +119,7 @@ export default function Login() {
           </Link>
         </p>
 
-        {/* 진행 상황 메시지 표시 */}
+        {/* 메시지 표시 */}
         {successMessage && (
           <p
             className={styles.success}
@@ -133,7 +132,7 @@ export default function Login() {
         {!showLoginForm ? (
           <nav className={styles.loginButtonWrapper}>
             <button className={styles.googleButton} onClick={handleGoogleClick}>
-              {/* SVG 아이콘은 기존 코드 그대로 유지 */}
+              {/* SVG 아이콘 유지 */}
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
                 <path
                   style={{ fill: "#4285f4" }}
@@ -166,7 +165,7 @@ export default function Login() {
           </nav>
         ) : (
           <form onSubmit={handleLogin} className={styles.loginForm}>
-            {/* 기존 폼 내용 그대로 유지 */}
+            {/* 기존 input 필드들 그대로 유지 */}
             <fieldset className={styles.formGroup}>
               <label htmlFor="email" className={styles.loginLabel}>
                 이메일
@@ -210,7 +209,6 @@ export default function Login() {
         )}
         <div className={styles.close}>
           <Link href="/main">
-            {/* 닫기 아이콘도 기존 그대로 */}
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
               <path fill="none" d="M0 0h24v24H0z" />
               <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
