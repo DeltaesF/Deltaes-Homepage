@@ -1,20 +1,35 @@
+// lib/fbgooglelogin.ts
 import {
   GoogleAuthProvider,
   signInWithPopup,
-  getRedirectResult, // 👈 추가됨
+  signInWithRedirect,
+  User,
 } from "firebase/auth";
 import { auth, db } from "./firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { registerUser } from "./registerUser";
 
-// 1. PC용 팝업 로그인
-export default async function FBGoogleLogin() {
-  try {
-    const provider = new GoogleAuthProvider();
-    const result = await signInWithPopup(auth, provider);
-    const user = result.user;
+// 1. [데스크톱용] 팝업 로그인
+export const loginWithPopup = async () => {
+  const provider = new GoogleAuthProvider();
+  const result = await signInWithPopup(auth, provider);
+  // 팝업은 즉시 결과를 반환하므로 바로 DB 처리
+  await checkAndRegisterUser(result.user);
+  return result.user;
+};
 
-    const userDoc = await getDoc(doc(db, "users", user.uid));
+// 2. [모바일용] 리다이렉트 로그인 (결과 반환 없음, 페이지 이동됨)
+export const loginWithRedirect = async () => {
+  const provider = new GoogleAuthProvider();
+  await signInWithRedirect(auth, provider);
+};
+
+// 3. [공통] DB 유저 등록 로직
+export const checkAndRegisterUser = async (user: User) => {
+  try {
+    const userDocRef = doc(db, "users", user.uid);
+    const userDoc = await getDoc(userDocRef);
+
     if (!userDoc.exists()) {
       await registerUser({
         uid: user.uid,
@@ -25,27 +40,12 @@ export default async function FBGoogleLogin() {
         role: "user",
         lastLogin: new Date(),
       });
+      console.log("새 유저 DB 등록 완료");
+    } else {
+      console.log("기존 유저 로그인 확인");
     }
-
-    return { success: true, uid: user.uid };
   } catch (error) {
-    const err = error as Error;
-    return { success: false, error: err.message };
+    console.error("DB 등록 중 오류:", error);
+    throw error;
   }
-}
-
-// 2. 👇 [필수 추가] 모바일 리디렉션 결과 확인용 함수
-export async function GoogleRedirectResult() {
-  try {
-    // 리디렉션 후 돌아왔을 때 에러가 있었는지 확인
-    const result = await getRedirectResult(auth);
-    if (!result) return null;
-
-    // 로그인 성공 처리는 login page의 onAuthStateChanged에서 하므로
-    // 여기서는 "에러가 없다"는 사실만 전달하면 됩니다.
-    return { success: true, uid: result.user.uid };
-  } catch (error) {
-    const err = error as Error;
-    return { success: false, error: err.message };
-  }
-}
+};
