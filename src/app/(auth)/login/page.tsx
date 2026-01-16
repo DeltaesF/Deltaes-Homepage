@@ -9,7 +9,9 @@ import {
   signInWithRedirect,
   GoogleAuthProvider,
   onAuthStateChanged,
-  getRedirectResult, // 👈 리디렉션 결과 확인용 함수 직접 import
+  getRedirectResult,
+  setPersistence, // 👈 추가: 로그인 유지 설정
+  browserLocalPersistence, // 👈 추가: 로컬 저장소 강제 사용
   User,
 } from "firebase/auth";
 import { auth } from "@/app/lib/firebase";
@@ -22,43 +24,32 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<Record<string, string>>({});
 
-  // 사용자에게 진행 상황을 알려주는 메시지 상태
-  const [successMessage, setSuccessMessage] =
-    useState("로그인 상태 확인 중...");
-
+  // 초기 상태를 "확인 중"으로 두어 깜빡임 방지
+  const [successMessage, setSuccessMessage] = useState(
+    "로그인 정보를 확인하고 있습니다...",
+  );
   const router = useRouter();
 
-  // ✅ 1. [모바일 해결 핵심] 페이지 로드 시 리디렉션 결과부터 확인 (단 1번 실행)
+  // ✅ 1. 로그인 감지 및 리디렉션 처리 통합
   useEffect(() => {
-    const handleRedirectResult = async () => {
+    // (1) 로그인 지속성 강제 설정 (모바일 세션 유실 방지 핵심)
+    const setAuthPersistence = async () => {
       try {
-        // 모바일 구글 로그인 후 돌아왔을 때, 결과를 여기서 받아옵니다.
-        const result = await getRedirectResult(auth);
-        if (result) {
-          setSuccessMessage("구글 인증 성공! 사용자 정보를 저장합니다...");
-          // 결과가 있으면 아래 onAuthStateChanged가 곧 유저를 감지합니다.
-          // 여기서 굳이 이동시키지 않아도 됩니다. (중복 방지)
-        }
-      } catch (error) {
-        console.error("리디렉션 에러:", error);
-        const err = error as Error;
-        setError({ general: "로그인 중 오류가 발생했습니다: " + err.message });
-        setSuccessMessage(""); // 에러 났으니 메시지 지움
+        await setPersistence(auth, browserLocalPersistence);
+      } catch (e) {
+        console.error("Persistence error:", e);
       }
     };
+    setAuthPersistence();
 
-    handleRedirectResult();
-  }, []);
-
-  // ✅ 2. [로그인 감지] 유저 상태가 변하면 즉시 반응
-  useEffect(() => {
+    // (2) Auth 상태 감지기 가동
     const unsubscribe = onAuthStateChanged(auth, async (user: User | null) => {
       if (user) {
-        // 🔥 로그인이 확인됨 (이메일 로그인 or 구글 리디렉션 성공 등)
-        setSuccessMessage("로그인되었습니다. 메인 페이지로 이동합니다.");
+        // 🔥 로그인이 확인됨!
+        setSuccessMessage("로그인 성공! 메인으로 이동합니다.");
 
         try {
-          // DB에 유저 정보 저장 (registerUser 내부에서 중복 체크 함)
+          // DB 저장 (중복 체크는 내부에서 함)
           await registerUser({
             uid: user.uid,
             email: user.email || "",
@@ -68,25 +59,37 @@ export default function Login() {
             role: "user",
             lastLogin: new Date(),
           });
+
+          router.replace("/main");
+        } catch (err) {
+          console.error(err);
+          router.replace("/main");
+        }
+      } else {
+        // ❌ 로그인이 안 된 상태 (user === null)
+
+        // 혹시 리디렉션으로 돌아온 직후인지 확인 (세션 복구 시도)
+        try {
+          const result = await getRedirectResult(auth);
+          if (result && result.user) {
+            // 리디렉션 결과가 있다면 여기서 수동으로 처리하지 않아도
+            // 위의 onAuthStateChanged가 곧 user를 감지합니다.
+            setSuccessMessage("인증 확인됨. 로그인 처리 중...");
+            return;
+          }
         } catch (e) {
-          console.error("유저 정보 저장 실패:", e);
+          console.error("Redirect Error:", e);
+          const err = e as Error;
+          setError({ general: "모바일 로그인 오류: " + err.message });
         }
 
-        // 약간의 딜레이 후 확실하게 이동
-        setTimeout(() => {
-          router.replace("/main");
-        }, 500);
-      } else {
-        // 로그인이 안 된 상태 (초기 상태이거나 로그아웃 상태)
-        // 위쪽 handleRedirectResult가 돌고 있으므로 여기서는 "대기" 메시지만 지워줍니다.
-        if (successMessage === "로그인 상태 확인 중...") {
-          setSuccessMessage("");
-        }
+        // 진짜 로그아웃 상태라면 메시지 지우고 폼 보여주기
+        setSuccessMessage("");
       }
     });
 
     return () => unsubscribe();
-  }, [router]); // successMessage는 의존성에서 제외하여 불필요한 재실행 방지
+  }, [router]);
 
   const toggleLoginForm = () => {
     setShowLoginForm((prev) => !prev);
@@ -105,8 +108,8 @@ export default function Login() {
 
     try {
       setSuccessMessage("로그인 시도 중...");
+      await setPersistence(auth, browserLocalPersistence); // 이메일 로그인도 유지 설정
       await signInWithEmailAndPassword(auth, email, password);
-      // 성공하면 useEffect(onAuthStateChanged)가 감지해서 이동시킴
     } catch (error) {
       const err = error as Error;
       setError({ general: err.message });
@@ -117,21 +120,26 @@ export default function Login() {
   const handleGoogleClick = async () => {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-    if (isMobile) {
-      // 📱 모바일: 리디렉션 방식
-      setSuccessMessage("구글 인증 페이지로 이동합니다...");
-      const provider = new GoogleAuthProvider();
+    try {
+      // 로그인 시도 전에도 지속성 강제 설정
+      await setPersistence(auth, browserLocalPersistence);
 
-      // 리디렉션 시작 (페이지가 넘어감)
-      await signInWithRedirect(auth, provider);
-    } else {
-      // 💻 PC: 팝업 방식
-      const result = await FBGoogleLogin();
-      if (result.success) {
-        router.push("/main");
+      if (isMobile) {
+        setSuccessMessage("구글 인증 페이지로 이동합니다...");
+        const provider = new GoogleAuthProvider();
+        await signInWithRedirect(auth, provider);
       } else {
-        setError({ general: result.error || "구글 로그인에 실패했습니다." });
+        const result = await FBGoogleLogin();
+        if (result.success) {
+          router.push("/main");
+        } else {
+          setError({ general: result.error || "구글 로그인 실패" });
+        }
       }
+    } catch (e) {
+      const err = e as Error;
+      setError({ general: "로그인 설정 오류: " + err.message });
+      setSuccessMessage("");
     }
   };
 
@@ -146,19 +154,20 @@ export default function Login() {
           </Link>
         </p>
 
-        {/* 👇 상태 메시지 표시 (사용자 안심용) */}
+        {/* 상태 메시지: 모바일에서 멈춘 느낌을 없애기 위해 중요 */}
         {successMessage && (
-          <p
-            className={styles.success}
+          <div
             style={{
-              fontWeight: "bold",
               textAlign: "center",
-              margin: "1rem 0",
+              margin: "20px 0",
               color: "#0070f3",
+              fontWeight: "bold",
             }}
           >
             {successMessage}
-          </p>
+            {/* 간단한 로딩 스피너 역할 (점점점) */}
+            <span className={styles.loadingDots}></span>
+          </div>
         )}
 
         {!showLoginForm ? (
@@ -196,7 +205,6 @@ export default function Login() {
           </nav>
         ) : (
           <form onSubmit={handleLogin} className={styles.loginForm}>
-            {/* 기존 Input 필드들 유지 */}
             <fieldset className={styles.formGroup}>
               <label htmlFor="email" className={styles.loginLabel}>
                 이메일
