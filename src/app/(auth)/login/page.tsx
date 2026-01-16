@@ -10,8 +10,8 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   getRedirectResult,
-  setPersistence, // 👈 추가: 로그인 유지 설정
-  browserLocalPersistence, // 👈 추가: 로컬 저장소 강제 사용
+  setPersistence,
+  browserLocalPersistence,
   User,
 } from "firebase/auth";
 import { auth } from "@/app/lib/firebase";
@@ -24,32 +24,52 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<Record<string, string>>({});
 
-  // 초기 상태를 "확인 중"으로 두어 깜빡임 방지
+  // 👇 초기 상태를 '확인 중'으로 설정 (메시지가 사라지는 문제 방지)
   const [successMessage, setSuccessMessage] = useState(
     "로그인 정보를 확인하고 있습니다...",
   );
+
+  // 👇 리디렉션 확인이 끝났는지 체크하는 상태 추가
+  const [isRedirectChecking, setIsRedirectChecking] = useState(true);
+
   const router = useRouter();
 
-  // ✅ 1. 로그인 감지 및 리디렉션 처리 통합
+  // 🔄 1. 리디렉션 결과 확인 (모바일 구글 로그인 후 돌아왔을 때)
   useEffect(() => {
-    // (1) 로그인 지속성 강제 설정 (모바일 세션 유실 방지 핵심)
-    const setAuthPersistence = async () => {
+    const checkRedirect = async () => {
       try {
-        await setPersistence(auth, browserLocalPersistence);
-      } catch (e) {
-        console.error("Persistence error:", e);
+        await setPersistence(auth, browserLocalPersistence); // 지속성 강제 설정
+        const result = await getRedirectResult(auth);
+
+        if (result && result.user) {
+          setSuccessMessage("구글 인증 성공! 사용자 정보를 불러옵니다...");
+          // 여기서 성공하면 아래 onAuthStateChanged가 곧 유저를 감지합니다.
+          // 따라서 여기서는 isRedirectChecking을 false로 바꾸지 않고 유지해서 폼이 뜨는 걸 막습니다.
+        } else {
+          // 리디렉션 결과가 없으면 (그냥 접속했으면) 체크 종료
+          setIsRedirectChecking(false);
+        }
+      } catch (error) {
+        console.error("Redirect Error:", error);
+        const err = error as Error;
+        // 에러가 났으면 사용자에게 보여주고 폼을 띄움
+        setError({ general: "로그인 오류: " + err.message });
+        setIsRedirectChecking(false);
       }
     };
-    setAuthPersistence();
 
-    // (2) Auth 상태 감지기 가동
+    checkRedirect();
+  }, []);
+
+  // 🔄 2. 로그인 상태 감지기 (실제 로그인 처리)
+  useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user: User | null) => {
       if (user) {
-        // 🔥 로그인이 확인됨!
-        setSuccessMessage("로그인 성공! 메인으로 이동합니다.");
+        // ✅ 로그인이 확인됨!
+        setSuccessMessage("로그인 성공! 메인 페이지로 이동합니다.");
 
         try {
-          // DB 저장 (중복 체크는 내부에서 함)
+          // DB 유저 정보 저장
           await registerUser({
             uid: user.uid,
             email: user.email || "",
@@ -60,36 +80,25 @@ export default function Login() {
             lastLogin: new Date(),
           });
 
-          router.replace("/main");
+          // 0.5초 뒤 이동
+          setTimeout(() => {
+            router.replace("/main");
+          }, 500);
         } catch (err) {
-          console.error(err);
+          console.error("DB Error:", err);
           router.replace("/main");
         }
       } else {
-        // ❌ 로그인이 안 된 상태 (user === null)
-
-        // 혹시 리디렉션으로 돌아온 직후인지 확인 (세션 복구 시도)
-        try {
-          const result = await getRedirectResult(auth);
-          if (result && result.user) {
-            // 리디렉션 결과가 있다면 여기서 수동으로 처리하지 않아도
-            // 위의 onAuthStateChanged가 곧 user를 감지합니다.
-            setSuccessMessage("인증 확인됨. 로그인 처리 중...");
-            return;
-          }
-        } catch (e) {
-          console.error("Redirect Error:", e);
-          const err = e as Error;
-          setError({ general: "모바일 로그인 오류: " + err.message });
+        // ❌ 로그인이 안 된 상태
+        // [중요] 리디렉션 체크가 아직 안 끝났으면 메시지를 지우지 않음!
+        if (!isRedirectChecking) {
+          setSuccessMessage(""); // 체크가 다 끝났는데도 유저가 없으면 그때 메시지 삭제
         }
-
-        // 진짜 로그아웃 상태라면 메시지 지우고 폼 보여주기
-        setSuccessMessage("");
       }
     });
 
     return () => unsubscribe();
-  }, [router]);
+  }, [router, isRedirectChecking]); // isRedirectChecking 의존성 추가
 
   const toggleLoginForm = () => {
     setShowLoginForm((prev) => !prev);
@@ -108,7 +117,7 @@ export default function Login() {
 
     try {
       setSuccessMessage("로그인 시도 중...");
-      await setPersistence(auth, browserLocalPersistence); // 이메일 로그인도 유지 설정
+      await setPersistence(auth, browserLocalPersistence);
       await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
       const err = error as Error;
@@ -119,16 +128,21 @@ export default function Login() {
 
   const handleGoogleClick = async () => {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    setError({}); // 기존 에러 초기화
 
     try {
-      // 로그인 시도 전에도 지속성 강제 설정
       await setPersistence(auth, browserLocalPersistence);
 
       if (isMobile) {
+        // 📱 모바일
         setSuccessMessage("구글 인증 페이지로 이동합니다...");
+        setIsRedirectChecking(true); // 이동하니까 체크 상태로 변경 (폼 숨기기)
+
         const provider = new GoogleAuthProvider();
         await signInWithRedirect(auth, provider);
+        // 페이지 이동됨
       } else {
+        // 💻 PC
         const result = await FBGoogleLogin();
         if (result.success) {
           router.push("/main");
@@ -138,8 +152,9 @@ export default function Login() {
       }
     } catch (e) {
       const err = e as Error;
-      setError({ general: "로그인 설정 오류: " + err.message });
+      setError({ general: "초기화 오류: " + err.message });
       setSuccessMessage("");
+      setIsRedirectChecking(false);
     }
   };
 
@@ -154,7 +169,7 @@ export default function Login() {
           </Link>
         </p>
 
-        {/* 상태 메시지: 모바일에서 멈춘 느낌을 없애기 위해 중요 */}
+        {/* 👇 상태 메시지가 있으면 표시 */}
         {successMessage && (
           <div
             style={{
@@ -162,15 +177,19 @@ export default function Login() {
               margin: "20px 0",
               color: "#0070f3",
               fontWeight: "bold",
+              minHeight: "24px",
             }}
           >
             {successMessage}
-            {/* 간단한 로딩 스피너 역할 (점점점) */}
-            <span className={styles.loadingDots}></span>
           </div>
         )}
 
-        {!showLoginForm ? (
+        {/* 👇 리디렉션 체크 중이거나 메시지가 떠있을 때는 폼을 숨겨서 깜빡임 방지 */}
+        {isRedirectChecking || successMessage ? (
+          <div style={{ textAlign: "center", padding: "20px", color: "#666" }}>
+            잠시만 기다려주세요...
+          </div>
+        ) : !showLoginForm ? (
           <nav className={styles.loginButtonWrapper}>
             <button className={styles.googleButton} onClick={handleGoogleClick}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
